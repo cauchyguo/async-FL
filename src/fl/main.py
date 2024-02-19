@@ -163,7 +163,9 @@ def main():
     dataset = dataset_class(global_config["client_num"], global_config["iid"], global_config["dataset"]["params"])
     train_dataset = dataset.get_train_dataset()
     test_dataset = dataset.get_test_dataset()
+    print("Train && Test dataset gernerated.")
     send_dataset(train_dataset, test_dataset, message_queue, global_config)
+    print("dataset sended.")
     index_list = dataset.get_index_list()
     client_config["index_list"] = index_list
     global_var['client_index_list'] = index_list

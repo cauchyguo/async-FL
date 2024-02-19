@@ -19,7 +19,8 @@ def _get_data(dataset):
     if hasattr(dataset, 'data'):
         return dataset.data
     else:
-        raise Exception("Dataset data not found")
+        return None
+        # raise Exception("Dataset data not found")
 
 
 def _get_targets(dataset):
@@ -44,7 +45,10 @@ class FLDataset(Dataset):
         return len(self.idxs)
 
     def __getitem__(self, item):
-        image, label = self.data[self.idxs[item]], self.targets[self.idxs[item]]
+        if self.data is not None:
+            image, label = self.data[self.idxs[item]], self.targets[self.idxs[item]]
+        else:
+            image, label = self.dataset[self.idxs[item]][0], self.targets[self.idxs[item]]
         if self.transform is not None:
             image = self.transform(image)
 

@@ -1,4 +1,5 @@
 import os
+from uu import Error
 
 import numpy as np
 
@@ -23,14 +24,16 @@ class BaseDataset:
         self.path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data/')
 
     def init(self, clients, train_dataset, test_dataset):
-        self.raw_data = train_dataset.data
+        # self.raw_data = train_dataset.data
         self.train_labels = np.array(train_dataset.targets)
-        self.train_data = train_dataset.data
-        self.test_data = test_dataset.data
+        # self.train_data = train_dataset.data
+        # self.test_data = test_dataset.data
         self.label_max = self.train_labels.max()
         self.label_min = self.train_labels.min()
-
-        self.train_data_size = self.train_data.shape[0]
+        try:
+            self.train_data_size = self.train_dataset.data.shape[0]
+        except AttributeError:
+            self.train_data_size = self.train_dataset.imgs.__len__()
         self.generate_data(clients, train_dataset, test_dataset)
 
     def get_test_dataset(self):
