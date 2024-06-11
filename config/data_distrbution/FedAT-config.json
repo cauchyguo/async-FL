@@ -1,0 +1,99 @@
+{
+	"wandb": {
+		"enabled": false,
+		"project": "FedAT",
+		"name": "3.1"
+	},
+	"global": {
+		"dataset_pre_load": true,
+		"use_file_system": false,
+		"multi_gpu": true,
+		"experiment": "FedAT/1",
+		"stale": {
+			"step": 2,
+			"shuffle": true,
+			"list": [
+				0,
+				5,
+				5,
+				5,
+				5
+			]
+		},
+		"dataset": {
+			"path": "dataset.FashionMNIST.FashionMNIST",
+			"params": {}
+		},
+		"iid": true,
+		"client_num": 20
+	},
+	"server": {
+		"path": "server.SemiAsyncServer.SemiAsyncServer",
+		"epochs": 50,
+		"model": {
+			"path": "model.CNN.CNN",
+			"params": {}
+		},
+		"scheduler": {
+			"path": "scheduler.SemiAsyncScheduler.SemiAsyncScheduler",
+			"schedule": {
+				"path": "schedule.FullSchedule.FullSchedule",
+				"params": {}
+			}
+		},
+		"updater": {
+			"path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
+			"update": {
+				"path": "update.FedAT.FedAT",
+				"params": {}
+			},
+			"loss": "torch.nn.functional.cross_entropy",
+			"params": {},
+			"group": {
+				"path": "update.FedAvg.FedAvg",
+				"params": {}
+			}
+		}
+	},
+	"group_manager": {
+		"path": "groupmanager.NormalGroupManager.NormalGroupManager",
+		"group_method": {
+			"path": "group.DelayGroup.DelayGroup",
+			"params": {
+				"step": 3
+			}
+		}
+	},
+	"queue_manager": {
+		"path": "queuemanager.QueueListManager.QueueListManager",
+		"receiver": {
+			"path": "receiver.MultiQueueReceiver.MultiQueueReceiver",
+			"params": {}
+		},
+		"checker": {
+			"path": "checker.AllChecker.AllChecker",
+			"params": {}
+		}
+	},
+	"client_manager": {
+		"path": "clientmanager.NormalClientManager.NormalClientManager"
+	},
+	"client": {
+		"path": "client.SemiClient.SemiClient",
+		"epochs": 1,
+		"batch_size": 64,
+		"model": {
+			"path": "model.CNN.CNN",
+			"params": {}
+		},
+		"loss": "torch.nn.functional.cross_entropy",
+		"mu": 0.01,
+		"optimizer": {
+			"path": "torch.optim.SGD",
+			"params": {
+				"lr": 0.01,
+				"weight_decay": 0
+			}
+		}
+	}
+}
