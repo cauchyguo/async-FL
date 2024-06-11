@@ -58,7 +58,7 @@
 	"group_manager": {
 		"path": "groupmanager.NormalGroupManager.NormalGroupManager",
 		"group_method": {
-			"path": "group.DelayGroup.DelayGroup",
+			"path": "group.KLDGroup.KLDGroup",
 			"params": {
 				"step": 3
 			}
