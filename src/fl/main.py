@@ -85,9 +85,11 @@ def main():
     if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results")):
         os.mkdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results"))
 
+    debug = False
     # 配置文件读取
     if len(sys.argv) < 2:
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config.json")
+        debug = True
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/data_distrbution/ResNet18-kld-config.json")
     else:
         config_file = sys.argv[1]
 
@@ -127,15 +129,18 @@ def main():
         is_cover = True
 
     # 保存配置文件
-    if os.path.exists(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
-                         "config.json")) and is_cover:
-        is_cover = input("实验路径已存在，是否覆盖(y/n):")
-        if is_cover == 'y' or is_cover == 'Y':
-            is_cover = True
-        else:
-            print("试验结果将不会被存储")
-            is_cover = False
+    if not debug:
+        if os.path.exists(
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+                            "config.json")) and is_cover:
+            is_cover = input("实验路径已存在，是否覆盖(y/n):")
+            if is_cover == 'y' or is_cover == 'Y':
+                is_cover = True
+            else:
+                print("试验结果将不会被存储")
+                is_cover = False
+    else:
+        wandb_config["enabled"] = False
 
     # 初始化wandb
     if wandb_config["enabled"]:

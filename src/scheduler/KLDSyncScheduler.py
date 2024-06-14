@@ -3,7 +3,7 @@ import time
 from scheduler.BaseScheduler import BaseScheduler
 
 
-class SyncScheduler(BaseScheduler):
+class KLDSyncScheduler(BaseScheduler):
     def __init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem):
         BaseScheduler.__init__(self, server_thread_lock, config)
         self.mutex_sem = mutex_sem
@@ -29,12 +29,12 @@ class SyncScheduler(BaseScheduler):
         schedule_time = self.schedule_t.get_time()
         if current_time > self.T:
             return
-        selected_client = self.client_select()
-        self.notify_client(selected_client, current_time, schedule_time)
+        selected_client,selected_client_distribution = self.client_select()
+        self.notify_client(selected_client, selected_client_distribution,current_time, schedule_time)
         # Waiting for all clients to upload their updates.
         self.queue_manager.receive(len(selected_client))
 
-    def notify_client(self, selected_client, current_time, schedule_time):
+    def notify_client(self, selected_client, selected_client_distribution, current_time, schedule_time):
         print(f"| current_epoch {current_time} |. Begin client select")
         print("\nSchedulerThread select(", len(selected_client), "clients):")
         for client_id in selected_client:
@@ -43,11 +43,15 @@ class SyncScheduler(BaseScheduler):
             self.send_weights(client_id, current_time, schedule_time)
             # Starting a client thread
             self.selected_event_list[client_id].set()
-        print("\n-----------------------------------------------------------------Schedule complete")
+        print("\n selected_client_distribution:",selected_client_distribution)
+        print("-----------------------------------------------------------------Schedule complete")
         self.schedule_t.time_add()
 
     def client_select(self, *args, **kwargs):
         client_list = self.global_var['client_id_list']
         data_dist = self.global_var['client_data_distribution']
         selected_clients,selected_client_distribution = self.schedule_caller.schedule(client_list,data_dist)
-        return selected_clients
+        return selected_clients,selected_client_distribution
+    
+    
+    

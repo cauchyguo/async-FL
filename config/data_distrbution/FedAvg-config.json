@@ -31,7 +31,7 @@
 			"schedule": {
 				"path": "schedule.RandomSchedule.RandomSchedule",
 				"params": {
-					"c_ratio": 0.3
+					"c_ratio": 0.2
 				}
 			}
 		},

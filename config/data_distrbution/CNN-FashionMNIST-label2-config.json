@@ -1,0 +1,95 @@
+{
+  "wandb": {
+    "enabled": true,
+    "project": "FedAvg",
+    "name": "FsMNIST-random-selection-label1-5--client20-lr0.01"
+  },
+  "global": {
+    "use_file_system": false,
+    "multi_gpu": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "experiment": "FedAvg/FsMNIST-random-selection-label1-5--client20-lr0.01",
+    "stale": false,
+    "dataset": {
+      "path": "dataset.FashionMNIST.FashionMNIST",
+      "params": {}
+    },
+    "iid": {
+      "customize": true,
+      "label": {
+        "step": 1,
+        "list": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      "data": {}
+    },
+    "client_num": 100,
+    "seed": 118005343
+  },
+  "server": {
+    "path": "server.NormalServer.NormalServer",
+    "epochs": 1000,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "scheduler": {
+      "path": "scheduler.KLDSyncScheduler.KLDSyncScheduler",
+      "schedule": {
+        "path": "schedule.KLDRadomSchedule.KLDRadomSchedule",
+        "params": {
+          "c_ratio": 0.2
+        }
+      }
+    },
+    "updater": {
+      "path": "updater.SyncUpdater.SyncUpdater",
+      "loss": "torch.nn.functional.cross_entropy",
+      "update": {
+        "path": "update.FedAvg.FedAvg",
+        "params": {}
+      }
+    }
+  },
+  "queue_manager": {
+    "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+    "receiver": {
+      "path": "receiver.NormalReceiver.NormalReceiver",
+      "params": {}
+    },
+    "checker": {
+      "path": "checker.SyncChecker.SyncChecker",
+      "params": {}
+    }
+  },
+  "client_manager": {
+    "path": "clientmanager.NormalClientManager.NormalClientManager"
+  },
+  "client": {
+    "path": "client.NormalClient.NormalClient",
+    "epochs": 5,
+    "batch_size": 50,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "loss": "torch.nn.functional.cross_entropy",
+    "mu": 0,
+    "optimizer": {
+      "path": "torch.optim.SGD",
+      "params": {
+        "lr": 0.01,
+        "weight_decay": 0.01
+      }
+    }
+  }
+}

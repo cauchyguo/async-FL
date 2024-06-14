@@ -5,7 +5,7 @@ from torch.utils.data import Dataset
 
 from utils import Random
 from utils.Tools import dict_to_list, list_to_dict
-
+from utils.GlobalVarGetter import GlobalVarGetter
 
 class DatasetSplit(Dataset):
     def __init__(self, dataset, idxs):
@@ -67,6 +67,9 @@ def customize_distribution(label_config, data_config, dataset, clients, left, ri
     # 保存label至配置文件
     dataset.iid_config['label'] = list_to_dict(label_lists)
     # 生成序列
+
+    global_var = GlobalVarGetter.get()
+    global_var['client_data_distribution'] = list_to_dict(label_lists)
     return generate_non_iid_dataset(dataset.train_data, dataset.train_labels, label_lists,
                                     data_lists)
 
@@ -82,6 +85,8 @@ def dirichlet_distribution(iid_config, dataset, clients, left, right):
         for i, idcs in enumerate(np.split(c, (np.cumsum(fracs) * len(c)).astype(int))):
             client_idx[i] += [idcs]
     client_idx = [np.concatenate(idcs) for idcs in client_idx]
+    global_var = GlobalVarGetter.get()
+    global_var['client_data_distribution'] = label_distribution
     return client_idx
 
 

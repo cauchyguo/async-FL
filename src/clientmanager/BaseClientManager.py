@@ -47,6 +47,12 @@ class BaseClientManager:
             for i in range(dev_total):
                 device = torch.device(f'cuda:{i}')
                 dev_list.append(torch.cuda.mem_get_info(device)[0])  # The remaining memory of each GPU
+
+            if isinstance(multi_gpu,list):
+                mode = 0
+                for i in range(dev_total):
+                    dev_list[i] *= multi_gpu[i]
+
             if multi_gpu:
                 mode = 0
             else:
