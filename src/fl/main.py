@@ -193,6 +193,7 @@ def main():
 
     # 获取数据集分布
     label_counts = get_client_data_distri(index_list, train_dataset.targets)
+    global_var
 
     # wandb启动配置植入update_config中
     server_config['updater']['enabled'] = wandb_config['enabled']

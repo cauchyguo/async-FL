@@ -143,7 +143,7 @@ def generate_label_lists(label_num_list, left, right, shuffle=False):
             label_lists.append(label_list.tolist())
     return label_lists
 
-
+# 生成label lists,step为步长，num_list为每个步长的数量，left为左边界，right为右边界
 def generate_label_lists_by_step(step, num_list, left, right, shuffle=False):
     label_lists = []
     bound = 1

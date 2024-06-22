@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "FedAvg",
-    "name": "FsMNIST-random-selection-label1-5--client20-lr0.01"
+    "name": "FsMNIST-random-selection-label1-6--client100-lr0.01"
   },
   "global": {
     "use_file_system": false,
@@ -23,11 +23,12 @@
       "label": {
         "step": 1,
         "list": [
-          20,
-          20,
-          20,
-          20,
-          20
+          10,
+          10,
+          10,
+          10,
+          10,
+          50
         ]
       },
       "data": {}
@@ -37,7 +38,7 @@
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 1000,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
