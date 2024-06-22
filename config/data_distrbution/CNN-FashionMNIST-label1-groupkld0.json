@@ -1,18 +1,18 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "FedAvg",
-    "name": "FsMNIST-random-selection-label1-6--client100-lr0.01"
+    "project": "DataDistTest",
+    "name": "FsMNIST-kld0-label1--client100-lr0.01"
   },
   "global": {
     "use_file_system": false,
     "multi_gpu": [
       0,
       0,
-      1,
-      0
+      0,
+      1
     ],
-    "experiment": "FedAvg/FsMNIST-random-selection-label1-5--client20-lr0.01",
+    "experiment": "DataDistTest/FsMNIST-kld0-label1--client100-lr0.01",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -50,9 +50,10 @@
     "scheduler": {
       "path": "scheduler.KLDSyncScheduler.KLDSyncScheduler",
       "schedule": {
-        "path": "schedule.KLDRadomSchedule.KLDRadomSchedule",
+        "path": "schedule.KLDTestSchedule.KLDTestSchedule",
         "params": {
-          "c_ratio": 0.2
+          "c_ratio": 0.1,
+          "start": 0
         }
       }
     },

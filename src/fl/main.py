@@ -89,7 +89,7 @@ def main():
     # 配置文件读取
     if len(sys.argv) < 2:
         debug = True
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/data_distrbution/ResNet18-kld-config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/data_distrbution/CNN-FashionMNIST-label2-config.json")
     else:
         config_file = sys.argv[1]
 

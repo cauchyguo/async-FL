@@ -1,44 +1,34 @@
 import random
-
+import copy
 import numpy as np
 from torch.utils.data import Dataset
 
 from utils import Random
 from utils.Tools import dict_to_list, list_to_dict
 from utils.GlobalVarGetter import GlobalVarGetter
-import copy 
-class DatasetSplit(Dataset):
-    def __init__(self, dataset, idxs):
-        self.dataset = dataset
-        self.idxs = list(idxs)
+class CustomizeDistTest():
 
-    def __len__(self):
-        return len(self.idxs)
+    def __init__(self, dataset):
+        pass
+    def test_customize_dist(self):
+        # Define the distribution
+        class MyDist(Distribution):
+            def __init__(self, *args, **kwargs):
+                super(MyDist, self).__init__(*args, **kwargs)
+                self._dist = stats.norm(loc=0, scale=1)
 
-    def __getitem__(self, item):
-        image, label = self.dataset[self.idxs[item]]
-        return image, label
+            def sample(self, size=None):
+                return self._dist.rvs(size=size)
 
-
-def generate_iid_data(dataset, clients):
-    class_idx = [np.argwhere(dataset.train_labels == y).flatten() for y in range(max(dataset.train_labels)-min(dataset.train_labels)+1)]
-    client_idx = [[] for _ in range(clients + 1)]
-    for c in class_idx:
-        for i, idcs in enumerate(np.array_split(c, clients)):
-            client_idx[i] += [idcs]
-    client_idx = [np.concatenate(client_idx[i]) for i in range(clients)]
-    return client_idx
-
+            def log_prob(self, x):
+                return self._dist.logpdf(x)
+            
 
 def generate_non_iid_data(iid_config, dataset, clients, left, right, datasets):
     if "customize" in iid_config.keys() and iid_config["customize"]:
         label_config = iid_config['label']
         data_config = iid_config['data']
         return customize_distribution(label_config, data_config, dataset, clients, left, right, datasets)
-    else:
-        return dirichlet_distribution(iid_config, dataset, clients, left, right)
-
-
 def customize_distribution(label_config, data_config, dataset, clients, left, right, datasets):
     # 生成label lists
     # 洗牌算法
@@ -72,49 +62,6 @@ def customize_distribution(label_config, data_config, dataset, clients, left, ri
     global_var['client_data_distribution'] = list_to_dict(label_lists)
     return generate_non_iid_dataset(dataset.train_data, dataset.train_labels, label_lists,
                                     data_lists)
-
-
-def dirichlet_distribution(iid_config, dataset, clients, left, right):
-    beta = iid_config["beta"]
-    label_distribution = np.random.dirichlet([beta] * clients, right - left)
-    class_idx = [np.argwhere(dataset.train_labels == y).flatten() for y in range(right - left)]
-    client_idx = [[] for _ in range(clients+1)]
-    for c, fracs in zip(class_idx, label_distribution):
-        # np.split按照比例将类别为k的样本划分为了N个子集
-        # for i, idcs 为遍历第i个client对应样本集合的索引
-        for i, idcs in enumerate(np.split(c, (np.cumsum(fracs) * len(c)).astype(int))):
-            client_idx[i] += [idcs]
-    client_idx = [np.concatenate(idcs) for idcs in client_idx]
-    global_var = GlobalVarGetter.get()
-    global_var['client_data_distribution'] = label_distribution
-    return client_idx
-
-
-def generate_non_iid_dataset(x, y, label_lists, data_lists):
-    client_idx_list = []
-    for i in range(len(label_lists)):
-        index_list = []
-        for j in range(len(label_lists[i])):
-            ids = np.flatnonzero(y == label_lists[i][j])
-            ids = np.random.choice(ids, data_lists[i][j], replace=False)
-            index_list.append(ids)
-        index_list = np.hstack(index_list)
-        client_idx_list.append(index_list)
-    return client_idx_list
-
-
-def generate_data_lists(max_size, min_size, num, label_lists):
-    data_lists = []
-    data_list = generate_data_list(max_size, min_size, num)
-    for i in range(len(label_lists)):
-        tmp_list = []
-        for j in range(len(label_lists[i]) - 1):
-            tmp_list.append(data_list[i] // len(label_lists[i]))
-        tmp_list.append(data_list[i] - data_list[i] // len(label_lists[i]) * (len(label_lists[i]) - 1))
-        data_lists.append(tmp_list)
-    return data_lists
-
-
 def generate_data_list(max_size, min_size, num):
     ans = []
     for _ in range(num):
@@ -164,21 +111,44 @@ def generate_label_lists_by_step(step, num_list, left, right, shuffle=False):
                 pos = pos + bound
             bound += step
     else:
-    #     labels = range(left, right)
-    #     for i in range(len(num_list)):
-    #         for j in range(num_list[i]):
-    #             s = np.random.choice(labels, bound, replace=False)
-    #             label_lists.append(s.tolist())
-    #         bound += step
-    # return label_lists
         labels = range(left, right)
         for i in range(len(num_list)):
-            for t in range(num_list[i] // 10):
-                for k in range(bound):
-                    remain_labels = copy.deepcopy(labels)
-                    for j in range(10 // bound):
-                        s = np.random.choice(remain_labels, min(bound,len(remain_labels)), replace=False)
-                        label_lists.append(s.tolist())
-                        remain_labels = list(set(remain_labels) - set(s))
+            for k in range(bound):
+                remain_labels = copy.deepcopy(labels)
+                for j in range(num_list[i] // bound):
+                    s = np.random.choice(remain_labels, min(bound,len(remain_labels)), replace=False)
+                    label_lists.append(s.tolist())
+                    remain_labels = list(set(remain_labels) - set(s))
             bound += step
     return label_lists
+
+
+def generate_data_lists(max_size, min_size, num, label_lists):
+    data_lists = []
+    data_list = generate_data_list(max_size, min_size, num)
+    for i in range(len(label_lists)):
+        tmp_list = []
+        for j in range(len(label_lists[i]) - 1):
+            tmp_list.append(data_list[i] // len(label_lists[i]))
+        tmp_list.append(data_list[i] - data_list[i] // len(label_lists[i]) * (len(label_lists[i]) - 1))
+        data_lists.append(tmp_list)
+    return data_lists
+
+def generate_non_iid_dataset(x, y, label_lists, data_lists):
+    client_idx_list = []
+    for i in range(len(label_lists)):
+        index_list = []
+        for j in range(len(label_lists[i])):
+            ids = np.flatnonzero(y == label_lists[i][j])
+            ids = np.random.choice(ids, data_lists[i][j], replace=False)
+            index_list.append(ids)
+        index_list = np.hstack(index_list)
+        client_idx_list.append(index_list)
+    return client_idx_list
+
+        # # Create the distribution
+        # dist = MyDist()
+
+        # # Test the distribution
+        # self.assertTrue(isinstance(dist.sample(), float))
+        # self.assertTrue(isinstance(dist.log_prob(0), float))
