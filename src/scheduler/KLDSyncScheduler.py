@@ -1,5 +1,5 @@
 import time
-
+import numpy as np
 from scheduler.BaseScheduler import BaseScheduler
 
 
@@ -43,7 +43,7 @@ class KLDSyncScheduler(BaseScheduler):
             self.send_weights(client_id, current_time, schedule_time)
             # Starting a client thread
             self.selected_event_list[client_id].set()
-        print("\n selected_client_distribution:",selected_client_distribution)
+        print("\n selected_client_distribution:\n",selected_client_distribution)
         print("-----------------------------------------------------------------Schedule complete")
         self.schedule_t.time_add()
 
@@ -53,5 +53,12 @@ class KLDSyncScheduler(BaseScheduler):
         selected_clients,selected_client_distribution = self.schedule_caller.schedule(client_list,data_dist)
         return selected_clients,selected_client_distribution
     
+
+    # def client_dir_select(self, *args, **kwargs):
+    #     client_list = self.global_var['client_id_list']
+    #     data_dist = self.global_var['client_data_distribution']
+    #     selected_clients = np.random.choice(client_list, 10, replace=False)
+    #     selected_clients,selected_client_distribution = self.schedule_caller.schedule(client_list,data_dist)
+    #     return selected_clients,selected_client_distribution
     
     

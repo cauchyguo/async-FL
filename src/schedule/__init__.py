@@ -6,3 +6,4 @@ from schedule import KLDSchedule
 from schedule import KLDFixSchedule
 from schedule import KLDRadomSchedule
 from schedule import KLDTestSchedule
+from schedule import KLDTestRadomSchedule

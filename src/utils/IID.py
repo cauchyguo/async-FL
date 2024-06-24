@@ -86,7 +86,7 @@ def dirichlet_distribution(iid_config, dataset, clients, left, right):
             client_idx[i] += [idcs]
     client_idx = [np.concatenate(idcs) for idcs in client_idx]
     global_var = GlobalVarGetter.get()
-    global_var['client_data_distribution'] = label_distribution
+    global_var['client_data_distribution'] = label_distribution.T
     return client_idx
 
 
@@ -164,21 +164,21 @@ def generate_label_lists_by_step(step, num_list, left, right, shuffle=False):
                 pos = pos + bound
             bound += step
     else:
-    #     labels = range(left, right)
-    #     for i in range(len(num_list)):
-    #         for j in range(num_list[i]):
-    #             s = np.random.choice(labels, bound, replace=False)
-    #             label_lists.append(s.tolist())
-    #         bound += step
-    # return label_lists
         labels = range(left, right)
         for i in range(len(num_list)):
-            for t in range(num_list[i] // 10):
-                for k in range(bound):
-                    remain_labels = copy.deepcopy(labels)
-                    for j in range(10 // bound):
-                        s = np.random.choice(remain_labels, min(bound,len(remain_labels)), replace=False)
-                        label_lists.append(s.tolist())
-                        remain_labels = list(set(remain_labels) - set(s))
+            for j in range(num_list[i]):
+                s = np.random.choice(labels, bound, replace=False)
+                label_lists.append(s.tolist())
             bound += step
     return label_lists
+    #     labels = range(left, right)
+    #     for i in range(len(num_list)):
+    #         for t in range(num_list[i] // 10):
+    #             for k in range(bound):
+    #                 remain_labels = copy.deepcopy(labels)
+    #                 for j in range(10 // bound):
+    #                     s = np.random.choice(remain_labels, min(bound,len(remain_labels)), replace=False)
+    #                     label_lists.append(s.tolist())
+    #                     remain_labels = list(set(remain_labels) - set(s))
+    #         bound += step
+    # return label_lists

@@ -1,18 +1,18 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "FedAvg",
-    "name": "cnn-random-min-kld-selection-label1-5-lr0.01"
+    "project": "DataDistTest",
+    "name": "FsMNIST-kld0-label2.5"
   },
   "global": {
     "use_file_system": false,
     "multi_gpu": [
       0,
-      0,
       1,
-      1
+      0,
+      0
     ],
-    "experiment": "FedAvg/cnn-random-min-kld-selection-label1-5-lr0.01",
+    "experiment": "DataDistTest/FsMNIST-kld0-label2.5",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -23,11 +23,16 @@
       "label": {
         "step": 1,
         "list": [
-          20,
-          20,
-          20,
-          20,
-          20
+          10,
+          10,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          70
         ]
       },
       "data": {}
@@ -37,7 +42,7 @@
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 1000,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -45,9 +50,10 @@
     "scheduler": {
       "path": "scheduler.KLDSyncScheduler.KLDSyncScheduler",
       "schedule": {
-        "path": "schedule.KLDSchedule.KLDSchedule",
+        "path": "schedule.KLDTestSchedule.KLDTestSchedule",
         "params": {
-          "c_ratio": 0.1
+          "c_ratio": 0.1,
+          "start": 15
         }
       }
     },
