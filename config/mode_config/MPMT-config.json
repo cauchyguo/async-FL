@@ -1,6 +1,6 @@
 {
   "wandb": {
-    "enabled": false,
+    "enabled": true,
     "project": "FedAvg",
     "name": "1"
   },
@@ -18,11 +18,11 @@
       "params": {}
     },
     "iid": true,
-    "client_num": 16
+    "client_num": 100
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 10,
+    "epochs": 30,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -61,7 +61,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 2
+    "process_num": 10
   },
   "client": {
     "path": "client.NormalClient.NormalClient",

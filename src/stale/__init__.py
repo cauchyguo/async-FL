@@ -1,0 +1,1 @@
+from stale import CustomStaleGenerator
