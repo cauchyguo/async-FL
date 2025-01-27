@@ -19,6 +19,12 @@ import argparse
 
 def generate_client_stale_list(global_config):
     stale = global_config['stale']
+    custom = global_config['custom']
+    if isinstance(custom, dict):
+        stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
+        stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
+        client_staleness_list = stale_generator.generate_staleness_list()
+        return client_staleness_list
     if isinstance(stale, list):
         client_staleness_list = stale
     elif isinstance(stale, bool):
@@ -60,7 +66,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/config_custom.json")
     config = getJson(config_file)
 
     # 生成uuid

@@ -24,6 +24,7 @@ class BaseDataset:
         self.train_dataset = None
         self.path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data/')
 
+    # clients: 客户端数量
     def init(self, clients, train_dataset, test_dataset):
         self.raw_data = train_dataset.data
         self.train_labels = np.array(train_dataset.targets)

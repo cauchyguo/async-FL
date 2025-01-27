@@ -2,24 +2,6 @@ import pandas as pd
 import client
 import numpy as np
 
-def generate_client_stale_list(global_config):
-    stale = global_config['stale']
-    if isinstance(stale, list):
-        client_staleness_list = stale
-    elif isinstance(stale, bool):
-        client_staleness_list = []
-        for i in range(global_config["client_num"]):
-            client_staleness_list.append(0)
-    elif isinstance(stale, dict) and "path" in stale:
-        stale_generator = ModuleFindTool.find_class_by_path(stale["path"])()(stale["params"])
-        client_staleness_list = stale_generator.generate_staleness_list()
-    else:
-        total_sum = sum(stale['list'])
-        if total_sum < global_config['client_num']:
-            raise Exception("The sum of the client number in stale list must not less than the client number.")
-        client_staleness_list = generate_stale_list(stale['step'], stale['shuffle'], stale['list'])
-    return client_staleness_list
-
 # "stale": {
 #     "path": "stale.stale_generator",
 #     "params": {
@@ -29,9 +11,14 @@ def generate_client_stale_list(global_config):
 # }
 
 class CustomStaleGenerator:
-    def __init__(self, stale_config):
-        clients_dataframe = pd.read_csv(stale_config["clients_info_df"])
+    def __init__(self, client_num, df_path, stale_config=None):
+        self.clients_dataframe = pd.read_csv(df_path)
+        if len(self.clients_dataframe) < client_num:
+            raise Exception("The number of clients in the dataframe is not equal to the client number.")
+        self.client_num = client_num
         
 
     def generate_staleness_list(self):
-        return "Custom Stale Data"
+        # Generate the stale list based on the clients info
+        clients_stale_list = self.clients_dataframe["time"].tolist()
+        return clients_stale_list[:self.client_num]
