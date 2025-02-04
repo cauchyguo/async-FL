@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 from utils import ModuleFindTool
-from utils.IID import generate_iid_data, generate_non_iid_data
+from utils.IID import generate_iid_data, generate_non_iid_data, generate_custom_data
 
 
 class BaseDataset:
@@ -54,7 +54,11 @@ class BaseDataset:
         return self.iid_config
 
     def generate_data(self, clients_num, labels, dataset, train=True, message="train_dataset"):
-        if isinstance(self.iid_config, bool):
+        if isinstance(self.iid_config, dict) and "clients_info_path" in self.iid_config:
+            print("generate customize clients distribution...")
+            index_list = generate_custom_data(self.iid_config, labels, clients_num, train)
+
+        elif isinstance(self.iid_config, bool):
             print("generating iid data...")
             index_list = generate_iid_data(labels, clients_num)
         elif isinstance(self.iid_config, dict) and "path" in self.iid_config:

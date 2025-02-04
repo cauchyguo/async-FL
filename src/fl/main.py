@@ -153,8 +153,15 @@ def main():
     global_var['client_staleness_list'] = client_staleness_list
 
     # 生成dataset
-    dataset_class = ModuleFindTool.find_class_by_path(global_config["dataset"]["path"])
-    dataset = dataset_class(global_config["client_num"], global_config["iid"], global_config["dataset"]["params"])
+    # 定制化数据集
+    if "custom" in global_config["dataset"]:
+        dataset_class = ModuleFindTool.find_class_by_path(global_config["dataset"]["path"])
+        dataset = dataset_class(global_config["client_num"], global_config["iid"], global_config["dataset"]["custom"]["params"])
+    else:
+        
+        dataset_class = ModuleFindTool.find_class_by_path(global_config["dataset"]["path"])
+        dataset = dataset_class(global_config["client_num"], global_config["iid"], global_config["dataset"]["params"])
+        
     train_dataset = dataset.get_train_dataset()
     test_dataset = dataset.get_test_dataset()
     train_dataset, test_dataset = send_dataset(train_dataset, test_dataset, message_queue, global_config)

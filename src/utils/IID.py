@@ -1,10 +1,12 @@
 import random
 
-import numpy as np
+from torch import rand
 
+import numpy as np
+import pandas as pd
 from utils import Random
 from utils.Tools import dict_to_list
-
+import random
 
 def generate_iid_data(train_labels, clients_num):
     class_idx = [np.argwhere(train_labels == y).flatten() for y in range(max(train_labels)-min(train_labels)+1)]
@@ -15,6 +17,23 @@ def generate_iid_data(train_labels, clients_num):
     client_idx = [np.concatenate(client_idx[i]) for i in range(clients_num)]
     return client_idx
 
+def generate_custom_data(iid_config, train_labels, clients_num, train=True):
+    left = min(train_labels)
+    right = max(train_labels) + 1
+    class_num = right - left
+    class_idx = [np.argwhere(train_labels == y).flatten() for y in range(max(train_labels)-min(train_labels)+1)]
+    client_idx = [[] for _ in range(clients_num)]
+    client_df = pd.read_csv(iid_config['clients_info_path'])
+
+    for client_idx, row in client_df.head(clients_num).iterrows():
+        for cls_idx,col in enumerate(client_df.columns[-class_num:]):
+            if row[col] > 0:
+                sampled = random.sample(class_idx[cls_idx], int(row[col]))
+                client_idx[client_idx].append(sampled)
+                for s in sampled:
+                    class_idx[cls_idx].remove(s)
+    
+    return client_idx
 
 def generate_non_iid_data(iid_config, train_labels, clients_num, train=True):
     left = min(train_labels)
