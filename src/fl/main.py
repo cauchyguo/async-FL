@@ -19,12 +19,13 @@ import argparse
 
 def generate_client_stale_list(global_config):
     stale = global_config['stale']
-    custom = global_config['custom']
-    if isinstance(custom, dict):
-        stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
-        stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
-        client_staleness_list = stale_generator.generate_staleness_list()
-        return client_staleness_list
+    if 'custom' in global_config:
+        custom = global_config['custom']
+        if isinstance(custom, dict):
+            stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
+            stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
+            client_staleness_list = stale_generator.generate_staleness_list()
+            return client_staleness_list
     if isinstance(stale, list):
         client_staleness_list = stale
     elif isinstance(stale, bool):
@@ -67,6 +68,7 @@ def main():
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
         config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/config_custom.json")
+        print("未指定配置文件，使用默认配置文件：", config_file)
     config = getJson(config_file)
 
     # 生成uuid
@@ -154,9 +156,9 @@ def main():
 
     # 生成dataset
     # 定制化数据集
-    if "custom" in global_config["dataset"]:
+    if "custom" in global_config:
         dataset_class = ModuleFindTool.find_class_by_path(global_config["dataset"]["path"])
-        dataset = dataset_class(global_config["client_num"], global_config["iid"], global_config["dataset"]["custom"]["params"])
+        dataset = dataset_class(global_config["client_num"], global_config["custom"], global_config["dataset"]["params"])
     else:
         
         dataset_class = ModuleFindTool.find_class_by_path(global_config["dataset"]["path"])

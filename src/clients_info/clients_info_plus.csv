@@ -1,4 +1,4 @@
-id,time,data_num,label1,label2,label3,label4,label5,label6,label7,label8,label9,label10
+id,time,data_num,label0,label1,label2,label3,label4,label5,label6,label7,label8,label9
 0.0,1.0,100.0,0.25,0.25,0.25,0.0,0.0,0.25,0.0,0.0,0.0,0.0
 1.0,1.0,100.0,0.0,0.0,0.25,0.0,0.0,0.25,0.25,0.0,0.25,0.0
 2.0,1.0,100.0,0.25,0.0,0.0,0.0,0.25,0.0,0.25,0.0,0.0,0.25

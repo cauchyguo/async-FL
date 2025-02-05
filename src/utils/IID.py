@@ -22,17 +22,23 @@ def generate_custom_data(iid_config, train_labels, clients_num, train=True):
     right = max(train_labels) + 1
     class_num = right - left
     class_idx = [np.argwhere(train_labels == y).flatten() for y in range(max(train_labels)-min(train_labels)+1)]
-    client_idx = [[] for _ in range(clients_num)]
+    client_idx = [np.array([], dtype=int) for _ in range(clients_num)]
     client_df = pd.read_csv(iid_config['clients_info_path'])
 
-    for client_idx, row in client_df.head(clients_num).iterrows():
+    # 判断client_df中每个class的样本数是整数还是比例
+    if client_df.loc[0,client_df.columns[-class_num:]].sum() == client_df.loc[0, 'data_num'] :
+        float_mode = False
+    else:
+        float_mode = True
+    for clt_idx, row in client_df.head(clients_num).iterrows():
         for cls_idx,col in enumerate(client_df.columns[-class_num:]):
-            if row[col] > 0:
-                sampled = random.sample(class_idx[cls_idx], int(row[col]))
-                client_idx[client_idx].append(sampled)
-                for s in sampled:
-                    class_idx[cls_idx].remove(s)
-    
+            if row[col] != 0:
+                if float_mode:
+                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col] * row['data_num']),replace=False) 
+                else:
+                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col]),replace=False )
+                client_idx[clt_idx] = np.append(client_idx[clt_idx], class_idx[cls_idx][sampled_indices])
+                class_idx[cls_idx] = np.delete(class_idx[cls_idx], sampled_indices, axis=0)
     return client_idx
 
 def generate_non_iid_data(iid_config, train_labels, clients_num, train=True):
