@@ -84,10 +84,16 @@ class NormalClient(Client):
         """
         # The client performs training.
         data_sum, weights = self.train()
+
+        start_time = time.time()
         print("Client", self.client_id, "trained")
 
+        end_time = time.time()
+
+        sys_delay = end_time - start_time
+
         # Information transmitted from the client to the server has latency.
-        self.delay_simulate(self.delay)
+        self.delay_simulate(max(0, self.delay - sys_delay))
 
         # upload its updates
         self.upload(data_sum, weights)
