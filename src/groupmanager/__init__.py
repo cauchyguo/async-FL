@@ -1,1 +1,2 @@
 from groupmanager import NormalGroupManager
+from groupmanager import CustomGroupManager
