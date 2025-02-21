@@ -36,7 +36,7 @@ class BaseDataset:
 
         self.train_data_size = self.train_data.shape[0]
         self.index_list = self.generate_data(clients, self.train_labels,train_dataset)
-        self.test_index_list = self.generate_data(1, self.test_labels,test_dataset, train=False, message="test_dataset")
+        self.test_index_list,self.var_index_list = self.generate_data(2, self.test_labels,test_dataset, train=False, message="test_dataset")
 
     def get_test_dataset(self):
         return self.test_dataset
@@ -46,6 +46,9 @@ class BaseDataset:
 
     def get_test_index_list(self):
         return self.test_index_list
+    
+    def get_var_index_list(self):
+        return self.var_index_list
 
     def get_train_dataset(self):
         return self.train_dataset
@@ -73,4 +76,4 @@ class BaseDataset:
         if train:
             return index_list
         else:
-            return index_list[0]
+            return index_list

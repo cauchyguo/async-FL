@@ -18,6 +18,11 @@ def generate_iid_data(train_labels, clients_num):
     return client_idx
 
 def generate_custom_data(iid_config, train_labels, clients_num, train=True):
+    if not train:
+        if "for_test" in iid_config.keys() and iid_config["for_test"]:
+            pass
+        else:
+            return generate_iid_data(train_labels, clients_num)
     left = min(train_labels)
     right = max(train_labels) + 1
     class_num = right - left
@@ -30,13 +35,15 @@ def generate_custom_data(iid_config, train_labels, clients_num, train=True):
         float_mode = False
     else:
         float_mode = True
+
+    dataset_radio = len(train_labels) / client_df.data_num.sum()
     for clt_idx, row in client_df.head(clients_num).iterrows():
         for cls_idx,col in enumerate(client_df.columns[-class_num:]):
             if row[col] != 0:
                 if float_mode:
-                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col] * row['data_num']),replace=False) 
+                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col] * row['data_num'] * dataset_radio),replace=False) 
                 else:
-                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col]),replace=False )
+                    sampled_indices = np.random.choice(class_idx[cls_idx].shape[0], int(row[col] * dataset_radio),replace=False )
                 client_idx[clt_idx] = np.append(client_idx[clt_idx], class_idx[cls_idx][sampled_indices])
                 class_idx[cls_idx] = np.delete(class_idx[cls_idx], sampled_indices, axis=0)
     return client_idx

@@ -28,10 +28,18 @@ def generate_client_stale_list(global_config):
             return client_staleness_list
     if isinstance(stale, list):
         client_staleness_list = stale
-    elif isinstance(stale, bool):
-        client_staleness_list = []
-        for i in range(global_config["client_num"]):
-            client_staleness_list.append(0)
+    elif isinstance(stale, bool): # 当且仅当stale为True时，且global_config中有custom字段时，才会使用自定义的stale_generator
+        if 'custom' in global_config and stale is True:
+            custom = global_config['custom']
+            if isinstance(custom, dict):
+                stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
+                stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
+                client_staleness_list = stale_generator.generate_staleness_list()
+                return client_staleness_list
+        else:
+            client_staleness_list = []
+            for i in range(global_config["client_num"]):
+                client_staleness_list.append(0)            
     elif isinstance(stale, dict) and "path" in stale:
         stale_generator = ModuleFindTool.find_class_by_path(stale["path"])()(stale["params"])
         client_staleness_list = stale_generator.generate_staleness_list()
@@ -67,7 +75,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/config_custom.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025/FedAvg-Cifar10-baseline-config.json")
         print("未指定配置文件，使用默认配置文件：", config_file)
     config = getJson(config_file)
 

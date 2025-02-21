@@ -1,7 +1,5 @@
 from group.GroupCaller import GroupCaller
 from groupmanager.BaseGroupManager import BaseGroupManager
-from groupmanager.BaseGroupManager import NormalGroupManager
-
 from utils import ModuleFindTool
 
 class CustomGroupManager(BaseGroupManager):

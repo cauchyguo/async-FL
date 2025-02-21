@@ -14,7 +14,7 @@ class CustomGroup(AbstractGroup):
         group_list = [[] for i in range(group_num)]
         for i in range(len(client_list)):
             group_id_for_client_i = group_df['group_id'].iloc[i]
-            group_list[group_id_for_client_i].append(client_list[i]) # 嵌套列表
+            group_list[int(group_id_for_client_i)].append(client_list[i]) # 嵌套列表
         return group_list, len(group_list)
 
     def check_update(self):

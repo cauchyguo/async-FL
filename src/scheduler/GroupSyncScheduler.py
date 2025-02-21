@@ -1,6 +1,8 @@
 import time
 
 from scheduler.BaseScheduler import BaseScheduler
+import random
+
 
 
 class GroupSyncScheduler(BaseScheduler):
@@ -9,6 +11,10 @@ class GroupSyncScheduler(BaseScheduler):
         self.mutex_sem = mutex_sem
         self.empty_sem = empty_sem
         self.full_sem = full_sem
+
+        # 使用group作为调度对象，并融入多臂老虎机机制
+        self.group_manager = self.global_var['group_manager']
+        # self.group_num = self.group_manager.get_group_num()
 
         
 
@@ -31,14 +37,29 @@ class GroupSyncScheduler(BaseScheduler):
         schedule_time = self.schedule_t.get_time()
         if current_time > self.T:
             return
-        selected_client = self.client_select()
-        self.notify_client(selected_client, current_time, schedule_time)
+        selected_group_id = self.random_schedule()
+        selected_client = self.client_select(selected_group_id)
+        self.notify_client(selected_group_id, selected_client, current_time, schedule_time)
         # Waiting for all clients to upload their updates.
         self.queue_manager.receive(len(selected_client))
 
-    def notify_client(self, selected_client, current_time, schedule_time):
+
+    def random_schedule(self):
+        """随机调度一个分组参与训练"""
+        return random.randint(0, self.group_manager.get_group_num() - 1)
+    
+    def bandit_schedule(self):
+        """多臂老虎机调度一个分组参与训练"""
+        return random.randint(0, self.group_manager.get_group_num() - 1)
+    
+    def client_select(self, group_id, *args, **kwargs):
+        client_list = self.group_manager.get_group_list()[group_id]
+        selected_clients = self.schedule_caller.schedule(client_list)
+        return selected_clients
+
+    def notify_client(self, group_id, selected_client, current_time, schedule_time):
         print(f"| current_epoch {current_time} |. Begin client select")
-        print("\nSchedulerThread select(", len(selected_client), "clients):")
+        print("\nSchedulerThread schedule Group [",group_id, "], select(",len(selected_client), "clients):")
         for client_id in selected_client:
             print(client_id, end=" | ")
             # Sending the server's model parameters and timestamps to the clients
