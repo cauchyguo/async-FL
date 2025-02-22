@@ -92,6 +92,7 @@ class BaseServer:
         # 队列报告
         self.queue_manager.stop()
         self.accuracy_list, self.loss_list = self.updater_thread.get_accuracy_and_loss_list()
+        self.run_time_list = self.updater_thread.get_run_time_list()
         # save model
         if "save_model" in self.server_config and self.server_config["save_model"]:
             torch.save(self.server_network.state_dict(), os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", self.global_config["experiment"], "model.pth"))
@@ -101,6 +102,9 @@ class BaseServer:
 
     def get_accuracy_and_loss_list(self):
         return self.accuracy_list, self.loss_list
+    
+    def get_run_time_list(self):
+        return self.run_time_list
 
     def get_config(self):
         return self.config

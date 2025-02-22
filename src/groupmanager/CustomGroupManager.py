@@ -16,9 +16,10 @@ class CustomGroupManager(BaseGroupManager):
         self.epoch_list = [0] * len(self.client_list)
 
         # CustomGroupManager
-        self.group_selected_times = [0] * self.group_num
-        self.group_avg_reward = [0] * self.group_num
-        self.group_history_impoved_acc = [[] for i in range(self.group_num)] # 每个group下维持一个二元组列表（global_epoch，improved_acc）
+        # self.group_selected_at_global_epoch = []
+        # self.group_avg_reward = [0] * self.group_num
+        # self.group_history_improved_loss = [[] for i in range(self.group_num)] # 每个group下维持一个二元组列表（global_epoch，acc）
+        # self.accumulated_reward = [0] * self.group_num
 
     def __group(self, client_list, latency_list, *args, **kwargs):
         self.group_list, self.group_num = self.group_caller.group(client_list, latency_list, *args, **kwargs)

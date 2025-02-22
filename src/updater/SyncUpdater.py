@@ -1,8 +1,9 @@
+from anyio import current_time
 import wandb
 
 from updater.BaseUpdater import BaseUpdater
 from updater.mixin.MoreTest import TestEachClass, TestMultiTask
-
+import time
 
 class SyncUpdater(BaseUpdater):
     def __init__(self, server_thread_lock, stop_event, config, mutex_sem, empty_sem, full_sem):
@@ -29,10 +30,15 @@ class SyncUpdater(BaseUpdater):
         print("Average delay =", (self.sum_delay / self.T))
 
     def server_update(self, epoch, update_list):
+        if epoch > 1:
+            _, preadv_loss = self.get_last_accuracy_and_loss()
         self.update_server_weights(epoch, update_list)
-        acc, loss = self.run_server_test(epoch)
+        acc, loss, run_time = self.run_server_test(epoch)
+        if 'group_selected_at_global_epoch' in self.global_var and epoch > 1: # 如果是CustomGroupManager，则记录每个global epoch选择的group以及每个group的历史improved loss
+            selected_group_id = self.global_var['group_selected_at_global_epoch'][-1]
+            self.global_var['group_history_improved_loss'][selected_group_id].append((epoch, preadv_loss - loss))
         if self.config['enabled']:
-            wandb.log({'accuracy': acc, 'loss': loss})
+            wandb.log({'accuracy': acc, 'loss': loss, 'run_time': run_time})
 
     def get_update_list(self):
         update_list = []

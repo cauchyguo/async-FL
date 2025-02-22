@@ -1,6 +1,8 @@
 import threading
 from abc import abstractmethod
 
+from anyio import current_time
+
 import torch.utils.data
 from torch.utils.data import DataLoader
 
@@ -10,7 +12,7 @@ from update.UpdateCaller import UpdateCaller
 from utils import ModuleFindTool
 from utils.GlobalVarGetter import GlobalVarGetter
 from utils.Tools import to_cpu, to_dev, random_seed_set
-
+import time
 
 class BaseUpdater(threading.Thread):
     def __init__(self, server_thread_lock, stop_event, config):
@@ -20,6 +22,9 @@ class BaseUpdater(threading.Thread):
         self.config = config
         self.global_var = GlobalVarGetter.get()
         random_seed_set(self.global_var['global_config']['seed'])
+
+        # wall time
+        self.begin_time = time.time()
 
         self.T = self.global_var['T']
         self.current_time = self.global_var['current_t']
@@ -34,6 +39,7 @@ class BaseUpdater(threading.Thread):
 
         self.accuracy_list = []
         self.loss_list = []
+        self.run_time_list = []
 
         # loss function
         self.loss_func = LossFactory(self.config['loss']).create_loss()
@@ -64,6 +70,8 @@ class BaseUpdater(threading.Thread):
             self.set_delivery_weights(new_global_model)
 
     def run_server_test(self, epoch):
+        runtime = time.time() - self.begin_time
+        self.run_time_list.append(runtime)
         dl = DataLoader(self.test_data, batch_size=100, shuffle=True, drop_last=True)
         test_correct = 0
         test_loss = 0
@@ -78,13 +86,22 @@ class BaseUpdater(threading.Thread):
                 test_correct += torch.sum(id == labels.data).cpu().numpy()
             accuracy = test_correct / len(dl)
             loss = test_loss / len(dl)
+            
             self.loss_list.append(loss)
             self.accuracy_list.append(accuracy)
-            print('Epoch(t):', epoch, 'accuracy:', accuracy, 'loss', loss)
-        return accuracy, loss
+            
+            print('Epoch(t):', epoch, 'accuracy:', accuracy, 'loss', loss, 'run_time:', runtime)
+        return accuracy, loss, runtime
 
     def get_accuracy_and_loss_list(self):
         return self.accuracy_list, self.loss_list
+    
+    def get_last_accuracy_and_loss(self):
+        """获取最后一次的准确率和损失"""
+        return self.accuracy_list[-1], self.loss_list[-1]
+    
+    def get_run_time_list(self):
+        return self.run_time_list
 
     def set_delivery_weights(self, weights):
         self.global_var['scheduler'].server_weights = weights

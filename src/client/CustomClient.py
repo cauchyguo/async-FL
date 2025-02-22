@@ -3,19 +3,35 @@ import copy
 import torch
 
 from client.NormalClient import NormalClient
-
+import time
 
 class CustomClient(NormalClient):
     def __init__(self, c_id, stop_event, selected_event, delay, index_list, config, dev):
         NormalClient.__init__(self, c_id, stop_event, selected_event, delay, index_list, config, dev)
         self.tau = 0
 
-        self.client_selected_num = 0
-        self.client_avg_reward = 0
+        # self.client_selected_num = 0
+        # self.client_avg_reward = 0
 
-    def train_one_epoch(self):
-        super().train_one_epoch()
-        self.client_selected_num += 1
+    def local_task(self):
+        """
+        The local task of Client, namely, the detailed process of training a model.
+        """
+        # The client performs training.
+        start_time = time.time()
+        data_sum, weights = self.train()
+
+        print("Client", self.client_id, "trained")
+
+        end_time = time.time()
+
+        sys_delay = end_time - start_time
+
+        # Information transmitted from the client to the server has latency.
+        self.delay_simulate(max(0, self.delay - sys_delay))
+
+        # upload its updates
+        self.upload(data_sum, weights)
         
 
 

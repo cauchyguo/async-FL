@@ -1,6 +1,7 @@
 import copy
 import datetime
 import os
+from pdb import run
 import sys
 import uuid
 
@@ -75,7 +76,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025/FedAvg-Cifar10-baseline-config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025/MultibanditScheduler.json")
         print("未指定配置文件，使用默认配置文件：", config_file)
     config = getJson(config_file)
 
@@ -200,6 +201,7 @@ def main():
     server.run()
 
     accuracy_list, loss_list = server.get_accuracy_and_loss_list()
+    run_time_list = server.get_run_time_list()
     config = server.get_config()
 
     # 终止所有client线程
@@ -227,6 +229,9 @@ def main():
                              "loss.txt"), list(loss_list))
         saveAns(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
                              "time.txt"), end_time - start_time)
+        saveAns(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+                             "run_time_records.txt"), list(run_time_list))
+                
         saveJson(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
                               "data_distribution.json"), label_counts)
         result_to_markdown(
@@ -236,6 +241,7 @@ def main():
         saveAns(os.path.join(wandb.run.dir, "accuracy.txt"), list(accuracy_list))
         saveAns(os.path.join(wandb.run.dir, "loss.txt"), list(loss_list))
         saveAns(os.path.join(wandb.run.dir, "time.txt"), end_time - start_time)
+        saveAns(os.path.join(wandb.run.dir, "run_time_records.txt"), list(run_time_list))
         saveJson(os.path.join(wandb.run.dir, "data_distribution.json"), label_counts)
         saveJson(os.path.join(wandb.run.dir, "config.json"), raw_config)
         result_to_markdown(os.path.join(wandb.run.dir, "实验阐述.md"), config)

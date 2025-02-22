@@ -30,6 +30,8 @@ class BaseScheduler(threading.Thread):
         self.schedule_method = schedule_class(config["schedule"]["params"])
         self.schedule_caller = ScheduleCaller(self)
 
+        self.clients_join_times_recode = [0 for _ in range(len(self.global_var['client_id_list']))]
+
         self.message_queue = MessageQueueFactory.create_message_queue()
 
     @abstractmethod
