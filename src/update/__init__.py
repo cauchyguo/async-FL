@@ -6,3 +6,4 @@ from update import FedDL
 from update import FedNova
 from update import TWAFL
 from update import Scaffold
+from update import SampleUpdate

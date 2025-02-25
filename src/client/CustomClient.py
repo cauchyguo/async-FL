@@ -28,7 +28,7 @@ class CustomClient(NormalClient):
         sys_delay = end_time - start_time
 
         # Information transmitted from the client to the server has latency.
-        self.delay_simulate(max(0, self.delay - sys_delay))
+        self.delay_simulate(max(0, (self.delay - sys_delay)))
 
         # upload its updates
         self.upload(data_sum, weights)
