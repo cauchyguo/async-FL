@@ -49,6 +49,8 @@ class FLDataset(Dataset):
         self.idxs = idxs
         self.transform = transform
         self.target_transform = target_transform
+        self.data = self.dataset.data
+        self.targets = self.dataset.targets
 
     def __len__(self):
         return len(self.idxs)
@@ -61,6 +63,9 @@ class FLDataset(Dataset):
         if self.target_transform is not None:
             label = self.target_transform(label)
         return image, label
+
+    def change_idxs(self, idxs):
+        self.idxs = idxs
 
 
 def download_dataset(dataset_name, file_url, dataset_dir):

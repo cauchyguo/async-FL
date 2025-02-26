@@ -23,7 +23,7 @@ class SampleClient(NormalClient):
         self.train_dl = DataLoader(self.fl_train_ds, batch_size=len(index_list), shuffle=True)
         data_sum = 0
         for data, label in self.train_dl:
-            self.optimizer.zero_grad()
+            self.opti.zero_grad()
             data, label = data.to(self.dev), label.to(self.dev)
             preds = self.model(data)
             loss = self.loss_func(preds, label)
