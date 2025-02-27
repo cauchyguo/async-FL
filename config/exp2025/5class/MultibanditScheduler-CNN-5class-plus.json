@@ -1,0 +1,97 @@
+{
+  "wandb": {
+    "enabled": true,
+    "project": "Exp2025",
+    "name": "RandomScheduler-CNN-5class-plus"
+  },
+  "global": {
+    "seed":42,
+    "dataset_pre_load": true,
+    "use_file_system": false,
+    "multi_gpu": false,
+    "experiment": "RandomScheduler-CNN-5class-plus",
+    "custom": {
+      "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_5class_cnn_delaymodel.csv"
+    },
+    "stale": false,
+    "dataset": {
+      "path": "dataset.FashionMNIST.FashionMNIST",
+      "params": {}
+    },
+    "iid": false,
+    "client_num": 100
+  },
+  "server": {
+    "path": "server.SemiAsyncServer.SemiAsyncServer",
+    "epochs": 500,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "scheduler": {
+      "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
+      "method": "random",
+      "schedule": {
+        "path": "schedule.FullSchedule.FullSchedule",
+        "params": {}
+      }
+    },
+    "updater": {
+      "path": "updater.SyncUpdater.SyncUpdater",
+      "loss": "torch.nn.functional.cross_entropy",
+      "update": {
+        "path": "update.FedAvg.FedAvg",
+        "params": {}
+      },
+      "optimizer": {
+        "path": "torch.optim.Adam",
+        "params": {
+          "lr": 0.01,
+          "weight_decay": 0
+        }
+      }
+    }
+  },
+  "group_manager": {
+    "path": "groupmanager.CustomGroupManager.CustomGroupManager",
+    "group_method": {
+      "path": "group.CustomGroup.CustomGroup",
+      "params": {
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_5class_cnn_delaymodel.csv"
+      }
+    }
+  },
+  "queue_manager": {
+    "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+    "receiver": {
+      "path": "receiver.NormalReceiver.NormalReceiver",
+      "params": {}
+    },
+    "checker": {
+      "path": "checker.SyncChecker.SyncChecker",
+      "params": {}
+    }
+  },
+  "client_manager": {
+    "path": "clientmanager.NormalClientManager.NormalClientManager"
+  },
+  "client": {
+    "path": "client.NormalClient.NormalClient",
+    "epochs": 2,
+    "batch_size": 64,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "loss": "torch.nn.functional.cross_entropy",
+    "mu": 0,
+    "optimizer": {
+      "path": "torch.optim.SGD",
+      "params": {
+        "lr": 0.01,
+        "weight_decay": 0
+      }
+    }
+  }
+}
