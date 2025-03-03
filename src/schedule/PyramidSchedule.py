@@ -98,7 +98,7 @@ class PyramidSchedule(AbstractSchedule):
                 client_utilities[client_id] = {
                     'statistical_utility': 1,
                     'gradient_utility': 0,
-                    'duration': 30,
+                    'duration': 1,
                     'time_stamp': 0,
                     'count': 0,
                     'sample_size': 1

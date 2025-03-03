@@ -55,7 +55,7 @@ class PyramidClient(NormalClient):
         print(f"Client {self.client_id} trained in {measured_time:.2f}s (simulated: {self.delay:.2f}s)")
         
         # 模拟网络延迟（仿真环境中的通信延迟）
-        self.delay_simulate(self.delay)
+        self.delay_simulate(max(0, (self.delay - measured_time)))
         
         # 上传更新和统计数据到服务器
         self.upload(data_sum, weights, stats)
