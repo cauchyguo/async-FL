@@ -1,6 +1,6 @@
 import time
 
-from numpy import argmax
+from numpy import argmax, argmin
 from scheduler.BaseScheduler import BaseScheduler
 import random
 from utils.GlobalVarGetter import GlobalVarGetter
@@ -20,9 +20,13 @@ class GroupSyncScheduler(BaseScheduler):
         self.group_num = self.group_manager.get_group_num()
         self.history_select_group = [] # 记录历史每个global epoch中选择的group
         self.global_var['group_history_improved_loss'] = [[] for i in range(self.group_num)] # 每个group下维持一个二元组列表（global_epoch，delta_loss）
+        self.global_var['group_history_loss'] = [[] for i in range(self.group_num)] # 每个group下维持一个二元组列表（global_epoch，loss）
         self.global_var['history_loss'] = []
         self.global_var['group_selected_at_global_epoch'] = []
-        
+
+
+        for group_id in range(self.group_manager.get_group_num()):
+            self.global_var['group_history_loss'][group_id].append((0, 2))
         for group_id in range(self.group_manager.get_group_num()):
             if(len(self.global_var['group_history_improved_loss'][group_id]) == 0):
                 self.global_var['group_history_improved_loss'][group_id].append((0, 0))
@@ -70,22 +74,27 @@ class GroupSyncScheduler(BaseScheduler):
         # CustomGroupManager
         # 衰减指数
 
-        for group_id in range(self.group_manager.get_group_num()):
-            if len(self.global_var['group_history_improved_loss'][group_id]) <= 1:
-                print(f"Init Selection: Group {group_id} is selected")
-                return group_id
+        # for group_id in range(self.group_manager.get_group_num()):
+        #     if len(self.global_var['group_history_improved_loss'][group_id]) <= 1:
+        #         print(f"Init Selection: Group {group_id} is selected")
+        #         return group_id
         alpha = 0.95
         # 选择评分最高的分组
 
         score_for_group_current_epoch = []
         for group_i in range(self.group_manager.get_group_num()):
             # 计算当前分组的评分
-            weights = [alpha ** (self.current_t.get_time() - epoch_delta_loss[0]) for epoch_delta_loss in self.global_var['group_history_improved_loss'][group_i]]
-            group_selected_times = len(self.global_var['group_history_improved_loss'][group_i])
-            score = sum([weights[i] * self.global_var['group_history_improved_loss'][group_i][i][1] for i in range(len(weights))]) /(sum(weights) + 1e-6) + math.sqrt(2 * math.log(self.current_t.get_time()) / group_selected_times)
+        #     weights = [alpha ** (self.current_t.get_time() - epoch_delta_loss[0]) for epoch_delta_loss in self.global_var['group_history_improved_loss'][group_i]]
+        #     group_selected_times = len(self.global_var['group_history_improved_loss'][group_i])
+        #     score = sum([weights[i] * self.global_var['group_history_improved_loss'][group_i][i][1] for i in range(len(weights))]) /(sum(weights) + 1e-6) + math.sqrt(2 * math.log(self.current_t.get_time()) / group_selected_times)
+        #     score_for_group_current_epoch.append(score)
+        # group_id = argmin(score_for_group_current_epoch)
+        # group_id = argmax(self.group_avg_reward)
+            weights = [alpha ** (self.current_t.get_time() - epoch_delta_loss[0]) for epoch_delta_loss in self.global_var['group_history_loss'][group_i]]
+            group_selected_times = len(self.global_var['group_history_loss'][group_i])
+            score = sum([weights[i] * self.global_var['group_history_loss'][group_i][i][1] for i in range(len(weights))]) /(sum(weights) + 1e-6) + math.sqrt(2 * math.log(self.current_t.get_time()) / group_selected_times)
             score_for_group_current_epoch.append(score)
         group_id = argmax(score_for_group_current_epoch)
-        # group_id = argmax(self.group_avg_reward)
         print(f"Custom Multi bandit Algo: Group {group_id} is selected")
         return group_id
 

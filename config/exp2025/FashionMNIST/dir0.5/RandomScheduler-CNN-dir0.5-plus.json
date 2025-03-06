@@ -2,17 +2,17 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025",
-    "name": "RandomScheduler-CNN-dir0.1-plus"
+    "name": "RandomScheduler-CNN-dir0.5-plus"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025/RandomScheduler-CNN-dir0.1-plus",
+    "experiment": "Exp2025/RandomScheduler-CNN-dir0.5-plus",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.5_cnn_delaymodel.csv"
     },
     "stale": false,
     "dataset": {
@@ -58,7 +58,7 @@
     "group_method": {
       "path": "group.CustomGroup.CustomGroup",
       "params": {
-        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.5_cnn_delaymodel.csv"
       }
     }
   },

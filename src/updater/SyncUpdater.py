@@ -37,6 +37,7 @@ class SyncUpdater(BaseUpdater):
         if 'group_selected_at_global_epoch' in self.global_var and epoch > 1: # 如果是CustomGroupManager，则记录每个global epoch选择的group以及每个group的历史improved loss
             selected_group_id = self.global_var['group_selected_at_global_epoch'][-1]
             self.global_var['group_history_improved_loss'][selected_group_id].append((epoch, preadv_loss - loss))
+            self.global_var['group_history_loss'][selected_group_id].append((epoch, loss))
         if self.config['enabled']:
             wandb.log({'accuracy': acc, 'loss': loss, 'run_time': run_time})
 
