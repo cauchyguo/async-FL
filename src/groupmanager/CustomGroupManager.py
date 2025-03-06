@@ -2,6 +2,7 @@ from group.GroupCaller import GroupCaller
 from groupmanager.BaseGroupManager import BaseGroupManager
 from utils import ModuleFindTool
 
+
 class CustomGroupManager(BaseGroupManager):
     def __init__(self, config):
         super().__init__(config)

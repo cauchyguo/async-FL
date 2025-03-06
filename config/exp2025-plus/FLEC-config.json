@@ -1,0 +1,97 @@
+{
+  "wandb": {
+    "enabled": false,
+    "project": "FedEC",
+    "name": "test"
+  },
+  "global": {
+    "dataset_pre_load": true,
+    "use_file_system": false,
+    "multi_gpu": true,
+    "experiment": "FedEC/test",
+    "stale": false,
+    "dataset": {
+      "path": "dataset.FashionMNIST.FashionMNIST",
+      "params": {}
+    },
+    "iid": true,
+    "client_num": 100
+  },
+  "server": {
+    "path": "server.SemiAsyncServer.SemiAsyncServer",
+    "epochs": 50,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "scheduler": {
+      "path": "scheduler.FLECSemiAsyncScheduler.FLECSemiAsyncScheduler",
+      "schedule": {
+        "path": "schedule.DualGroupSchedule.DualGroupSchedule",
+        "params": {
+          "c_ratio": 0.1,
+          "min_join_clients_num": 10,
+          "target_kl_divergence": 0.01,
+          "theta": 0.1,
+          "clients_edge_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info_path.csv"
+        }
+      }
+    },
+    "updater": {
+      "path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
+      "update": {
+        "path": "update.FedAT.FedAT",
+        "params": {}
+      },
+      "loss": "torch.nn.functional.cross_entropy",
+      "params": {},
+      "group": {
+        "path": "update.FedAvg.FedAvg",
+        "params": {}
+      }
+    }
+  },
+  "group_manager": {
+    "path": "groupmanager.FLECGroupManager.FLECGroupManager",
+    "group_method": {
+      "path": "group.DualGroup.DualGroup",
+      "params": {
+        "situation_path": "/home/ypguo/async-FL/src/FLEC_situation/full_distance_matrix.csv",
+        "edge_server_num": 5,
+        "nearest_K": 20
+      }
+    }
+  },
+  "queue_manager": {
+    "path": "queuemanager.QueueListManager.QueueListManager",
+    "receiver": {
+      "path": "receiver.MultiQueueReceiver.MultiQueueReceiver",
+      "params": {}
+    },
+    "checker": {
+      "path": "checker.AllChecker.AllChecker",
+      "params": {}
+    }
+  },
+  "client_manager": {
+    "path": "clientmanager.NormalClientManager.NormalClientManager"
+  },
+  "client": {
+    "path": "client.SemiClient.SemiClient",
+    "epochs": 2,
+    "batch_size": 64,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "loss": "torch.nn.functional.cross_entropy",
+    "mu": 0.01,
+    "optimizer": {
+      "path": "torch.optim.SGD",
+      "params": {
+        "lr": 0.01,
+        "weight_decay": 0
+      }
+    }
+  }
+}

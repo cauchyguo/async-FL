@@ -1,2 +1,3 @@
 from groupmanager import NormalGroupManager
 from groupmanager import CustomGroupManager
+from groupmanager import FLECGroupManager

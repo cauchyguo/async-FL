@@ -4,3 +4,4 @@ from scheduler import SyncScheduler
 from scheduler import VDAScheduler
 from scheduler import GroupSyncScheduler
 from scheduler import ScaffoldScheduler
+from scheduler import FLECSemiAsyncScheduler
