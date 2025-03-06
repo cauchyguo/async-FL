@@ -9,10 +9,10 @@ class DualGroup(AbstractGroup):
         self.client_edge_distance_path = config["situation_path"]
         self.init = False
         self.nearest_K = config.get('nearest_K', 20)  # 参数K：用于选择最近的客户端数量
-        self.unique_groups = []  
-        self.shared_groups = []  
+        self.unique_groups = {}  
+        self.shared_groups = {}  
 
-    def group(self):
+    def group(self,client_list,latency_list):
         self.init = True
 
         # 从CSV文件加载距离矩阵

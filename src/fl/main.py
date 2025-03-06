@@ -20,13 +20,13 @@ import argparse
 
 def generate_client_stale_list(global_config):
     stale = global_config['stale']
-    if 'custom' in global_config:
-        custom = global_config['custom']
-        if isinstance(custom, dict):
-            stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
-            stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
-            client_staleness_list = stale_generator.generate_staleness_list()
-            return client_staleness_list
+    # if 'custom' in global_config:
+    #     custom = global_config['custom']
+    #     if isinstance(custom, dict):
+    #         stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
+    #         stale_generator = stale_generator_class(global_config['client_num'], custom["clients_info_path"])
+    #         client_staleness_list = stale_generator.generate_staleness_list()
+    #         return client_staleness_list
     if isinstance(stale, list):
         client_staleness_list = stale
     elif isinstance(stale, bool): # 当且仅当stale为True时，且global_config中有custom字段时，才会使用自定义的stale_generator

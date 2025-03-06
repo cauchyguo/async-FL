@@ -9,6 +9,10 @@
     "use_file_system": false,
     "multi_gpu": true,
     "experiment": "FedEC/test",
+    "custom": {
+      "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+      "clients_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+    },
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -31,9 +35,10 @@
         "params": {
           "c_ratio": 0.1,
           "min_join_clients_num": 10,
+          "max_join_clients_num": 15,
           "target_kl_divergence": 0.01,
           "theta": 0.1,
-          "clients_edge_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info_path.csv"
+          "clients_edge_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
         }
       }
     },
@@ -56,7 +61,7 @@
     "group_method": {
       "path": "group.DualGroup.DualGroup",
       "params": {
-        "situation_path": "/home/ypguo/async-FL/src/FLEC_situation/full_distance_matrix.csv",
+        "situation_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
         "edge_server_num": 5,
         "nearest_K": 20
       }

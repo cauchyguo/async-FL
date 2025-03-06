@@ -12,7 +12,7 @@ class FLECGroupManager(BaseGroupManager):
         self.group_method = ModuleFindTool.find_class_by_path(self.config["group_method"]["path"])(self, self.config[
             "group_method"]["params"])
         self.group_caller = GroupCaller(self)
-        self.edge_unique_groups, self.edge_shared_groups,self.edge_server_num = self.group_caller.group()
+        self.edge_unique_groups, self.edge_shared_groups,self.edge_server_num = self.group_caller.group(self.client_list,self.latency_list)
         self.global_var['edge_server_num'] = self.edge_server_num
         self.global_var['edge_unique_groups'] = self.edge_unique_groups
         self.global_var['edge_shared_groups'] = self.edge_shared_groups

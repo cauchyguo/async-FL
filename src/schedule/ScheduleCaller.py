@@ -3,4 +3,4 @@ class ScheduleCaller:
         self.scheduler = scheduler
 
     def schedule(self, client_list, *args, **kwargs):
-        return self.scheduler.schedule_method.schedule(client_list)
+        return self.scheduler.schedule_method.schedule(client_list, *args, **kwargs)

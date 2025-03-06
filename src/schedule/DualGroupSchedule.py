@@ -8,8 +8,9 @@ class DualGroupSchedule(AbstractSchedule):
         super().__init__(config)
         self.c_ratio = config["c_ratio"]
         self.clients_edge_info_df = pd.read_csv(config["clients_edge_info_path"])
-        self.min_join_clients_num = config["min_join_clients_num"]
-        self.target_kl_divergence = config["target_kl_divergence"]
+        self.min_join_clients_num = config.get("min_join_clients_num", 10)
+        self.max_join_clients_num = config.get("max_join_clients_num", 20)
+        self.target_kl_divergence = config.get("target_kl_divergence", 0.05)
         self.group_kl_divergence = None
         self.theta = config["theta"]
 
@@ -26,24 +27,27 @@ class DualGroupSchedule(AbstractSchedule):
         for client_id in init_select_client:
             edge_server_unique_clients.remove(client_id)
             selected_client_threads.append(client_id)
+        print(f"Server {edge_server_idx} init_select_client: {init_select_client}")
         # 计算初始组群的KL散度
         self.group_kl_divergence = self.cal_selected_clients_kldivergence(selected_client_threads)
         # 然后从共享组中选择一个延迟最小的客户端
-        available_clients_set = set(edge_server_shared_clients + edge_server_unique_clients)
+        available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
         while len(selected_client_threads) < self.min_join_clients_num or self.group_kl_divergence > self.target_kl_divergence:
             fitness_list = []
             for client_id in available_clients_set:
                 client_fitness = self.cal_fitness(client_id)
                 fitness_list.append(client_fitness)
             best_fitness_index = fitness_list.index(min(fitness_list))
+            self.group_kl_divergence,self.group_data_num,self.group_class_distribution = self.judge_join_client(available_clients_set[best_fitness_index])
             selected_client_threads.append(available_clients_set[best_fitness_index])
             available_clients_set.remove(available_clients_set[best_fitness_index])
-            self.group_kl_divergence,self.group_data_num,self.group_class_distribution = self.judge_join_client(available_clients_set[best_fitness_index])
+            if len(selected_client_threads) >= self.max_join_clients_num:
+                break
             
         return selected_client_threads
     
     def cal_fitness(self,client_id):
-        return self.client_distance[client_id] + self.theta * self.judge_join_client(client_id)[0]
+        return self.theta * self.client_distance[client_id] / max(self.client_distance) +  self.judge_join_client(client_id)[0]
 
     def cal_selected_clients_kldivergence(self,selected_clients):
         group_data_num = 0
