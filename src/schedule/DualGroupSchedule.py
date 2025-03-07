@@ -43,7 +43,7 @@ class DualGroupSchedule(AbstractSchedule):
             available_clients_set.remove(available_clients_set[best_fitness_index])
             if len(selected_client_threads) >= self.max_join_clients_num:
                 break
-            
+        print(f"Then, Server {edge_server_idx} selected_client_threads: {[item for item in selected_client_threads if item not in init_select_client]}")
         return selected_client_threads
     
     def cal_fitness(self,client_id):

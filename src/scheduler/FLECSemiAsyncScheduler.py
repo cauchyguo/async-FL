@@ -24,16 +24,17 @@ class FLECSemiAsyncScheduler(SyncScheduler):
         if current_time == 1:
             print("starting all edge servers training")
             for edge_server_idx in range(self.group_manager.get_edge_server_num()):
+                # 用于client初始化
                 for client_id in self.edge_unique_groups[edge_server_idx]:
-                    self.message_queue.put_into_downlink(client_id, "edge_server_id", edge_server_idx)
+                    self.message_queue.put_into_downlink(client_id, "group_id", edge_server_idx)
                 for client_id in self.edge_shared_groups[edge_server_idx]:
-                    self.message_queue.put_into_downlink(client_id, "edge_server_id", edge_server_idx)
+                    self.message_queue.put_into_downlink(client_id, "group_id", edge_server_idx)
                 print(f"\nbegin select edge server {edge_server_idx}")
                 selected_clients = self.client_select_edge_server(edge_server_idx)
                 # Store the number of clients scheduled.
-                self.group_manager.group_client_num_list.append(len(selected_clients))
+                self.group_manager.group_client_num_list[edge_server_idx] = len(selected_clients)
                 # Global storage of model lists for each group.
-                self.group_manager.network_list.append(self.server_weights)
+                self.group_manager.network_list[edge_server_idx] = (self.server_weights)
                 self.notify_client(selected_clients, current_time, schedule_time)
         else:
             print(f"\nbegin select edge server {self.group_ready_num}")
@@ -59,6 +60,10 @@ class FLECSemiAsyncScheduler(SyncScheduler):
             if client_id  in training_status and training_status[client_id]:
                 edge_server_shared_clients.remove(client_id)
         selected_clients = self.schedule_caller.schedule(edge_server_idx,edge_server_unique_clients,edge_server_shared_clients)
+
+        # 更新client分组
+        for client_id in selected_clients:
+            self.global_var['client_group_mapping'][client_id] = edge_server_idx
 
         return selected_clients
 

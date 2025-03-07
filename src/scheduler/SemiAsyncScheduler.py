@@ -25,9 +25,9 @@ class SemiAsyncScheduler(SyncScheduler):
                 print(f"\nbegin select group {i}")
                 selected_clients = self.client_select(i)
                 # Store the number of clients scheduled.
-                self.group_manager.group_client_num_list.append(len(selected_clients))
+                self.group_manager.group_client_num_list[i] = len(selected_clients)
                 # Global storage of model lists for each group.
-                self.group_manager.network_list.append(self.server_weights)
+                self.group_manager.network_list[i] = (self.server_weights)
                 self.notify_client(selected_clients, current_time, schedule_time)
         else:
             print(f"\nbegin select group {self.group_ready_num}")

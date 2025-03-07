@@ -13,3 +13,4 @@ from client import StreamClient
 from client import CustomClient
 from client import SampleClient
 from client import PyramidClient
+from client import FLEClient
