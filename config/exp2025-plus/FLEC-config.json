@@ -5,12 +5,11 @@
     "name": "test"
   },
   "global": {
-    "seed":42,
+    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": true,
+    "multi_gpu": false,
     "experiment": "FedEC/test",
-
     "stale": {
       "step": 3,
       "shuffle": true,
@@ -54,13 +53,13 @@
     "updater": {
       "path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
       "update": {
-        "path": "update.FedAT.FedAT",
+        "path": "update.FedAvg.FedAvg",
         "params": {}
       },
       "loss": "torch.nn.functional.cross_entropy",
       "params": {},
       "group": {
-        "path": "update.FedAvg.FedAvg",
+        "path": "update.FedAT.FedAT",
         "params": {}
       }
     }

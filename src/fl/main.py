@@ -50,7 +50,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025-plus/FLEC-config.json")
     config = getJson(config_file)
 
     # 生成uuid
