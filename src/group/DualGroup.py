@@ -48,11 +48,12 @@ class DualGroup(AbstractGroup):
             closest_clients_indices = np.argsort(distances)[:self.nearest_K]
             
             # 创建候选集（K个最近客户端减去已在独占组中的客户端）
-            candidates = set(closest_clients_indices) - self.unique_groups[server_idx]
-            server_candidates[server_idx] = candidates
+            # candidates = set(closest_clients_indices) - self.unique_groups[server_idx]
+            server_candidates[server_idx] = set(closest_clients_indices)
         
         # 阶段3：混合分组构建
         print("阶段3:混合分组构建...")
+        totol_shard_clients = set()
         for server_idx in range(self.edge_server_num):
             # 计算共享组：该服务器候选集中也在其他服务器候选集中的客户端
             shared_clients = set()
@@ -62,9 +63,11 @@ class DualGroup(AbstractGroup):
                     shared_clients |= server_candidates[server_idx] & server_candidates[other_server] 
             
             self.shared_groups[server_idx] = shared_clients
+            totol_shard_clients |= shared_clients
             
             # 更新独占组：添加不在共享组中的候选客户端
-            self.unique_groups[server_idx] |= server_candidates[server_idx] - shared_clients
+        for server_idx in range(self.edge_server_num):
+            self.unique_groups[server_idx] -= totol_shard_clients
         print("混合分组构建完成")
         print("--------------------------------")
         print("最终分组结果:")
@@ -76,6 +79,15 @@ class DualGroup(AbstractGroup):
             print(f"服务器{server_idx}的独占组: {self.unique_groups[server_idx]}")
             print(f"服务器{server_idx}的共享组: {self.shared_groups[server_idx]}")
             print("--------------------------------")
+
+        print("进行结果测试")
+        unique_groups_list = []
+        # shared_groups_list = []
+        for server_idx in range(self.edge_server_num):
+            unique_groups_list.extend(self.unique_groups[server_idx])
+            # shared_groups_list.append(self.shared_groups[server_idx])
+        print(sorted(unique_groups_list))
+        print(sorted(totol_shard_clients))
             
         return self.unique_groups, self.shared_groups,self.edge_server_num
 
