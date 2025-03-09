@@ -64,7 +64,7 @@ class InnerGroupClientSelector(Handler):
         client_list = [client_id for client_id in client_list if
                        client_id not in training_status or not training_status[client_id]]
         selected_clients = scheduler.schedule_caller.schedule(client_list)
-        print(f'group {group_id} selected_clients: {selected_clients}')
+        print(f'group {group_id} selected {len(selected_clients)} clients: {selected_clients}')
         return selected_clients
 
 

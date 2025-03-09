@@ -1,27 +1,16 @@
 {
   "wandb": {
     "enabled": false,
-    "project": "FedEC",
-    "name": "test"
+    "project": "Exp2025-V2-FashionMNIST",
+    "name": "FLEC"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": false,
-    "experiment": "FedEC/test",
-    "stale": {
-      "step": 3,
-      "shuffle": true,
-      "list": [
-        20,
-        20,
-        20,
-        15,
-        15,
-        10
-      ]
-    },
+    "multi_gpu": true,
+    "experiment": "Exp2025-V2-FashionMNIST/FLEC",
+    "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
@@ -31,7 +20,7 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 50,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -41,12 +30,26 @@
       "schedule": {
         "path": "schedule.DualGroupSchedule.DualGroupSchedule",
         "params": {
-          "c_ratio": 0.1,
+          "c_ratio": 0.4,
           "min_join_clients_num": 10,
           "max_join_clients_num": 15,
-          "target_kl_divergence": 0.01,
+          "target_kl_divergence": 0.05,
           "theta": 0.1,
           "clients_edge_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+        }
+      },
+      "delay_adaptive_optimizer": {
+        "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
+        "params": {
+          "total_bandwidth": 100,
+          "data_size": 42.64,
+          "noise_power": -104,
+          "g_dB_coef": [
+            -128.1,
+            37.6
+          ],
+          "algorithm": "gp",
+          "client_edge_info_path": "/home/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
         }
       }
     },

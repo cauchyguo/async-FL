@@ -1,38 +1,45 @@
 {
   "wandb": {
-    "enabled": false,
-    "project": "FedAT",
-    "name": "3.1"
+    "enabled": true,
+    "project": "Exp2025-V2-FashionMNIST",
+    "name": "FedAT-test"
   },
   "global": {
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": true,
-    "experiment": "FedAT/1",
+    "experiment": "Exp2025-V2-FashionMNIST/FedAT-test",
     "stale": {
-      "step": 2,
+      "step": 3,
       "shuffle": true,
-      "list": [0, 5, 5, 5, 5]
+      "list": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ]
     },
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
     "iid": true,
-    "client_num": 20
+    "client_num": 100
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 50,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
     },
     "scheduler": {
       "path": "scheduler.SemiAsyncScheduler.SemiAsyncScheduler",
-      "schedule":{
-        "path": "schedule.FullSchedule.FullSchedule",
+      "schedule": {
+        "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
+          "c_ratio": 0.5
         }
       }
     },
@@ -40,16 +47,13 @@
       "path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
       "update": {
         "path": "update.FedAvg.FedAvg",
-        "params": {
-        }
+        "params": {}
       },
       "loss": "torch.nn.functional.cross_entropy",
-      "params": {
-      },
+      "params": {},
       "group": {
         "path": "update.FedAT.FedAT",
-        "params": {
-        }
+        "params": {}
       }
     }
   },
@@ -66,13 +70,11 @@
     "path": "queuemanager.QueueListManager.QueueListManager",
     "receiver": {
       "path": "receiver.MultiQueueReceiver.MultiQueueReceiver",
-      "params": {
-      }
+      "params": {}
     },
     "checker": {
       "path": "checker.AllChecker.AllChecker",
-      "params": {
-      }
+      "params": {}
     }
   },
   "client_manager": {
@@ -80,7 +82,7 @@
   },
   "client": {
     "path": "client.SemiClient.SemiClient",
-    "epochs": 1,
+    "epochs": 2,
     "batch_size": 64,
     "model": {
       "path": "model.CNN.CNN",

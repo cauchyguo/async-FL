@@ -6,7 +6,7 @@ import numpy as np
 class DualGroupSchedule(AbstractSchedule):
     def __init__(self, config):
         super().__init__(config)
-        self.c_ratio = config["c_ratio"]
+        self.c_ratio = config.get("c_ratio", 0.2)
         self.clients_edge_info_df = pd.read_csv(config["clients_edge_info_path"])
         self.min_join_clients_num = config.get("min_join_clients_num", 10)
         self.max_join_clients_num = config.get("max_join_clients_num", 20)
@@ -23,16 +23,21 @@ class DualGroupSchedule(AbstractSchedule):
         selected_client_threads = []
         self.client_distance = self.clients_edge_info_df[f"server_{edge_server_idx}"]
         # 现从独占组中随机选择若干个客户端
-        init_select_client = random.sample(edge_server_unique_clients, int(len(edge_server_unique_clients) * self.c_ratio))
+        # if len(edge_server_unique_clients) < self.min_join_clients_num:
+        #     print("debug")
+        init_select_client = random.sample(edge_server_unique_clients, min(max(int(len(edge_server_unique_clients) * self.c_ratio),1),len(edge_server_unique_clients)))
         for client_id in init_select_client:
             edge_server_unique_clients.remove(client_id)
             selected_client_threads.append(client_id)
         print(f"Server {edge_server_idx} init_select_client: {init_select_client}")
         # 计算初始组群的KL散度
         self.group_kl_divergence = self.cal_selected_clients_kldivergence(selected_client_threads)
-        # 然后从共享组中选择一个延迟最小的客户端
+        # 然后从共享组中选择综合延迟和使得KL散度最小的客户端
         available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
+        print(f"candidate {len(available_clients_set)} clients: {available_clients_set}")
         while len(selected_client_threads) < self.min_join_clients_num or self.group_kl_divergence > self.target_kl_divergence:
+            if len(selected_client_threads) >= self.max_join_clients_num or len(available_clients_set) == 0:
+                break
             fitness_list = []
             for client_id in available_clients_set:
                 client_fitness = self.cal_fitness(client_id)
@@ -41,8 +46,7 @@ class DualGroupSchedule(AbstractSchedule):
             self.group_kl_divergence,self.group_data_num,self.group_class_distribution = self.judge_join_client(available_clients_set[best_fitness_index])
             selected_client_threads.append(available_clients_set[best_fitness_index])
             available_clients_set.remove(available_clients_set[best_fitness_index])
-            if len(selected_client_threads) >= self.max_join_clients_num:
-                break
+
         print(f"Then, Server {edge_server_idx} selected_client_threads: {[item for item in selected_client_threads if item not in init_select_client]}")
         return selected_client_threads
     
@@ -83,7 +87,7 @@ class DualGroupSchedule(AbstractSchedule):
         :param q: 分布Q，另一个概率分布数组。
         :return: P和Q之间的KL散度。
         """
-        exp_class_distribution = np.full(len(group_class_distribution), 1 / len(group_class_distribution))
+        exp_class_distribution = np.full(10, 1 / 10)
         group_dist = np.maximum(group_class_distribution, 1e-12)
         union_dist = np.maximum(exp_class_distribution, 1e-12)
         return np.sum(group_dist * np.log(group_dist / union_dist)) 

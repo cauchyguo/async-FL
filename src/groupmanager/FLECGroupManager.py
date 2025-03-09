@@ -13,8 +13,8 @@ class FLECGroupManager(BaseGroupManager):
         self.group_caller = GroupCaller(self)
         self.edge_unique_groups, self.edge_shared_groups,self.edge_server_num = self.group_caller.group(self.client_list,self.latency_list)
         self.global_var['edge_server_num'] = self.edge_server_num
-        self.network_list = [0] * len(self.client_list) # 5个edge server edge_server_num
-        self.group_client_num_list = [0] * len(self.client_list) # 5个edge server
+        self.network_list = [0] * self.edge_server_num # 5个edge server edge_server_num
+        self.group_client_num_list = [0] * self.edge_server_num # 5个edge server
         self.group_num = self.edge_server_num
         self.global_var['edge_unique_groups'] = self.edge_unique_groups
         self.global_var['edge_shared_groups'] = self.edge_shared_groups
