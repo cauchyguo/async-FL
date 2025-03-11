@@ -1,6 +1,6 @@
 {
   "wandb": {
-    "enabled": false,
+    "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
     "name": "FLEC"
   },
@@ -42,7 +42,7 @@
         "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
         "params": {
           "total_bandwidth": 100,
-          "data_size": 42.64,
+          "data_size": 6.34,
           "noise_power": -104,
           "g_dB_coef": [
             -128.1,
