@@ -1,7 +1,7 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025",
+    "project": "Exp2025-FashionMNIST-Dir0.1",
     "name": "fedsampling-cnn-dir0.1"
   },
   "global": {
@@ -10,19 +10,17 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025/fedsampling-cnn-dir0.1",
+    "experiment": "Exp2025-FashionMNIST-Dir0.1/fedsampling-cnn-dir0.1",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
     },
-    "stale": true,
+    "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
-    "iid": {
-      "beta": 0.1
-    },
+    "iid": false,
     "client_num": 100
   },
   "server": {

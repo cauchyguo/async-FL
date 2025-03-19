@@ -22,7 +22,7 @@ class BaseUpdater(threading.Thread):
         self.config = config
         self.global_var = GlobalVarGetter.get()
         random_seed_set(self.global_var['global_config']['seed'])
-
+        self.global_var['system_time_cost'] = [time.time()]
         # wall time
         self.begin_time = time.time()
 

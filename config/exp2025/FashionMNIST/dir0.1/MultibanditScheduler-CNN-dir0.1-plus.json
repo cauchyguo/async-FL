@@ -1,7 +1,7 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025",
+    "project": "Exp2025-FashionMNIST-Dir0.1",
     "name": "MultibanditScheduler-CNN-dir0.1-plus"
   },
   "global": {
@@ -9,7 +9,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025/MultibanditScheduler-CNN-dir0.1-plus",
+    "experiment": "Exp2025-FashionMNIST-Dir0.1/MultibanditScheduler-CNN-dir0.1-plus",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
       "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
@@ -24,7 +24,7 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 500,
+    "epochs": 1000,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -47,7 +47,7 @@
       "optimizer": {
         "path": "torch.optim.Adam",
         "params": {
-          "lr": 0.01,
+          "lr": 0.001,
           "weight_decay": 0
         }
       }

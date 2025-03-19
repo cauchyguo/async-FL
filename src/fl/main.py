@@ -20,7 +20,7 @@ import argparse
 
 def generate_client_stale_list(global_config):
     stale = global_config['stale']
-    if 'custom' in global_config:
+    if 'custom' in global_config and stale is True:
         custom = global_config['custom']
         if isinstance(custom, dict):
             stale_generator_class = ModuleFindTool.find_class_by_path(custom["stale_generator"])
@@ -76,7 +76,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/PyramidFL-config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/FedAvg-config.json")
         print("未指定配置文件，使用默认配置文件：", config_file)
     config = getJson(config_file)
 

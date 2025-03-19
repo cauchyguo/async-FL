@@ -1,51 +1,57 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-Cifar10-Dir0.1",
-    "name": "fedlc-resnet-dir0.1"
+    "project": "Exp2025",
+    "name": "MAB-MaxGroupDataUtil-CNN-dir0.5"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": true,
-    "experiment": "Exp2025-Cifar10-Dir0.1/fedlc-resnet-dir0.1",
+    "multi_gpu": false,
+    "experiment": "Exp2025/MAB-MaxGroupDataUtil-CNN-dir0.5",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_dir0.1_resnet_delaymodel.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.5_cnn_delaymodel.csv"
     },
     "stale": false,
     "dataset": {
-      "path": "dataset.CIFAR10.CIFAR10",
+      "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
     "iid": false,
     "client_num": 100
   },
   "server": {
-    "path": "server.NormalServer.NormalServer",
-    "epochs": 1000,
+    "path": "server.SemiAsyncServer.SemiAsyncServer",
+    "epochs": 500,
     "model": {
-      "path": "torchvision.models.resnet.resnet18",
-      "params": {
-        "num_classes": 10
-      }
+      "path": "model.CNN.CNN",
+      "params": {}
     },
     "scheduler": {
-      "path": "scheduler.SyncScheduler.SyncScheduler",
+      "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
+      "method": "multibandit",
       "schedule": {
-        "path": "schedule.RandomSchedule.RandomSchedule",
-        "params": {
-          "c_ratio": 0.1
-        }
+        "path": "schedule.FullSchedule.FullSchedule",
+        "params": {}
       }
     },
     "updater": {
       "path": "updater.SyncUpdater.SyncUpdater",
       "loss": "torch.nn.functional.cross_entropy",
       "update": {
-        "path": "update.FedAvg.FedAvg",
+        "path": "update.CustomFedAvg.CustomFedAvg",
         "params": {}
+      }
+    }
+  },
+  "group_manager": {
+    "path": "groupmanager.CustomGroupManager.CustomGroupManager",
+    "group_method": {
+      "path": "group.CustomGroup.CustomGroup",
+      "params": {
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.5_cnn_delaymodel.csv"
       }
     }
   },
@@ -64,25 +70,14 @@
     "path": "clientmanager.NormalClientManager.NormalClientManager"
   },
   "client": {
-    "path": "client.NormalClient.NormalClient",
-    "epochs": 5,
-    "batch_size": 50,
+    "path": "client.CustomClient.CustomClient",
+    "epochs": 2,
+    "batch_size": 64,
     "model": {
-      "path": "torchvision.models.resnet.resnet18",
-      "params": {
-        "num_classes": 10
-      }
-    },
-    "transform": {
-      "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+      "path": "model.CNN.CNN",
       "params": {}
     },
-    "loss": {
-      "path": "loss.FedLC.FedLC",
-      "params": {
-        "tau": 0.5
-      }
-    },
+    "loss": "torch.nn.functional.cross_entropy",
     "mu": 0,
     "optimizer": {
       "path": "torch.optim.SGD",

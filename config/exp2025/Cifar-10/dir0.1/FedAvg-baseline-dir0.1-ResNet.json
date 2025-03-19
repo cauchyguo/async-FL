@@ -1,7 +1,7 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-Cifar10",
+    "project": "Exp2025-Cifar10-Dir0.1",
     "name": "fedavg-resnet-dir0.1"
   },
   "global": {
@@ -9,12 +9,12 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-Cifar10/fedavg-resnet-dir0.1",
+    "experiment": "Exp2025-Cifar10-Dir0.1/fedavg-resnet-dir0.1",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
       "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_dir0.1_resnet_delaymodel.csv"
     },
-    "stale": true,
+    "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
       "params": {}
@@ -24,7 +24,7 @@
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 500,
+    "epochs": 1000,
     "model": {
       "path": "torchvision.models.resnet.resnet18",
       "params": {

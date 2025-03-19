@@ -46,7 +46,12 @@ class BaseClientManager:
             dev_total = torch.cuda.device_count()
             for i in range(dev_total):
                 device = torch.device(f'cuda:{i}')
-                dev_list.append(torch.cuda.mem_get_info(device)[0])  # The remaining memory of each GPU
+                devive_mem = torch.cuda.mem_get_info(device)[0]
+                # if devive_mem > 20005074432:
+                #     dev_list.append(devive_mem)  # The remaining memory of each GPU
+                # else:
+                #     dev_list.append(0)
+                dev_list.append(devive_mem)
             if multi_gpu:
                 mode = 0
             else:

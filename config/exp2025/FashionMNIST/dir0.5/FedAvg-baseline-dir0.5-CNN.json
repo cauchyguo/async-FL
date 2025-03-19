@@ -1,15 +1,15 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025",
+    "project": "Exp2025-FashionMNIST-Dir0.5",
     "name": "fedavg-cnn-dir0.5"
   },
   "global": {
-    "seed": 42,
+    "seed": 66,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025/fedavgcnn-dir0.5",
+    "experiment": "Exp2025-FashionMNIST-Dir0.5/fedavgcnn-dir0.5",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
       "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.5_cnn_delaymodel.csv"
@@ -24,7 +24,7 @@
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 500,
+    "epochs": 1000,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}

@@ -21,6 +21,7 @@ class SyncUpdater(BaseUpdater):
             self.server_thread_lock.acquire()
             epoch = self.current_time.get_time()
             self.server_update(epoch, update_list)
+            self.global_var['system_time_cost'].append(time.time())
             self.server_thread_lock.release()
 
             self.current_time.time_add()
@@ -31,13 +32,25 @@ class SyncUpdater(BaseUpdater):
 
     def server_update(self, epoch, update_list):
         if epoch > 1:
-            _, preadv_loss = self.get_last_accuracy_and_loss()
+            preadv_acc, preadv_loss = self.get_last_accuracy_and_loss()
         self.update_server_weights(epoch, update_list)
         acc, loss, run_time = self.run_server_test(epoch)
         if 'group_selected_at_global_epoch' in self.global_var and epoch > 1: # 如果是CustomGroupManager，则记录每个global epoch选择的group以及每个group的历史improved loss
             selected_group_id = self.global_var['group_selected_at_global_epoch'][-1]
+            # 记录每个group的历史improved loss
             self.global_var['group_history_improved_loss'][selected_group_id].append((epoch, preadv_loss - loss))
+            # 记录每个group的历史loss
             self.global_var['group_history_loss'][selected_group_id].append((epoch, loss))
+            # 记录每个group的历史acc
+            self.global_var['group_history_acc'][selected_group_id].append((epoch, acc))
+            # 记录每个group的历史improved acc
+            self.global_var['group_history_improved_acc'][selected_group_id].append((epoch, acc - preadv_acc))
+            # 记录每个group的平均loss
+            self.global_var['group_epoch_avg_loss'][selected_group_id].append((epoch, self.global_var['epoch_avg_loss'][epoch]))
+            # 记录每个group的平均数据利用率
+            self.global_var['group_data_util'][selected_group_id].append((epoch, self.global_var['epoch_group_data_util'][epoch]))
+            # 记录每个group的累积数据利用率
+            self.global_var['group_data_util_accumulate'][selected_group_id].append((epoch, self.global_var['epoch_group_data_util_accumulate'][epoch]))
         if self.config['enabled']:
             wandb.log({'accuracy': acc, 'loss': loss, 'run_time': run_time})
 

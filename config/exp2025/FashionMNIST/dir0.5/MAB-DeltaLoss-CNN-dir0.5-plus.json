@@ -43,13 +43,6 @@
       "update": {
         "path": "update.FedAvg.FedAvg",
         "params": {}
-      },
-      "optimizer": {
-        "path": "torch.optim.Adam",
-        "params": {
-          "lr": 0.01,
-          "weight_decay": 0
-        }
       }
     }
   },
