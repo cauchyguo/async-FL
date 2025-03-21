@@ -1,61 +1,55 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-FashionMNIST-Dir0.1",
-    "name": "FedDocs-CNN-dir0.1"
+    "project": "Exp2025",
+    "name": "fedadam-cnn-iid"
   },
   "global": {
-    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-Dir0.1/FedDocs-CNN-dir0.1",
+    "experiment": "Exp2025/fedadam-cnn-iid",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel.csv"
     },
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
-    "iid": false,
+    "iid": true,
     "client_num": 100
   },
   "server": {
-    "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 510,
+    "path": "server.NormalServer.NormalServer",
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
     },
     "scheduler": {
-      "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
-      "method": "FedDocs",
-      "FedDocs_params": {
-        "FedDocs_group_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_info.csv",
-        "alpha": 0.66
-      },
+      "path": "scheduler.SyncScheduler.SyncScheduler",
       "schedule": {
-        "path": "schedule.FullSchedule.FullSchedule",
-        "params": {}
+        "path": "schedule.RandomSchedule.RandomSchedule",
+        "params": {
+          "c_ratio": 0.1
+        }
       }
     },
     "updater": {
       "path": "updater.SyncUpdater.SyncUpdater",
       "loss": "torch.nn.functional.cross_entropy",
       "update": {
-        "path": "update.CustomFedAvg.CustomFedAvg",
+        "path": "update.FedAvg.FedAvg",
         "params": {}
-      }
-    }
-  },
-  "group_manager": {
-    "path": "groupmanager.CustomGroupManager.CustomGroupManager",
-    "group_method": {
-      "path": "group.CustomGroup.CustomGroup",
-      "params": {
-        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+      },
+      "optimizer": {
+        "path": "torch.optim.Adam",
+        "params": {
+          "lr": 0.05,
+          "weight_decay": 0
+        }
       }
     }
   },
@@ -74,7 +68,7 @@
     "path": "clientmanager.NormalClientManager.NormalClientManager"
   },
   "client": {
-    "path": "client.CustomClient.CustomClient",
+    "path": "client.NormalClient.NormalClient",
     "epochs": 2,
     "batch_size": 64,
     "model": {
@@ -86,7 +80,7 @@
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {
-        "lr": 0.01,
+        "lr": 0.05,
         "weight_decay": 0
       }
     }

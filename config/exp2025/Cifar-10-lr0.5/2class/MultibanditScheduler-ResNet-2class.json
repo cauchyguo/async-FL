@@ -1,18 +1,17 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-FashionMNIST-Dir0.1",
-    "name": "FedDocs-CNN-dir0.1"
+    "project": "Exp2025",
+    "name": "MultibanditScheduler-CNN-2class"
   },
   "global": {
-    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-Dir0.1/FedDocs-CNN-dir0.1",
+    "experiment": "Exp2025/MultibanditScheduler-CNN-2class",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_2class_cnn_delaymodel.csv"
     },
     "stale": false,
     "dataset": {
@@ -24,18 +23,13 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 510,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
     },
     "scheduler": {
       "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
-      "method": "FedDocs",
-      "FedDocs_params": {
-        "FedDocs_group_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_info.csv",
-        "alpha": 0.66
-      },
       "schedule": {
         "path": "schedule.FullSchedule.FullSchedule",
         "params": {}
@@ -45,7 +39,7 @@
       "path": "updater.SyncUpdater.SyncUpdater",
       "loss": "torch.nn.functional.cross_entropy",
       "update": {
-        "path": "update.CustomFedAvg.CustomFedAvg",
+        "path": "update.FedAvg.FedAvg",
         "params": {}
       }
     }
@@ -55,7 +49,7 @@
     "group_method": {
       "path": "group.CustomGroup.CustomGroup",
       "params": {
-        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_2class_cnn_delaymodel.csv"
       }
     }
   },
@@ -74,7 +68,7 @@
     "path": "clientmanager.NormalClientManager.NormalClientManager"
   },
   "client": {
-    "path": "client.CustomClient.CustomClient",
+    "path": "client.NormalClient.NormalClient",
     "epochs": 2,
     "batch_size": 64,
     "model": {
@@ -86,7 +80,7 @@
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {
-        "lr": 0.01,
+        "lr": 0.05,
         "weight_decay": 0
       }
     }

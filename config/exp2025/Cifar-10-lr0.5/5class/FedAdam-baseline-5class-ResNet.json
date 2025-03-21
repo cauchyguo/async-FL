@@ -1,33 +1,34 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-FashionMNIST-Dir0.1",
-    "name": "fedavg-cnn-dir0.1"
+    "project": "Exp2025-Cifar10-lr0.5",
+    "name": "fedadam-resnet-5class"
   },
   "global": {
-    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-Dir0.1/fedavg-cnn-dir0.1",
+    "experiment": "Exp2025-Cifar10-lr0.5/fedadam-resnet-5class",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_5class_resnet_delaymodel.csv"
     },
     "stale": false,
     "dataset": {
-      "path": "dataset.FashionMNIST.FashionMNIST",
+      "path": "dataset.CIFAR10.CIFAR10",
       "params": {}
     },
-    "iid": true,
+    "iid": false,
     "client_num": 100
   },
   "server": {
     "path": "server.NormalServer.NormalServer",
-    "epochs": 1000,
+    "epochs": 500,
     "model": {
-      "path": "model.CNN.CNN",
-      "params": {}
+      "path": "torchvision.models.resnet.resnet18",
+      "params": {
+        "num_classes": 10
+      }
     },
     "scheduler": {
       "path": "scheduler.SyncScheduler.SyncScheduler",
@@ -44,6 +45,13 @@
       "update": {
         "path": "update.FedAvg.FedAvg",
         "params": {}
+      },
+      "optimizer": {
+        "path": "torch.optim.Adam",
+        "params": {
+          "lr": 0.05,
+          "weight_decay": 0
+        }
       }
     }
   },
@@ -63,10 +71,16 @@
   },
   "client": {
     "path": "client.NormalClient.NormalClient",
-    "epochs": 2,
-    "batch_size": 64,
+    "epochs": 5,
+    "batch_size": 50,
     "model": {
-      "path": "model.CNN.CNN",
+      "path": "torchvision.models.resnet.resnet18",
+      "params": {
+        "num_classes": 10
+      }
+    },
+    "transform": {
+      "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
       "params": {}
     },
     "loss": "torch.nn.functional.cross_entropy",
@@ -74,7 +88,7 @@
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {
-        "lr": 0.01,
+        "lr": 0.05,
         "weight_decay": 0
       }
     }

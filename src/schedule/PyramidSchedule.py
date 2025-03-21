@@ -183,7 +183,7 @@ class PyramidSchedule(AbstractSchedule):
                 
                 # 惩罚执行时间长的慢客户端
                 if client['duration'] > round_prefer_duration:  # 如果执行时间超过阈值
-                    penalty_factor = (round_prefer_duration / max(1e-4, client['duration'])) ** 2  # 计算惩罚因子
+                    penalty_factor = max((round_prefer_duration / max(1e-4, client['duration'])) ** 2, 0.5)  # 计算惩罚因子,最小为0.5
                     score *= penalty_factor  # 应用惩罚
                     
                 scores[client_id] = score  # 保存分数
