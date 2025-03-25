@@ -1,0 +1,195 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-Cifar10-lr0.5-Dir0.5",
+        "name": "PyramidFL-resnet-dir0.5"
+    },
+    "global": {
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": true,
+        "experiment": "Exp2025-Cifar10-lr0.5-Dir0.5/PyramidFL-resnet-dir0.5",
+        "custom": {
+            "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_dir0.5_resnet_delaymodel.csv"
+        },
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": false,
+        "client_num": 100,
+        "uid": "14cf11e79c444e7aae316244e161fb07"
+    },
+    "server": {
+        "path": "server.NormalServer.NormalServer",
+        "epochs": 510,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.SyncScheduler.SyncScheduler",
+            "schedule": {
+                "path": "schedule.PyramidSchedule.PyramidSchedule",
+                "params": {
+                    "c_ratio": 0.1,
+                    "exploration_factor": 0.5,
+                    "cut_off_util": 0.8,
+                    "round_threshold": 50
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.PyramidFL.PyramidFL",
+                "params": {}
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.PyramidClient.PyramidClient",
+        "epochs": 5,
+        "batch_size": 50,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.06,
+                "weight_decay": 0
+            }
+        }
+    }
+}

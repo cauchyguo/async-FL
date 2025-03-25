@@ -34,6 +34,10 @@ class GroupSyncScheduler(BaseScheduler):
         self.global_var['group_data_util'] = [[] for i in range(self.group_num)]
         self.global_var['group_data_util_accumulate'] = [[] for i in range(self.group_num)]
 
+        self.global_var['epoch_accuacy'] = [] # 记录每个global epoch下的准确率
+
+        
+
         for group_id in range(self.group_manager.get_group_num()):
             self.global_var['group_history_loss'][group_id].append((0, 2))
             self.global_var['group_history_acc'][group_id].append((0, 0))
@@ -41,6 +45,36 @@ class GroupSyncScheduler(BaseScheduler):
             if(len(self.global_var['group_history_improved_loss'][group_id]) == 0):
                 self.global_var['group_history_improved_loss'][group_id].append((0, 0))
                 self.global_var['group_history_improved_acc'][group_id].append((0, 0))
+
+        if "method" in self.config and self.config["method"] == "FedAGSA":
+            if "FedAGSA_group_path" in self.config['FedAGSA_params']:
+                self.group_info_df = pd.read_csv(self.config['FedAGSA_params']["FedAGSA_group_path"])
+            else:
+                self.group_info_df = self.generate_group_info_df()
+            self.FedAGSA_lam = self.config['FedAGSA_params']['lambda']
+            self.FedAGSA_epsilon = self.config['FedAGSA_params']['epsilon']
+            self.FedAGSA_target_accuacy = self.config['FedAGSA_params']['target_accuacy']
+        elif "method" in self.config and self.config["method"] == "FedDocs":
+            self.group_info_df = pd.read_csv(self.config['FedDocs_params']["FedDocs_group_path"])
+            self.FedDocs_alpha = self.config['FedDocs_params']["alpha"]
+
+    def generate_group_info_df(self):
+
+        df = pd.read_csv(self.global_var['global_config']['custom']['clients_info_path'])
+        # 使用 groupby 按 group_id 分组
+        grouped = df.groupby('group_id')
+
+        # 创建 group_info DataFrame
+        group_info = pd.DataFrame({
+            'group_id': grouped.groups.keys(),
+            'client_id_list': [list(g['client_id']) for _, g in grouped],
+            'group_data_num': grouped['data_num'].sum(),
+            'group_delay_time': grouped['time'].max()
+        })
+
+        # 整理 DataFrame
+        group_info = group_info[['group_id', 'client_id_list', 'group_data_num', 'group_delay_time']]  
+        return group_info
 
     def run(self):
         while self.current_t.get_time() <= self.T:
@@ -64,12 +98,13 @@ class GroupSyncScheduler(BaseScheduler):
         # if self.current_t.get_time() <= self.group_num:
         #     selected_group_id = int(self.current_t.get_time()-1)
         # else:
+        # 参数初始化
         if "method" in self.config and self.config["method"] == "multibandit":
             selected_group_id = self.bandit_schedule()
+        elif "method" in self.config and self.config["method"] == "FedAGSA":
+            selected_group_id = self.FedAGSA_schedule()
         elif "method" in self.config and self.config["method"] == "FedDocs":
-            group_info_df = pd.read_csv(self.config['FedDocs_params']["FedDocs_group_path"])
-            alpha = self.config['FedDocs_params']["alpha"]
-            selected_group_id = self.FedDocs_schedule(group_info_df,alpha)
+            selected_group_id = self.FedDocs_schedule(self.group_info_df,self.FedDocs_alpha)
         else:# 和随机算法做对比
             selected_group_id = self.random_schedule()
         # selected_group_id = self.bandit_schedule()
@@ -96,6 +131,30 @@ class GroupSyncScheduler(BaseScheduler):
         if random.random() < alpha:
             group_id = random.randint(0, self.group_manager.get_group_num() - 1)
         print(f"FedDocs Algo: Group {group_id} is selected")
+        return group_id
+    
+    def FedAGSA_schedule(self):
+        """FedAGSA调度一个分组参与训练"""
+        group_info_df = self.group_info_df
+        if self.current_t.get_time() <= self.group_manager.get_group_num():
+            # 按照panndas某个值的排序顺序，返回对应的index
+            return group_info_df['group_delay_time'].sort_values().index[self.current_t.get_time() - 1]
+        
+        score_for_group_current_epoch = [] # 记录每个分组的得分
+        for group_id in range(self.group_manager.get_group_num()):
+            group_delay_time = group_info_df['group_delay_time'].iloc[group_id]
+            # 计算当前分组的累积数据利用率
+            group_lasest_select_epoch = self.global_var['group_data_util_accumulate'][group_id][-1][0]
+            group_latest_sum_data_util = self.global_var['group_data_util_accumulate'][group_id][-1][1]
+            group_current_data_util = group_latest_sum_data_util * math.exp(self.FedAGSA_lam * (self.current_t.get_time() - group_lasest_select_epoch))
+            group_delay_util = group_info_df['group_delay_time'].max() / group_delay_time
+            if self.global_var['epoch_accuacy'][-1][1] < self.FedAGSA_target_accuacy:
+                alpha_r = (1 - self.global_var['epoch_accuacy'][-1][1] / self.FedAGSA_target_accuacy) ** self.FedAGSA_epsilon
+            else:
+                alpha_r = 0
+            score_for_group = group_current_data_util * pow(group_delay_util, alpha_r)
+            score_for_group_current_epoch.append(score_for_group)
+        group_id = argmax(score_for_group_current_epoch)
         return group_id
 
     def bandit_schedule(self):

@@ -1,0 +1,192 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-Cifar10-lr0.5-Dir0.5",
+        "name": "fedlc-resnet-dir0.5"
+    },
+    "global": {
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": true,
+        "experiment": "Exp2025-Cifar10-lr0.5-Dir0.5/fedlc-resnet-dir0.5",
+        "custom": {
+            "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_dir0.5_resnet_delaymodel.csv"
+        },
+        "stale": [
+            5.52,
+            6.03,
+            6.04,
+            7.05,
+            7.1,
+            7.16,
+            8.21,
+            8.29,
+            8.84,
+            8.99,
+            9.06,
+            9.34,
+            9.38,
+            9.41,
+            9.61,
+            9.94,
+            10.24,
+            10.27,
+            10.57,
+            10.88,
+            11.03,
+            11.21,
+            11.35,
+            11.52,
+            11.57,
+            11.58,
+            11.63,
+            11.72,
+            11.88,
+            11.91,
+            12.23,
+            12.38,
+            12.46,
+            12.55,
+            12.56,
+            12.88,
+            12.96,
+            13.08,
+            13.27,
+            13.35,
+            13.37,
+            13.54,
+            13.59,
+            13.71,
+            14.28,
+            14.28,
+            14.29,
+            14.43,
+            14.57,
+            14.73,
+            14.77,
+            14.92,
+            14.98,
+            15.31,
+            15.8,
+            15.88,
+            16.03,
+            16.11,
+            16.15,
+            16.44,
+            16.47,
+            16.5,
+            16.63,
+            17.01,
+            17.04,
+            17.39,
+            17.42,
+            17.55,
+            17.66,
+            18.17,
+            18.44,
+            18.62,
+            18.62,
+            19.13,
+            19.19,
+            19.21,
+            19.58,
+            19.63,
+            19.64,
+            19.67,
+            19.69,
+            20.0,
+            20.38,
+            20.62,
+            20.64,
+            21.04,
+            21.51,
+            22.18,
+            22.24,
+            22.75,
+            22.75,
+            24.92,
+            25.09,
+            25.14,
+            25.22,
+            25.55,
+            25.8,
+            26.2,
+            26.23,
+            28.13
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": false,
+        "client_num": 100,
+        "uid": "c0032540c3eb4adf8cc97a1c52c9d186"
+    },
+    "server": {
+        "path": "server.NormalServer.NormalServer",
+        "epochs": 500,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.SyncScheduler.SyncScheduler",
+            "schedule": {
+                "path": "schedule.RandomSchedule.RandomSchedule",
+                "params": {
+                    "c_ratio": 0.1
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.FedAvg.FedAvg",
+                "params": {}
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.NormalClient.NormalClient",
+        "epochs": 5,
+        "batch_size": 50,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0.01,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.05,
+                "weight_decay": 0
+            }
+        }
+    }
+}

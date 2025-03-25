@@ -1,0 +1,84 @@
+{
+  "wandb": {
+    "enabled": true,
+    "project": "Exp2025",
+    "name": "scaffold-cnn-dir0.1"
+  },
+  "global": {
+    "seed": 42,
+    "dataset_pre_load": true,
+    "use_file_system": false,
+    "multi_gpu": false,
+    "experiment": "Exp2025/scaffold-cnn-dir0.1",
+    "custom": {
+      "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel.csv"
+    },
+    "stale": false,
+    "dataset": {
+      "path": "dataset.FashionMNIST.FashionMNIST",
+      "params": {}
+    },
+    "iid": false,
+    "client_num": 100
+  },
+  "server": {
+    "path": "server.NormalServer.NormalServer",
+    "epochs": 500,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "scheduler": {
+      "path": "scheduler.ScaffoldScheduler.ScaffoldScheduler",
+      "schedule": {
+        "path": "schedule.RandomSchedule.RandomSchedule",
+        "params": {
+          "c_ratio": 0.1
+        }
+      }
+    },
+    "updater": {
+      "path": "updater.SyncUpdater.SyncUpdater",
+      "loss": "torch.nn.functional.cross_entropy",
+      "update": {
+        "path": "update.Scaffold.Scaffold",
+        "params": {
+          "lr": 1.0
+        }
+      }
+    }
+  },
+  "queue_manager": {
+    "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+    "receiver": {
+      "path": "receiver.NormalReceiver.NormalReceiver",
+      "params": {}
+    },
+    "checker": {
+      "path": "checker.SyncChecker.SyncChecker",
+      "params": {}
+    }
+  },
+  "client_manager": {
+    "path": "clientmanager.NormalClientManager.NormalClientManager"
+  },
+  "client": {
+    "path": "client.ScaffoldClient.ScaffoldClient",
+    "epochs": 2,
+    "batch_size": 64,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "loss": "torch.nn.functional.cross_entropy",
+    "mu": 0,
+    "optimizer": {
+      "path": "torch.optim.SGD",
+      "params": {
+        "lr": 0.01,
+        "weight_decay": 0
+      }
+    }
+  }
+}

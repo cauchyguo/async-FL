@@ -75,8 +75,8 @@ def main():
 
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
-    if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/FedAvg-config.json")
+    if config_file == '': 
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025/Cifar-10-lr0.5/dir0.1/FEdAGSA-dir0.1-ResNet-sorted.json")
         print("未指定配置文件，使用默认配置文件：", config_file)
     config = getJson(config_file)
 
