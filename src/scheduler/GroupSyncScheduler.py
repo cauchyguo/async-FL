@@ -56,6 +56,7 @@ class GroupSyncScheduler(BaseScheduler):
             self.FedAGSA_target_accuacy = self.config['FedAGSA_params']['target_accuacy']
         elif "method" in self.config and self.config["method"] == "FedDocs":
             self.group_info_df = pd.read_csv(self.config['FedDocs_params']["FedDocs_group_path"])
+            self.group_info_df = self.generate_group_info_df()
             self.FedDocs_alpha = self.config['FedDocs_params']["alpha"]
 
     def generate_group_info_df(self):

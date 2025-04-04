@@ -1,18 +1,18 @@
 {
   "wandb": {
-    "enabled": false,
-    "project": "Exp2025-FashionMNIST-IID",
-    "name": "FedDocs-CNN-iid"
+    "enabled": true,
+    "project": "Exp2025-FashionMNIST-Dir0.1-lm0.01-tg75",
+    "name": "FedAGSA-CNN-dir0.1"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-IID/FedDocs-CNN-iid",
+    "experiment": "Exp2025-FashionMNIST-Dir0.1/FedAGSA-CNN-dir0.1",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/disk14T/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.1_cnn/group_results.csv"
     },
     "stale": false,
     "dataset": {
@@ -24,17 +24,19 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 510,
+    "epochs": 500,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
     },
     "scheduler": {
       "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
-      "method": "FedDocs",
-      "FedDocs_params": {
-        "FedDocs_group_path": "/disk14T/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv",
-        "alpha": 0.6
+      "method": "FedAGSA",
+      "FedAGSA_params": {
+        "FedAGSA_group_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.1_cnn/group_info.csv",
+        "lambda": 0.02,
+        "epsilon": 2,
+        "target_accuacy": 75
       },
       "schedule": {
         "path": "schedule.FullSchedule.FullSchedule",
@@ -48,6 +50,13 @@
         "path": "update.CustomFedAvg.CustomFedAvg",
         "params": {}
       }
+    },
+    "optimizer": {
+      "path": "torch.optim.Adam",
+      "params": {
+        "lr": 0.05,
+        "weight_decay": 0
+      }
     }
   },
   "group_manager": {
@@ -55,7 +64,7 @@
     "group_method": {
       "path": "group.CustomGroup.CustomGroup",
       "params": {
-        "clients_info_path": "/disk14T/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv"
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.1_cnn/group_results.csv"
       }
     }
   },
@@ -74,7 +83,7 @@
     "path": "clientmanager.NormalClientManager.NormalClientManager"
   },
   "client": {
-    "path": "client.NormalClient.NormalClient",
+    "path": "client.CustomClient.CustomClient",
     "epochs": 2,
     "batch_size": 64,
     "model": {
