@@ -2,14 +2,14 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-V2-FashionMNIST",
-        "name": "HiFlash-dir0.1"
+        "name": "HiFlash-iid"
     },
     "global": {
         "seed": 42,
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-FashionMNIST-dir0.1/HiFlash-dir0.1",
+        "experiment": "Exp2025-V2-FashionMNIST-iid/HiFlash-iid",
         "stale": [
             0,
             0,
@@ -116,11 +116,9 @@
             "path": "dataset.FashionMNIST.FashionMNIST",
             "params": {}
         },
-        "iid": {
-            "beta": 0.1
-        },
+        "iid": true,
         "client_num": 100,
-        "uid": "270c73bd621748e9b8d6d7176b752edd"
+        "uid": "22c6e2dbf82c4c52ba94922c98dff2ca"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",

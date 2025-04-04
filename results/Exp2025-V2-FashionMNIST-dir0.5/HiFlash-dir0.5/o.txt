@@ -1,2 +1,2 @@
-2025-04-04 12:11:12,286 - INFO - Starting experiment with UID: 7077a7d010d046c2880ad937117795ca
-2025-04-04 13:33:21,008 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.5/HiFlash-dir0.5/o.txt
+2025-04-04 21:01:53,146 - INFO - Starting experiment with UID: 8cb2fcaa203f4267b76b715590ee6cf4
+2025-04-04 22:17:16,319 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.5/HiFlash-dir0.5/o.txt

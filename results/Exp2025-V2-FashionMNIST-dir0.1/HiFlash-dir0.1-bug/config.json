@@ -120,7 +120,7 @@
             "beta": 0.1
         },
         "client_num": 100,
-        "uid": "270c73bd621748e9b8d6d7176b752edd"
+        "uid": "2fe112bccb984b05854551c491360286"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",

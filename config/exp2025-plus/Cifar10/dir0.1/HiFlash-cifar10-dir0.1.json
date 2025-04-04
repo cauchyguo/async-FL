@@ -1,18 +1,18 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-V2-FashionMNIST",
-    "name": "FedAT-dir0.1"
+    "project": "Exp2025-V2-Cifar10",
+    "name": "HiFlash-dir0.1"
   },
   "global": {
-    "seed": 62,
+    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1",
+    "experiment": "Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1",
     "stale": false,
     "dataset": {
-      "path": "dataset.FashionMNIST.FashionMNIST",
+      "path": "dataset.CIFAR10.CIFAR10",
       "params": {}
     },
     "iid": {
@@ -22,25 +22,26 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 2000,
+    "epochs": 2010,
     "model": {
-      "path": "model.CNN.CNN",
-      "params": {}
+      "path": "torchvision.models.resnet.resnet18",
+      "params": {
+        "num_classes": 10
+      }
     },
     "scheduler": {
-      "path": "scheduler.FedATScheduler.FedATScheduler",
+      "path": "scheduler.HiFlashScheduler.HiFlashScheduler",
       "schedule": {
-        "path": "schedule.RandomScheduleN.RandomScheduleN",
+        "path": "schedule.HiFlashSchedule.HiFlashSchedule",
         "params": {
           "init_select_clients_num": 2,
           "min_join_clients_num": 10,
           "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
           "total_bandwidth": 50,
-          "data_size": 6.34,
+          "data_size": 42.7,
           "max_join_clients_num": 15,
           "target_kl_divergence": 0.05,
-          "theta": 0.1,
-          "select_num": 10
+          "theta": 0.1
         }
       }
     },
@@ -53,8 +54,12 @@
       "loss": "torch.nn.functional.cross_entropy",
       "params": {},
       "group": {
-        "path": "update.FedAT.FedAT",
-        "params": {}
+        "path": "update.FLEC.FLEC",
+        "params": {
+          "alpha": 0.9,
+          "v": 0.95,
+          "staleness_threshold": 10
+        }
       }
     }
   },
@@ -67,7 +72,7 @@
         "edge_server_num": 5,
         "nearest_K": 20,
         "total_bandwidth": 50,
-        "data_size": 6.34,
+        "data_size": 42.7,
         "min_join_clients_num": 10
       }
     }
@@ -88,18 +93,24 @@
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
-    "epochs": 2,
-    "batch_size": 64,
+    "epochs": 5,
+    "batch_size": 50,
     "model": {
-      "path": "model.CNN.CNN",
+      "path": "torchvision.models.resnet.resnet18",
+      "params": {
+        "num_classes": 10
+      }
+    },
+    "transform": {
+      "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
       "params": {}
     },
     "loss": "torch.nn.functional.cross_entropy",
-    "mu": 0.01,
+    "mu": 0,
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {
-        "lr": 0.01,
+        "lr": 0.05,
         "weight_decay": 0
       }
     }

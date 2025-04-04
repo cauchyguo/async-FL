@@ -2,22 +2,20 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FedAT-dir0.1"
+    "name": "FedAT-iid"
   },
   "global": {
     "seed": 62,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1",
+    "experiment": "Exp2025-V2-FashionMNIST-iid/FedAT-iid",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
-    "iid": {
-      "beta": 0.1
-    },
+    "iid": true,
     "client_num": 100
   },
   "server": {
