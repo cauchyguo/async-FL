@@ -68,7 +68,7 @@ class GroupClientSelector(Handler):
 
     def _handle(self, request):
         scheduler = request.get('scheduler')
-        self.client_label_df = pd.read_csv("/disk6T/ypguo/async-FL/temp/client_label_df.csv")
+        # self.client_label_df = pd.read_csv("/disk6T/ypguo/async-FL/temp/client_label_df.csv")
         group_manager = scheduler.group_manager
         total_selected_clients = []
         if self.first_run is False:
