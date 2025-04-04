@@ -78,7 +78,7 @@ class BaseServer:
         self.queue_manager.stop()
         # save model
         if "save_model" in self.server_config and self.server_config["save_model"]:
-            torch.save(self.model.state_dict(), os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", self.global_config["experiment"], "model.pth"))
+            torch.save(self.model.state_dict(), os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", self.global_config["experiment"], "model.pth"))
         # 结束主类
         self.kill_main_class()
         print("End!")

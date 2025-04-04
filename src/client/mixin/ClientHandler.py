@@ -30,9 +30,12 @@ class UpdateReceiver(Handler):
 class DelaySimulator(Handler):
     def _handle(self, request):
         client = request.get('client')
+        train_time = request.get('train_time')
+        # print('train_time',train_time)
+        sleep_time = max(client.delay - train_time,0)
         if hasattr(client, 'delay_simulate'):
             client.delay_simulate()
         else:
-            time.sleep(client.delay)
+            time.sleep(sleep_time)
         return request
 

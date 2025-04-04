@@ -4,16 +4,20 @@ from collections import OrderedDict
 from core.handlers.Handler import Handler
 from utils import ModuleFindTool
 from utils.Tools import to_cpu
+import time
 
 
 class ClientTrainHandler(Handler):
     def _handle(self, request):
         client = request.get('client')
         config = client.config
+
+        start_time = time.time()
         if 'train_func' in config:
             train_func = ModuleFindTool.find_class_by_path(config['train_func'])
         elif hasattr(client, 'train'):
             request['train_res'] = client.train()
+            request['train_time'] = time.time() - start_time
             return request
         else:
             train_func = BasicTrain
@@ -21,6 +25,7 @@ class ClientTrainHandler(Handler):
                                           client.epoch,
                                           client.dev,
                                           client.lr_scheduler, client.mu, client)
+        request['train_time'] = time.time() - start_time
         return request
 
 

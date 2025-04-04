@@ -62,8 +62,8 @@ class ClientPostTestHandler(Handler):
             client = request.get('client')
             experiment = request.get('global_var')['config']['global']['experiment']
             client_id = client.client_id
-            path1 = os.path.join('../results', experiment, f'{client_id}_accuracy.txt')
-            path2 = os.path.join('../results', experiment, f'{client_id}_loss.txt')
+            path1 = os.path.join('../../results', experiment, f'{client_id}_accuracy.txt')
+            path2 = os.path.join('../../results', experiment, f'{client_id}_loss.txt')
             client.add_final_callback(saveAns, path1, self.accuracy_list)
             client.add_final_callback(saveAns, path2, self.loss_list)
 
@@ -87,32 +87,39 @@ class ServerTestHandler(Handler):
 class ServerPostTestHandler(Handler):
     def __init__(self):
         super().__init__()
-        global_var = GlobalVarGetter.get()
-        self.cloud_enabled = global_var['config']['wandb']['enabled']
-        self.file_enabled = global_var['config']['global']['save']
+        self.global_var = GlobalVarGetter.get()
+        self.cloud_enabled = self.global_var['config']['wandb']['enabled']
+        self.file_enabled = self.global_var['config']['global']['save']
         self.accuracy_list = []
         self.loss_list = []
+        self.update_time = []
 
     def _handle(self, request):
         if 'test_res' not in request:
             return request
         acc, loss = request.get('test_res')
         epoch = request.get('epoch')
-        print('Epoch', epoch, 'tested, accuracy:', acc, 'loss', loss)
+        import time
+        print('-'*120)
+        print('Epoch', epoch, 'tested, accuracy:', acc, 'loss', loss, 'run_time', time.time()-self.global_var['start_time'])
+        print('-'*120)
         if self.cloud_enabled:
-            wandb.log({'accuracy': acc, 'loss': loss}, step=epoch)
+            wandb.log({'accuracy': acc, 'loss': loss, 'run_time': time.time()-self.global_var['start_time']}, step=epoch)
         self.accuracy_list.append(acc)
         self.loss_list.append(loss)
+        self.update_time.append(time.time()-self.global_var['start_time'])
         return request
 
     def run_once(self, request):
         if self.file_enabled:
             updater = request.get('updater')
             experiment = request.get('global_var')['config']['global']['experiment']
-            path1 = os.path.join('../results', experiment, f'accuracy.txt')
-            path2 = os.path.join('../results', experiment, f'loss.txt')
+            path1 = os.path.join('../../results', experiment, f'accuracy.txt')
+            path2 = os.path.join('../../results', experiment, f'loss.txt')
+            path3 = os.path.join('../../results', experiment, f'update_time.txt')
             updater.add_final_callback(saveAns, path1, self.accuracy_list)
             updater.add_final_callback(saveAns, path2, self.loss_list)
+            updater.add_final_callback(saveAns, path3, self.update_time)
 
 
 def BasicTest(test_dl, model, loss_func, dev, epoch, obj=None):

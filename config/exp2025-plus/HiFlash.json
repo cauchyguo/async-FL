@@ -2,14 +2,14 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FLEC-TopRates-Group"
+    "name": "HiFlash-iid-update-FLEC"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST/FLEC-TopRates-Group",
+    "experiment": "Exp2025-V2-FashionMNIST/HiFlash-iid-update-FLEC",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -20,38 +20,24 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 500,
+    "epochs": 1000,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
     },
     "scheduler": {
-      "path": "scheduler.FLECSemiAsyncScheduler.FLECSemiAsyncScheduler",
+      "path": "scheduler.HiFlashScheduler.HiFlashScheduler",
       "schedule": {
-        "path": "schedule.DualGroupSchedule.DualGroupSchedule",
+        "path": "schedule.HiFlashSchedule.HiFlashSchedule",
         "params": {
-          "c_ratio": 0.4,
+          "init_select_clients_num": 2,
           "min_join_clients_num": 10,
+          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
           "total_bandwidth": 50,
           "data_size": 6.34,
           "max_join_clients_num": 15,
           "target_kl_divergence": 0.05,
-          "theta": 0.1,
-          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
-        }
-      },
-      "delay_adaptive_optimizer": {
-        "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
-        "params": {
-          "total_bandwidth": 50,
-          "data_size": 6.34,
-          "noise_power": -104,
-          "g_dB_coef": [
-            -128.1,
-            37.6
-          ],
-          "algorithm": "gp",
-          "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+          "theta": 0.1
         }
       }
     },
@@ -64,19 +50,26 @@
       "loss": "torch.nn.functional.cross_entropy",
       "params": {},
       "group": {
-        "path": "update.FedAT.FedAT",
-        "params": {}
+        "path": "update.FLEC.FLEC",
+        "params": {
+          "alpha": 0.9,
+          "v": 0.95,
+          "staleness_threshold": 10
+        }
       }
     }
   },
   "group_manager": {
-    "path": "groupmanager.FLECGroupManager.FLECGroupManager",
+    "path": "groupmanager.FLECNormalGroupManager.FLECNormalGroupManager",
     "group_method": {
-      "path": "group.DualGroupPlus.DualGroupPlus",
+      "path": "group.DelayAssociationGroup.DelayAssociationGroup",
       "params": {
         "situation_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
         "edge_server_num": 5,
-        "nearest_K": 20
+        "nearest_K": 20,
+        "total_bandwidth": 50,
+        "data_size": 6.34,
+        "min_join_clients_num": 10
       }
     }
   },

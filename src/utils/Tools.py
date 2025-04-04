@@ -46,7 +46,7 @@ def get_order_as_tuple(filename):
 
 
 def saveOrder(filename, result):
-    save = open("../results/" + filename, "w")
+    save = open("../../results/" + filename, "w")
     for w in result:
         save.write(str(w.numpy()) + "\n")
     save.close()

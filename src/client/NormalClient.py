@@ -3,7 +3,8 @@ from client.mixin.ClientHandler import UpdateReceiver, DelaySimulator, UpdateSen
 from client.mixin.InitHandler import InitHandler
 from core.handlers.Handler import HandlerChain
 from core.handlers.ModelTrainHandler import ClientTrainHandler, ClientPostTrainHandler
-
+import time
+from datetime import datetime
 
 class NormalClient(Client):
     r"""
@@ -60,6 +61,7 @@ class NormalClient(Client):
         The run function of Client runs the main body, suitable for use as a target parameter of process.
         """
         self.message_queue.set_training_status(self.client_id, True)
+        print("Client", self.client_id, "started","at time:",datetime.now().strftime("%H:%M:%S"))
         self.execute_chain()
         self.message_queue.set_training_status(self.client_id, False)
 
@@ -96,7 +98,7 @@ class NormalClient(Client):
             self.upload_item(k, v)
         self.customize_upload()
         self.message_queue.put_into_uplink(self.update_dict)
-        print("Client", self.client_id, "uploaded")
+        print("Client", self.client_id, "uploaded","at time",datetime.now().strftime("%H:%M:%S"), "; simulated_delay",round(self.delay,2))
 
     def upload_item(self, k, v):
         self.update_dict[k] = v

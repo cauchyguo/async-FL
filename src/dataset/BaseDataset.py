@@ -59,7 +59,7 @@ class BaseDataset:
                 index_list = self._generate_data(test_config, labels, 1, dataset)[0]
             else:
                 index_list = list(range(len(labels)))
-                print_dist([index_list], labels)
+                print_dist([index_list], labels, train=False)
             print(f"non-train data generation process completed")
         return index_list
 

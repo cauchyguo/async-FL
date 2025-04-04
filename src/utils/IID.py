@@ -1,18 +1,28 @@
 import copy
 import random
 from collections import Counter
-
+from utils.GlobalVarGetter import GlobalVarGetter
 import numpy as np
-
+import pandas as pd
 from utils.Tools import dict_to_list
 
 
-def print_dist(index_list, labels):
+def print_dist(index_list, labels, train=True):
+    client_label_list = []
     for i, client_index_list in enumerate(index_list):
         total = len(client_index_list)
         print(f'({i}: {total},', end=' ')
         counts = Counter(labels[client_index_list].tolist())
+        client_label_list.append(dict(counts))
         print(dict(counts))
+    if train:
+        df = pd.DataFrame(client_label_list)
+        df.columns = [f'label{i}' for i in range(10)]
+        df['data_num'] = df.sum(axis=1)
+        global_var = GlobalVarGetter.get()
+        global_var['client_label_df'] = df
+        # GlobalVarGetter.set({'client_label_df': df})
+    # df.to_csv("/disk6T/ypguo/async-FL/temp/client_label_df.csv", index=False)
 
 
 def generate_data(iid_config, labels, clients_num):

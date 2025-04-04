@@ -16,7 +16,7 @@ class FLECSemiAsyncScheduler(SyncScheduler):
         self.group_num = self.edge_server_num
         delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["delay_adaptive_optimizer"]["path"])
         self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["delay_adaptive_optimizer"]["params"])
-        time.sleep(1)
+        time.sleep(0.01)
 
 
     def create_handler_chain(self):

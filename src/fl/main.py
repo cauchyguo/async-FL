@@ -3,6 +3,8 @@ import datetime
 import os
 import sys
 import uuid
+import logging
+from contextlib import redirect_stdout, redirect_stderr
 
 import torch.multiprocessing as mp
 import wandb
@@ -44,13 +46,13 @@ def main():
     args = parser.parse_args()
 
     # 创建结果文件夹
-    if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results")):
-        os.mkdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results"))
+    if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results")):
+        os.mkdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results"))
 
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025-plus/FLEC-config.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025-plus/HiFlash.json")
     config = getJson(config_file)
 
     # 生成uuid
@@ -83,18 +85,34 @@ def main():
     if not global_config["experiment"].endswith("/"):
         global_config["experiment"] = global_config["experiment"] + "/"
     if not os.path.exists(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"])):
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"])):
         os.makedirs(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"]))
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"]))
 
     if "save" in global_config and not global_config["save"]:
         is_cover = False
     else:
         is_cover = True
 
+    # 创建日志文件夹和设置日志
+    log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"], "o.txt")
+    os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+    
+    # 设置日志记录
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file_path),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+    logger = logging.getLogger(__name__)
+    logger.info(f"Starting experiment with UID: {uid}")
+
     # 保存配置文件
     if os.path.exists(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"],
                          "config.json")) and is_cover:
         is_cover = input("实验路径已存在，是否覆盖(y/n):")
         if is_cover == 'y' or is_cover == 'Y':
@@ -176,17 +194,22 @@ def main():
     # 保存配置文件
     if is_cover:
         raw_config['global']['stale'] = client_staleness_list
-        saveJson(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+        saveJson(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"],
                               "config.json"), raw_config)
-        saveAns(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+        saveAns(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"],
                              "time.txt"), end_time - start_time)
         result_to_markdown(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../results/", global_config["experiment"],
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"],
                          "实验阐述.md"), config)
     if wandb_config['enabled']:
         saveAns(os.path.join(wandb.run.dir, "time.txt"), end_time - start_time)
         saveJson(os.path.join(wandb.run.dir, "config.json"), raw_config)
         result_to_markdown(os.path.join(wandb.run.dir, "实验阐述.md"), config)
+        
+        # 将日志文件上传到wandb
+        if os.path.exists(log_file_path):
+            wandb.save(log_file_path)
+            logger.info(f"Log file saved and uploaded to wandb: {log_file_path}")
 
 
 def cleanup():

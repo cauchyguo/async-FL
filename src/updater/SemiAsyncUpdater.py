@@ -4,7 +4,7 @@ from core.handlers.ServerHandler import Aggregation, GlobalModelOptimization
 from update.UpdateCaller import UpdateCaller
 from updater.SyncUpdater import SyncUpdater
 from utils import ModuleFindTool
-
+import time
 
 class SemiAsyncUpdater(SyncUpdater):
     def __init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem):
@@ -13,6 +13,8 @@ class SemiAsyncUpdater(SyncUpdater):
         group_update_class = ModuleFindTool.find_class_by_path(config["group"]["path"])
         self.group_update = group_update_class(self.config["group"]["params"])
         self.group_update_caller = UpdateCaller(self, self.group_update)
+
+        self.global_var['start_time'] = time.time()
 
     def create_handler_chain(self):
         self.handler_chain = HandlerChain()
@@ -39,7 +41,12 @@ class InnerGroupUpdateGetter(Handler):
 
 class InnerGroupAggregation(Aggregation):
     def _handle(self, request):
-        request = super()._handle(request)
+        update_list = request.get('update_list')
+        time_stamp = update_list[0]['time_stamp']
+        request['time_stamp'] = time_stamp
+
+        request = super()._handle(request) # 这一步先完成组内聚合
+        
         updater = request.get('updater')
         group_manager = updater.group_manager
         queue_manager = updater.queue_manager
@@ -53,7 +60,11 @@ class GroupAggregation(Handler):
         update_list = request.get('update_list')
         updater = request.get('updater')
         epoch = request.get('epoch')
-        global_model, delivery_weights = updater.group_update_caller.update_server_weights(epoch, update_list)
+        queue_manager = updater.queue_manager
+        group_ready_num = queue_manager.group_ready_num 
+        # 组内聚合完成，开始组间聚合
+        time_stamp = request.get('time_stamp')
+        global_model, delivery_weights = updater.group_update_caller.update_server_weights(epoch, update_list,group_ready_num,time_stamp)
         request['weights'] = global_model
         request['delivery_weights'] = delivery_weights
         global_var = request.get('global_var')

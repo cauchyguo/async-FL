@@ -137,7 +137,7 @@ class DelayAdaptiveOptimizer:
         except Exception as e:
             return {"success": False, "error": str(e)}
         
-    def alternate_optimization(self, distances_series, powers_series, compute_times_series, total_bandwidth=20, data_size=42.64):
+    def optimize_bandwidth_simple(self, distances_series, powers_series, compute_times_series, total_bandwidth=20, data_size=42.64):
         """
         使用简单迭代法优化带宽分配（不使用凸优化）
         

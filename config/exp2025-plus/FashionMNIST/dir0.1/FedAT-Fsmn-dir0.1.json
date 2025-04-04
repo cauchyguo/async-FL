@@ -2,15 +2,24 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FLEC-TopRates-Group"
+    "name": "FedAT-test"
   },
   "global": {
-    "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST/FLEC-TopRates-Group",
-    "stale": false,
+    "multi_gpu": true,
+    "experiment": "Exp2025-V2-FashionMNIST/FedAT-test",
+    "stale": {
+      "step": 3,
+      "shuffle": false,
+      "list": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ]
+    },
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
@@ -26,32 +35,11 @@
       "params": {}
     },
     "scheduler": {
-      "path": "scheduler.FLECSemiAsyncScheduler.FLECSemiAsyncScheduler",
+      "path": "scheduler.SemiAsyncScheduler.SemiAsyncScheduler",
       "schedule": {
-        "path": "schedule.DualGroupSchedule.DualGroupSchedule",
+        "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
-          "c_ratio": 0.4,
-          "min_join_clients_num": 10,
-          "total_bandwidth": 50,
-          "data_size": 6.34,
-          "max_join_clients_num": 15,
-          "target_kl_divergence": 0.05,
-          "theta": 0.1,
-          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
-        }
-      },
-      "delay_adaptive_optimizer": {
-        "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
-        "params": {
-          "total_bandwidth": 50,
-          "data_size": 6.34,
-          "noise_power": -104,
-          "g_dB_coef": [
-            -128.1,
-            37.6
-          ],
-          "algorithm": "gp",
-          "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+          "c_ratio": 0.5
         }
       }
     },
@@ -70,13 +58,11 @@
     }
   },
   "group_manager": {
-    "path": "groupmanager.FLECGroupManager.FLECGroupManager",
+    "path": "groupmanager.NormalGroupManager.NormalGroupManager",
     "group_method": {
-      "path": "group.DualGroupPlus.DualGroupPlus",
+      "path": "group.DelayGroup.DelayGroup",
       "params": {
-        "situation_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
-        "edge_server_num": 5,
-        "nearest_K": 20
+        "step": 3
       }
     }
   },
@@ -95,7 +81,7 @@
     "path": "clientmanager.NormalClientManager.NormalClientManager"
   },
   "client": {
-    "path": "client.FLEClient.FLEClient",
+    "path": "client.SemiClient.SemiClient",
     "epochs": 2,
     "batch_size": 64,
     "model": {

@@ -27,17 +27,29 @@ class DualGroupPlus(AbstractGroup):
             self.unique_groups[i] = set()
             self.shared_groups[i] = set()
         
+        # # 计算每个客户端的传输速率
+        # transfer_rates = []
+        # for client_idx in range(self.client_num):
+        #     for server_idx in range(self.edge_server_num):
+        #         server_col = f'server_{server_idx}'
+        #         # 计算每个客户端到每个服务器的单位传输速率
+        #         transfer_rates.append(self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], 1))
+        
         # 阶段1：终端主导分配
-        # 对每个客户端，找到最近的服务器并分配到该服务器的独占组
+        # 对每个客户端，找到传输速率最高的的服务器并分配到该服务器的独占组
         print("阶段1:终端主导分配...")
         for client_idx in range(self.client_num):
-            server_distances = [client_edge_df.iloc[client_idx][f'server_{i}'] for i in range(self.edge_server_num)]
-            closest_server = np.argmin(server_distances)
+            # server_distances = [client_edge_df.iloc[client_idx][f'server_{i}'] for i in range(self.edge_server_num)]
+            # 计算每个客户端到每个服务器的单位传输速率
+            for i in range(self.edge_server_num):
+                server_col = f'server_{server_idx}'
+            transfer_rates.append(self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], 1) for i in range(self.edge_server_num))
+            closest_server = np.argmax(transfer_rates)
             self.unique_groups[closest_server].add(client_idx)
         
         
         # 阶段2：服务器主导分配
-        # 对每个服务器，选择K个最近的客户端
+        # 对每个服务器，选择K个传输速率最高的客户端
         print("阶段2:服务器主导分配...")
         server_candidates = {}
         for server_idx in range(self.edge_server_num):

@@ -9,7 +9,7 @@ class FedAT(AbstractUpdate):
         self.config = config
         self.global_var = GlobalVarGetter.get()
 
-    def update_server_weights(self, epoch, update_list):
+    def update_server_weights(self, epoch, update_list,group_ready_num=None,time_stamp=None):
         group_num = self.global_var["group_manager"].group_num
         epoch_list = self.global_var["group_manager"].epoch_list
         updated_parameters = {}
