@@ -2,17 +2,17 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-FashionMNIST-IID",
-    "name": "FedDocs-CNN-dir0.1"
+    "name": "FedDocs-CNN-iid"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-IID/FedDocs-CNN-dir0.1",
+    "experiment": "Exp2025-FashionMNIST-IID/FedDocs-CNN-iid",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+      "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv"
     },
     "stale": false,
     "dataset": {
@@ -33,8 +33,8 @@
       "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
       "method": "FedDocs",
       "FedDocs_params": {
-        "FedDocs_group_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_info.csv",
-        "alpha": 0.66
+        "FedDocs_group_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv",
+        "alpha": 0.6
       },
       "schedule": {
         "path": "schedule.FullSchedule.FullSchedule",
@@ -55,7 +55,7 @@
     "group_method": {
       "path": "group.CustomGroup.CustomGroup",
       "params": {
-        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_cnn/group_results.csv"
+        "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_10class_cnn_delaymodel_1740144854.csv"
       }
     }
   },

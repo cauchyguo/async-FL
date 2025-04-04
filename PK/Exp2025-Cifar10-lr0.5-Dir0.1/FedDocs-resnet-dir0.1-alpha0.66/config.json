@@ -1,18 +1,18 @@
 {
     "wandb": {
         "enabled": true,
-        "project": "Exp2025-Cifar10-lr0.5-Dir0.5",
-        "name": "FedDocs-resnet-dir0.5"
+        "project": "Exp2025-Cifar10-lr0.5-Dir0.1",
+        "name": "FedDocs-resnet-dir0.1-alpha0.66"
     },
     "global": {
         "seed": 42,
         "dataset_pre_load": true,
         "use_file_system": false,
-        "multi_gpu": true,
-        "experiment": "Exp2025-Cifar10-lr0.5-Dir0.5/FedDocs-resnet-dir0.5",
+        "multi_gpu": false,
+        "experiment": "Exp2025-Cifar10-lr0.5-Dir0.1/FedDocs-resnet-dir0.1-alpha0.66",
         "custom": {
             "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
-            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.5_resnet18/group_results.csv"
+            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_resnet18/group_results.csv"
         },
         "stale": [
             0,
@@ -122,11 +122,11 @@
         },
         "iid": false,
         "client_num": 100,
-        "uid": "48dc5f10d0d34ce5a7926e2c778ed944"
+        "uid": "b6f12538d9654529a02afefa6f4dac52"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
-        "epochs": 510,
+        "epochs": 310,
         "model": {
             "path": "torchvision.models.resnet.resnet18",
             "params": {
@@ -138,7 +138,7 @@
             "method": "FedDocs",
             "FedDocs_params": {
                 "FedDocs_group_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.5_resnet18/group_info.csv",
-                "alpha": 0.6
+                "alpha": 0.66
             },
             "schedule": {
                 "path": "schedule.FullSchedule.FullSchedule",
@@ -159,7 +159,7 @@
         "group_method": {
             "path": "group.CustomGroup.CustomGroup",
             "params": {
-                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.5_resnet18/group_results.csv"
+                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedDocs/FedDocs-dir0.1_resnet18/group_results.csv"
             }
         }
     },
