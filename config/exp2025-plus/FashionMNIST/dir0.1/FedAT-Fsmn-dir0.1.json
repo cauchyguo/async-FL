@@ -2,14 +2,17 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FedAT-dir0.1"
+    "name": "FedAT-dir0.1-cluster"
   },
   "global": {
+    "mode": {
+      "path": "core.MPMT.MPMT"
+    },
     "seed": 62,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1",
+    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1-cluster",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -22,7 +25,7 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 2000,
+    "epochs": 2010,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -61,7 +64,7 @@
   "group_manager": {
     "path": "groupmanager.FLECNormalGroupManager.FLECNormalGroupManager",
     "group_method": {
-      "path": "group.DelayAssociationGroup.DelayAssociationGroup",
+      "path": "group.RandomAssociationGroup.RandomAssociationGroup",
       "params": {
         "situation_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
         "edge_server_num": 5,
@@ -84,7 +87,8 @@
     }
   },
   "client_manager": {
-    "path": "clientmanager.NormalClientManager.NormalClientManager"
+    "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+    "process_num": 5
   },
   "client": {
     "path": "client.FLEClient.FLEClient",

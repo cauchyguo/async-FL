@@ -53,7 +53,7 @@ class RandomAssociationGroup(AbstractGroup):
         self.group_list = [[] for _ in range(self.edge_server_num)]
         
         # 定义重叠系数（0表示无重叠，值越大重叠越多）
-        overlap_factor = 0.2
+        overlap_factor = 0
         
         # 为每个边缘服务器定义一个时延区间，允许有重叠
         for i in range(self.edge_server_num):
