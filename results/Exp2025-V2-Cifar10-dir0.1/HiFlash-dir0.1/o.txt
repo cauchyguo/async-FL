@@ -1,3 +1,6 @@
 2025-04-04 23:54:19,857 - INFO - Starting experiment with UID: 77a21336a21640a985ab562665df447e
 2025-04-04 23:54:45,620 - INFO - Starting experiment with UID: f8e1e61f99864419becbb39d08585fb4
 2025-04-05 00:13:19,025 - INFO - Starting experiment with UID: 1e814ac50bfc406bb3056c68d1e7dd86
+2025-04-05 14:34:40,205 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1/o.txt
+2025-04-05 17:47:12,369 - INFO - Starting experiment with UID: 3f8eb2fa10cb40b7844bf0e593367747
+2025-04-05 17:47:50,138 - INFO - Starting experiment with UID: 91bbf20a7e81431ab797383600586437

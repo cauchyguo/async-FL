@@ -5,6 +5,9 @@
     "name": "HiFlash-dir0.1"
   },
   "global": {
+    "mode": {
+      "path": "core.MPMT.MPMT"
+    },
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
@@ -89,7 +92,8 @@
     }
   },
   "client_manager": {
-    "path": "clientmanager.NormalClientManager.NormalClientManager"
+    "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+    "process_num": 15
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
