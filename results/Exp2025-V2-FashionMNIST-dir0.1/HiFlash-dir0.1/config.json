@@ -5,6 +5,9 @@
         "name": "HiFlash-dir0.1"
     },
     "global": {
+        "mode": {
+            "path": "core.MPMT.MPMT"
+        },
         "seed": 42,
         "dataset_pre_load": true,
         "use_file_system": false,
@@ -120,7 +123,7 @@
             "beta": 0.1
         },
         "client_num": 100,
-        "uid": "270c73bd621748e9b8d6d7176b752edd"
+        "uid": "7699fbf2a38442acaa37f72b07abfb3f"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
@@ -189,7 +192,8 @@
         }
     },
     "client_manager": {
-        "path": "clientmanager.NormalClientManager.NormalClientManager"
+        "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+        "process_num": 5
     },
     "client": {
         "path": "client.FLEClient.FLEClient",
