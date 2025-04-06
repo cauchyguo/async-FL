@@ -1,0 +1,2 @@
+2025-04-06 00:00:51,455 - INFO - Starting experiment with UID: 51945e42e9e740778317137405f74351
+2025-04-06 00:53:58,981 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-iid/FedAT-iid/o.txt

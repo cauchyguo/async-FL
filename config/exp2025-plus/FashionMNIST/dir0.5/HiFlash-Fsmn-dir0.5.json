@@ -5,6 +5,9 @@
     "name": "HiFlash-dir0.5"
   },
   "global": {
+    "mode": {
+      "path": "core.MPMT.MPMT"
+    },
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
@@ -22,7 +25,7 @@
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 2000,
+    "epochs": 2010,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -87,7 +90,8 @@
     }
   },
   "client_manager": {
-    "path": "clientmanager.NormalClientManager.NormalClientManager"
+    "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+    "process_num": 5
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
@@ -98,7 +102,7 @@
       "params": {}
     },
     "loss": "torch.nn.functional.cross_entropy",
-    "mu": 0.01,
+    "mu": 0,
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {

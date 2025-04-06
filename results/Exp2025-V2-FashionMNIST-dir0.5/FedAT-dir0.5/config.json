@@ -2,17 +2,17 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-V2-FashionMNIST",
-        "name": "HiFlash-dir0.5"
+        "name": "FedAT-dir0.5"
     },
     "global": {
         "mode": {
             "path": "core.MPMT.MPMT"
         },
-        "seed": 42,
+        "seed": 62,
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-FashionMNIST-dir0.5/HiFlash-dir0.5",
+        "experiment": "Exp2025-V2-FashionMNIST-dir0.5/FedAT-dir0.5",
         "stale": [
             0,
             0,
@@ -123,7 +123,7 @@
             "beta": 0.5
         },
         "client_num": 100,
-        "uid": "87f54021dadd4b59a6314a5eb60aea2e"
+        "uid": "a137b866bb5145b4ae1bad55caae3a0a"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
@@ -133,9 +133,9 @@
             "params": {}
         },
         "scheduler": {
-            "path": "scheduler.HiFlashScheduler.HiFlashScheduler",
+            "path": "scheduler.FedATScheduler.FedATScheduler",
             "schedule": {
-                "path": "schedule.HiFlashSchedule.HiFlashSchedule",
+                "path": "schedule.RandomScheduleN.RandomScheduleN",
                 "params": {
                     "init_select_clients_num": 2,
                     "min_join_clients_num": 10,
@@ -144,7 +144,8 @@
                     "data_size": 6.34,
                     "max_join_clients_num": 15,
                     "target_kl_divergence": 0.05,
-                    "theta": 0.1
+                    "theta": 0.1,
+                    "select_num": 10
                 }
             }
         },
@@ -157,19 +158,15 @@
             "loss": "torch.nn.functional.cross_entropy",
             "params": {},
             "group": {
-                "path": "update.FLEC.FLEC",
-                "params": {
-                    "alpha": 0.9,
-                    "v": 0.95,
-                    "staleness_threshold": 10
-                }
+                "path": "update.FedAT.FedAT",
+                "params": {}
             }
         }
     },
     "group_manager": {
         "path": "groupmanager.FLECNormalGroupManager.FLECNormalGroupManager",
         "group_method": {
-            "path": "group.DelayAssociationGroup.DelayAssociationGroup",
+            "path": "group.RandomAssociationGroup.RandomAssociationGroup",
             "params": {
                 "situation_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
                 "edge_server_num": 5,
@@ -204,7 +201,7 @@
             "params": {}
         },
         "loss": "torch.nn.functional.cross_entropy",
-        "mu": 0,
+        "mu": 0.01,
         "optimizer": {
             "path": "torch.optim.SGD",
             "params": {
