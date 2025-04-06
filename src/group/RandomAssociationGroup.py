@@ -99,6 +99,48 @@ class RandomAssociationGroup(AbstractGroup):
                 
                 self.group_list[best_server].append(client_idx)
         
+        # 确保每个边缘服务器至少有15个客户端
+        min_clients_per_server = 15
+        
+        # 按客户端数量排序服务器（从少到多）
+        server_indices = list(range(self.edge_server_num))
+        server_indices.sort(key=lambda idx: len(self.group_list[idx]))
+        
+        # 从人数最多的服务器向人数不足的服务器重新分配客户端
+        for i in range(self.edge_server_num):
+            curr_server = server_indices[i]
+            curr_count = len(self.group_list[curr_server])
+            
+            if curr_count < min_clients_per_server:
+                clients_needed = min_clients_per_server - curr_count
+                
+                # 从最后开始（客户端最多的服务器）寻找可调配的客户端
+                for j in range(self.edge_server_num - 1, -1, -1):
+                    donor_server = server_indices[j]
+                    donor_count = len(self.group_list[donor_server])
+                    
+                    # 确保捐赠服务器有足够多的客户端可调配
+                    if donor_server != curr_server and donor_count > min_clients_per_server:
+                        # 找出距离当前服务器最近的客户端
+                        clients_in_donor = self.group_list[donor_server].copy()
+                        
+                        # 按照与当前服务器的时延差距排序（越小越适合转移）
+                        curr_server_center = min_delay + (curr_server + 0.5) / self.edge_server_num * delay_range
+                        clients_in_donor.sort(key=lambda client_idx: 
+                                             abs(avg_delays[client_idx] - curr_server_center))
+                        
+                        # 转移客户端，不超过需要的数量且不让捐赠服务器低于最低要求
+                        transfer_count = min(clients_needed, donor_count - min_clients_per_server)
+                        for k in range(transfer_count):
+                            client_to_move = clients_in_donor[k]
+                            self.group_list[donor_server].remove(client_to_move)
+                            self.group_list[curr_server].append(client_to_move)
+                            clients_needed -= 1
+                        
+                        # 如果已经满足需求，退出循环
+                        if clients_needed <= 0:
+                            break
+        
         # 打印各边缘服务器的分配情况和时延范围
         for i in range(self.edge_server_num):
             if len(self.group_list[i]) > 0:

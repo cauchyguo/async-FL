@@ -2,7 +2,7 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-V2-Cifar10",
-        "name": "HiFlash-dir0.1"
+        "name": "HiFlash-dir0.5"
     },
     "global": {
         "mode": {
@@ -12,7 +12,7 @@
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1",
+        "experiment": "Exp2025-V2-Cifar10-dir0.5/HiFlash-dir0.5",
         "stale": [
             0,
             0,
@@ -120,10 +120,10 @@
             "params": {}
         },
         "iid": {
-            "beta": 0.1
+            "beta": 0.5
         },
         "client_num": 100,
-        "uid": "daa0db80d4f14924a663dd4df0c73f58"
+        "uid": "15409b4f23fc4363a1601b0a3529f059"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
