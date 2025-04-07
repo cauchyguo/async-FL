@@ -39,6 +39,7 @@ class DelayAssociationGroup(AbstractGroup):
                 trans_rate = self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], self.mean_bandwidth)
                 trans_time = self.data_size * 8 / trans_rate
                 system_time.append(client_compute_delay + trans_time)
+            # 选择时延最小的服务器
             closest_server = np.argmin(system_time)
             self.group_list[closest_server].append(client_idx)
         

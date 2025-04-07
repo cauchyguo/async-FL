@@ -14,10 +14,9 @@ class FLECSemiAsyncScheduler(SyncScheduler):
         self.edge_unique_groups = self.group_manager.get_edge_group_list()[0]
         self.edge_shared_groups = self.group_manager.get_edge_group_list()[1]
         self.group_num = self.edge_server_num
-        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["delay_adaptive_optimizer"]["path"])
-        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["delay_adaptive_optimizer"]["params"])
+        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["schedule"]["delay_adaptive_optimizer"]["path"])
+        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["schedule"]["delay_adaptive_optimizer"]["params"])
         time.sleep(0.01)
-
 
     def create_handler_chain(self):
         self.handler_chain = HandlerChain()
@@ -83,8 +82,6 @@ class GroupClientSelector(Handler):
         request['selected_clients'] = total_selected_clients
         return request
     
-
-
 class InnerGroupClientSelector(Handler):
     def _handle(self, request):
         edge_unique_group = copy.deepcopy(request.get('edge_unique_group'))

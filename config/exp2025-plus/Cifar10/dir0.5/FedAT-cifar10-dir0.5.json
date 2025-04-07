@@ -90,7 +90,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 15
+    "process_num": 10
   },
   "client": {
     "path": "client.FLEClient.FLEClient",

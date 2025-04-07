@@ -47,99 +47,34 @@ class RandomAssociationGroup(AbstractGroup):
         # 获取时延的最小值和最大值
         min_delay = np.min(avg_delays)
         max_delay = np.max(avg_delays)
-        delay_range = max_delay - min_delay
         
         # 初始化分组列表
         self.group_list = [[] for _ in range(self.edge_server_num)]
         
-        # 定义重叠系数（0表示无重叠，值越大重叠越多）
-        overlap_factor = 0
-        
-        # 为每个边缘服务器定义一个时延区间，允许有重叠
-        for i in range(self.edge_server_num):
-            # 定义当前服务器的时延范围
-            server_min_delay = min_delay + (i / self.edge_server_num) * (1 - overlap_factor) * delay_range
-            server_max_delay = min_delay + ((i + 1) / self.edge_server_num + overlap_factor) * delay_range
-            if i == self.edge_server_num - 1:
-                server_max_delay = max_delay
-            
-            # 找出时延在此范围内的客户端
-            for client_idx, delay in enumerate(avg_delays):
-                if server_min_delay <= delay <= server_max_delay:
-                    # 如果客户端已经被分配，检查是否应该重新分配
-                    already_assigned = False
-                    for group in self.group_list:
-                        if client_idx in group:
-                            already_assigned = True
-                            break
-                    
-                    # 如果客户端尚未被分配，或者当前服务器更适合（更接近时延中心）
-                    if not already_assigned:
-                        self.group_list[i].append(client_idx)
-        
-        # 处理未分配的客户端（如果有）
-        all_assigned = set()
-        for group in self.group_list:
-            all_assigned.update(group)
-        
-        unassigned = set(range(self.client_num)) - all_assigned
-        if unassigned:
-            # 将未分配客户端分给时延最匹配的服务器
-            for client_idx in unassigned:
-                delay = avg_delays[client_idx]
-                best_server = 0
-                min_distance = float('inf')
-                
-                for i in range(self.edge_server_num):
-                    server_center = min_delay + (i + 0.5) / self.edge_server_num * delay_range
-                    distance = abs(delay - server_center)
-                    if distance < min_distance:
-                        min_distance = distance
-                        best_server = i
-                
-                self.group_list[best_server].append(client_idx)
+        # 将客户端按平均时延排序
+        sorted_clients = np.argsort(avg_delays)
         
         # 确保每个边缘服务器至少有15个客户端
-        min_clients_per_server = 15
+        min_clients_per_server = 20
         
-        # 按客户端数量排序服务器（从少到多）
-        server_indices = list(range(self.edge_server_num))
-        server_indices.sort(key=lambda idx: len(self.group_list[idx]))
-        
-        # 从人数最多的服务器向人数不足的服务器重新分配客户端
+        # 首先进行初始分配，确保每个服务器至少有最小数量的客户端
         for i in range(self.edge_server_num):
-            curr_server = server_indices[i]
-            curr_count = len(self.group_list[curr_server])
-            
-            if curr_count < min_clients_per_server:
-                clients_needed = min_clients_per_server - curr_count
-                
-                # 从最后开始（客户端最多的服务器）寻找可调配的客户端
-                for j in range(self.edge_server_num - 1, -1, -1):
-                    donor_server = server_indices[j]
-                    donor_count = len(self.group_list[donor_server])
-                    
-                    # 确保捐赠服务器有足够多的客户端可调配
-                    if donor_server != curr_server and donor_count > min_clients_per_server:
-                        # 找出距离当前服务器最近的客户端
-                        clients_in_donor = self.group_list[donor_server].copy()
-                        
-                        # 按照与当前服务器的时延差距排序（越小越适合转移）
-                        curr_server_center = min_delay + (curr_server + 0.5) / self.edge_server_num * delay_range
-                        clients_in_donor.sort(key=lambda client_idx: 
-                                             abs(avg_delays[client_idx] - curr_server_center))
-                        
-                        # 转移客户端，不超过需要的数量且不让捐赠服务器低于最低要求
-                        transfer_count = min(clients_needed, donor_count - min_clients_per_server)
-                        for k in range(transfer_count):
-                            client_to_move = clients_in_donor[k]
-                            self.group_list[donor_server].remove(client_to_move)
-                            self.group_list[curr_server].append(client_to_move)
-                            clients_needed -= 1
-                        
-                        # 如果已经满足需求，退出循环
-                        if clients_needed <= 0:
-                            break
+            # 计算每个服务器应该分配的基本客户端数量
+            base_clients = min_clients_per_server
+            # 从排序后的客户端列表中按顺序分配
+            for j in range(base_clients):
+                if i * base_clients + j < len(sorted_clients):
+                    self.group_list[i].append(sorted_clients[i * base_clients + j])
+        
+        # 剩余的客户端进行轮询分配
+        remaining_clients = set(sorted_clients) - set([client for group in self.group_list for client in group])
+        remaining_clients = sorted(list(remaining_clients), key=lambda x: avg_delays[x])
+        
+        # 轮询分配剩余客户端
+        current_server = 0
+        for client_idx in remaining_clients:
+            self.group_list[current_server].append(client_idx)
+            current_server = (current_server + 1) % self.edge_server_num
         
         # 打印各边缘服务器的分配情况和时延范围
         for i in range(self.edge_server_num):

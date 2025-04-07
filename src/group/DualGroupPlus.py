@@ -44,7 +44,7 @@ class DualGroupPlus(AbstractGroup):
             for i in range(self.edge_server_num):
                 server_col = f'server_{server_idx}'
             transfer_rates.append(self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], 1) for i in range(self.edge_server_num))
-            closest_server = np.argmax(transfer_rates)
+            closest_server = np.argmax(transfer_rates) 
             self.unique_groups[closest_server].add(client_idx)
         
         

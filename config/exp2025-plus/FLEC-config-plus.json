@@ -37,9 +37,10 @@
           "max_join_clients_num": 15,
           "target_kl_divergence": 0.05,
           "theta": 0.1,
+          "init_select_clients_num": 2,
           "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
-        }
-      },
+        },
+      
       "delay_adaptive_optimizer": {
         "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
         "params": {
@@ -53,6 +54,7 @@
           "algorithm": "gp",
           "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
         }
+      }
       }
     },
     "updater": {
