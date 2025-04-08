@@ -1,8 +1,8 @@
 {
   "wandb": {
-    "enabled": false,
+    "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FLEC-test"
+    "name": "FLEC-dir0.1"
   },
   "global": {
     "mode": {
@@ -12,18 +12,20 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST/FLEC-TopRates-Group",
+    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FLEC-dir0.1",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
-    "iid": true,
+    "iid": {
+      "beta": 0.1
+    },
     "client_num": 100
   },
   "server": {
     "path": "server.SemiAsyncServer.SemiAsyncServer",
-    "epochs": 500,
+    "epochs": 2010,
     "model": {
       "path": "model.CNN.CNN",
       "params": {}
@@ -37,24 +39,26 @@
           "min_join_clients_num": 10,
           "total_bandwidth": 50,
           "data_size": 6.34,
-          "max_join_clients_num": 15,
+          "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
-          "theta": 0.1,
-          "init_select_clients_num": 2,
-          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
-        },
-        "delay_adaptive_optimizer": {
-          "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
-          "params": {
-            "total_bandwidth": 50,
-            "data_size": 6.34,
-            "noise_power": -104,
-            "g_dB_coef": [
-              -128.1,
-              37.6
-            ],
-            "algorithm": "gp",
-            "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+          "theta": 0.02,
+          "init_select_clients_num": 5,
+          "init_select_unique_clients_num": 5,
+          "init_select_shared_clients_num": 3,
+          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+          "delay_adaptive_optimizer": {
+            "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
+            "params": {
+              "total_bandwidth": 50,
+              "data_size": 6.34,
+              "noise_power": -104,
+              "g_dB_coef": [
+                -128.1,
+                37.6
+              ],
+              "algorithm": "binary",
+              "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+            }
           }
         }
       }

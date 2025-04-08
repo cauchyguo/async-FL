@@ -14,8 +14,8 @@ class FLECSemiAsyncScheduler(SyncScheduler):
         self.edge_unique_groups = self.group_manager.get_edge_group_list()[0]
         self.edge_shared_groups = self.group_manager.get_edge_group_list()[1]
         self.group_num = self.edge_server_num
-        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["schedule"]["delay_adaptive_optimizer"]["path"])
-        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["schedule"]["delay_adaptive_optimizer"]["params"])
+        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["schedule"]["params"]["delay_adaptive_optimizer"]["path"])
+        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["schedule"]["params"]["delay_adaptive_optimizer"]["params"])
         time.sleep(0.01)
 
     def create_handler_chain(self):
@@ -67,8 +67,8 @@ class GroupClientSelector(Handler):
             # edge_unique_groups,edge_shared_groups = group_manager.get_group_list()
             edge_unique_group = scheduler.edge_unique_groups[group_id]
             edge_shared_group = scheduler.edge_shared_groups[group_id]
-            if len(edge_unique_group) < 10:
-                print("debug")
+            # if len(edge_unique_group) < 10:
+            #     print("debug")
             # client_list = group_manager.get_group_list()[group_id]
             selected_clients = self.handler.handle(
                 {'edge_unique_group': edge_unique_group, 'edge_shared_group': edge_shared_group,'group_id': group_id,  'scheduler': scheduler})
@@ -88,10 +88,11 @@ class InnerGroupClientSelector(Handler):
         edge_shared_group = copy.deepcopy(request.get('edge_shared_group'))
         group_id = request.get('group_id')
         scheduler = request.get('scheduler')
+        client_label_df = scheduler.global_var['client_label_df']
         training_status = scheduler.message_queue.get_training_status()
         edge_shared_group = [client_id for client_id in edge_shared_group if
                        client_id not in training_status or not training_status[client_id]]
-        selected_clients = scheduler.schedule_caller.schedule(edge_server_idx=group_id, edge_server_unique_clients=edge_unique_group,edge_server_shared_clients=edge_shared_group)
+        selected_clients= scheduler.schedule_caller.schedule(edge_server_idx=group_id, edge_server_unique_clients=edge_unique_group,edge_server_shared_clients=edge_shared_group,client_label_df=client_label_df)
         print(f'group {group_id} selected_clients: {selected_clients}')
         return selected_clients
 

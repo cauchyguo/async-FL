@@ -19,7 +19,9 @@ def print_dist(index_list, labels, train=True):
         df = pd.DataFrame(client_label_list)
         df.columns = [f'label{i}' for i in range(10)]
         df['data_num'] = df.sum(axis=1)
+        df.fillna(0,inplace=True)
         global_var = GlobalVarGetter.get()
+
         global_var['client_label_df'] = df
         # GlobalVarGetter.set({'client_label_df': df})
     # df.to_csv("/disk6T/ypguo/async-FL/temp/client_label_df.csv", index=False)

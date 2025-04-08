@@ -27,8 +27,7 @@ class DualGroupPlus(AbstractGroup):
             self.unique_groups[i] = set()
             self.shared_groups[i] = set()
         
-        # # 计算每个客户端的传输速率
-        # transfer_rates = []
+        # # # 计算每个客户端的传输速率
         # for client_idx in range(self.client_num):
         #     for server_idx in range(self.edge_server_num):
         #         server_col = f'server_{server_idx}'
@@ -41,9 +40,10 @@ class DualGroupPlus(AbstractGroup):
         for client_idx in range(self.client_num):
             # server_distances = [client_edge_df.iloc[client_idx][f'server_{i}'] for i in range(self.edge_server_num)]
             # 计算每个客户端到每个服务器的单位传输速率
-            for i in range(self.edge_server_num):
+            transfer_rates = []
+            for server_idx in range(self.edge_server_num):
                 server_col = f'server_{server_idx}'
-            transfer_rates.append(self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], 1) for i in range(self.edge_server_num))
+                transfer_rates.append(self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], 1))
             closest_server = np.argmax(transfer_rates) 
             self.unique_groups[closest_server].add(client_idx)
         
@@ -95,14 +95,14 @@ class DualGroupPlus(AbstractGroup):
             print(f"服务器{server_idx}的共享组: {self.shared_groups[server_idx]}")
             print("--------------------------------")
 
-        print("进行结果测试")
-        unique_groups_list = []
-        # shared_groups_list = []
-        for server_idx in range(self.edge_server_num):
-            unique_groups_list.extend(self.unique_groups[server_idx])
-            # shared_groups_list.append(self.shared_groups[server_idx])
-        print(sorted(unique_groups_list))
-        print(sorted(totol_shard_clients))
+        # print("进行结果测试")
+        # unique_groups_list = []
+        # # shared_groups_list = []
+        # for server_idx in range(self.edge_server_num):
+        #     unique_groups_list.extend(self.unique_groups[server_idx])
+        #     # shared_groups_list.append(self.shared_groups[server_idx])
+        # print(sorted(unique_groups_list))
+        # print(sorted(totol_shard_clients))
             
         return self.unique_groups, self.shared_groups,self.edge_server_num
 
