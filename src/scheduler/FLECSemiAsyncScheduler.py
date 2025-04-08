@@ -60,7 +60,7 @@ class GroupClientSelector(Handler):
                 delay_for_selected_clients = scheduler.delay_adaptive_optimizer.optimize(group_id,selected_clients)
                 for client_id in selected_clients: # 将更新的客户端分组信息上传给服务器
                     scheduler.download_item(client_id, "group_id", group_id)
-                    scheduler.download_item(client_id, "delay", delay_for_selected_clients.loc[client_id] - 2)
+                    scheduler.download_item(client_id, "delay", delay_for_selected_clients.loc[client_id] - 1)
             self.first_run = True
         else:
             group_id = scheduler.group_ready_num
@@ -78,7 +78,7 @@ class GroupClientSelector(Handler):
             delay_for_selected_clients = scheduler.delay_adaptive_optimizer.optimize(group_id,selected_clients)
             for client_id in selected_clients: # 将更新的客户端分组信息上传给服务器
                 scheduler.download_item(client_id, "group_id", group_id)
-                scheduler.download_item(client_id, "delay", delay_for_selected_clients.loc[client_id] - 2)
+                scheduler.download_item(client_id, "delay", delay_for_selected_clients.loc[client_id] - 1)
         request['selected_clients'] = total_selected_clients
         return request
     
