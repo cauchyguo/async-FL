@@ -196,6 +196,141 @@ class DelayAdaptiveOptimizer:
             "max_delay": max(delays),
             "delays": delays_series
         }
+    
+def optimize_bandwidth_binary(self, distances_series, powers_series, compute_times_series, total_bandwidth=20, data_size=42.64):
+    """
+    使用二分查找方法优化带宽分配
+    
+    思路：
+    1. 设定目标延迟T
+    2. 对每个客户端，计算达到延迟T所需的最小带宽
+    3. 如果总带宽超过限制，增加目标延迟；否则减少目标延迟
+    4. 使用二分查找找到满足总带宽限制的最小目标延迟
+    """
+    client_num = len(distances_series)
+    if client_num == 0:
+        return {"success": False, "error": "No clients"}
+        
+    distances = distances_series.values
+    powers = powers_series.values
+    compute_times = compute_times_series.values
+    
+    # 计算基准传输率
+    base_rates = np.array([self.calculate_data_rate(d, p, 1.0, self.noise_power, self.g_dB_coef) 
+                          for d, p in zip(distances, powers)])
+    
+    def calculate_required_bandwidth(target_delay):
+        """计算达到目标延迟所需的带宽"""
+        # 传输时间 = 目标延迟 - 计算时间
+        trans_times = np.maximum(target_delay - compute_times, 0)
+        # 所需带宽 = 数据大小 * 8 / (基准传输率 * 传输时间)
+        required_bw = np.where(
+            trans_times > 0,
+            data_size * 8 / (base_rates * trans_times),
+            float('inf')
+        )
+        return required_bw
+    
+    def is_feasible(target_delay):
+        """检查目标延迟是否可行"""
+        required_bw = calculate_required_bandwidth(target_delay)
+        return np.sum(required_bw) <= total_bandwidth and np.all(np.isfinite(required_bw))
+    
+    # 二分查找合适的目标延迟
+    # 下界：最小计算时间
+    delay_min = np.max(compute_times)
+    # 上界：使用最小带宽时的延迟
+    min_bandwidth = 0.1  # 最小分配带宽
+    delay_max = np.max(compute_times + data_size * 8 / (base_rates * min_bandwidth))
+    
+    # 二分查找
+    for _ in range(50):  # 限制迭代次数
+        target_delay = (delay_min + delay_max) / 2
+        if is_feasible(target_delay):
+            delay_max = target_delay
+        else:
+            delay_min = target_delay
+            
+        if delay_max - delay_min < 1e-4:  # 收敛条件
+            break
+    
+    # 使用最终的目标延迟计算带宽分配
+    final_delay = delay_max
+    bandwidths = calculate_required_bandwidth(final_delay)
+    
+    # 处理可能的数值误差，确保总带宽不超过限制
+    if np.sum(bandwidths) > total_bandwidth:
+        scale = total_bandwidth / np.sum(bandwidths)
+        bandwidths *= scale
+    
+    # 计算实际延迟
+    tx_times = data_size * 8 / (base_rates * bandwidths)
+    delays = tx_times + compute_times
+    
+    return {
+        "success": True,
+        "bandwidths": pd.Series(bandwidths, index=distances_series.index),
+        "max_delay": np.max(delays),
+        "delays": pd.Series(delays, index=distances_series.index)
+    }
+
+    def optimize_batch(self, group_id, base_clients, candidate_clients):
+        """批量计算多个候选客户端的延迟"""
+        all_delays = {}
+        base_clients_set = set(base_clients)
+        
+        # 预计算基础信息
+        selected_clients = self.client_edge_info[self.client_edge_info["client_id"].isin(base_clients)]
+        selected_clients = selected_clients.set_index("client_id")
+        
+        for candidate in candidate_clients:
+            if candidate in base_clients_set:
+                continue
+            
+            # 只计算新增的客户端
+            temp_clients = selected_clients.copy()
+            candidate_info = self.client_edge_info[self.client_edge_info["client_id"] == candidate].set_index("client_id")
+            temp_clients = pd.concat([temp_clients, candidate_info])
+            
+            if self.config.get("algorithm", "gp") == "gp":
+                result = self.optimize_bandwidth_gp(
+                    temp_clients[f"server_{group_id}"],
+                    temp_clients["power"],
+                    temp_clients["compute_time"],
+                    self.total_bandwidth,
+                    self.data_size
+                )
+            elif self.config.get("algorithm", "gp") == "binary":
+                result = self.optimize_bandwidth_binary(
+                    temp_clients[f"server_{group_id}"],
+                    temp_clients["power"],
+                    temp_clients["compute_time"],
+                    self.total_bandwidth,
+                    self.data_size
+                )
+            else:
+                result = self.optimize_bandwidth_simple(
+                    temp_clients[f"server_{group_id}"],
+                    temp_clients["power"],
+                    temp_clients["compute_time"],
+                    self.total_bandwidth,
+                    self.data_size
+                )
+            
+            if result["success"]:
+                all_delays[candidate] = result["delays"][candidate]
+        
+        return all_delays
+
+    def calculate_kl_divergence_fast(self, current_dist, current_num, client_info):
+        """优化的KL散度计算"""
+        client_num, client_dist = client_info
+        new_dist = (current_dist * current_num + client_dist * client_num) / (current_num + client_num)
+        exp_dist = np.full(10, 0.1)  # 1/10 for each class
+        
+        # 使用向量化操作
+        new_dist = np.maximum(new_dist, 1e-12)
+        return np.sum(new_dist * np.log(new_dist / exp_dist))
 
 
 def simple_plot(result):
