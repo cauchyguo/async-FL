@@ -34,7 +34,7 @@
         "path": "schedule.DualGroupSchedule.DualGroupSchedule",
         "params": {
           "c_ratio": 0.4,
-          "min_join_clients_num": 10,
+          "min_join_clients_num": 12,
           "total_bandwidth": 50,
           "data_size": 6.34,
           "max_join_clients_num": 12,

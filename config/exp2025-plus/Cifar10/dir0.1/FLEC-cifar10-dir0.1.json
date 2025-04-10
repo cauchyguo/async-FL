@@ -47,7 +47,7 @@
           "init_select_clients_num": 5,
           "init_select_unique_clients_num": 3,
           "init_select_shared_clients_num": 3,
-          "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
           "delay_adaptive_optimizer": {
             "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
             "params": {
@@ -59,7 +59,7 @@
                 37.6
               ],
               "algorithm": "binary",
-              "client_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+              "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
             }
           }
         }
@@ -107,7 +107,11 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+<<<<<<< HEAD
     "process_num": 15
+=======
+    "process_num": 5
+>>>>>>> f00cc01 (3090备份)
   },
   "client": {
     "path": "client.FLEClient.FLEClient",

@@ -5,6 +5,7 @@
 2025-04-08 08:57:45,870 - INFO - Starting experiment with UID: 6175efe3044d46ddb9907712536f4efb
 2025-04-08 09:01:27,062 - INFO - Starting experiment with UID: 6ef3e80d52ac47bf87c513aaf5e17ad0
 2025-04-08 09:05:31,396 - INFO - Starting experiment with UID: 6a4cc7e92c17403499d32a3355852b7f
+<<<<<<< HEAD
 2025-04-08 09:44:35,238 - INFO - Starting experiment with UID: 1507cb9a33af4fb89d970eef493532d6
 2025-04-08 10:08:29,231 - INFO - Starting experiment with UID: ab10fa0803084ab3bc0e7f7a272c1ea6
 2025-04-08 10:08:53,850 - INFO - Starting experiment with UID: 81858ea0f95d44b6923c6e4af467f050
@@ -27,3 +28,16 @@
 2025-04-09 11:06:51,797 - INFO - Starting experiment with UID: 3cc8a4a4cddd409bad5a3ed58ee6d2e3
 2025-04-09 22:42:46,720 - INFO - Starting experiment with UID: fb1906685bd64fdd88587b596e271bc3
 2025-04-10 03:31:52,084 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1/o.txt
+=======
+2025-04-08 09:10:47,118 - INFO - Starting experiment with UID: ff90110362f542348d471b79c62754fc
+2025-04-08 09:35:57,503 - INFO - Starting experiment with UID: 52bf2eaa54c04423b70ba3da754c4386
+2025-04-08 09:38:33,143 - INFO - Starting experiment with UID: 96e411678ef941d6a758daab2bf178cc
+2025-04-08 09:39:35,842 - INFO - Starting experiment with UID: 81087622612e4610946f207d7713a6c4
+2025-04-08 09:40:48,138 - INFO - Starting experiment with UID: 402b856339b8468c980ea6a4535ce274
+2025-04-08 09:42:38,375 - INFO - Starting experiment with UID: 11346e357d8047ca9ae18376bf8ef62b
+2025-04-08 09:46:46,669 - INFO - Starting experiment with UID: 49bf7b67e46d44a2ad5b040b5e12e709
+2025-04-08 09:48:06,236 - INFO - Starting experiment with UID: 97931acff8fa422699dbafe71e7fe4a5
+2025-04-08 09:59:45,237 - INFO - Starting experiment with UID: be25cdf641974f6aa623edd321226523
+2025-04-08 10:01:26,075 - INFO - Starting experiment with UID: 8d257898a4974ca98a8bda6b80c0bbec
+2025-04-08 10:06:26,238 - INFO - Starting experiment with UID: f73e493d9205409390d9f6aa7f88a118
+>>>>>>> f00cc01 (3090备份)

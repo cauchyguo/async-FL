@@ -1,0 +1,3 @@
+2025-04-08 10:16:18,887 - INFO - Starting experiment with UID: e0e5370967a3406a91b0c252c7f9950d
+2025-04-08 10:22:17,881 - INFO - Starting experiment with UID: 07fcc535911c48d8bfb8377d8bf386d9
+2025-04-08 11:25:33,075 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-iid/FLEC-iid/o.txt
