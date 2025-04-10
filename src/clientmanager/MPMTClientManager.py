@@ -5,7 +5,9 @@ from clientmanager.NormalClientManager import NormalClientManager
 from core.MessageQueue import MessageQueueFactory
 from utils import ModuleFindTool
 from utils.GlobalVarGetter import GlobalVarGetter
-
+import queue
+import logging
+from logging.handlers import QueueHandler, QueueListener
 
 def distribute_evenly(x, length):
     avg = x // length
@@ -96,6 +98,9 @@ class MPMT(Process):
         self.run_event = run_event
         self.stop_event = stop_event
         self.message_queue = MessageQueueFactory.create_message_queue()
+        
+        # 保存日志队列
+        self.log_queue = config.get('log_queue')
 
         # client params
         self.stop_event_list = stop_event_list
@@ -106,6 +111,23 @@ class MPMT(Process):
         self.client_dev = client_dev
 
     def run(self):
+        # 设置当前进程的日志记录器
+        if self.log_queue:
+            # 配置进程的根日志记录器
+            root_logger = logging.getLogger()
+            root_logger.setLevel(logging.INFO)
+            
+            # 移除任何现有的处理器
+            for handler in root_logger.handlers[:]:
+                root_logger.removeHandler(handler)
+                
+            # 添加队列处理器
+            handler = QueueHandler(self.log_queue)
+            root_logger.addHandler(handler)
+            
+            logging.info(f"Process {self.id} started logging")
+        
+        # 继续原有流程
         self.init_event.wait()
         self.init()
         self.run_event.wait()
@@ -118,6 +140,7 @@ class MPMT(Process):
             self.create_client_event.clear()
         for i in self.client_list:
             i.join()
+
 
     def create_client(self):
         self.client_list.append(

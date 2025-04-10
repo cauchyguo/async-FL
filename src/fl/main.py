@@ -161,6 +161,42 @@ def main():
     # global_var['log_queue'] = log_queue   
 
 
+    # 已有的初始化代码...
+    
+    # 创建一个多进程队列用于日志收集
+    log_queue = mp.Queue()
+    
+    # 设置日志文件路径
+    log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
+                              "../../results/", global_config["experiment"], "o.txt")
+    os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+    
+    # 创建文件和控制台处理器
+    file_handler = logging.FileHandler(log_file_path)
+    console_handler = logging.StreamHandler()
+    
+    # 配置格式
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+    
+    # 设置监听器并启动
+    listener = QueueListener(log_queue, file_handler, console_handler)
+    listener.start()
+    
+    # 将队列添加到client_manager_config而不是global_var
+    client_manager_config["log_queue"] = log_queue
+    
+    # 其余已有代码...
+    
+    # 程序结束时停止监听器
+    # try:
+    #     # 原有代码
+    #     # ...
+    # finally:
+        # 其他清理代码
+
+
 
     # 改用文件系统存储内存
     if 'use_file_system' in global_config and global_config['use_file_system']:
@@ -223,10 +259,13 @@ def main():
         saveJson(os.path.join(wandb.run.dir, "config.json"), raw_config)
         result_to_markdown(os.path.join(wandb.run.dir, "实验阐述.md"), config)
         
-        # # 将日志文件上传到wandb
-        # if os.path.exists(log_file_path):
-        #     wandb.save(log_file_path)
-        #     logger.info(f"Log file saved and uploaded to wandb: {log_file_path}")
+        # 将日志文件上传到 wandb
+        if os.path.exists(log_file_path):
+            wandb.save(log_file_path)
+            logging.info(f"Log file saved and uploaded to wandb: {log_file_path}")
+        
+    listener.stop()
+    
 
 
 def cleanup():

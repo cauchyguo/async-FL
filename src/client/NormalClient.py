@@ -63,7 +63,7 @@ class NormalClient(Client):
         The run function of Client runs the main body, suitable for use as a target parameter of process.
         """
         self.message_queue.set_training_status(self.client_id, True)
-        print("Client", self.client_id, "started","at time:",datetime.now().strftime("%H:%M:%S"))
+        # print("Client", self.client_id, "started","at time:",datetime.now().strftime("%H:%M:%S"))
         logger.info("Client %d started at time: %s", self.client_id, datetime.now().strftime("%H:%M:%S"))
         self.execute_chain()
         self.message_queue.set_training_status(self.client_id, False)
@@ -101,7 +101,7 @@ class NormalClient(Client):
             self.upload_item(k, v)
         self.customize_upload()
         self.message_queue.put_into_uplink(self.update_dict)
-        print("Client", self.client_id, "uploaded","at time",datetime.now().strftime("%H:%M:%S"), "; simulated_delay",round(self.delay,2))
+        # print("Client", self.client_id, "uploaded","at time",datetime.now().strftime("%H:%M:%S"), "; simulated_delay",round(self.delay,2))
         logger.info("Client %d uploaded at time: %s; simulated_delay: %f", self.client_id, datetime.now().strftime("%H:%M:%S"), round(self.delay,2))
     def upload_item(self, k, v):
         self.update_dict[k] = v

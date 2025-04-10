@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import math
 
-
+import os
 
 class DelayAssociationGroup(AbstractGroup):
     def __init__(self, group_manager, config):
@@ -45,6 +45,24 @@ class DelayAssociationGroup(AbstractGroup):
         
         for i in range(self.edge_server_num):
             print(f"edge_server_{i}: {self.group_list[i]}")
+
+        # 统计每个客户端到对应边缘服务器的时延
+
+        client_edge_df['system_time'] = 0
+
+        for group_idx in range(self.edge_server_num):
+            for client_idx in self.group_list[group_idx]:
+                server_col = f'server_{i}'
+                trans_rate = self.calculate_data_rate(client_edge_df[server_col].iloc[client_idx], client_edge_df['power'].iloc[client_idx], self.mean_bandwidth)
+                trans_time = self.data_size * 8 / trans_rate
+                system_time.append(client_compute_delay + trans_time)
+                client_edge_df['system_time'].iloc[client_idx] = system_time
+
+        # 保存到csv文件
+        file_name = f'{self.data_size}_DelayAssociationGroup.csv'
+        path = os.path.join(self.client_edge_distance_path, file_name)
+        client_edge_df.to_csv(path, index=False)
+
             
         return self.group_list,self.edge_server_num
 
