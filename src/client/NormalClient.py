@@ -4,6 +4,8 @@ from client.mixin.InitHandler import InitHandler
 from core.handlers.Handler import HandlerChain
 from core.handlers.ModelTrainHandler import ClientTrainHandler, ClientPostTrainHandler
 import time
+import logging
+logger = logging.getLogger(__name__)
 from datetime import datetime
 
 class NormalClient(Client):
@@ -62,6 +64,7 @@ class NormalClient(Client):
         """
         self.message_queue.set_training_status(self.client_id, True)
         print("Client", self.client_id, "started","at time:",datetime.now().strftime("%H:%M:%S"))
+        logger.info("Client %d started at time: %s", self.client_id, datetime.now().strftime("%H:%M:%S"))
         self.execute_chain()
         self.message_queue.set_training_status(self.client_id, False)
 
@@ -99,7 +102,7 @@ class NormalClient(Client):
         self.customize_upload()
         self.message_queue.put_into_uplink(self.update_dict)
         print("Client", self.client_id, "uploaded","at time",datetime.now().strftime("%H:%M:%S"), "; simulated_delay",round(self.delay,2))
-
+        logger.info("Client %d uploaded at time: %s; simulated_delay: %f", self.client_id, datetime.now().strftime("%H:%M:%S"), round(self.delay,2))
     def upload_item(self, k, v):
         self.update_dict[k] = v
 

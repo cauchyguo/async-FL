@@ -2,6 +2,8 @@ from group.AbstractGroup import AbstractGroup
 import pandas as pd
 import numpy as np
 import math
+import psutil
+import logging
 
 
 
@@ -19,15 +21,29 @@ class RandomAssociationGroup(AbstractGroup):
         self.mean_bandwidth = self.total_bandwidth / self.min_join_clients_num
 
         self.group_list = [[] for _ in range(self.edge_server_num)]
+        
+        # 设置日志
+        logging.basicConfig(level=logging.INFO)
+        self.logger = logging.getLogger(__name__)
+
+    def log_memory_usage(self, stage):
+        process = psutil.Process()
+        memory_info = process.memory_info()
+        self.logger.info(f"Memory usage at {stage}: {memory_info.rss / 1024 / 1024:.2f} MB")
 
     def group(self, client_list, latency_list):
         self.init = True
+        self.log_memory_usage("start")
 
         # 从CSV文件加载距离矩阵
         client_edge_df = pd.read_csv(self.client_edge_distance_path)
+        self.log_memory_usage("after loading csv")
+        
         edge_server_count = len([col for col in client_edge_df.columns if col.startswith('server_')])
         self.edge_server_num = min(edge_server_count, self.edge_server_num)
         self.client_num = client_edge_df.shape[0]
+        
+        self.logger.info(f"Total clients: {self.client_num}, Edge servers: {self.edge_server_num}")
         
         # 计算每个客户端到每个边缘服务器的时延
         delay_matrix = np.zeros((self.client_num, self.edge_server_num))
@@ -40,6 +56,8 @@ class RandomAssociationGroup(AbstractGroup):
                                                     self.mean_bandwidth)
                 trans_time = self.data_size * 8 / trans_rate
                 delay_matrix[client_idx, i] = client_compute_delay + trans_time
+        
+        self.log_memory_usage("after calculating delay matrix")
         
         # 计算每个客户端的平均时延
         avg_delays = np.mean(delay_matrix, axis=1)
@@ -55,7 +73,7 @@ class RandomAssociationGroup(AbstractGroup):
         sorted_clients = np.argsort(avg_delays)
         
         # 确保每个边缘服务器至少有15个客户端
-        min_clients_per_server = 20
+        min_clients_per_server = 15
         
         # 首先进行初始分配，确保每个服务器至少有最小数量的客户端
         for i in range(self.edge_server_num):
@@ -65,6 +83,8 @@ class RandomAssociationGroup(AbstractGroup):
             for j in range(base_clients):
                 if i * base_clients + j < len(sorted_clients):
                     self.group_list[i].append(sorted_clients[i * base_clients + j])
+        
+        self.log_memory_usage("after initial assignment")
         
         # 剩余的客户端进行轮询分配
         remaining_clients = set(sorted_clients) - set([client for group in self.group_list for client in group])
@@ -76,17 +96,19 @@ class RandomAssociationGroup(AbstractGroup):
             self.group_list[current_server].append(client_idx)
             current_server = (current_server + 1) % self.edge_server_num
         
+        self.log_memory_usage("after final assignment")
+        
         # 打印各边缘服务器的分配情况和时延范围
         for i in range(self.edge_server_num):
             if len(self.group_list[i]) > 0:
                 server_delays = [avg_delays[client_idx] for client_idx in self.group_list[i]]
-                print(f"edge_server_{i}: {self.group_list[i]}")
-                print(f"  delay range: {min(server_delays):.2f} - {max(server_delays):.2f}")
-                print(f"  client count: {len(self.group_list[i])}")
+                self.logger.info(f"edge_server_{i}: {self.group_list[i]}")
+                self.logger.info(f"  delay range: {min(server_delays):.2f} - {max(server_delays):.2f}")
+                self.logger.info(f"  client count: {len(self.group_list[i])}")
             else:
-                print(f"edge_server_{i}: []")
-                print(f"  delay range: N/A")
-                print(f"  client count: 0")
+                self.logger.info(f"edge_server_{i}: []")
+                self.logger.info(f"  delay range: N/A")
+                self.logger.info(f"  client count: 0")
             
         return self.group_list, self.edge_server_num
 

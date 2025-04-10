@@ -1,8 +1,8 @@
 {
   "wandb": {
-    "enabled": true,
+    "enabled": false,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FLEC-dir0.1"
+    "name": "FLEC-iid"
   },
   "global": {
     "mode": {
@@ -12,15 +12,13 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1",
+    "experiment": "Exp2025-V2-Cifar10-iid/FLEC-iid",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
       "params": {}
     },
-    "iid": {
-      "beta": 0.1
-    },
+    "iid": true,
     "client_num": 100
   },
   "server": {
@@ -38,14 +36,14 @@
         "path": "schedule.DualGroupSchedule.DualGroupSchedule",
         "params": {
           "c_ratio": 0.4,
-          "min_join_clients_num": 12,
+          "min_join_clients_num": 11,
           "total_bandwidth": 50,
           "data_size": 42.7,
           "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
           "theta": 0.01,
           "init_select_clients_num": 5,
-          "init_select_unique_clients_num": 3,
+          "init_select_unique_clients_num": 5,
           "init_select_shared_clients_num": 3,
           "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
           "delay_adaptive_optimizer": {
@@ -107,7 +105,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 15
+    "process_num": 10
   },
   "client": {
     "path": "client.FLEClient.FLEClient",

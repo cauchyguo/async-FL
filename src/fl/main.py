@@ -17,7 +17,9 @@ from core.Runtime import running_mode
 from utils.Tools import *
 from utils import ModuleFindTool
 import argparse
-
+import queue
+import logging
+from logging.handlers import QueueHandler, QueueListener
 
 def generate_client_stale_list(global_config):
     stale = global_config['stale']
@@ -94,21 +96,21 @@ def main():
     else:
         is_cover = True
 
-    # 创建日志文件夹和设置日志
-    log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"], "o.txt")
-    os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+    # # 创建日志文件夹和设置日志
+    # log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../results/", global_config["experiment"], "o.txt")
+    # os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
     
-    # 设置日志记录
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file_path),
-            logging.StreamHandler(sys.stdout)
-        ]
-    )
-    logger = logging.getLogger(__name__)
-    logger.info(f"Starting experiment with UID: {uid}")
+    # # 设置日志记录
+    # logging.basicConfig(
+    #     level=logging.INFO,
+    #     format='%(asctime)s - %(levelname)s - %(message)s',
+    #     handlers=[
+    #         logging.FileHandler(log_file_path),
+    #         logging.StreamHandler(sys.stdout)
+    #     ]
+    # )
+    # logger = logging.getLogger(__name__)
+    # logger.info(f"Starting experiment with UID: {uid}")
 
     # 保存配置文件
     if os.path.exists(
@@ -133,6 +135,7 @@ def main():
             name=wandb_config["name"],
             **params
         )
+        wandb.require("service")
 
     GlobalVarGetter.set({'config': config, 'global_config': global_config,
                          'server_config': server_config,
@@ -144,6 +147,20 @@ def main():
     message_queue.set_config(global_var)
 
     start_time = datetime.datetime.now()
+
+
+    # # 创建队列
+    # log_queue = queue.Queue()
+    # # 设置队列监听器
+    # queue_handler = logging.FileHandler(log_file_path)
+    # queue_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+    # listener = QueueListener(log_queue, queue_handler)
+    # listener.start()
+
+    # # 配置全局变量，将队列共享给子进程
+    # global_var['log_queue'] = log_queue   
+
+
 
     # 改用文件系统存储内存
     if 'use_file_system' in global_config and global_config['use_file_system']:
@@ -206,10 +223,10 @@ def main():
         saveJson(os.path.join(wandb.run.dir, "config.json"), raw_config)
         result_to_markdown(os.path.join(wandb.run.dir, "实验阐述.md"), config)
         
-        # 将日志文件上传到wandb
-        if os.path.exists(log_file_path):
-            wandb.save(log_file_path)
-            logger.info(f"Log file saved and uploaded to wandb: {log_file_path}")
+        # # 将日志文件上传到wandb
+        # if os.path.exists(log_file_path):
+        #     wandb.save(log_file_path)
+        #     logger.info(f"Log file saved and uploaded to wandb: {log_file_path}")
 
 
 def cleanup():
