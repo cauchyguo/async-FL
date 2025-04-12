@@ -48,8 +48,8 @@ class GroupSyncScheduler(BaseScheduler):
 
         if "method" in self.config and self.config["method"] == "FedAGSA":
             if "FedAGSA_group_path" in self.config['FedAGSA_params']:
-                self.group_info_df = pd.read_csv(self.config['FedAGSA_params']["FedAGSA_group_path"])
-            else:
+            #     self.group_info_df = pd.read_csv(self.config['FedAGSA_params']["FedAGSA_group_path"])
+            # else:
                 self.group_info_df = self.generate_group_info_df()
             self.FedAGSA_lam = self.config['FedAGSA_params']['lambda']
             self.FedAGSA_epsilon = self.config['FedAGSA_params']['epsilon']

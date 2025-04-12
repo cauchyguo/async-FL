@@ -2,13 +2,14 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-FashionMNIST-Dir0.1",
-        "name": "PyramidFL-cnn-dir0.1"
+        "name": "PyramidFL-cnn-dir0.1-timefirst"
     },
     "global": {
+        "seed": 42,
         "dataset_pre_load": true,
         "use_file_system": false,
-        "multi_gpu": true,
-        "experiment": "Exp2025-FashionMNIST-Dir0.1/PyramidFL-cnn-dir0.1",
+        "multi_gpu": false,
+        "experiment": "Exp2025-FashionMNIST-Dir0.1/PyramidFL-cnn-dir0.1-timefirst",
         "custom": {
             "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
             "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
@@ -23,7 +24,7 @@
     },
     "server": {
         "path": "server.NormalServer.NormalServer",
-        "epochs": 1000,
+        "epochs": 310,
         "model": {
             "path": "model.CNN.CNN",
             "params": {}
@@ -35,8 +36,8 @@
                 "params": {
                     "c_ratio": 0.1,
                     "exploration_factor": 0.5,
-                    "cut_off_util": 0.8,
-                    "round_threshold": 50
+                    "cut_off_util": 0.2,
+                    "round_threshold": 20
                 }
             }
         },

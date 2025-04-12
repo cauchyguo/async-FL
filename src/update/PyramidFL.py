@@ -76,8 +76,13 @@ class PyramidFL(AbstractUpdate):
                 scheduler_instance.schedule.update_client_statistics(self.client_statistics)
         except:
             pass  # 忽略可能的异常
+
+        # self.global_var['epoch_avg_loss'][epoch] = 0
+        # self.global_var['epoch_group_data_util'][epoch] = 0
+        # self.global_var['epoch_group_data_util_accumulate'][epoch] = 0
                 
         return updated_parameters, None  # 返回更新后的参数和None
+
 
     def _update_client_statistics(self, client_id, training_results):
         """

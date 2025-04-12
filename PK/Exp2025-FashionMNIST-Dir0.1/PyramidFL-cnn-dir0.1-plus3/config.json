@@ -1,0 +1,187 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-FashionMNIST-Dir0.1",
+        "name": "PyramidFL-cnn-dir0.1-plus3"
+    },
+    "global": {
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": false,
+        "experiment": "Exp2025-FashionMNIST-Dir0.1/PyramidFL-cnn-dir0.1-plus3",
+        "custom": {
+            "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/clients_info_dir0.1_cnn_delaymodel.csv"
+        },
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.FashionMNIST.FashionMNIST",
+            "params": {}
+        },
+        "iid": true,
+        "client_num": 100,
+        "uid": "34585a5cb4e644e4a0e952716392da0f",
+        "seed": 423629287
+    },
+    "server": {
+        "path": "server.NormalServer.NormalServer",
+        "epochs": 510,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "scheduler": {
+            "path": "scheduler.SyncScheduler.SyncScheduler",
+            "schedule": {
+                "path": "schedule.PyramidSchedule.PyramidSchedule",
+                "params": {
+                    "c_ratio": 0.1,
+                    "exploration_factor": 0.5,
+                    "cut_off_util": 0.3,
+                    "round_threshold": 30
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.PyramidFL.PyramidFL",
+                "params": {}
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.PyramidClient.PyramidClient",
+        "epochs": 2,
+        "batch_size": 64,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.01,
+                "weight_decay": 0
+            }
+        }
+    }
+}

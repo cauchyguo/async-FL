@@ -56,7 +56,7 @@ class SyncUpdater(BaseUpdater):
             # 记录每个group的累积数据利用率
             self.global_var['group_data_util_accumulate'][selected_group_id].append((epoch, self.global_var['epoch_group_data_util_accumulate'][epoch]))
 
-        self.global_var['epoch_accuacy'].append((epoch, acc))
+            self.global_var['epoch_accuacy'].append((epoch, acc))
         if self.config['enabled']:
             wandb.log({'accuracy': acc, 'loss': loss, 'run_time': run_time})
 

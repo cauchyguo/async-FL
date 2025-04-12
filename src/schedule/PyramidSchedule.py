@@ -183,7 +183,7 @@ class PyramidSchedule(AbstractSchedule):
                 
                 # 惩罚执行时间长的慢客户端
                 if client['duration'] > round_prefer_duration:  # 如果执行时间超过阈值
-                    penalty_factor = max((round_prefer_duration / max(1e-4, client['duration'])) ** 2, 0.5)  # 计算惩罚因子,最小为0.5
+                    penalty_factor = (round_prefer_duration / max(1e-4, client['duration'])) ** 2  # 计算惩罚因子,最小为0.5
                     score *= penalty_factor  # 应用惩罚
                     
                 scores[client_id] = score  # 保存分数
@@ -193,7 +193,10 @@ class PyramidSchedule(AbstractSchedule):
                 unexplored_clients.append(client_id)  # 添加到未探索列表
         
         # 利用阶段选择
-        exploit_count = min(int(num_to_select * (1.0 - exploration_factor)), len(exploited_clients))  # 计算利用阶段选择数量
+        if len(unexplored_clients) == 0:
+            exploit_count = num_to_select  # 不需要再探索
+        else:
+            exploit_count = min(int(num_to_select * (1.0 - exploration_factor)), len(exploited_clients))  # 计算利用阶段选择数量
         
         # 按分数排序客户端
         sorted_clients = sorted(scores.keys(), key=lambda k: scores[k], reverse=True)  # 降序排序
@@ -213,15 +216,25 @@ class PyramidSchedule(AbstractSchedule):
                     break  # 达到截断分数后停止
             
             # 按概率选择客户端
-            if candidates:  # 如果有候选客户端
-                probs = np.array([scores[c] for c in candidates])  # 获取分数数组
-                probs = probs / np.sum(probs)  # 归一化为概率
-                exploit_select = min(exploit_count, len(candidates))  # 选择数量
-                
-                if exploit_select > 0:  # 如果需要选择
-                    # 按概率无放回抽样
+            # 按照指数期望函数选择
+            if len(candidates) > 0:
+                probs = np.array([np.exp(scores[c]) for c in candidates])
+                probs = probs / np.sum(probs)
+                exploit_select = min(exploit_count, len(candidates))
+                if exploit_select > 0:
                     selected_exploit = np.random.choice(
                         candidates, exploit_select, p=probs, replace=False).tolist()
+            # else:
+                
+            # if candidates:  # 如果有候选客户端
+            #     probs = np.array([scores[c] for c in candidates])  # 获取分数数组
+            #     probs = probs / np.sum(probs)  # 归一化为概率
+            #     exploit_select = min(exploit_count, len(candidates))  # 选择数量
+                
+            #     if exploit_select > 0:  # 如果需要选择
+            #         # 按概率无放回抽样
+            #         selected_exploit = np.random.choice(
+            #             candidates, exploit_select, p=probs, replace=False).tolist()
         
         # 探索阶段选择
         explore_count = min(num_to_select - len(selected_exploit), len(unexplored_clients))  # 计算探索阶段选择数量

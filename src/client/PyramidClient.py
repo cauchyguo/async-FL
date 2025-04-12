@@ -96,7 +96,7 @@ class PyramidClient(NormalClient):
         gradient_squared_norm = 0 # 梯度平方范数累积值
         
         # 循环训练指定的epoch数
-        for epoch in range(self.epoch + 1):
+        for epoch in range(self.epoch):
             # 遍历训练数据加载器中的每个批次
             for data, label in self.train_dl:
                 # 将数据和标签移动到指定设备（GPU/CPU）

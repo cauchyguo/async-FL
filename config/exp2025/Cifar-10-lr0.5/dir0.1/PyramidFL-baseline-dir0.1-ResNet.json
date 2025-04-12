@@ -2,14 +2,17 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-Cifar10-lr0.5-Dir0.1",
-    "name": "PyramidFL-resnet-dir0.1"
+    "name": "PyramidFL-resnet-dir0.1-plus"
   },
   "global": {
+    "mode": {
+      "path": "core.MPMT.MPMT"
+    },
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": true,
-    "experiment": "Exp2025-Cifar10-lr0.5-Dir0.1/PyramidFL-resnet-dir0.1",
+    "multi_gpu": false,
+    "experiment": "Exp2025-Cifar10-lr0.5-Dir0.1/PyramidFL-resnet-dir0.1-plus",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
       "clients_info_path": "/home/ypguo/async-FL/src/clients_info/resnet18/clients_info_dir0.1_resnet_delaymodel.csv"
@@ -37,9 +40,9 @@
         "path": "schedule.PyramidSchedule.PyramidSchedule",
         "params": {
           "c_ratio": 0.1,
-          "exploration_factor": 0.5,
-          "cut_off_util": 0.8,
-          "round_threshold": 70
+          "exploration_factor": 0.3,
+          "cut_off_util": 0.3,
+          "round_threshold": 30
         }
       }
     },
@@ -64,7 +67,8 @@
     }
   },
   "client_manager": {
-    "path": "clientmanager.NormalClientManager.NormalClientManager"
+    "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+    "process_num": 5
   },
   "client": {
     "path": "client.PyramidClient.PyramidClient",
@@ -85,7 +89,7 @@
     "optimizer": {
       "path": "torch.optim.SGD",
       "params": {
-        "lr": 0.07,
+        "lr": 0.05,
         "weight_decay": 0
       }
     }
