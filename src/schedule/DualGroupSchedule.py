@@ -16,10 +16,10 @@ class DualGroupSchedule(AbstractSchedule):
         self.target_kl_divergence = config.get("target_kl_divergence", 0.05)
         self.group_kl_divergence = None
         self.theta = config["theta"]
-        self.init_select_clients_num = config["init_select_clients_num"]
+        self.init_select_clients_num = config.get("init_select_clients_num", 5)
 
         self.init_select_unique_clients_num = config.get("init_select_unique_clients_num", 3)
-        # self.init_select_shared_clients_num = config.get("init_select_shared_clients_num", 5)
+        self.init_select_shared_clients_num = config.get("init_select_shared_clients_num", 5)
 
         delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["delay_adaptive_optimizer"]["path"])
         self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["delay_adaptive_optimizer"]["params"])
@@ -35,9 +35,12 @@ class DualGroupSchedule(AbstractSchedule):
         # 现从独占组中随机选择若干个客户端
         # if len(edge_server_unique_clients) < self.min_join_clients_num:
         #     print("debug")
-        init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
+
+        available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
+        # init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
+        init_select_client = random.sample(available_clients_set, min(self.init_select_clients_num,len(available_clients_set)))
         for client_id in init_select_client:
-            edge_server_unique_clients.remove(client_id)
+            available_clients_set.remove(client_id)
             self.selected_client_threads.append(client_id)
 
         # init_select_shared_client = random.sample(edge_server_shared_clients, min(self.init_select_shared_clients_num,len(edge_server_shared_clients)))
@@ -53,7 +56,7 @@ class DualGroupSchedule(AbstractSchedule):
         # 计算初始组群的KL散度
         self.group_kl_divergence = self.cal_selected_clients_kldivergence(self.selected_client_threads)
         # 然后从共享组中选择综合延迟和使得KL散度最小的客户端
-        available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
+        # available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
         print(f"candidate {len(available_clients_set)} clients: {available_clients_set}")
 
         # 预计算所有客户端的数据分布，避免重复计算
@@ -108,17 +111,19 @@ class DualGroupSchedule(AbstractSchedule):
 
         print(f"Then, Server {edge_server_idx} self.selected_client_threads: {[item for item in self.selected_client_threads if item not in init_select_client]}")
         # 输出选择客户端子集的KL散度以及时延
-        print(f"KL range:",end='')
-        for i in range(len(kl_trans_list)):
-            print(f"{round(kl_trans_list[i],4)} ->",end='')
-        print()
-        print(f"delay range:",end='')
-        for i in range(len(delay_trans_list)):
-            print(f"{round(delay_trans_list[i],2)} -> ",end='')
-        print()
-        sys_cost = time.time() - start_time
-        delay = delay_trans_list[-1] - sys_cost
-        print(f"sys_cost: {sys_cost}")
+
+        if len(kl_trans_list) > 0:
+            print(f"KL range:",end='')
+            for i in range(len(kl_trans_list)):
+                print(f"{round(kl_trans_list[i],4)} ->",end='')
+            print()
+            print(f"delay range:",end='')
+            for i in range(len(delay_trans_list)):
+                print(f"{round(delay_trans_list[i],2)} -> ",end='')
+            print()
+            sys_cost = time.time() - start_time
+            delay = delay_trans_list[-1] - sys_cost
+            print(f"sys_cost: {sys_cost}")
         return self.selected_client_threads
     
     def cal_fitness(self,client_id):

@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FLEC-iid"
+    "name": "FLEC-iid-random"
   },
   "global": {
     "mode": {
@@ -11,8 +11,8 @@
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-iid/FLEC-iid",
+    "multi_gpu": true,
+    "experiment": "Exp2025-V2-Cifar10-iid/FLEC-iid-random",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
@@ -36,13 +36,13 @@
         "path": "schedule.DualGroupSchedule.DualGroupSchedule",
         "params": {
           "c_ratio": 0.4,
-          "min_join_clients_num": 11,
+          "min_join_clients_num": 10,
           "total_bandwidth": 50,
           "data_size": 42.7,
           "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
-          "theta": 0.01,
-          "init_select_clients_num": 5,
+          "theta": 0.001,
+          "init_select_clients_num": 8,
           "init_select_unique_clients_num": 5,
           "init_select_shared_clients_num": 3,
           "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",

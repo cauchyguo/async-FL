@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FedAT-iid"
+    "name": "FedAT-iid-v2"
   },
   "global": {
     "mode": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-iid/FedAT-iid",
+    "experiment": "Exp2025-V2-Cifar10-iid/FedAT-iid-v2",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
@@ -88,7 +88,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 10
+    "process_num": 15
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
