@@ -17,12 +17,12 @@ import numpy as np
 class AsyncSchedulerPlus(SyncScheduler):
     def __init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem):
         SyncScheduler.__init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem)
-        self.edge_server_num = self.global_var['edge_server_num']
+        self.edge_server_num = 5
         self.group_num = self.edge_server_num
 
         client_edge_df = pd.read_csv(self.global_var['config']['server']['scheduler']['schedule']['params']['clients_edge_info_path'])
         self.clients_edge_info_df = client_edge_df
-        self.client_num = client_edge_df.shape[0]
+        self.client_num = 100
         
         self.sys_cost = self.global_var['config']['server']['scheduler']['schedule']['params']['sys_cost']
 

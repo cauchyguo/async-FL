@@ -60,7 +60,7 @@ class DualGroupPlus(AbstractGroup):
             transfer_rates = [self.calculate_data_rate(client_edge_df[server_col].iloc[i], client_edge_df['power'].iloc[i], 1) for i in range(self.client_num)]
             
             # 获取K个传输速率最高的客户端
-            closest_clients_indices = np.argsort(transfer_rates)[-self.nearest_K:]
+            closest_clients_indices = np.argsort(transfer_rates)[self.client_num-self.nearest_K:]
             
             # 创建候选集（K个最近客户端减去已在独占组中的客户端）
             # candidates = set(closest_clients_indices) - self.unique_groups[server_idx]

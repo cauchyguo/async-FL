@@ -1,0 +1,1337 @@
+2025-04-16 17:06:46,639 - INFO - Process 0 started logging
+2025-04-16 17:06:48,187 - INFO - Process 1 started logging
+2025-04-16 17:06:49,751 - INFO - Process 2 started logging
+2025-04-16 17:06:51,419 - INFO - Process 3 started logging
+2025-04-16 17:06:52,968 - INFO - Process 4 started logging
+2025-04-16 17:07:23,755 - INFO - Client 35 started at time: 17:07:23
+2025-04-16 17:07:30,837 - INFO - Client 17 started at time: 17:07:30
+2025-04-16 17:07:30,841 - INFO - Client 28 started at time: 17:07:30
+2025-04-16 17:07:30,842 - INFO - Client 13 started at time: 17:07:30
+2025-04-16 17:07:30,843 - INFO - Client 3 started at time: 17:07:30
+2025-04-16 17:07:30,842 - INFO - Client 14 started at time: 17:07:30
+2025-04-16 17:07:30,846 - INFO - Client 94 started at time: 17:07:30
+2025-04-16 17:07:32,178 - INFO - Client 31 started at time: 17:07:32
+2025-04-16 17:07:32,901 - INFO - Client 86 started at time: 17:07:32
+2025-04-16 17:07:32,918 - INFO - Client 81 started at time: 17:07:32
+2025-04-16 17:09:03,335 - INFO - Process 0 started logging
+2025-04-16 17:09:04,915 - INFO - Process 1 started logging
+2025-04-16 17:09:06,499 - INFO - Process 2 started logging
+2025-04-16 17:09:08,083 - INFO - Process 3 started logging
+2025-04-16 17:09:09,636 - INFO - Process 4 started logging
+2025-04-16 17:09:41,438 - INFO - Client 31 started at time: 17:09:41
+2025-04-16 17:11:17,799 - INFO - Process 0 started logging
+2025-04-16 17:11:19,367 - INFO - Process 1 started logging
+2025-04-16 17:12:06,387 - INFO - Process 0 started logging
+2025-04-16 17:12:07,935 - INFO - Process 1 started logging
+2025-04-16 17:15:21,495 - INFO - Process 0 started logging
+2025-04-16 17:15:23,079 - INFO - Process 1 started logging
+2025-04-16 17:15:56,932 - INFO - Client 2 started at time: 17:15:56
+2025-04-16 17:16:03,387 - INFO - Client 51 started at time: 17:16:03
+2025-04-16 17:16:03,388 - INFO - Client 91 started at time: 17:16:03
+2025-04-16 17:16:03,390 - INFO - Client 8 started at time: 17:16:03
+2025-04-16 17:16:03,390 - INFO - Client 25 started at time: 17:16:03
+2025-04-16 17:16:03,391 - INFO - Client 43 started at time: 17:16:03
+2025-04-16 17:16:03,394 - INFO - Client 93 started at time: 17:16:03
+2025-04-16 17:16:03,395 - INFO - Client 88 started at time: 17:16:03
+2025-04-16 17:16:03,396 - INFO - Client 86 started at time: 17:16:03
+2025-04-16 17:16:03,396 - INFO - Client 81 started at time: 17:16:03
+2025-04-16 17:16:03,396 - INFO - Client 87 started at time: 17:16:03
+2025-04-16 17:16:03,397 - INFO - Client 74 started at time: 17:16:03
+2025-04-16 17:16:03,398 - INFO - Client 62 started at time: 17:16:03
+2025-04-16 17:16:03,398 - INFO - Client 53 started at time: 17:16:03
+2025-04-16 17:16:03,398 - INFO - Client 38 started at time: 17:16:03
+2025-04-16 17:16:03,398 - INFO - Client 75 started at time: 17:16:03
+2025-04-16 17:16:03,399 - INFO - Client 94 started at time: 17:16:03
+2025-04-16 17:16:03,399 - INFO - Client 9 started at time: 17:16:03
+2025-04-16 17:16:03,402 - INFO - Client 27 started at time: 17:16:03
+2025-04-16 17:16:03,405 - INFO - Client 54 started at time: 17:16:03
+2025-04-16 17:16:03,562 - INFO - Client 74 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,693 - INFO - Client 54 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,720 - INFO - Client 62 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,761 - INFO - Client 2 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,873 - INFO - Client 8 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,924 - INFO - Client 38 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,934 - INFO - Client 81 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,939 - INFO - Client 91 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,985 - INFO - Client 87 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,987 - INFO - Client 27 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:03,989 - INFO - Client 94 uploaded at time: 17:16:03; simulated_delay: 0.000000
+2025-04-16 17:16:04,058 - INFO - Client 75 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,091 - INFO - Client 51 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,093 - INFO - Client 9 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,126 - INFO - Client 86 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,127 - INFO - Client 53 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,174 - INFO - Client 93 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,185 - INFO - Client 25 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,207 - INFO - Client 43 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,242 - INFO - Client 88 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,727 - INFO - Client 8 started at time: 17:16:04
+2025-04-16 17:16:04,727 - INFO - Client 25 started at time: 17:16:04
+2025-04-16 17:16:04,728 - INFO - Client 2 started at time: 17:16:04
+2025-04-16 17:16:04,728 - INFO - Client 43 started at time: 17:16:04
+2025-04-16 17:16:04,728 - INFO - Client 9 started at time: 17:16:04
+2025-04-16 17:16:04,728 - INFO - Client 20 started at time: 17:16:04
+2025-04-16 17:16:04,729 - INFO - Client 27 started at time: 17:16:04
+2025-04-16 17:16:04,730 - INFO - Client 74 started at time: 17:16:04
+2025-04-16 17:16:04,730 - INFO - Client 53 started at time: 17:16:04
+2025-04-16 17:16:04,730 - INFO - Client 51 started at time: 17:16:04
+2025-04-16 17:16:04,730 - INFO - Client 62 started at time: 17:16:04
+2025-04-16 17:16:04,731 - INFO - Client 54 started at time: 17:16:04
+2025-04-16 17:16:04,731 - INFO - Client 75 started at time: 17:16:04
+2025-04-16 17:16:04,732 - INFO - Client 86 started at time: 17:16:04
+2025-04-16 17:16:04,732 - INFO - Client 88 started at time: 17:16:04
+2025-04-16 17:16:04,732 - INFO - Client 81 started at time: 17:16:04
+2025-04-16 17:16:04,732 - INFO - Client 91 started at time: 17:16:04
+2025-04-16 17:16:04,733 - INFO - Client 93 started at time: 17:16:04
+2025-04-16 17:16:04,733 - INFO - Client 94 started at time: 17:16:04
+2025-04-16 17:16:04,733 - INFO - Client 87 started at time: 17:16:04
+2025-04-16 17:16:04,883 - INFO - Client 74 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,943 - INFO - Client 54 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:04,952 - INFO - Client 62 uploaded at time: 17:16:04; simulated_delay: 0.000000
+2025-04-16 17:16:05,020 - INFO - Client 2 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,085 - INFO - Client 8 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,109 - INFO - Client 91 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,124 - INFO - Client 20 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,132 - INFO - Client 87 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,155 - INFO - Client 81 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,203 - INFO - Client 27 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,300 - INFO - Client 94 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,300 - INFO - Client 75 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,332 - INFO - Client 9 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,334 - INFO - Client 86 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,423 - INFO - Client 51 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,427 - INFO - Client 53 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,429 - INFO - Client 93 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,437 - INFO - Client 88 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,462 - INFO - Client 25 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:05,494 - INFO - Client 43 uploaded at time: 17:16:05; simulated_delay: 0.000000
+2025-04-16 17:16:06,005 - INFO - Client 2 started at time: 17:16:06
+2025-04-16 17:16:06,006 - INFO - Client 12 started at time: 17:16:06
+2025-04-16 17:16:06,006 - INFO - Client 16 started at time: 17:16:06
+2025-04-16 17:16:06,007 - INFO - Client 23 started at time: 17:16:06
+2025-04-16 17:16:06,007 - INFO - Client 22 started at time: 17:16:06
+2025-04-16 17:16:06,008 - INFO - Client 25 started at time: 17:16:06
+2025-04-16 17:16:06,008 - INFO - Client 24 started at time: 17:16:06
+2025-04-16 17:16:06,008 - INFO - Client 43 started at time: 17:16:06
+2025-04-16 17:16:06,009 - INFO - Client 36 started at time: 17:16:06
+2025-04-16 17:16:06,009 - INFO - Client 39 started at time: 17:16:06
+2025-04-16 17:16:06,010 - INFO - Client 62 started at time: 17:16:06
+2025-04-16 17:16:06,009 - INFO - Client 51 started at time: 17:16:06
+2025-04-16 17:16:06,010 - INFO - Client 59 started at time: 17:16:06
+2025-04-16 17:16:06,010 - INFO - Client 53 started at time: 17:16:06
+2025-04-16 17:16:06,011 - INFO - Client 88 started at time: 17:16:06
+2025-04-16 17:16:06,011 - INFO - Client 94 started at time: 17:16:06
+2025-04-16 17:16:06,011 - INFO - Client 82 started at time: 17:16:06
+2025-04-16 17:16:06,011 - INFO - Client 75 started at time: 17:16:06
+2025-04-16 17:16:06,012 - INFO - Client 85 started at time: 17:16:06
+2025-04-16 17:16:06,012 - INFO - Client 97 started at time: 17:16:06
+2025-04-16 17:16:06,198 - INFO - Client 39 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,228 - INFO - Client 62 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,254 - INFO - Client 22 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,268 - INFO - Client 23 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,346 - INFO - Client 36 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,355 - INFO - Client 2 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,467 - INFO - Client 85 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,473 - INFO - Client 75 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,478 - INFO - Client 12 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,496 - INFO - Client 82 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,517 - INFO - Client 24 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,531 - INFO - Client 51 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,534 - INFO - Client 59 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,553 - INFO - Client 97 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,554 - INFO - Client 53 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,596 - INFO - Client 94 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,628 - INFO - Client 25 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,630 - INFO - Client 16 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,631 - INFO - Client 43 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:06,769 - INFO - Client 88 uploaded at time: 17:16:06; simulated_delay: 0.000000
+2025-04-16 17:16:07,368 - INFO - Client 5 started at time: 17:16:07
+2025-04-16 17:16:07,368 - INFO - Client 2 started at time: 17:16:07
+2025-04-16 17:16:07,369 - INFO - Client 7 started at time: 17:16:07
+2025-04-16 17:16:07,369 - INFO - Client 13 started at time: 17:16:07
+2025-04-16 17:16:07,368 - INFO - Client 4 started at time: 17:16:07
+2025-04-16 17:16:07,371 - INFO - Client 15 started at time: 17:16:07
+2025-04-16 17:16:07,371 - INFO - Client 21 started at time: 17:16:07
+2025-04-16 17:16:07,372 - INFO - Client 44 started at time: 17:16:07
+2025-04-16 17:16:07,372 - INFO - Client 31 started at time: 17:16:07
+2025-04-16 17:16:07,373 - INFO - Client 25 started at time: 17:16:07
+2025-04-16 17:16:07,373 - INFO - Client 43 started at time: 17:16:07
+2025-04-16 17:16:07,374 - INFO - Client 37 started at time: 17:16:07
+2025-04-16 17:16:07,374 - INFO - Client 51 started at time: 17:16:07
+2025-04-16 17:16:07,375 - INFO - Client 99 started at time: 17:16:07
+2025-04-16 17:16:07,376 - INFO - Client 94 started at time: 17:16:07
+2025-04-16 17:16:07,376 - INFO - Client 53 started at time: 17:16:07
+2025-04-16 17:16:07,376 - INFO - Client 86 started at time: 17:16:07
+2025-04-16 17:16:07,377 - INFO - Client 88 started at time: 17:16:07
+2025-04-16 17:16:07,377 - INFO - Client 90 started at time: 17:16:07
+2025-04-16 17:16:07,378 - INFO - Client 62 started at time: 17:16:07
+2025-04-16 17:16:07,596 - INFO - Client 4 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,602 - INFO - Client 62 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,611 - INFO - Client 21 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,615 - INFO - Client 7 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,641 - INFO - Client 2 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,718 - INFO - Client 13 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,749 - INFO - Client 44 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,753 - INFO - Client 31 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,801 - INFO - Client 90 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,812 - INFO - Client 15 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,856 - INFO - Client 94 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,868 - INFO - Client 37 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,914 - INFO - Client 53 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,930 - INFO - Client 51 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,965 - INFO - Client 86 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:07,969 - INFO - Client 5 uploaded at time: 17:16:07; simulated_delay: 0.000000
+2025-04-16 17:16:08,051 - INFO - Client 25 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,066 - INFO - Client 43 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,068 - INFO - Client 88 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,102 - INFO - Client 99 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,624 - INFO - Client 97 started at time: 17:16:08
+2025-04-16 17:16:08,624 - INFO - Client 39 started at time: 17:16:08
+2025-04-16 17:16:08,624 - INFO - Client 36 started at time: 17:16:08
+2025-04-16 17:16:08,625 - INFO - Client 46 started at time: 17:16:08
+2025-04-16 17:16:08,625 - INFO - Client 16 started at time: 17:16:08
+2025-04-16 17:16:08,625 - INFO - Client 85 started at time: 17:16:08
+2025-04-16 17:16:08,626 - INFO - Client 23 started at time: 17:16:08
+2025-04-16 17:16:08,627 - INFO - Client 24 started at time: 17:16:08
+2025-04-16 17:16:08,627 - INFO - Client 59 started at time: 17:16:08
+2025-04-16 17:16:08,628 - INFO - Client 22 started at time: 17:16:08
+2025-04-16 17:16:08,700 - INFO - Client 39 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,757 - INFO - Client 22 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,763 - INFO - Client 23 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,824 - INFO - Client 85 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,841 - INFO - Client 36 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,864 - INFO - Client 59 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,872 - INFO - Client 97 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,897 - INFO - Client 46 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,908 - INFO - Client 24 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:08,981 - INFO - Client 16 uploaded at time: 17:16:08; simulated_delay: 0.000000
+2025-04-16 17:16:09,533 - INFO - Client 2 started at time: 17:16:09
+2025-04-16 17:16:09,534 - INFO - Client 22 started at time: 17:16:09
+2025-04-16 17:16:09,534 - INFO - Client 24 started at time: 17:16:09
+2025-04-16 17:16:09,534 - INFO - Client 23 started at time: 17:16:09
+2025-04-16 17:16:09,535 - INFO - Client 36 started at time: 17:16:09
+2025-04-16 17:16:09,535 - INFO - Client 35 started at time: 17:16:09
+2025-04-16 17:16:09,536 - INFO - Client 25 started at time: 17:16:09
+2025-04-16 17:16:09,537 - INFO - Client 39 started at time: 17:16:09
+2025-04-16 17:16:09,537 - INFO - Client 43 started at time: 17:16:09
+2025-04-16 17:16:09,537 - INFO - Client 53 started at time: 17:16:09
+2025-04-16 17:16:09,538 - INFO - Client 51 started at time: 17:16:09
+2025-04-16 17:16:09,539 - INFO - Client 82 started at time: 17:16:09
+2025-04-16 17:16:09,539 - INFO - Client 62 started at time: 17:16:09
+2025-04-16 17:16:09,540 - INFO - Client 88 started at time: 17:16:09
+2025-04-16 17:16:09,541 - INFO - Client 94 started at time: 17:16:09
+2025-04-16 17:16:09,543 - INFO - Client 67 started at time: 17:16:09
+2025-04-16 17:16:09,544 - INFO - Client 85 started at time: 17:16:09
+2025-04-16 17:16:09,544 - INFO - Client 59 started at time: 17:16:09
+2025-04-16 17:16:09,544 - INFO - Client 95 started at time: 17:16:09
+2025-04-16 17:16:09,545 - INFO - Client 97 started at time: 17:16:09
+2025-04-16 17:16:09,769 - INFO - Client 39 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,772 - INFO - Client 22 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,797 - INFO - Client 62 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,847 - INFO - Client 36 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,878 - INFO - Client 2 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,902 - INFO - Client 23 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,925 - INFO - Client 35 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,933 - INFO - Client 24 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,960 - INFO - Client 95 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:09,962 - INFO - Client 82 uploaded at time: 17:16:09; simulated_delay: 0.000000
+2025-04-16 17:16:10,051 - INFO - Client 94 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,053 - INFO - Client 85 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,055 - INFO - Client 67 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,164 - INFO - Client 97 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,166 - INFO - Client 59 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,171 - INFO - Client 53 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,187 - INFO - Client 51 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,236 - INFO - Client 25 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,257 - INFO - Client 88 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,259 - INFO - Client 43 uploaded at time: 17:16:10; simulated_delay: 0.000000
+2025-04-16 17:16:10,883 - INFO - Client 9 started at time: 17:16:10
+2025-04-16 17:16:10,884 - INFO - Client 17 started at time: 17:16:10
+2025-04-16 17:16:10,883 - INFO - Client 8 started at time: 17:16:10
+2025-04-16 17:16:10,884 - INFO - Client 16 started at time: 17:16:10
+2025-04-16 17:16:10,884 - INFO - Client 22 started at time: 17:16:10
+2025-04-16 17:16:10,886 - INFO - Client 46 started at time: 17:16:10
+2025-04-16 17:16:10,887 - INFO - Client 39 started at time: 17:16:10
+2025-04-16 17:16:10,887 - INFO - Client 36 started at time: 17:16:10
+2025-04-16 17:16:10,888 - INFO - Client 27 started at time: 17:16:10
+2025-04-16 17:16:10,888 - INFO - Client 54 started at time: 17:16:10
+2025-04-16 17:16:10,888 - INFO - Client 81 started at time: 17:16:10
+2025-04-16 17:16:10,889 - INFO - Client 63 started at time: 17:16:10
+2025-04-16 17:16:10,888 - INFO - Client 38 started at time: 17:16:10
+2025-04-16 17:16:10,889 - INFO - Client 59 started at time: 17:16:10
+2025-04-16 17:16:10,889 - INFO - Client 74 started at time: 17:16:10
+2025-04-16 17:16:10,890 - INFO - Client 85 started at time: 17:16:10
+2025-04-16 17:16:10,889 - INFO - Client 24 started at time: 17:16:10
+2025-04-16 17:16:10,891 - INFO - Client 91 started at time: 17:16:10
+2025-04-16 17:16:10,892 - INFO - Client 93 started at time: 17:16:10
+2025-04-16 17:16:10,892 - INFO - Client 97 started at time: 17:16:10
+2025-04-16 17:16:11,069 - INFO - Client 74 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,090 - INFO - Client 39 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,141 - INFO - Client 54 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,152 - INFO - Client 22 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,154 - INFO - Client 63 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,196 - INFO - Client 36 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,269 - INFO - Client 24 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,277 - INFO - Client 91 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,279 - INFO - Client 81 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,290 - INFO - Client 46 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,292 - INFO - Client 8 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,303 - INFO - Client 38 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,304 - INFO - Client 27 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,332 - INFO - Client 85 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,384 - INFO - Client 16 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,435 - INFO - Client 59 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,437 - INFO - Client 9 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,454 - INFO - Client 97 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,455 - INFO - Client 17 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:11,482 - INFO - Client 93 uploaded at time: 17:16:11; simulated_delay: 0.000000
+2025-04-16 17:16:12,187 - INFO - Client 2 started at time: 17:16:12
+2025-04-16 17:16:12,187 - INFO - Client 12 started at time: 17:16:12
+2025-04-16 17:16:12,187 - INFO - Client 7 started at time: 17:16:12
+2025-04-16 17:16:12,188 - INFO - Client 13 started at time: 17:16:12
+2025-04-16 17:16:12,188 - INFO - Client 5 started at time: 17:16:12
+2025-04-16 17:16:12,189 - INFO - Client 25 started at time: 17:16:12
+2025-04-16 17:16:12,189 - INFO - Client 15 started at time: 17:16:12
+2025-04-16 17:16:12,191 - INFO - Client 37 started at time: 17:16:12
+2025-04-16 17:16:12,191 - INFO - Client 57 started at time: 17:16:12
+2025-04-16 17:16:12,191 - INFO - Client 44 started at time: 17:16:12
+2025-04-16 17:16:12,191 - INFO - Client 75 started at time: 17:16:12
+2025-04-16 17:16:12,191 - INFO - Client 86 started at time: 17:16:12
+2025-04-16 17:16:12,192 - INFO - Client 53 started at time: 17:16:12
+2025-04-16 17:16:12,192 - INFO - Client 88 started at time: 17:16:12
+2025-04-16 17:16:12,193 - INFO - Client 31 started at time: 17:16:12
+2025-04-16 17:16:12,192 - INFO - Client 62 started at time: 17:16:12
+2025-04-16 17:16:12,194 - INFO - Client 99 started at time: 17:16:12
+2025-04-16 17:16:12,192 - INFO - Client 94 started at time: 17:16:12
+2025-04-16 17:16:12,193 - INFO - Client 90 started at time: 17:16:12
+2025-04-16 17:16:12,193 - INFO - Client 66 started at time: 17:16:12
+2025-04-16 17:16:12,391 - INFO - Client 7 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,448 - INFO - Client 62 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,490 - INFO - Client 13 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,507 - INFO - Client 2 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,594 - INFO - Client 15 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,598 - INFO - Client 66 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,599 - INFO - Client 12 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,602 - INFO - Client 57 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,607 - INFO - Client 31 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,616 - INFO - Client 90 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,629 - INFO - Client 37 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,673 - INFO - Client 44 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,679 - INFO - Client 75 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,766 - INFO - Client 5 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,771 - INFO - Client 53 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,791 - INFO - Client 94 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,818 - INFO - Client 25 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,881 - INFO - Client 99 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,894 - INFO - Client 86 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:12,976 - INFO - Client 88 uploaded at time: 17:16:12; simulated_delay: 0.000000
+2025-04-16 17:16:13,579 - INFO - Client 8 started at time: 17:16:13
+2025-04-16 17:16:13,579 - INFO - Client 5 started at time: 17:16:13
+2025-04-16 17:16:13,580 - INFO - Client 9 started at time: 17:16:13
+2025-04-16 17:16:13,580 - INFO - Client 14 started at time: 17:16:13
+2025-04-16 17:16:13,582 - INFO - Client 20 started at time: 17:16:13
+2025-04-16 17:16:13,582 - INFO - Client 13 started at time: 17:16:13
+2025-04-16 17:16:13,583 - INFO - Client 44 started at time: 17:16:13
+2025-04-16 17:16:13,582 - INFO - Client 27 started at time: 17:16:13
+2025-04-16 17:16:13,583 - INFO - Client 21 started at time: 17:16:13
+2025-04-16 17:16:13,583 - INFO - Client 54 started at time: 17:16:13
+2025-04-16 17:16:13,583 - INFO - Client 31 started at time: 17:16:13
+2025-04-16 17:16:13,584 - INFO - Client 65 started at time: 17:16:13
+2025-04-16 17:16:13,584 - INFO - Client 15 started at time: 17:16:13
+2025-04-16 17:16:13,584 - INFO - Client 37 started at time: 17:16:13
+2025-04-16 17:16:13,585 - INFO - Client 81 started at time: 17:16:13
+2025-04-16 17:16:13,586 - INFO - Client 90 started at time: 17:16:13
+2025-04-16 17:16:13,586 - INFO - Client 87 started at time: 17:16:13
+2025-04-16 17:16:13,586 - INFO - Client 91 started at time: 17:16:13
+2025-04-16 17:16:13,587 - INFO - Client 93 started at time: 17:16:13
+2025-04-16 17:16:13,590 - INFO - Client 99 started at time: 17:16:13
+2025-04-16 17:16:13,737 - INFO - Client 14 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,745 - INFO - Client 54 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,796 - INFO - Client 21 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,827 - INFO - Client 90 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,885 - INFO - Client 8 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,892 - INFO - Client 44 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,910 - INFO - Client 20 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:13,994 - INFO - Client 13 uploaded at time: 17:16:13; simulated_delay: 0.000000
+2025-04-16 17:16:14,045 - INFO - Client 91 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,055 - INFO - Client 81 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,110 - INFO - Client 15 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,122 - INFO - Client 31 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,164 - INFO - Client 87 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,189 - INFO - Client 37 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,191 - INFO - Client 27 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,233 - INFO - Client 65 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,246 - INFO - Client 9 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,262 - INFO - Client 5 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,320 - INFO - Client 93 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,388 - INFO - Client 99 uploaded at time: 17:16:14; simulated_delay: 0.000000
+2025-04-16 17:16:14,873 - INFO - Client 2 started at time: 17:16:14
+2025-04-16 17:16:14,873 - INFO - Client 8 started at time: 17:16:14
+2025-04-16 17:16:14,873 - INFO - Client 9 started at time: 17:16:14
+2025-04-16 17:16:14,874 - INFO - Client 25 started at time: 17:16:14
+2025-04-16 17:16:14,875 - INFO - Client 54 started at time: 17:16:14
+2025-04-16 17:16:14,875 - INFO - Client 35 started at time: 17:16:14
+2025-04-16 17:16:14,875 - INFO - Client 62 started at time: 17:16:14
+2025-04-16 17:16:14,876 - INFO - Client 27 started at time: 17:16:14
+2025-04-16 17:16:14,876 - INFO - Client 30 started at time: 17:16:14
+2025-04-16 17:16:14,876 - INFO - Client 67 started at time: 17:16:14
+2025-04-16 17:16:14,876 - INFO - Client 43 started at time: 17:16:14
+2025-04-16 17:16:14,877 - INFO - Client 74 started at time: 17:16:14
+2025-04-16 17:16:14,879 - INFO - Client 91 started at time: 17:16:14
+2025-04-16 17:16:14,879 - INFO - Client 81 started at time: 17:16:14
+2025-04-16 17:16:14,880 - INFO - Client 93 started at time: 17:16:14
+2025-04-16 17:16:14,879 - INFO - Client 76 started at time: 17:16:14
+2025-04-16 17:16:14,879 - INFO - Client 70 started at time: 17:16:14
+2025-04-16 17:16:14,880 - INFO - Client 88 started at time: 17:16:14
+2025-04-16 17:16:14,881 - INFO - Client 96 started at time: 17:16:14
+2025-04-16 17:16:14,882 - INFO - Client 94 started at time: 17:16:14
+2025-04-16 17:16:15,041 - INFO - Client 74 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,062 - INFO - Client 76 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,097 - INFO - Client 54 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,147 - INFO - Client 62 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,209 - INFO - Client 2 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,209 - INFO - Client 81 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,214 - INFO - Client 91 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,223 - INFO - Client 67 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,227 - INFO - Client 35 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,252 - INFO - Client 27 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,274 - INFO - Client 8 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,338 - INFO - Client 9 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,384 - INFO - Client 93 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,404 - INFO - Client 30 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,412 - INFO - Client 25 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,468 - INFO - Client 43 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,471 - INFO - Client 94 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,483 - INFO - Client 70 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,605 - INFO - Client 96 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:15,658 - INFO - Client 88 uploaded at time: 17:16:15; simulated_delay: 0.000000
+2025-04-16 17:16:16,291 - INFO - Client 1 started at time: 17:16:16
+2025-04-16 17:16:16,291 - INFO - Client 6 started at time: 17:16:16
+2025-04-16 17:16:16,292 - INFO - Client 8 started at time: 17:16:16
+2025-04-16 17:16:16,293 - INFO - Client 9 started at time: 17:16:16
+2025-04-16 17:16:16,293 - INFO - Client 28 started at time: 17:16:16
+2025-04-16 17:16:16,294 - INFO - Client 17 started at time: 17:16:16
+2025-04-16 17:16:16,294 - INFO - Client 32 started at time: 17:16:16
+2025-04-16 17:16:16,294 - INFO - Client 33 started at time: 17:16:16
+2025-04-16 17:16:16,295 - INFO - Client 34 started at time: 17:16:16
+2025-04-16 17:16:16,296 - INFO - Client 50 started at time: 17:16:16
+2025-04-16 17:16:16,296 - INFO - Client 54 started at time: 17:16:16
+2025-04-16 17:16:16,297 - INFO - Client 55 started at time: 17:16:16
+2025-04-16 17:16:16,297 - INFO - Client 38 started at time: 17:16:16
+2025-04-16 17:16:16,298 - INFO - Client 68 started at time: 17:16:16
+2025-04-16 17:16:16,300 - INFO - Client 81 started at time: 17:16:16
+2025-04-16 17:16:16,300 - INFO - Client 83 started at time: 17:16:16
+2025-04-16 17:16:16,301 - INFO - Client 87 started at time: 17:16:16
+2025-04-16 17:16:16,301 - INFO - Client 69 started at time: 17:16:16
+2025-04-16 17:16:16,301 - INFO - Client 91 started at time: 17:16:16
+2025-04-16 17:16:16,302 - INFO - Client 93 started at time: 17:16:16
+2025-04-16 17:16:16,481 - INFO - Client 54 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,498 - INFO - Client 83 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,545 - INFO - Client 6 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,588 - INFO - Client 8 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,615 - INFO - Client 81 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,618 - INFO - Client 34 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,647 - INFO - Client 50 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,674 - INFO - Client 91 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,688 - INFO - Client 68 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,692 - INFO - Client 38 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,699 - INFO - Client 28 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,727 - INFO - Client 87 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,740 - INFO - Client 33 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,741 - INFO - Client 32 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,758 - INFO - Client 55 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,806 - INFO - Client 69 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,856 - INFO - Client 9 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,859 - INFO - Client 17 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,877 - INFO - Client 93 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:16,924 - INFO - Client 1 uploaded at time: 17:16:16; simulated_delay: 0.000000
+2025-04-16 17:16:17,561 - INFO - Client 2 started at time: 17:16:17
+2025-04-16 17:16:17,562 - INFO - Client 5 started at time: 17:16:17
+2025-04-16 17:16:17,563 - INFO - Client 15 started at time: 17:16:17
+2025-04-16 17:16:17,563 - INFO - Client 13 started at time: 17:16:17
+2025-04-16 17:16:17,564 - INFO - Client 25 started at time: 17:16:17
+2025-04-16 17:16:17,565 - INFO - Client 31 started at time: 17:16:17
+2025-04-16 17:16:17,566 - INFO - Client 44 started at time: 17:16:17
+2025-04-16 17:16:17,566 - INFO - Client 53 started at time: 17:16:17
+2025-04-16 17:16:17,567 - INFO - Client 37 started at time: 17:16:17
+2025-04-16 17:16:17,567 - INFO - Client 51 started at time: 17:16:17
+2025-04-16 17:16:17,568 - INFO - Client 80 started at time: 17:16:17
+2025-04-16 17:16:17,568 - INFO - Client 71 started at time: 17:16:17
+2025-04-16 17:16:17,569 - INFO - Client 75 started at time: 17:16:17
+2025-04-16 17:16:17,569 - INFO - Client 90 started at time: 17:16:17
+2025-04-16 17:16:17,569 - INFO - Client 92 started at time: 17:16:17
+2025-04-16 17:16:17,569 - INFO - Client 73 started at time: 17:16:17
+2025-04-16 17:16:17,570 - INFO - Client 62 started at time: 17:16:17
+2025-04-16 17:16:17,571 - INFO - Client 79 started at time: 17:16:17
+2025-04-16 17:16:17,572 - INFO - Client 94 started at time: 17:16:17
+2025-04-16 17:16:17,573 - INFO - Client 99 started at time: 17:16:17
+2025-04-16 17:16:17,691 - INFO - Client 80 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,727 - INFO - Client 62 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,747 - INFO - Client 2 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,774 - INFO - Client 90 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,796 - INFO - Client 92 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,849 - INFO - Client 44 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,882 - INFO - Client 94 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,963 - INFO - Client 71 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,966 - INFO - Client 73 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:17,999 - INFO - Client 13 uploaded at time: 17:16:17; simulated_delay: 0.000000
+2025-04-16 17:16:18,101 - INFO - Client 31 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,108 - INFO - Client 15 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,212 - INFO - Client 37 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,285 - INFO - Client 75 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,369 - INFO - Client 53 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,370 - INFO - Client 79 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,372 - INFO - Client 5 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,375 - INFO - Client 51 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,403 - INFO - Client 25 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:18,496 - INFO - Client 99 uploaded at time: 17:16:18; simulated_delay: 0.000000
+2025-04-16 17:16:19,195 - INFO - Client 1 started at time: 17:16:19
+2025-04-16 17:16:19,196 - INFO - Client 8 started at time: 17:16:19
+2025-04-16 17:16:19,196 - INFO - Client 3 started at time: 17:16:19
+2025-04-16 17:16:19,196 - INFO - Client 6 started at time: 17:16:19
+2025-04-16 17:16:19,197 - INFO - Client 9 started at time: 17:16:19
+2025-04-16 17:16:19,198 - INFO - Client 10 started at time: 17:16:19
+2025-04-16 17:16:19,198 - INFO - Client 30 started at time: 17:16:19
+2025-04-16 17:16:19,200 - INFO - Client 33 started at time: 17:16:19
+2025-04-16 17:16:19,199 - INFO - Client 20 started at time: 17:16:19
+2025-04-16 17:16:19,201 - INFO - Client 45 started at time: 17:16:19
+2025-04-16 17:16:19,200 - INFO - Client 50 started at time: 17:16:19
+2025-04-16 17:16:19,201 - INFO - Client 34 started at time: 17:16:19
+2025-04-16 17:16:19,201 - INFO - Client 65 started at time: 17:16:19
+2025-04-16 17:16:19,202 - INFO - Client 54 started at time: 17:16:19
+2025-04-16 17:16:19,202 - INFO - Client 58 started at time: 17:16:19
+2025-04-16 17:16:19,203 - INFO - Client 68 started at time: 17:16:19
+2025-04-16 17:16:19,203 - INFO - Client 69 started at time: 17:16:19
+2025-04-16 17:16:19,203 - INFO - Client 91 started at time: 17:16:19
+2025-04-16 17:16:19,204 - INFO - Client 83 started at time: 17:16:19
+2025-04-16 17:16:19,204 - INFO - Client 81 started at time: 17:16:19
+2025-04-16 17:16:19,398 - INFO - Client 83 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,441 - INFO - Client 54 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,480 - INFO - Client 3 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,507 - INFO - Client 91 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,511 - INFO - Client 34 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,533 - INFO - Client 81 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,548 - INFO - Client 6 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,561 - INFO - Client 45 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,579 - INFO - Client 10 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,588 - INFO - Client 33 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,640 - INFO - Client 8 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,659 - INFO - Client 50 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,674 - INFO - Client 68 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,677 - INFO - Client 20 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,680 - INFO - Client 69 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,692 - INFO - Client 65 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,710 - INFO - Client 30 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,713 - INFO - Client 9 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,728 - INFO - Client 58 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:19,768 - INFO - Client 1 uploaded at time: 17:16:19; simulated_delay: 0.000000
+2025-04-16 17:16:20,497 - INFO - Client 1 started at time: 17:16:20
+2025-04-16 17:16:20,497 - INFO - Client 6 started at time: 17:16:20
+2025-04-16 17:16:20,499 - INFO - Client 22 started at time: 17:16:20
+2025-04-16 17:16:20,500 - INFO - Client 33 started at time: 17:16:20
+2025-04-16 17:16:20,500 - INFO - Client 24 started at time: 17:16:20
+2025-04-16 17:16:20,500 - INFO - Client 23 started at time: 17:16:20
+2025-04-16 17:16:20,501 - INFO - Client 34 started at time: 17:16:20
+2025-04-16 17:16:20,501 - INFO - Client 32 started at time: 17:16:20
+2025-04-16 17:16:20,501 - INFO - Client 39 started at time: 17:16:20
+2025-04-16 17:16:20,502 - INFO - Client 50 started at time: 17:16:20
+2025-04-16 17:16:20,502 - INFO - Client 55 started at time: 17:16:20
+2025-04-16 17:16:20,503 - INFO - Client 68 started at time: 17:16:20
+2025-04-16 17:16:20,503 - INFO - Client 59 started at time: 17:16:20
+2025-04-16 17:16:20,504 - INFO - Client 82 started at time: 17:16:20
+2025-04-16 17:16:20,505 - INFO - Client 84 started at time: 17:16:20
+2025-04-16 17:16:20,504 - INFO - Client 69 started at time: 17:16:20
+2025-04-16 17:16:20,505 - INFO - Client 83 started at time: 17:16:20
+2025-04-16 17:16:20,506 - INFO - Client 85 started at time: 17:16:20
+2025-04-16 17:16:20,508 - INFO - Client 97 started at time: 17:16:20
+2025-04-16 17:16:20,509 - INFO - Client 89 started at time: 17:16:20
+2025-04-16 17:16:20,711 - INFO - Client 39 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,738 - INFO - Client 83 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,869 - INFO - Client 23 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,874 - INFO - Client 22 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,909 - INFO - Client 84 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,988 - INFO - Client 33 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,997 - INFO - Client 6 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:20,999 - INFO - Client 55 uploaded at time: 17:16:20; simulated_delay: 0.000000
+2025-04-16 17:16:21,011 - INFO - Client 34 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,023 - INFO - Client 85 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,077 - INFO - Client 69 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,082 - INFO - Client 50 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,085 - INFO - Client 82 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,088 - INFO - Client 24 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,089 - INFO - Client 68 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,107 - INFO - Client 32 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,114 - INFO - Client 97 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,115 - INFO - Client 59 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,173 - INFO - Client 89 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,185 - INFO - Client 1 uploaded at time: 17:16:21; simulated_delay: 0.000000
+2025-04-16 17:16:21,958 - INFO - Client 0 started at time: 17:16:21
+2025-04-16 17:16:21,959 - INFO - Client 4 started at time: 17:16:21
+2025-04-16 17:16:21,959 - INFO - Client 5 started at time: 17:16:21
+2025-04-16 17:16:21,961 - INFO - Client 13 started at time: 17:16:21
+2025-04-16 17:16:21,961 - INFO - Client 22 started at time: 17:16:21
+2025-04-16 17:16:21,961 - INFO - Client 16 started at time: 17:16:21
+2025-04-16 17:16:21,962 - INFO - Client 36 started at time: 17:16:21
+2025-04-16 17:16:21,962 - INFO - Client 44 started at time: 17:16:21
+2025-04-16 17:16:21,962 - INFO - Client 37 started at time: 17:16:21
+2025-04-16 17:16:21,962 - INFO - Client 15 started at time: 17:16:21
+2025-04-16 17:16:21,962 - INFO - Client 39 started at time: 17:16:21
+2025-04-16 17:16:21,963 - INFO - Client 60 started at time: 17:16:21
+2025-04-16 17:16:21,964 - INFO - Client 49 started at time: 17:16:21
+2025-04-16 17:16:21,964 - INFO - Client 90 started at time: 17:16:21
+2025-04-16 17:16:21,965 - INFO - Client 85 started at time: 17:16:21
+2025-04-16 17:16:21,965 - INFO - Client 66 started at time: 17:16:21
+2025-04-16 17:16:21,965 - INFO - Client 95 started at time: 17:16:21
+2025-04-16 17:16:21,966 - INFO - Client 59 started at time: 17:16:21
+2025-04-16 17:16:21,966 - INFO - Client 63 started at time: 17:16:21
+2025-04-16 17:16:21,966 - INFO - Client 99 started at time: 17:16:21
+2025-04-16 17:16:22,167 - INFO - Client 39 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,169 - INFO - Client 22 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,192 - INFO - Client 4 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,258 - INFO - Client 63 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,323 - INFO - Client 13 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,330 - INFO - Client 36 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,354 - INFO - Client 90 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,364 - INFO - Client 66 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,367 - INFO - Client 0 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,398 - INFO - Client 60 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,401 - INFO - Client 44 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,462 - INFO - Client 95 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,466 - INFO - Client 15 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,483 - INFO - Client 49 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,484 - INFO - Client 16 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,485 - INFO - Client 37 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,488 - INFO - Client 85 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,509 - INFO - Client 59 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,590 - INFO - Client 5 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:22,706 - INFO - Client 99 uploaded at time: 17:16:22; simulated_delay: 0.000000
+2025-04-16 17:16:23,412 - INFO - Client 96 started at time: 17:16:23
+2025-04-16 17:16:23,412 - INFO - Client 8 started at time: 17:16:23
+2025-04-16 17:16:23,413 - INFO - Client 9 started at time: 17:16:23
+2025-04-16 17:16:23,414 - INFO - Client 81 started at time: 17:16:23
+2025-04-16 17:16:23,414 - INFO - Client 48 started at time: 17:16:23
+2025-04-16 17:16:23,414 - INFO - Client 17 started at time: 17:16:23
+2025-04-16 17:16:23,414 - INFO - Client 91 started at time: 17:16:23
+2025-04-16 17:16:23,415 - INFO - Client 27 started at time: 17:16:23
+2025-04-16 17:16:23,416 - INFO - Client 54 started at time: 17:16:23
+2025-04-16 17:16:23,416 - INFO - Client 74 started at time: 17:16:23
+2025-04-16 17:16:23,483 - INFO - Client 74 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,503 - INFO - Client 48 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,517 - INFO - Client 54 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,532 - INFO - Client 91 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,554 - INFO - Client 81 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,579 - INFO - Client 8 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,612 - INFO - Client 27 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,698 - INFO - Client 9 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,705 - INFO - Client 17 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:23,815 - INFO - Client 96 uploaded at time: 17:16:23; simulated_delay: 0.000000
+2025-04-16 17:16:24,513 - INFO - Client 87 started at time: 17:16:24
+2025-04-16 17:16:24,514 - INFO - Client 93 started at time: 17:16:24
+2025-04-16 17:16:24,513 - INFO - Client 22 started at time: 17:16:24
+2025-04-16 17:16:24,513 - INFO - Client 24 started at time: 17:16:24
+2025-04-16 17:16:24,513 - INFO - Client 46 started at time: 17:16:24
+2025-04-16 17:16:24,514 - INFO - Client 84 started at time: 17:16:24
+2025-04-16 17:16:24,514 - INFO - Client 28 started at time: 17:16:24
+2025-04-16 17:16:24,514 - INFO - Client 8 started at time: 17:16:24
+2025-04-16 17:16:24,515 - INFO - Client 45 started at time: 17:16:24
+2025-04-16 17:16:24,515 - INFO - Client 18 started at time: 17:16:24
+2025-04-16 17:16:24,515 - INFO - Client 97 started at time: 17:16:24
+2025-04-16 17:16:24,516 - INFO - Client 23 started at time: 17:16:24
+2025-04-16 17:16:24,516 - INFO - Client 59 started at time: 17:16:24
+2025-04-16 17:16:24,516 - INFO - Client 38 started at time: 17:16:24
+2025-04-16 17:16:24,516 - INFO - Client 9 started at time: 17:16:24
+2025-04-16 17:16:24,518 - INFO - Client 54 started at time: 17:16:24
+2025-04-16 17:16:24,518 - INFO - Client 89 started at time: 17:16:24
+2025-04-16 17:16:24,518 - INFO - Client 47 started at time: 17:16:24
+2025-04-16 17:16:24,519 - INFO - Client 85 started at time: 17:16:24
+2025-04-16 17:16:24,519 - INFO - Client 91 started at time: 17:16:24
+2025-04-16 17:16:24,735 - INFO - Client 54 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,772 - INFO - Client 84 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,777 - INFO - Client 22 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,874 - INFO - Client 8 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,901 - INFO - Client 18 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,915 - INFO - Client 28 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,923 - INFO - Client 23 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,924 - INFO - Client 46 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,928 - INFO - Client 45 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,934 - INFO - Client 24 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,935 - INFO - Client 91 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,937 - INFO - Client 38 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:24,999 - INFO - Client 85 uploaded at time: 17:16:24; simulated_delay: 0.000000
+2025-04-16 17:16:25,042 - INFO - Client 47 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,044 - INFO - Client 87 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,058 - INFO - Client 59 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,104 - INFO - Client 9 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,105 - INFO - Client 97 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,135 - INFO - Client 93 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,168 - INFO - Client 89 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:25,831 - INFO - Client 1 started at time: 17:16:25
+2025-04-16 17:16:25,832 - INFO - Client 6 started at time: 17:16:25
+2025-04-16 17:16:25,832 - INFO - Client 3 started at time: 17:16:25
+2025-04-16 17:16:25,833 - INFO - Client 9 started at time: 17:16:25
+2025-04-16 17:16:25,833 - INFO - Client 8 started at time: 17:16:25
+2025-04-16 17:16:25,833 - INFO - Client 10 started at time: 17:16:25
+2025-04-16 17:16:25,834 - INFO - Client 11 started at time: 17:16:25
+2025-04-16 17:16:25,835 - INFO - Client 20 started at time: 17:16:25
+2025-04-16 17:16:25,835 - INFO - Client 30 started at time: 17:16:25
+2025-04-16 17:16:25,836 - INFO - Client 34 started at time: 17:16:25
+2025-04-16 17:16:25,836 - INFO - Client 48 started at time: 17:16:25
+2025-04-16 17:16:25,838 - INFO - Client 50 started at time: 17:16:25
+2025-04-16 17:16:25,839 - INFO - Client 54 started at time: 17:16:25
+2025-04-16 17:16:25,840 - INFO - Client 68 started at time: 17:16:25
+2025-04-16 17:16:25,841 - INFO - Client 58 started at time: 17:16:25
+2025-04-16 17:16:25,840 - INFO - Client 91 started at time: 17:16:25
+2025-04-16 17:16:25,841 - INFO - Client 65 started at time: 17:16:25
+2025-04-16 17:16:25,843 - INFO - Client 83 started at time: 17:16:25
+2025-04-16 17:16:25,843 - INFO - Client 96 started at time: 17:16:25
+2025-04-16 17:16:25,844 - INFO - Client 69 started at time: 17:16:25
+2025-04-16 17:16:26,000 - INFO - Client 83 uploaded at time: 17:16:25; simulated_delay: 0.000000
+2025-04-16 17:16:26,042 - INFO - Client 48 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,052 - INFO - Client 3 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,117 - INFO - Client 91 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,157 - INFO - Client 54 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,157 - INFO - Client 11 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,194 - INFO - Client 69 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,198 - INFO - Client 10 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,216 - INFO - Client 6 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,228 - INFO - Client 65 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,268 - INFO - Client 34 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,270 - INFO - Client 9 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,313 - INFO - Client 8 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,346 - INFO - Client 1 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,362 - INFO - Client 50 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,380 - INFO - Client 20 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,412 - INFO - Client 68 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,432 - INFO - Client 58 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,436 - INFO - Client 30 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:26,532 - INFO - Client 96 uploaded at time: 17:16:26; simulated_delay: 0.000000
+2025-04-16 17:16:27,233 - INFO - Client 0 started at time: 17:16:27
+2025-04-16 17:16:27,233 - INFO - Client 2 started at time: 17:16:27
+2025-04-16 17:16:27,234 - INFO - Client 7 started at time: 17:16:27
+2025-04-16 17:16:27,236 - INFO - Client 36 started at time: 17:16:27
+2025-04-16 17:16:27,236 - INFO - Client 22 started at time: 17:16:27
+2025-04-16 17:16:27,237 - INFO - Client 12 started at time: 17:16:27
+2025-04-16 17:16:27,237 - INFO - Client 39 started at time: 17:16:27
+2025-04-16 17:16:27,238 - INFO - Client 62 started at time: 17:16:27
+2025-04-16 17:16:27,238 - INFO - Client 59 started at time: 17:16:27
+2025-04-16 17:16:27,238 - INFO - Client 43 started at time: 17:16:27
+2025-04-16 17:16:27,239 - INFO - Client 76 started at time: 17:16:27
+2025-04-16 17:16:27,240 - INFO - Client 63 started at time: 17:16:27
+2025-04-16 17:16:27,240 - INFO - Client 85 started at time: 17:16:27
+2025-04-16 17:16:27,240 - INFO - Client 60 started at time: 17:16:27
+2025-04-16 17:16:27,241 - INFO - Client 67 started at time: 17:16:27
+2025-04-16 17:16:27,241 - INFO - Client 82 started at time: 17:16:27
+2025-04-16 17:16:27,241 - INFO - Client 88 started at time: 17:16:27
+2025-04-16 17:16:27,242 - INFO - Client 86 started at time: 17:16:27
+2025-04-16 17:16:27,243 - INFO - Client 94 started at time: 17:16:27
+2025-04-16 17:16:27,244 - INFO - Client 95 started at time: 17:16:27
+2025-04-16 17:16:27,421 - INFO - Client 39 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,429 - INFO - Client 7 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,441 - INFO - Client 76 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,452 - INFO - Client 63 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,514 - INFO - Client 22 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,548 - INFO - Client 62 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,550 - INFO - Client 95 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,556 - INFO - Client 67 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,559 - INFO - Client 85 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,622 - INFO - Client 59 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,640 - INFO - Client 2 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,642 - INFO - Client 36 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,675 - INFO - Client 0 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,680 - INFO - Client 12 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,720 - INFO - Client 43 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,730 - INFO - Client 60 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,800 - INFO - Client 82 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,819 - INFO - Client 94 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:27,975 - INFO - Client 86 uploaded at time: 17:16:27; simulated_delay: 0.000000
+2025-04-16 17:16:28,059 - INFO - Client 88 uploaded at time: 17:16:28; simulated_delay: 0.000000
+2025-04-16 17:16:28,825 - INFO - Client 2 started at time: 17:16:28
+2025-04-16 17:16:28,826 - INFO - Client 23 started at time: 17:16:28
+2025-04-16 17:16:28,826 - INFO - Client 16 started at time: 17:16:28
+2025-04-16 17:16:28,826 - INFO - Client 22 started at time: 17:16:28
+2025-04-16 17:16:28,828 - INFO - Client 24 started at time: 17:16:28
+2025-04-16 17:16:28,829 - INFO - Client 25 started at time: 17:16:28
+2025-04-16 17:16:28,829 - INFO - Client 62 started at time: 17:16:28
+2025-04-16 17:16:28,830 - INFO - Client 51 started at time: 17:16:28
+2025-04-16 17:16:28,830 - INFO - Client 35 started at time: 17:16:28
+2025-04-16 17:16:28,830 - INFO - Client 46 started at time: 17:16:28
+2025-04-16 17:16:28,830 - INFO - Client 70 started at time: 17:16:28
+2025-04-16 17:16:28,831 - INFO - Client 59 started at time: 17:16:28
+2025-04-16 17:16:28,831 - INFO - Client 53 started at time: 17:16:28
+2025-04-16 17:16:28,831 - INFO - Client 78 started at time: 17:16:28
+2025-04-16 17:16:28,832 - INFO - Client 80 started at time: 17:16:28
+2025-04-16 17:16:28,833 - INFO - Client 85 started at time: 17:16:28
+2025-04-16 17:16:28,833 - INFO - Client 97 started at time: 17:16:28
+2025-04-16 17:16:28,833 - INFO - Client 92 started at time: 17:16:28
+2025-04-16 17:16:28,834 - INFO - Client 94 started at time: 17:16:28
+2025-04-16 17:16:28,835 - INFO - Client 84 started at time: 17:16:28
+2025-04-16 17:16:29,041 - INFO - Client 80 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,127 - INFO - Client 23 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,123 - INFO - Client 22 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,185 - INFO - Client 35 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,212 - INFO - Client 62 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,228 - INFO - Client 84 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,252 - INFO - Client 85 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,313 - INFO - Client 2 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,328 - INFO - Client 92 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,362 - INFO - Client 97 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,382 - INFO - Client 59 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,426 - INFO - Client 24 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,429 - INFO - Client 46 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,430 - INFO - Client 53 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,431 - INFO - Client 51 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,445 - INFO - Client 25 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,518 - INFO - Client 94 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,540 - INFO - Client 78 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,577 - INFO - Client 16 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:29,578 - INFO - Client 70 uploaded at time: 17:16:29; simulated_delay: 0.000000
+2025-04-16 17:16:30,259 - INFO - Client 6 started at time: 17:16:30
+2025-04-16 17:16:30,259 - INFO - Client 1 started at time: 17:16:30
+2025-04-16 17:16:30,260 - INFO - Client 14 started at time: 17:16:30
+2025-04-16 17:16:30,259 - INFO - Client 5 started at time: 17:16:30
+2025-04-16 17:16:30,260 - INFO - Client 13 started at time: 17:16:30
+2025-04-16 17:16:30,261 - INFO - Client 15 started at time: 17:16:30
+2025-04-16 17:16:30,261 - INFO - Client 21 started at time: 17:16:30
+2025-04-16 17:16:30,262 - INFO - Client 34 started at time: 17:16:30
+2025-04-16 17:16:30,263 - INFO - Client 44 started at time: 17:16:30
+2025-04-16 17:16:30,262 - INFO - Client 37 started at time: 17:16:30
+2025-04-16 17:16:30,263 - INFO - Client 29 started at time: 17:16:30
+2025-04-16 17:16:30,264 - INFO - Client 50 started at time: 17:16:30
+2025-04-16 17:16:30,265 - INFO - Client 68 started at time: 17:16:30
+2025-04-16 17:16:30,265 - INFO - Client 69 started at time: 17:16:30
+2025-04-16 17:16:30,265 - INFO - Client 55 started at time: 17:16:30
+2025-04-16 17:16:30,266 - INFO - Client 99 started at time: 17:16:30
+2025-04-16 17:16:30,266 - INFO - Client 90 started at time: 17:16:30
+2025-04-16 17:16:30,266 - INFO - Client 77 started at time: 17:16:30
+2025-04-16 17:16:30,266 - INFO - Client 57 started at time: 17:16:30
+2025-04-16 17:16:30,267 - INFO - Client 83 started at time: 17:16:30
+2025-04-16 17:16:30,414 - INFO - Client 14 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,532 - INFO - Client 6 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,547 - INFO - Client 90 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,547 - INFO - Client 34 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,548 - INFO - Client 29 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,551 - INFO - Client 21 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,585 - INFO - Client 83 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,592 - INFO - Client 50 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,620 - INFO - Client 77 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,630 - INFO - Client 13 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,642 - INFO - Client 68 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,653 - INFO - Client 44 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,731 - INFO - Client 15 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,768 - INFO - Client 37 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,770 - INFO - Client 57 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,775 - INFO - Client 55 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,826 - INFO - Client 69 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,898 - INFO - Client 5 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,931 - INFO - Client 1 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:30,963 - INFO - Client 99 uploaded at time: 17:16:30; simulated_delay: 0.000000
+2025-04-16 17:16:31,711 - INFO - Client 1 started at time: 17:16:31
+2025-04-16 17:16:31,711 - INFO - Client 6 started at time: 17:16:31
+2025-04-16 17:16:31,713 - INFO - Client 8 started at time: 17:16:31
+2025-04-16 17:16:31,713 - INFO - Client 27 started at time: 17:16:31
+2025-04-16 17:16:31,714 - INFO - Client 34 started at time: 17:16:31
+2025-04-16 17:16:31,714 - INFO - Client 11 started at time: 17:16:31
+2025-04-16 17:16:31,714 - INFO - Client 38 started at time: 17:16:31
+2025-04-16 17:16:31,715 - INFO - Client 74 started at time: 17:16:31
+2025-04-16 17:16:31,715 - INFO - Client 32 started at time: 17:16:31
+2025-04-16 17:16:31,715 - INFO - Client 33 started at time: 17:16:31
+2025-04-16 17:16:31,715 - INFO - Client 17 started at time: 17:16:31
+2025-04-16 17:16:31,715 - INFO - Client 9 started at time: 17:16:31
+2025-04-16 17:16:31,716 - INFO - Client 50 started at time: 17:16:31
+2025-04-16 17:16:31,716 - INFO - Client 81 started at time: 17:16:31
+2025-04-16 17:16:31,716 - INFO - Client 47 started at time: 17:16:31
+2025-04-16 17:16:31,717 - INFO - Client 83 started at time: 17:16:31
+2025-04-16 17:16:31,718 - INFO - Client 69 started at time: 17:16:31
+2025-04-16 17:16:31,718 - INFO - Client 93 started at time: 17:16:31
+2025-04-16 17:16:31,719 - INFO - Client 91 started at time: 17:16:31
+2025-04-16 17:16:31,719 - INFO - Client 98 started at time: 17:16:31
+2025-04-16 17:16:31,874 - INFO - Client 74 uploaded at time: 17:16:31; simulated_delay: 0.000000
+2025-04-16 17:16:31,921 - INFO - Client 83 uploaded at time: 17:16:31; simulated_delay: 0.000000
+2025-04-16 17:16:32,027 - INFO - Client 34 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,030 - INFO - Client 6 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,079 - INFO - Client 81 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,085 - INFO - Client 8 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,089 - INFO - Client 91 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,094 - INFO - Client 50 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,135 - INFO - Client 38 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,174 - INFO - Client 11 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,221 - INFO - Client 32 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,249 - INFO - Client 33 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,270 - INFO - Client 27 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,320 - INFO - Client 69 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,333 - INFO - Client 47 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,399 - INFO - Client 9 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,465 - INFO - Client 98 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,468 - INFO - Client 93 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,469 - INFO - Client 17 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:32,498 - INFO - Client 1 uploaded at time: 17:16:32; simulated_delay: 0.000000
+2025-04-16 17:16:33,229 - INFO - Client 8 started at time: 17:16:33
+2025-04-16 17:16:33,229 - INFO - Client 3 started at time: 17:16:33
+2025-04-16 17:16:33,230 - INFO - Client 5 started at time: 17:16:33
+2025-04-16 17:16:33,230 - INFO - Client 9 started at time: 17:16:33
+2025-04-16 17:16:33,233 - INFO - Client 54 started at time: 17:16:33
+2025-04-16 17:16:33,233 - INFO - Client 44 started at time: 17:16:33
+2025-04-16 17:16:33,233 - INFO - Client 15 started at time: 17:16:33
+2025-04-16 17:16:33,233 - INFO - Client 13 started at time: 17:16:33
+2025-04-16 17:16:33,234 - INFO - Client 37 started at time: 17:16:33
+2025-04-16 17:16:33,234 - INFO - Client 20 started at time: 17:16:33
+2025-04-16 17:16:33,235 - INFO - Client 28 started at time: 17:16:33
+2025-04-16 17:16:33,235 - INFO - Client 65 started at time: 17:16:33
+2025-04-16 17:16:33,236 - INFO - Client 45 started at time: 17:16:33
+2025-04-16 17:16:33,236 - INFO - Client 79 started at time: 17:16:33
+2025-04-16 17:16:33,237 - INFO - Client 90 started at time: 17:16:33
+2025-04-16 17:16:33,237 - INFO - Client 87 started at time: 17:16:33
+2025-04-16 17:16:33,238 - INFO - Client 31 started at time: 17:16:33
+2025-04-16 17:16:33,238 - INFO - Client 71 started at time: 17:16:33
+2025-04-16 17:16:33,239 - INFO - Client 99 started at time: 17:16:33
+2025-04-16 17:16:33,239 - INFO - Client 91 started at time: 17:16:33
+2025-04-16 17:16:33,355 - INFO - Client 54 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,410 - INFO - Client 90 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,463 - INFO - Client 71 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,483 - INFO - Client 8 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,494 - INFO - Client 28 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,516 - INFO - Client 20 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,536 - INFO - Client 44 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,573 - INFO - Client 3 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,602 - INFO - Client 13 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,614 - INFO - Client 91 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,654 - INFO - Client 45 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,666 - INFO - Client 15 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,667 - INFO - Client 31 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,684 - INFO - Client 87 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,702 - INFO - Client 37 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,777 - INFO - Client 79 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,794 - INFO - Client 65 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,801 - INFO - Client 9 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,825 - INFO - Client 5 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:33,930 - INFO - Client 99 uploaded at time: 17:16:33; simulated_delay: 0.000000
+2025-04-16 17:16:34,596 - INFO - Client 4 started at time: 17:16:34
+2025-04-16 17:16:34,596 - INFO - Client 1 started at time: 17:16:34
+2025-04-16 17:16:34,596 - INFO - Client 6 started at time: 17:16:34
+2025-04-16 17:16:34,596 - INFO - Client 5 started at time: 17:16:34
+2025-04-16 17:16:34,597 - INFO - Client 10 started at time: 17:16:34
+2025-04-16 17:16:34,598 - INFO - Client 13 started at time: 17:16:34
+2025-04-16 17:16:34,599 - INFO - Client 15 started at time: 17:16:34
+2025-04-16 17:16:34,599 - INFO - Client 34 started at time: 17:16:34
+2025-04-16 17:16:34,599 - INFO - Client 44 started at time: 17:16:34
+2025-04-16 17:16:34,599 - INFO - Client 37 started at time: 17:16:34
+2025-04-16 17:16:34,600 - INFO - Client 58 started at time: 17:16:34
+2025-04-16 17:16:34,600 - INFO - Client 29 started at time: 17:16:34
+2025-04-16 17:16:34,601 - INFO - Client 69 started at time: 17:16:34
+2025-04-16 17:16:34,602 - INFO - Client 49 started at time: 17:16:34
+2025-04-16 17:16:34,602 - INFO - Client 99 started at time: 17:16:34
+2025-04-16 17:16:34,602 - INFO - Client 90 started at time: 17:16:34
+2025-04-16 17:16:34,603 - INFO - Client 77 started at time: 17:16:34
+2025-04-16 17:16:34,603 - INFO - Client 66 started at time: 17:16:34
+2025-04-16 17:16:34,603 - INFO - Client 83 started at time: 17:16:34
+2025-04-16 17:16:34,603 - INFO - Client 68 started at time: 17:16:34
+2025-04-16 17:16:34,841 - INFO - Client 29 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:34,855 - INFO - Client 4 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:34,863 - INFO - Client 83 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:34,894 - INFO - Client 77 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:34,963 - INFO - Client 13 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:34,991 - INFO - Client 15 uploaded at time: 17:16:34; simulated_delay: 0.000000
+2025-04-16 17:16:35,029 - INFO - Client 37 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,030 - INFO - Client 49 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,043 - INFO - Client 10 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,044 - INFO - Client 6 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,052 - INFO - Client 34 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,056 - INFO - Client 90 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,059 - INFO - Client 69 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,074 - INFO - Client 66 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,104 - INFO - Client 5 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,136 - INFO - Client 68 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,146 - INFO - Client 44 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,166 - INFO - Client 58 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,194 - INFO - Client 1 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,225 - INFO - Client 99 uploaded at time: 17:16:35; simulated_delay: 0.000000
+2025-04-16 17:16:35,954 - INFO - Client 5 started at time: 17:16:35
+2025-04-16 17:16:35,955 - INFO - Client 2 started at time: 17:16:35
+2025-04-16 17:16:35,955 - INFO - Client 7 started at time: 17:16:35
+2025-04-16 17:16:35,956 - INFO - Client 21 started at time: 17:16:35
+2025-04-16 17:16:35,957 - INFO - Client 14 started at time: 17:16:35
+2025-04-16 17:16:35,958 - INFO - Client 44 started at time: 17:16:35
+2025-04-16 17:16:35,958 - INFO - Client 67 started at time: 17:16:35
+2025-04-16 17:16:35,958 - INFO - Client 12 started at time: 17:16:35
+2025-04-16 17:16:35,958 - INFO - Client 73 started at time: 17:16:35
+2025-04-16 17:16:35,959 - INFO - Client 62 started at time: 17:16:35
+2025-04-16 17:16:35,959 - INFO - Client 37 started at time: 17:16:35
+2025-04-16 17:16:35,959 - INFO - Client 56 started at time: 17:16:35
+2025-04-16 17:16:35,959 - INFO - Client 57 started at time: 17:16:35
+2025-04-16 17:16:35,960 - INFO - Client 75 started at time: 17:16:35
+2025-04-16 17:16:35,961 - INFO - Client 79 started at time: 17:16:35
+2025-04-16 17:16:35,961 - INFO - Client 90 started at time: 17:16:35
+2025-04-16 17:16:35,962 - INFO - Client 86 started at time: 17:16:35
+2025-04-16 17:16:35,962 - INFO - Client 99 started at time: 17:16:35
+2025-04-16 17:16:35,963 - INFO - Client 88 started at time: 17:16:35
+2025-04-16 17:16:35,963 - INFO - Client 94 started at time: 17:16:35
+2025-04-16 17:16:36,154 - INFO - Client 14 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,208 - INFO - Client 21 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,214 - INFO - Client 7 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,216 - INFO - Client 73 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,275 - INFO - Client 62 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,352 - INFO - Client 2 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,366 - INFO - Client 57 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,404 - INFO - Client 67 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,406 - INFO - Client 37 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,457 - INFO - Client 12 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,485 - INFO - Client 90 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,491 - INFO - Client 75 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,499 - INFO - Client 5 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,523 - INFO - Client 79 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,524 - INFO - Client 44 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,637 - INFO - Client 99 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,646 - INFO - Client 94 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,772 - INFO - Client 56 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,806 - INFO - Client 86 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:36,875 - INFO - Client 88 uploaded at time: 17:16:36; simulated_delay: 0.000000
+2025-04-16 17:16:37,703 - INFO - Client 4 started at time: 17:16:37
+2025-04-16 17:16:37,704 - INFO - Client 8 started at time: 17:16:37
+2025-04-16 17:16:37,704 - INFO - Client 5 started at time: 17:16:37
+2025-04-16 17:16:37,704 - INFO - Client 9 started at time: 17:16:37
+2025-04-16 17:16:37,705 - INFO - Client 26 started at time: 17:16:37
+2025-04-16 17:16:37,706 - INFO - Client 27 started at time: 17:16:37
+2025-04-16 17:16:37,706 - INFO - Client 17 started at time: 17:16:37
+2025-04-16 17:16:37,707 - INFO - Client 40 started at time: 17:16:37
+2025-04-16 17:16:37,707 - INFO - Client 37 started at time: 17:16:37
+2025-04-16 17:16:37,707 - INFO - Client 48 started at time: 17:16:37
+2025-04-16 17:16:37,708 - INFO - Client 30 started at time: 17:16:37
+2025-04-16 17:16:37,709 - INFO - Client 71 started at time: 17:16:37
+2025-04-16 17:16:37,709 - INFO - Client 44 started at time: 17:16:37
+2025-04-16 17:16:37,709 - INFO - Client 81 started at time: 17:16:37
+2025-04-16 17:16:37,709 - INFO - Client 74 started at time: 17:16:37
+2025-04-16 17:16:37,711 - INFO - Client 91 started at time: 17:16:37
+2025-04-16 17:16:37,711 - INFO - Client 99 started at time: 17:16:37
+2025-04-16 17:16:37,711 - INFO - Client 31 started at time: 17:16:37
+2025-04-16 17:16:37,711 - INFO - Client 90 started at time: 17:16:37
+2025-04-16 17:16:37,712 - INFO - Client 96 started at time: 17:16:37
+2025-04-16 17:16:37,915 - INFO - Client 71 uploaded at time: 17:16:37; simulated_delay: 0.000000
+2025-04-16 17:16:37,916 - INFO - Client 74 uploaded at time: 17:16:37; simulated_delay: 0.000000
+2025-04-16 17:16:37,941 - INFO - Client 48 uploaded at time: 17:16:37; simulated_delay: 0.000000
+2025-04-16 17:16:37,979 - INFO - Client 4 uploaded at time: 17:16:37; simulated_delay: 0.000000
+2025-04-16 17:16:38,008 - INFO - Client 40 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,027 - INFO - Client 91 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,036 - INFO - Client 81 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,043 - INFO - Client 90 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,068 - INFO - Client 8 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,071 - INFO - Client 31 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,142 - INFO - Client 37 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,156 - INFO - Client 27 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,156 - INFO - Client 44 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,188 - INFO - Client 30 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,209 - INFO - Client 26 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,237 - INFO - Client 9 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,253 - INFO - Client 5 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,270 - INFO - Client 17 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,343 - INFO - Client 99 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:38,343 - INFO - Client 96 uploaded at time: 17:16:38; simulated_delay: 0.000000
+2025-04-16 17:16:39,053 - INFO - Client 38 started at time: 17:16:39
+2025-04-16 17:16:39,053 - INFO - Client 65 started at time: 17:16:39
+2025-04-16 17:16:39,054 - INFO - Client 8 started at time: 17:16:39
+2025-04-16 17:16:39,054 - INFO - Client 54 started at time: 17:16:39
+2025-04-16 17:16:39,054 - INFO - Client 47 started at time: 17:16:39
+2025-04-16 17:16:39,056 - INFO - Client 91 started at time: 17:16:39
+2025-04-16 17:16:39,056 - INFO - Client 28 started at time: 17:16:39
+2025-04-16 17:16:39,057 - INFO - Client 87 started at time: 17:16:39
+2025-04-16 17:16:39,057 - INFO - Client 93 started at time: 17:16:39
+2025-04-16 17:16:39,058 - INFO - Client 45 started at time: 17:16:39
+2025-04-16 17:16:39,158 - INFO - Client 54 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,261 - INFO - Client 8 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,292 - INFO - Client 91 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,298 - INFO - Client 28 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,302 - INFO - Client 45 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,367 - INFO - Client 87 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,370 - INFO - Client 38 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,407 - INFO - Client 47 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,433 - INFO - Client 65 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:39,459 - INFO - Client 93 uploaded at time: 17:16:39; simulated_delay: 0.000000
+2025-04-16 17:16:40,110 - INFO - Client 8 started at time: 17:16:40
+2025-04-16 17:16:40,110 - INFO - Client 30 started at time: 17:16:40
+2025-04-16 17:16:40,111 - INFO - Client 20 started at time: 17:16:40
+2025-04-16 17:16:40,110 - INFO - Client 9 started at time: 17:16:40
+2025-04-16 17:16:40,111 - INFO - Client 3 started at time: 17:16:40
+2025-04-16 17:16:40,111 - INFO - Client 35 started at time: 17:16:40
+2025-04-16 17:16:40,113 - INFO - Client 43 started at time: 17:16:40
+2025-04-16 17:16:40,113 - INFO - Client 25 started at time: 17:16:40
+2025-04-16 17:16:40,113 - INFO - Client 62 started at time: 17:16:40
+2025-04-16 17:16:40,114 - INFO - Client 74 started at time: 17:16:40
+2025-04-16 17:16:40,114 - INFO - Client 53 started at time: 17:16:40
+2025-04-16 17:16:40,115 - INFO - Client 51 started at time: 17:16:40
+2025-04-16 17:16:40,116 - INFO - Client 81 started at time: 17:16:40
+2025-04-16 17:16:40,115 - INFO - Client 48 started at time: 17:16:40
+2025-04-16 17:16:40,115 - INFO - Client 76 started at time: 17:16:40
+2025-04-16 17:16:40,116 - INFO - Client 70 started at time: 17:16:40
+2025-04-16 17:16:40,117 - INFO - Client 91 started at time: 17:16:40
+2025-04-16 17:16:40,117 - INFO - Client 92 started at time: 17:16:40
+2025-04-16 17:16:40,118 - INFO - Client 96 started at time: 17:16:40
+2025-04-16 17:16:40,118 - INFO - Client 94 started at time: 17:16:40
+2025-04-16 17:16:40,314 - INFO - Client 3 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,355 - INFO - Client 74 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,362 - INFO - Client 91 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,375 - INFO - Client 48 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,381 - INFO - Client 76 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,397 - INFO - Client 62 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,401 - INFO - Client 81 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,426 - INFO - Client 35 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,514 - INFO - Client 92 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,517 - INFO - Client 8 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,578 - INFO - Client 20 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,581 - INFO - Client 9 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,590 - INFO - Client 53 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,609 - INFO - Client 51 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,618 - INFO - Client 30 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,645 - INFO - Client 25 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,661 - INFO - Client 94 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,686 - INFO - Client 43 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,701 - INFO - Client 70 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:40,809 - INFO - Client 96 uploaded at time: 17:16:40; simulated_delay: 0.000000
+2025-04-16 17:16:41,522 - INFO - Client 1 started at time: 17:16:41
+2025-04-16 17:16:41,522 - INFO - Client 0 started at time: 17:16:41
+2025-04-16 17:16:41,523 - INFO - Client 18 started at time: 17:16:41
+2025-04-16 17:16:41,524 - INFO - Client 6 started at time: 17:16:41
+2025-04-16 17:16:41,525 - INFO - Client 22 started at time: 17:16:41
+2025-04-16 17:16:41,525 - INFO - Client 33 started at time: 17:16:41
+2025-04-16 17:16:41,525 - INFO - Client 39 started at time: 17:16:41
+2025-04-16 17:16:41,526 - INFO - Client 34 started at time: 17:16:41
+2025-04-16 17:16:41,526 - INFO - Client 50 started at time: 17:16:41
+2025-04-16 17:16:41,526 - INFO - Client 55 started at time: 17:16:41
+2025-04-16 17:16:41,527 - INFO - Client 52 started at time: 17:16:41
+2025-04-16 17:16:41,528 - INFO - Client 59 started at time: 17:16:41
+2025-04-16 17:16:41,528 - INFO - Client 32 started at time: 17:16:41
+2025-04-16 17:16:41,528 - INFO - Client 60 started at time: 17:16:41
+2025-04-16 17:16:41,529 - INFO - Client 83 started at time: 17:16:41
+2025-04-16 17:16:41,529 - INFO - Client 82 started at time: 17:16:41
+2025-04-16 17:16:41,529 - INFO - Client 85 started at time: 17:16:41
+2025-04-16 17:16:41,529 - INFO - Client 95 started at time: 17:16:41
+2025-04-16 17:16:41,530 - INFO - Client 98 started at time: 17:16:41
+2025-04-16 17:16:41,530 - INFO - Client 89 started at time: 17:16:41
+2025-04-16 17:16:41,717 - INFO - Client 83 uploaded at time: 17:16:41; simulated_delay: 0.000000
+2025-04-16 17:16:41,722 - INFO - Client 39 uploaded at time: 17:16:41; simulated_delay: 0.000000
+2025-04-16 17:19:14,339 - INFO - Process 0 started logging
+2025-04-16 17:19:15,931 - INFO - Process 1 started logging
+2025-04-16 17:19:51,181 - INFO - Client 81 started at time: 17:19:51
+2025-04-16 17:19:57,938 - INFO - Client 75 started at time: 17:19:57
+2025-04-16 17:19:57,940 - INFO - Client 38 started at time: 17:19:57
+2025-04-16 17:19:57,942 - INFO - Client 2 started at time: 17:19:57
+2025-04-16 17:19:57,947 - INFO - Client 53 started at time: 17:19:57
+2025-04-16 17:19:57,947 - INFO - Client 74 started at time: 17:19:57
+2025-04-16 17:19:57,950 - INFO - Client 43 started at time: 17:19:57
+2025-04-16 17:19:57,950 - INFO - Client 27 started at time: 17:19:57
+2025-04-16 17:19:57,952 - INFO - Client 9 started at time: 17:19:57
+2025-04-16 17:19:57,952 - INFO - Client 54 started at time: 17:19:57
+2025-04-16 17:19:57,952 - INFO - Client 25 started at time: 17:19:57
+2025-04-16 17:19:57,952 - INFO - Client 93 started at time: 17:19:57
+2025-04-16 17:19:57,954 - INFO - Client 62 started at time: 17:19:57
+2025-04-16 17:19:57,958 - INFO - Client 86 started at time: 17:19:57
+2025-04-16 17:19:57,960 - INFO - Client 94 started at time: 17:19:57
+2025-04-16 17:19:57,962 - INFO - Client 8 started at time: 17:19:57
+2025-04-16 17:19:57,988 - INFO - Client 88 started at time: 17:19:57
+2025-04-16 17:19:58,136 - INFO - Client 74 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,264 - INFO - Client 54 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,292 - INFO - Client 62 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,312 - INFO - Client 81 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,318 - INFO - Client 2 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,377 - INFO - Client 8 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,414 - INFO - Client 38 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,431 - INFO - Client 27 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,486 - INFO - Client 9 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,488 - INFO - Client 53 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,489 - INFO - Client 75 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,558 - INFO - Client 94 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,572 - INFO - Client 93 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,612 - INFO - Client 25 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,645 - INFO - Client 43 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,647 - INFO - Client 86 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:19:58,853 - INFO - Client 88 uploaded at time: 17:19:58; simulated_delay: 0.000000
+2025-04-16 17:24:01,348 - INFO - Process 0 started logging
+2025-04-16 17:24:02,907 - INFO - Process 1 started logging
+2025-04-16 17:24:40,631 - INFO - Client 8 started at time: 17:24:40
+2025-04-16 17:24:47,335 - INFO - Client 2 started at time: 17:24:47
+2025-04-16 17:24:47,338 - INFO - Client 62 started at time: 17:24:47
+2025-04-16 17:24:47,338 - INFO - Client 9 started at time: 17:24:47
+2025-04-16 17:24:47,343 - INFO - Client 88 started at time: 17:24:47
+2025-04-16 17:24:47,345 - INFO - Client 54 started at time: 17:24:47
+2025-04-16 17:24:47,346 - INFO - Client 25 started at time: 17:24:47
+2025-04-16 17:24:47,347 - INFO - Client 91 started at time: 17:24:47
+2025-04-16 17:24:47,355 - INFO - Client 94 started at time: 17:24:47
+2025-04-16 17:24:47,616 - INFO - Client 54 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,621 - INFO - Client 91 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,666 - INFO - Client 62 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,681 - INFO - Client 2 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,702 - INFO - Client 9 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,714 - INFO - Client 8 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,767 - INFO - Client 25 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,809 - INFO - Client 94 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:24:47,984 - INFO - Client 88 uploaded at time: 17:24:47; simulated_delay: 0.000000
+2025-04-16 17:26:53,820 - INFO - Process 0 started logging
+2025-04-16 17:26:57,272 - INFO - Process 1 started logging
+2025-04-16 17:28:54,774 - INFO - Client 2 started at time: 17:28:54
+2025-04-16 17:28:54,775 - INFO - Client 9 started at time: 17:28:54
+2025-04-16 17:28:54,776 - INFO - Client 8 started at time: 17:28:54
+2025-04-16 17:29:01,042 - INFO - Client 81 started at time: 17:29:01
+2025-04-16 17:29:01,042 - INFO - Client 54 started at time: 17:29:01
+2025-04-16 17:29:01,043 - INFO - Client 91 started at time: 17:29:01
+2025-04-16 17:29:01,043 - INFO - Client 88 started at time: 17:29:01
+2025-04-16 17:29:01,044 - INFO - Client 62 started at time: 17:29:01
+2025-04-16 17:29:01,045 - INFO - Client 25 started at time: 17:29:01
+2025-04-16 17:29:01,045 - INFO - Client 94 started at time: 17:29:01
+2025-04-16 17:29:01,485 - INFO - Client 54 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,484 - INFO - Client 81 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,496 - INFO - Client 91 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,520 - INFO - Client 62 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,554 - INFO - Client 2 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,611 - INFO - Client 8 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,612 - INFO - Client 9 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,675 - INFO - Client 25 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:01,773 - INFO - Client 94 uploaded at time: 17:29:01; simulated_delay: 0.000000
+2025-04-16 17:29:02,041 - INFO - Client 88 uploaded at time: 17:29:02; simulated_delay: 0.000000
+2025-04-16 17:29:28,832 - INFO - Client 2 started at time: 17:29:28
+2025-04-16 17:29:28,834 - INFO - Client 9 started at time: 17:29:28
+2025-04-16 17:29:28,836 - INFO - Client 81 started at time: 17:29:28
+2025-04-16 17:29:28,845 - INFO - Client 8 started at time: 17:29:28
+2025-04-16 17:29:28,849 - INFO - Client 54 started at time: 17:29:28
+2025-04-16 17:29:28,856 - INFO - Client 62 started at time: 17:29:28
+2025-04-16 17:29:28,856 - INFO - Client 53 started at time: 17:29:28
+2025-04-16 17:29:28,858 - INFO - Client 94 started at time: 17:29:28
+2025-04-16 17:29:28,862 - INFO - Client 91 started at time: 17:29:28
+2025-04-16 17:29:28,863 - INFO - Client 25 started at time: 17:29:28
+2025-04-16 17:29:29,102 - INFO - Client 54 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,140 - INFO - Client 62 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,152 - INFO - Client 81 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,177 - INFO - Client 91 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,192 - INFO - Client 2 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,237 - INFO - Client 8 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,327 - INFO - Client 9 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,346 - INFO - Client 94 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,360 - INFO - Client 53 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:29,432 - INFO - Client 25 uploaded at time: 17:29:29; simulated_delay: 0.000000
+2025-04-16 17:29:59,832 - INFO - Client 2 started at time: 17:29:59
+2025-04-16 17:29:59,833 - INFO - Client 88 started at time: 17:29:59
+2025-04-16 17:29:59,834 - INFO - Client 22 started at time: 17:29:59
+2025-04-16 17:29:59,832 - INFO - Client 59 started at time: 17:29:59
+2025-04-16 17:29:59,833 - INFO - Client 39 started at time: 17:29:59
+2025-04-16 17:29:59,834 - INFO - Client 43 started at time: 17:29:59
+2025-04-16 17:29:59,848 - INFO - Client 85 started at time: 17:29:59
+2025-04-16 17:29:59,851 - INFO - Client 24 started at time: 17:29:59
+2025-04-16 17:29:59,851 - INFO - Client 62 started at time: 17:29:59
+2025-04-16 17:29:59,852 - INFO - Client 94 started at time: 17:29:59
+2025-04-16 17:29:59,946 - INFO - Client 39 uploaded at time: 17:29:59; simulated_delay: 0.000000
+2025-04-16 17:30:00,082 - INFO - Client 85 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,108 - INFO - Client 22 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,126 - INFO - Client 62 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,155 - INFO - Client 59 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,236 - INFO - Client 2 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,252 - INFO - Client 43 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,312 - INFO - Client 24 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,406 - INFO - Client 94 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:00,707 - INFO - Client 88 uploaded at time: 17:30:00; simulated_delay: 0.000000
+2025-04-16 17:30:09,580 - INFO - Client 2 started at time: 17:30:09
+2025-04-16 17:30:09,585 - INFO - Client 99 started at time: 17:30:09
+2025-04-16 17:30:09,587 - INFO - Client 5 started at time: 17:30:09
+2025-04-16 17:30:09,587 - INFO - Client 44 started at time: 17:30:09
+2025-04-16 17:30:09,589 - INFO - Client 37 started at time: 17:30:09
+2025-04-16 17:30:09,588 - INFO - Client 94 started at time: 17:30:09
+2025-04-16 17:30:09,590 - INFO - Client 62 started at time: 17:30:09
+2025-04-16 17:30:09,591 - INFO - Client 25 started at time: 17:30:09
+2025-04-16 17:30:09,593 - INFO - Client 90 started at time: 17:30:09
+2025-04-16 17:30:09,597 - INFO - Client 51 started at time: 17:30:09
+2025-04-16 17:30:09,841 - INFO - Client 62 uploaded at time: 17:30:09; simulated_delay: 0.000000
+2025-04-16 17:30:09,921 - INFO - Client 2 uploaded at time: 17:30:09; simulated_delay: 0.000000
+2025-04-16 17:30:09,984 - INFO - Client 90 uploaded at time: 17:30:09; simulated_delay: 0.000000
+2025-04-16 17:30:10,031 - INFO - Client 37 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,070 - INFO - Client 44 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,135 - INFO - Client 94 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,174 - INFO - Client 51 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,247 - INFO - Client 5 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,326 - INFO - Client 25 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:10,405 - INFO - Client 99 uploaded at time: 17:30:10; simulated_delay: 0.000000
+2025-04-16 17:30:55,828 - INFO - Client 22 started at time: 17:30:55
+2025-04-16 17:30:55,828 - INFO - Client 85 started at time: 17:30:55
+2025-04-16 17:30:55,829 - INFO - Client 39 started at time: 17:30:55
+2025-04-16 17:30:55,831 - INFO - Client 59 started at time: 17:30:55
+2025-04-16 17:30:55,835 - INFO - Client 97 started at time: 17:30:55
+2025-04-16 17:30:55,920 - INFO - Client 22 uploaded at time: 17:30:55; simulated_delay: 0.000000
+2025-04-16 17:30:55,984 - INFO - Client 39 uploaded at time: 17:30:55; simulated_delay: 0.000000
+2025-04-16 17:30:56,169 - INFO - Client 85 uploaded at time: 17:30:56; simulated_delay: 0.000000
+2025-04-16 17:30:56,237 - INFO - Client 59 uploaded at time: 17:30:56; simulated_delay: 0.000000
+2025-04-16 17:30:56,280 - INFO - Client 97 uploaded at time: 17:30:56; simulated_delay: 0.000000
+2025-04-16 17:30:58,084 - INFO - Client 2 started at time: 17:30:58
+2025-04-16 17:30:58,088 - INFO - Client 88 started at time: 17:30:58
+2025-04-16 17:30:58,089 - INFO - Client 24 started at time: 17:30:58
+2025-04-16 17:30:58,090 - INFO - Client 59 started at time: 17:30:58
+2025-04-16 17:30:58,091 - INFO - Client 22 started at time: 17:30:58
+2025-04-16 17:30:58,092 - INFO - Client 85 started at time: 17:30:58
+2025-04-16 17:30:58,092 - INFO - Client 94 started at time: 17:30:58
+2025-04-16 17:30:58,092 - INFO - Client 53 started at time: 17:30:58
+2025-04-16 17:30:58,092 - INFO - Client 62 started at time: 17:30:58
+2025-04-16 17:30:58,094 - INFO - Client 36 started at time: 17:30:58
+2025-04-16 17:30:58,341 - INFO - Client 85 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,347 - INFO - Client 22 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,462 - INFO - Client 59 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,465 - INFO - Client 62 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,510 - INFO - Client 53 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,626 - INFO - Client 2 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,640 - INFO - Client 36 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,642 - INFO - Client 24 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:58,808 - INFO - Client 94 uploaded at time: 17:30:58; simulated_delay: 0.000000
+2025-04-16 17:30:59,074 - INFO - Client 88 uploaded at time: 17:30:59; simulated_delay: 0.000000
+2025-04-16 17:31:48,043 - INFO - Process 0 started logging
+2025-04-16 17:31:49,619 - INFO - Process 1 started logging
+2025-04-16 17:32:05,001 - INFO - Client 62 started at time: 17:32:05
+2025-04-16 17:32:12,062 - INFO - Client 54 started at time: 17:32:12
+2025-04-16 17:32:17,896 - INFO - Client 8 started at time: 17:32:17
+2025-04-16 17:32:17,896 - INFO - Client 94 started at time: 17:32:17
+2025-04-16 17:32:17,907 - INFO - Client 88 started at time: 17:32:17
+2025-04-16 17:32:17,928 - INFO - Client 2 started at time: 17:32:17
+2025-04-16 17:32:18,101 - INFO - Client 54 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:18,183 - INFO - Client 62 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:18,203 - INFO - Client 2 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:18,249 - INFO - Client 8 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:18,311 - INFO - Client 81 started at time: 17:32:18
+2025-04-16 17:32:18,316 - INFO - Client 91 started at time: 17:32:18
+2025-04-16 17:32:18,335 - INFO - Client 94 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:18,605 - INFO - Client 88 uploaded at time: 17:32:18; simulated_delay: 0.000000
+2025-04-16 17:32:20,399 - INFO - Client 9 started at time: 17:32:20
+2025-04-16 17:32:20,712 - INFO - Client 81 uploaded at time: 17:32:20; simulated_delay: 0.000000
+2025-04-16 17:32:20,714 - INFO - Client 91 uploaded at time: 17:32:20; simulated_delay: 0.000000
+2025-04-16 17:32:20,785 - INFO - Client 9 uploaded at time: 17:32:20; simulated_delay: 0.000000
+2025-04-16 17:32:22,133 - INFO - Client 25 started at time: 17:32:22
+2025-04-16 17:32:22,418 - INFO - Client 25 uploaded at time: 17:32:22; simulated_delay: 0.000000
+2025-04-16 17:32:22,991 - INFO - Client 2 started at time: 17:32:22
+2025-04-16 17:32:22,992 - INFO - Client 8 started at time: 17:32:22
+2025-04-16 17:32:22,992 - INFO - Client 9 started at time: 17:32:22
+2025-04-16 17:32:22,993 - INFO - Client 81 started at time: 17:32:22
+2025-04-16 17:32:22,993 - INFO - Client 53 started at time: 17:32:22
+2025-04-16 17:32:22,994 - INFO - Client 54 started at time: 17:32:22
+2025-04-16 17:32:22,995 - INFO - Client 91 started at time: 17:32:22
+2025-04-16 17:32:22,995 - INFO - Client 62 started at time: 17:32:22
+2025-04-16 17:32:22,995 - INFO - Client 25 started at time: 17:32:22
+2025-04-16 17:32:22,995 - INFO - Client 94 started at time: 17:32:22
+2025-04-16 17:32:23,118 - INFO - Client 54 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,155 - INFO - Client 62 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,181 - INFO - Client 81 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,213 - INFO - Client 91 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,214 - INFO - Client 2 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,244 - INFO - Client 8 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,316 - INFO - Client 9 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,327 - INFO - Client 94 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,337 - INFO - Client 53 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,348 - INFO - Client 25 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:23,901 - INFO - Client 2 started at time: 17:32:23
+2025-04-16 17:32:23,901 - INFO - Client 39 started at time: 17:32:23
+2025-04-16 17:32:23,901 - INFO - Client 88 started at time: 17:32:23
+2025-04-16 17:32:23,902 - INFO - Client 85 started at time: 17:32:23
+2025-04-16 17:32:23,903 - INFO - Client 22 started at time: 17:32:23
+2025-04-16 17:32:23,903 - INFO - Client 62 started at time: 17:32:23
+2025-04-16 17:32:23,904 - INFO - Client 59 started at time: 17:32:23
+2025-04-16 17:32:23,904 - INFO - Client 24 started at time: 17:32:23
+2025-04-16 17:32:23,905 - INFO - Client 94 started at time: 17:32:23
+2025-04-16 17:32:23,981 - INFO - Client 39 uploaded at time: 17:32:23; simulated_delay: 0.000000
+2025-04-16 17:32:24,046 - INFO - Client 62 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,047 - INFO - Client 22 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,058 - INFO - Client 85 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,082 - INFO - Client 2 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,095 - INFO - Client 59 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,176 - INFO - Client 24 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,227 - INFO - Client 94 uploaded at time: 17:32:24; simulated_delay: 0.000000
+2025-04-16 17:32:24,423 - INFO - Client 88 uploaded at time: 17:32:24; simulated_delay: 0.000000

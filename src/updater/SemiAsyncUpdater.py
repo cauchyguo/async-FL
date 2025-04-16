@@ -14,7 +14,7 @@ class SemiAsyncUpdater(SyncUpdater):
         self.group_update = group_update_class(self.config["group"]["params"])
         self.group_update_caller = UpdateCaller(self, self.group_update)
 
-        self.global_var['start_time'] = time.time()
+        # self.global_var['start_time'] = time.time()
 
     def create_handler_chain(self):
         self.handler_chain = HandlerChain()

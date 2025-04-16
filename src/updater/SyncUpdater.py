@@ -3,7 +3,7 @@ from core.handlers.ModelTestHandler import ServerTestHandler, ServerPostTestHand
 from core.handlers.ServerHandler import Aggregation, GlobalModelOptimization, ClientUpdateGetter
 from updater.BaseUpdater import BaseUpdater
 
-
+import time
 class SyncUpdater(BaseUpdater):
     def __init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem):
         BaseUpdater.__init__(self, server_thread_lock, config)
@@ -11,6 +11,7 @@ class SyncUpdater(BaseUpdater):
         self.empty_sem = empty_sem
         self.full_sem = full_sem
         self.finals = []
+        self.global_var['start_time'] = time.time()
 
     def _run_iteration(self) -> None:
         for _ in range(self.T):
