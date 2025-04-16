@@ -1,0 +1,100 @@
+{
+  "wandb": {
+    "enabled": false,
+    "project": "Exp2025-V2-FashionMNIST",
+    "name": "FedAsync-dir0.1"
+  },
+  "global": {
+    "mode": {
+      "path": "core.MPMT.MPMT"
+    },
+    "dataset_pre_load": true,
+    "use_file_system": false,
+    "multi_gpu": true,
+    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAsync-dir0.1",
+    "stale": false,
+    "dataset": {
+      "path": "dataset.FashionMNIST.FashionMNIST",
+      "params": {}
+    },
+    "iid": {
+      "beta": 0.1
+    },
+    "client_num": 100
+  },
+  "server": {
+    "path": "server.NormalServer.NormalServer",
+    "epochs": 2010,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "scheduler": {
+      "path": "scheduler.AsyncScheduler.AsyncScheduler",
+      "schedule_interval": 20,
+      "schedule_delay": 50,
+      "schedule": {
+        "path": "schedule.RandomSchedule.RandomSchedule",
+        "params": {
+          "c_ratio": 0.3,
+          "init_select_clients_num": 2,
+          "min_join_clients_num": 10,
+          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+          "total_bandwidth": 50,
+          "data_size": 6.34,
+          "max_join_clients_num": 15,
+          "target_kl_divergence": 0.05,
+          "theta": 0.1,
+          "sys_cost": 2
+        }
+      }
+    },
+    "updater": {
+      "path": "updater.AsyncUpdater.AsyncUpdater",
+      "num_generator": 1,
+      "loss": "torch.nn.functional.cross_entropy",
+      "update": {
+        "path": "update.FedAsync.FedAsync",
+        "params": {
+          "a": 10,
+          "b": 8,
+          "alpha": 0.9,
+          "r": 1
+        }
+      }
+    }
+  },
+  "queue_manager": {
+    "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+    "receiver": {
+      "path": "receiver.NormalReceiver.NormalReceiver",
+      "params": {}
+    },
+    "checker": {
+      "path": "checker.AllChecker.AllChecker",
+      "params": {}
+    }
+  },
+  "client_manager": {
+    "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+    "process_num": 5
+  },
+  "client": {
+    "path": "client.NormalClient.NormalClient",
+    "epochs": 2,
+    "batch_size": 64,
+    "model": {
+      "path": "model.CNN.CNN",
+      "params": {}
+    },
+    "loss": "torch.nn.functional.cross_entropy",
+    "mu": 0,
+    "optimizer": {
+      "path": "torch.optim.SGD",
+      "params": {
+        "lr": 0.01,
+        "weight_decay": 0
+      }
+    }
+  }
+}
