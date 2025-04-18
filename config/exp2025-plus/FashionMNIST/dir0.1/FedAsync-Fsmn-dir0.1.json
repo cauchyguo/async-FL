@@ -18,7 +18,7 @@
       "params": {}
     },
     "iid": {
-      "beta": 0.5
+      "beta": 0.1
     },
     "client_num": 100
   },
@@ -36,7 +36,7 @@
       "schedule": {
         "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
-          "c_ratio": 0.5,
+          "c_ratio": 0.1,
           "init_select_clients_num": 2,
           "min_join_clients_num": 10,
           "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
