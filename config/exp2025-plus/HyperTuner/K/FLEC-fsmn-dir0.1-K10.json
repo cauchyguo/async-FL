@@ -1,7 +1,7 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-V2-FashionMNIST-HyperTuner-K",
+    "project": "Exp2025-V2-FashionMNIST-HyperTuner-K-plus",
     "name": "FLEC-dir0.1-K10"
   },
   "global": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST-HyperTuner-K/FLEC-dir0.1-K10",
+    "experiment": "Exp2025-V2-FashionMNIST-HyperTuner-K/FLEC-dir0.1-K10-plus",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -38,10 +38,10 @@
           "c_ratio": 0.4,
           "min_join_clients_num": 10,
           "total_bandwidth": 50,
-          "data_size": 6.34,
+          "data_size": 5,
           "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
-          "theta": 0.02,
+          "theta": 0.01,
           "init_select_clients_num": 5,
           "init_select_unique_clients_num": 5,
           "init_select_shared_clients_num": 3,
@@ -50,7 +50,7 @@
             "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
             "params": {
               "total_bandwidth": 50,
-              "data_size": 6.34,
+              "data_size": 5,
               "noise_power": -104,
               "g_dB_coef": [
                 -128.1,
