@@ -992,3 +992,174 @@ def analyze_multiple_algorithms(csv_paths_dict, accuracy_thresholds, total_round
     print(f"结果已保存到 {output_excel_path}")
     
     return df
+
+
+
+import re
+import pandas as pd
+import os
+import numpy as np
+from ast import literal_eval
+
+def parse_fed_log(log_file_path):
+    """
+    解析联邦学习日志文件，提取每个epoch的信息
+    
+    参数:
+        log_file_path (str): 日志文件的路径
+        
+    返回:
+        pandas.DataFrame: 包含解析结果的DataFrame
+    """
+    # 读取日志文件内容
+    with open(log_file_path, 'r') as file:
+        log_content = file.read()
+    
+    # 提取每个epoch的信息
+    results = []
+    
+    # 使用正则表达式匹配所有的group选择信息
+    group_selections = {}
+    for group_id in range(5):  # 假设有5个group (0-4)
+        pattern = rf'group {group_id} selected \d+ clients: \[([\d, ]+)\]'
+        selections = re.findall(pattern, log_content)
+        # 将每个选择转换为客户端id列表
+        selections = [[int(client_id) for client_id in selection.split(', ')] for selection in selections]
+        group_selections[group_id] = selections
+    
+    # 提取每个epoch的聚合信息
+    epoch_pattern = r'group_ready_num: (\d+) .+?\n-+\nEpoch (\d+) tested, accuracy: ([\d\.]+) loss ([\d\.]+) run_time ([\d\.]+)'
+    epoch_matches = re.findall(epoch_pattern, log_content, re.DOTALL)
+    
+    # 构建结果列表
+    for match in epoch_matches:
+        group_id = int(match[0])
+        epoch = int(match[1])
+        accuracy = float(match[2])
+        loss = float(match[3])
+        run_time = float(match[4])
+        
+        # 找到该epoch对应的客户端选择
+        # 假设每个group的选择顺序与epoch的聚合顺序相对应
+        # 例如，group 0的第一次选择对应第一次聚合group 0的epoch
+        group_epoch_count = sum(1 for m in epoch_matches[:epoch_matches.index(match)] if int(m[0]) == group_id)
+        
+        # 确保我们有足够的选择记录
+        if group_epoch_count < len(group_selections[group_id]):
+            selected_clients = group_selections[group_id][group_epoch_count]
+        else:
+            selected_clients = []  # 如果没有找到对应的选择记录
+        
+        results.append({
+            'Epoch': epoch,
+            'Group_ID': group_id,
+            'Selected_Clients': selected_clients,
+            'Accuracy': accuracy,
+            'Loss': loss,
+            'Run_Time': run_time
+        })
+    
+    # 创建DataFrame
+    df = pd.DataFrame(results)
+    
+    return df
+
+def calculate_simulation_time(analysis_df, delay_df, constant_t=5.0):
+    """
+    计算每个epoch的仿真时间
+    
+    参数:
+        analysis_df (pandas.DataFrame): 解析的epoch信息DataFrame
+        delay_df (pandas.DataFrame): 客户端延迟信息DataFrame
+        constant_t (float): 常数t值，默认为5.0
+        
+    返回:
+        pandas.DataFrame: 添加了仿真时间的DataFrame
+    """
+    # 创建客户端ID到系统时间的映射
+    client_delay_map = dict(zip(delay_df['client_id'], delay_df['system_time']))
+    
+    # 创建一个新的DataFrame，以保留原始DataFrame不变
+    result_df = analysis_df.copy()
+    
+    # 添加新列用于存储仿真时间
+    result_df['Simulation_Time'] = 0.0
+    result_df['edge_round_time'] = 0.0
+    
+    # 为每个group维护最近一次出现的epoch的仿真时间
+    last_sim_time = {group_id: 0.0 for group_id in range(5)}  # 假设有5个group
+    
+    # 计算每个epoch的仿真时间
+    for index, row in result_df.iterrows():
+        group_id = row['Group_ID']
+        
+        # 获取当前epoch的客户端列表
+        if isinstance(row['Selected_Clients'], str):
+            try:
+                # 尝试将字符串转换为列表
+                selected_clients = literal_eval(row['Selected_Clients'])
+            except (ValueError, SyntaxError):
+                # 如果字符串格式不正确，尝试其他方法
+                selected_clients = [int(c.strip()) for c in row['Selected_Clients'].strip('[]').split(',') if c.strip()]
+        else:
+            selected_clients = row['Selected_Clients']
+        
+        # 获取这些客户端的最大系统时间
+        max_system_time = 0.0
+        for client_id in selected_clients:
+            system_time = client_delay_map.get(client_id, 0.0)
+            max_system_time = max(max_system_time, system_time)
+        
+        # 计算当前epoch的仿真时间
+        b = last_sim_time[group_id]  # 上一次该group的仿真时间
+        simulation_time = b + max_system_time + constant_t
+        
+        # 计算当前epoch的边缘轮次时间
+        # 更新结果
+        result_df.at[index, 'Simulation_Time'] = simulation_time
+        result_df.at[index, 'edge_round_time'] = max_system_time
+        
+        # 更新最近一次出现的仿真时间
+        last_sim_time[group_id] = simulation_time
+    
+    return result_df
+
+def analyze_fed_log_with_simulation_time(log_file_path, delay_file_path, output_path=None, constant_t=5.0):
+    """
+    分析联邦学习日志文件并计算仿真时间，保存结果
+    
+    参数:
+        log_file_path (str): 日志文件的路径
+        delay_file_path (str): 延迟文件的路径
+        output_path (str, 可选): 输出CSV文件的路径，如果不提供则使用默认路径
+        constant_t (float): 常数t值，默认为5.0
+        
+    返回:
+        pandas.DataFrame: 包含分析结果的DataFrame
+    """
+    # 解析日志文件
+    analysis_df = parse_fed_log(log_file_path)
+    
+    # 读取延迟文件
+    delay_df = pd.read_csv(delay_file_path)
+    
+    # 计算仿真时间
+    results_df = calculate_simulation_time(analysis_df, delay_df, constant_t)
+    
+    # 如果未提供输出路径，则创建默认路径
+    if output_path is None:
+        dir_name = os.path.dirname(log_file_path)
+        base_name = os.path.basename(log_file_path).split('.')[0]
+        output_path = os.path.join(dir_name, f"{base_name}_with_simulation_time.csv")
+    
+    # 保存结果
+    # 将客户端列表转换为字符串，以便在CSV中正确显示
+    if not isinstance(results_df['Selected_Clients'].iloc[0], str):
+        results_df['Selected_Clients'] = results_df['Selected_Clients'].apply(lambda x: str(x))
+    
+    results_df.to_csv(output_path, index=False)
+    
+    print(f"分析结果已保存到: {output_path}")
+    
+    return results_df
+
