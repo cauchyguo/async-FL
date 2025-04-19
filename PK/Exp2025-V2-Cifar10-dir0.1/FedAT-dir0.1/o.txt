@@ -1,0 +1,9 @@
+2025-04-06 06:30:41,996 - INFO - Starting experiment with UID: 6b33e907b0ab4fc5863f1b067a8f9aa1
+2025-04-06 06:33:29,812 - INFO - Starting experiment with UID: bef25f57e24146d7857addc94fbf863f
+2025-04-06 06:35:14,536 - INFO - Starting experiment with UID: 83bc1d8f38784672a3a30c969114a0f4
+2025-04-06 06:38:16,020 - INFO - Starting experiment with UID: 1e9fe08f5a39410c8fae9fe6fd751abe
+2025-04-06 06:39:37,022 - INFO - Starting experiment with UID: aa6434a36b904e5eb37183de44b75032
+2025-04-06 06:44:37,592 - INFO - Starting experiment with UID: 711b454af1514cfc8c601da101caf5ed
+2025-04-06 06:45:48,344 - INFO - Starting experiment with UID: 56dd4ab578d4430da0cbc564f791ff12
+2025-04-06 11:27:18,024 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/FedAT-dir0.1/o.txt
+2025-04-08 08:44:25,657 - INFO - Starting experiment with UID: bf5cf0915cb042bd9cb3c1b3d594cb74

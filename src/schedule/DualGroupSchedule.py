@@ -5,6 +5,8 @@ import numpy as np
 from utils import ModuleFindTool
 import time
 
+from algorithm import DelayAdaptiveOptimizer
+
 class DualGroupSchedule(AbstractSchedule):
     def __init__(self, config):
         super().__init__(config)
@@ -21,8 +23,7 @@ class DualGroupSchedule(AbstractSchedule):
         self.init_select_unique_clients_num = config.get("init_select_unique_clients_num", 3)
         self.init_select_shared_clients_num = config.get("init_select_shared_clients_num", 5)
 
-        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["delay_adaptive_optimizer"]["path"])
-        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["delay_adaptive_optimizer"]["params"])
+        self.delay_adaptive_optimizer = DelayAdaptiveOptimizer(config["delay_adaptive_optimizer"]["params"])
 
 
     def schedule(self,edge_server_idx, edge_server_unique_clients,edge_server_shared_clients,client_label_df):

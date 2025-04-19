@@ -12,10 +12,18 @@
     "stale": {
       "step": 1,
       "shuffle": true,
-      "list": [10, 10, 10, 5, 5, 5, 5]
+      "list": [
+        10,
+        10,
+        10,
+        5,
+        5,
+        5,
+        5
+      ]
     },
     "dataset": {
-      "path": "dataset.FashionMNIST.FashionMNIST",
+      "path": "dataset.FashionMNIST",
       "params": {}
     },
     "iid": true,
@@ -42,8 +50,7 @@
       "loss": "torch.nn.functional.cross_entropy",
       "update": {
         "path": "update.FedAvg.FedAvg",
-        "params": {
-        }
+        "params": {}
       }
     }
   },
@@ -51,13 +58,11 @@
     "path": "queuemanager.SingleQueueManager.SingleQueueManager",
     "receiver": {
       "path": "receiver.NormalReceiver.NormalReceiver",
-      "params": {
-      }
+      "params": {}
     },
     "checker": {
       "path": "checker.SyncChecker.SyncChecker",
-      "params": {
-      }
+      "params": {}
     }
   },
   "client_manager": {

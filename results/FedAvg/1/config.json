@@ -1,0 +1,140 @@
+{
+    "wandb": {
+        "enabled": false,
+        "project": "FedAvg",
+        "name": "1"
+    },
+    "global": {
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": true,
+        "experiment": "FedAvg/1",
+        "stale": [
+            2,
+            1,
+            0,
+            2,
+            6,
+            0,
+            3,
+            0,
+            1,
+            0,
+            2,
+            5,
+            0,
+            0,
+            1,
+            0,
+            2,
+            2,
+            4,
+            1,
+            5,
+            5,
+            6,
+            0,
+            6,
+            0,
+            4,
+            1,
+            1,
+            4,
+            6,
+            2,
+            2,
+            4,
+            2,
+            3,
+            6,
+            1,
+            3,
+            2,
+            4,
+            3,
+            1,
+            5,
+            5,
+            0,
+            1,
+            2,
+            1,
+            3
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": true,
+        "client_num": 50,
+        "uid": "1dc7ecea5a55464ead1216b3d7c533ba",
+        "seed": 1269718830
+    },
+    "server": {
+        "path": "server.NormalServer.NormalServer",
+        "epochs": 20,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.SyncScheduler.SyncScheduler",
+            "schedule": {
+                "path": "schedule.RandomSchedule.RandomSchedule",
+                "params": {
+                    "c_ratio": 0.3
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.FedAvg.FedAvg",
+                "params": {}
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.NormalClient.NormalClient",
+        "epochs": 2,
+        "batch_size": 128,
+        "test_size": 0.1,
+        "test_batch_size": 128,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.01,
+                "weight_decay": 0
+            }
+        }
+    }
+}

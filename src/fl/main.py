@@ -54,7 +54,7 @@ def main():
     # 配置文件读取
     config_file = args.config_file if args.config_file else args.config
     if config_file == '':
-        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025-plus/HyperTuner/K/FLEC-fsmn-dir0.1-K0.json")
+        config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../config/exp2025-plus/Cifar10/dir0.5/FLEC-cifar10-dir0.5-K0.json")
     config = getJson(config_file)
 
     # 生成uuid

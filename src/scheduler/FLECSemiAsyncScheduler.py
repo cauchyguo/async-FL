@@ -4,6 +4,7 @@ from scheduler.SyncScheduler import SyncScheduler
 from utils import ModuleFindTool
 import copy
 import time
+from algorithm import DelayAdaptiveOptimizer
 
 class FLECSemiAsyncScheduler(SyncScheduler):
     def __init__(self, server_thread_lock, config, mutex_sem, empty_sem, full_sem):
@@ -14,8 +15,7 @@ class FLECSemiAsyncScheduler(SyncScheduler):
         self.edge_unique_groups = self.group_manager.get_edge_group_list()[0]
         self.edge_shared_groups = self.group_manager.get_edge_group_list()[1]
         self.group_num = self.edge_server_num
-        delay_adaptive_optimizer_class = ModuleFindTool.find_class_by_path(config["schedule"]["params"]["delay_adaptive_optimizer"]["path"])
-        self.delay_adaptive_optimizer = delay_adaptive_optimizer_class(config["schedule"]["params"]["delay_adaptive_optimizer"]["params"])
+        self.delay_adaptive_optimizer = DelayAdaptiveOptimizer(config["schedule"]["params"]["delay_adaptive_optimizer"]["params"])
         time.sleep(0.01)
 
     def create_handler_chain(self):

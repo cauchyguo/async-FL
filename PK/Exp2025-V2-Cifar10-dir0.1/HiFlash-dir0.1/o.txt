@@ -1,0 +1,38 @@
+2025-04-04 23:54:19,857 - INFO - Starting experiment with UID: 77a21336a21640a985ab562665df447e
+2025-04-04 23:54:45,620 - INFO - Starting experiment with UID: f8e1e61f99864419becbb39d08585fb4
+2025-04-05 00:13:19,025 - INFO - Starting experiment with UID: 1e814ac50bfc406bb3056c68d1e7dd86
+2025-04-05 14:34:40,205 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1/o.txt
+2025-04-05 17:47:12,369 - INFO - Starting experiment with UID: 3f8eb2fa10cb40b7844bf0e593367747
+2025-04-05 17:47:50,138 - INFO - Starting experiment with UID: 91bbf20a7e81431ab797383600586437
+2025-04-06 18:37:03,000 - INFO - Starting experiment with UID: daa0db80d4f14924a663dd4df0c73f58
+2025-04-06 23:03:55,803 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1/o.txt
+2025-04-10 10:08:50,659 - INFO - Process 0 started logging
+2025-04-10 10:08:50,836 - INFO - Process 1 started logging
+2025-04-10 10:08:51,020 - INFO - Process 2 started logging
+2025-04-10 10:08:51,067 - INFO - Process 3 started logging
+2025-04-10 10:08:51,259 - INFO - Process 4 started logging
+2025-04-10 10:08:51,343 - INFO - Process 5 started logging
+2025-04-10 10:08:51,519 - INFO - Process 6 started logging
+2025-04-10 10:08:51,647 - INFO - Process 7 started logging
+2025-04-10 10:08:51,863 - INFO - Process 8 started logging
+2025-04-10 10:08:52,024 - INFO - Process 9 started logging
+2025-04-10 10:08:52,144 - INFO - Process 10 started logging
+2025-04-10 10:08:52,436 - INFO - Process 11 started logging
+2025-04-10 10:08:52,507 - INFO - Process 14 started logging
+2025-04-10 10:08:52,535 - INFO - Process 12 started logging
+2025-04-10 10:08:52,607 - INFO - Process 13 started logging
+2025-04-10 10:10:05,848 - INFO - Process 0 started logging
+2025-04-10 10:10:06,115 - INFO - Process 1 started logging
+2025-04-10 10:10:06,187 - INFO - Process 2 started logging
+2025-04-10 10:10:06,363 - INFO - Process 3 started logging
+2025-04-10 10:10:06,435 - INFO - Process 4 started logging
+2025-04-10 10:10:06,699 - INFO - Process 5 started logging
+2025-04-10 10:10:06,727 - INFO - Process 6 started logging
+2025-04-10 10:10:06,916 - INFO - Process 8 started logging
+2025-04-10 10:10:06,960 - INFO - Process 7 started logging
+2025-04-10 10:10:07,155 - INFO - Process 10 started logging
+2025-04-10 10:10:07,211 - INFO - Process 9 started logging
+2025-04-10 10:10:07,419 - INFO - Process 11 started logging
+2025-04-10 10:10:07,547 - INFO - Process 12 started logging
+2025-04-10 10:10:07,551 - INFO - Process 13 started logging
+2025-04-10 10:10:07,691 - INFO - Process 14 started logging

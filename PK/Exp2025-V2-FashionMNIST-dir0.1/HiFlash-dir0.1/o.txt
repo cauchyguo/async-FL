@@ -1,0 +1,44 @@
+2025-04-04 19:44:42,574 - INFO - Starting experiment with UID: 270c73bd621748e9b8d6d7176b752edd
+2025-04-04 21:00:09,180 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/HiFlash-dir0.1/o.txt
+2025-04-06 09:37:18,476 - INFO - Starting experiment with UID: 7699fbf2a38442acaa37f72b07abfb3f
+2025-04-06 10:54:27,556 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/HiFlash-dir0.1/o.txt
+2025-04-10 09:39:09,035 - INFO - Process 0 started logging
+2025-04-10 09:39:10,719 - INFO - Process 1 started logging
+2025-04-10 09:39:12,351 - INFO - Process 2 started logging
+2025-04-10 09:39:13,955 - INFO - Process 3 started logging
+2025-04-10 09:39:15,543 - INFO - Process 4 started logging
+2025-04-10 09:42:33,720 - INFO - Process 0 started logging
+2025-04-10 09:42:37,775 - INFO - Process 1 started logging
+2025-04-10 09:42:41,841 - INFO - Process 2 started logging
+2025-04-10 09:42:45,919 - INFO - Process 3 started logging
+2025-04-10 09:42:50,020 - INFO - Process 4 started logging
+2025-04-10 09:44:32,388 - INFO - Process 0 started logging
+2025-04-10 09:44:36,452 - INFO - Process 1 started logging
+2025-04-10 09:44:40,233 - INFO - Process 2 started logging
+2025-04-10 09:44:44,053 - INFO - Process 3 started logging
+2025-04-10 09:44:47,817 - INFO - Process 4 started logging
+2025-04-10 09:47:58,643 - INFO - Process 0 started logging
+2025-04-10 09:48:02,544 - INFO - Process 1 started logging
+2025-04-10 09:48:06,744 - INFO - Process 2 started logging
+2025-04-10 09:48:10,743 - INFO - Process 3 started logging
+2025-04-10 09:48:14,755 - INFO - Process 4 started logging
+2025-04-10 09:49:24,104 - INFO - Process 0 started logging
+2025-04-10 09:49:27,916 - INFO - Process 1 started logging
+2025-04-10 09:49:31,680 - INFO - Process 2 started logging
+2025-04-10 09:49:35,408 - INFO - Process 3 started logging
+2025-04-10 09:49:39,272 - INFO - Process 4 started logging
+2025-04-10 09:50:46,596 - INFO - Process 0 started logging
+2025-04-10 09:50:50,516 - INFO - Process 1 started logging
+2025-04-10 09:50:54,341 - INFO - Process 2 started logging
+2025-04-10 09:50:58,201 - INFO - Process 3 started logging
+2025-04-10 09:51:02,096 - INFO - Process 4 started logging
+2025-04-10 09:53:36,569 - INFO - Process 0 started logging
+2025-04-10 09:53:40,372 - INFO - Process 1 started logging
+2025-04-10 09:53:44,160 - INFO - Process 2 started logging
+2025-04-10 09:53:48,032 - INFO - Process 3 started logging
+2025-04-10 09:53:52,016 - INFO - Process 4 started logging
+2025-04-10 09:56:33,872 - INFO - Process 0 started logging
+2025-04-10 09:56:37,908 - INFO - Process 1 started logging
+2025-04-10 09:56:42,088 - INFO - Process 2 started logging
+2025-04-10 09:56:46,111 - INFO - Process 3 started logging
+2025-04-10 09:56:50,048 - INFO - Process 4 started logging

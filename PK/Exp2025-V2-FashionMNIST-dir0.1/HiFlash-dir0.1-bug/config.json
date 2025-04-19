@@ -1,0 +1,212 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-V2-FashionMNIST",
+        "name": "HiFlash-dir0.1"
+    },
+    "global": {
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": false,
+        "experiment": "Exp2025-V2-FashionMNIST-dir0.1/HiFlash-dir0.1",
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.FashionMNIST.FashionMNIST",
+            "params": {}
+        },
+        "iid": {
+            "beta": 0.1
+        },
+        "client_num": 100,
+        "uid": "2fe112bccb984b05854551c491360286"
+    },
+    "server": {
+        "path": "server.SemiAsyncServer.SemiAsyncServer",
+        "epochs": 2000,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "scheduler": {
+            "path": "scheduler.HiFlashScheduler.HiFlashScheduler",
+            "schedule": {
+                "path": "schedule.HiFlashSchedule.HiFlashSchedule",
+                "params": {
+                    "init_select_clients_num": 2,
+                    "min_join_clients_num": 10,
+                    "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                    "total_bandwidth": 50,
+                    "data_size": 6.34,
+                    "max_join_clients_num": 15,
+                    "target_kl_divergence": 0.05,
+                    "theta": 0.1
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
+            "update": {
+                "path": "update.FedAvg.FedAvg",
+                "params": {}
+            },
+            "loss": "torch.nn.functional.cross_entropy",
+            "params": {},
+            "group": {
+                "path": "update.FLEC.FLEC",
+                "params": {
+                    "alpha": 0.9,
+                    "v": 0.95,
+                    "staleness_threshold": 10
+                }
+            }
+        }
+    },
+    "group_manager": {
+        "path": "groupmanager.FLECNormalGroupManager.FLECNormalGroupManager",
+        "group_method": {
+            "path": "group.DelayAssociationGroup.DelayAssociationGroup",
+            "params": {
+                "situation_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                "edge_server_num": 5,
+                "nearest_K": 20,
+                "total_bandwidth": 50,
+                "data_size": 6.34,
+                "min_join_clients_num": 10
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.QueueListManager.QueueListManager",
+        "receiver": {
+            "path": "receiver.MultiQueueReceiver.MultiQueueReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.AllChecker.AllChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.FLEClient.FLEClient",
+        "epochs": 2,
+        "batch_size": 64,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0.01,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.01,
+                "weight_decay": 0
+            }
+        }
+    }
+}
