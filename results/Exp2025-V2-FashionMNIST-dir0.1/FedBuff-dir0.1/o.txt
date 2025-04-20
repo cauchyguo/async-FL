@@ -6580,3 +6580,33 @@
 2025-04-20 11:25:34,467 - INFO - Client 92 started at time: 11:25:34
 2025-04-20 11:25:34,468 - INFO - Client 90 started at time: 11:25:34
 2025-04-20 11:25:34,721 - INFO - Client 72 uploaded at time: 11:25:34; simulated_delay: 13.670000
+2025-04-20 11:25:34,791 - INFO - Client 45 uploaded at time: 11:25:34; simulated_delay: 12.300000
+2025-04-20 11:25:34,792 - INFO - Client 85 uploaded at time: 11:25:34; simulated_delay: 4.970000
+2025-04-20 11:25:34,837 - INFO - Client 71 uploaded at time: 11:25:34; simulated_delay: 11.570000
+2025-04-20 11:25:34,871 - INFO - Client 49 uploaded at time: 11:25:34; simulated_delay: 12.390000
+2025-04-20 11:25:34,917 - INFO - Client 5 uploaded at time: 11:25:34; simulated_delay: 3.960000
+2025-04-20 11:25:35,047 - INFO - Client 39 uploaded at time: 11:25:35; simulated_delay: 6.690000
+2025-04-20 11:25:35,048 - INFO - Client 2 uploaded at time: 11:25:35; simulated_delay: 5.250000
+2025-04-20 11:25:35,272 - INFO - Client 70 uploaded at time: 11:25:35; simulated_delay: 12.010000
+2025-04-20 11:25:35,280 - INFO - Client 14 uploaded at time: 11:25:35; simulated_delay: 12.000000
+2025-04-20 11:25:35,556 - INFO - Client 99 started at time: 11:25:35
+2025-04-20 11:25:35,557 - INFO - Client 75 started at time: 11:25:35
+2025-04-20 11:25:35,558 - INFO - Client 62 started at time: 11:25:35
+2025-04-20 11:25:35,559 - INFO - Client 45 started at time: 11:25:35
+2025-04-20 11:25:35,559 - INFO - Client 85 started at time: 11:25:35
+2025-04-20 11:25:35,559 - INFO - Client 68 started at time: 11:25:35
+2025-04-20 11:25:35,559 - INFO - Client 3 started at time: 11:25:35
+2025-04-20 11:25:35,560 - INFO - Client 50 started at time: 11:25:35
+2025-04-20 11:25:35,561 - INFO - Client 27 started at time: 11:25:35
+2025-04-20 11:25:35,572 - INFO - Client 51 uploaded at time: 11:25:35; simulated_delay: 7.210000
+2025-04-20 11:25:35,590 - INFO - Client 43 uploaded at time: 11:25:35; simulated_delay: 7.220000
+2025-04-20 11:25:35,732 - INFO - Client 91 uploaded at time: 11:25:35; simulated_delay: 4.750000
+2025-04-20 11:25:35,782 - INFO - Client 9 uploaded at time: 11:25:35; simulated_delay: 4.800000
+2025-04-20 11:25:35,931 - INFO - Client 82 uploaded at time: 11:25:35; simulated_delay: 8.800000
+2025-04-20 11:25:36,017 - INFO - Client 35 uploaded at time: 11:25:36; simulated_delay: 10.650000
+2025-04-20 11:25:36,020 - INFO - Client 58 uploaded at time: 11:25:36; simulated_delay: 9.650000
+2025-04-20 11:25:36,131 - INFO - Client 24 uploaded at time: 11:25:36; simulated_delay: 6.330000
+2025-04-20 11:25:36,365 - INFO - Client 8 uploaded at time: 11:25:36; simulated_delay: 3.550000
+2025-04-20 11:25:36,462 - INFO - Client 1 uploaded at time: 11:25:36; simulated_delay: 4.640000
+2025-04-20 11:25:36,575 - INFO - Client 28 uploaded at time: 11:25:36; simulated_delay: 12.250000
+2025-04-20 11:25:36,613 - INFO - Client 55 started at time: 11:25:36
