@@ -10,7 +10,7 @@
     },
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": false,
+    "multi_gpu": true,
     "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedBuff-dir0.1",
     "stale": false,
     "dataset": {

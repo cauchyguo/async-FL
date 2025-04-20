@@ -28,7 +28,7 @@ class AsyncSchedulerPlus(SyncScheduler):
 
         edge_bandwidth = self.global_var['config']['server']['scheduler']['schedule']['params']['total_bandwidth']
         # 平均分配带宽
-        self.mean_bandwidth = self.edge_server_num * edge_bandwidth / self.client_num
+        self.mean_bandwidth = self.edge_server_num * edge_bandwidth / self.client_num * 2
         time.sleep(0.01)
 
         # 为每个客户端设置delay和group_id

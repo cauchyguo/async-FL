@@ -10,7 +10,7 @@
     },
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": false,
+    "multi_gpu": true,
     "experiment": "Exp2025-V2-FashionMNIST-dir0.5/FedBuff-dir0.5",
     "stale": false,
     "dataset": {
@@ -32,7 +32,7 @@
     "scheduler": {
       "path": "scheduler.AsyncSchedulerPlus.AsyncSchedulerPlus",
       "schedule_interval": 10,
-      "schedule_delay": 20,
+      "schedule_delay": 50,
       "schedule": {
         "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
