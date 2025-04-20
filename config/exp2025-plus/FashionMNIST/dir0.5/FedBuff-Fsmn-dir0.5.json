@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FedAsync-dir0.1"
+    "name": "FedBuff-dir0.5"
   },
   "global": {
     "mode": {
@@ -10,15 +10,15 @@
     },
     "dataset_pre_load": true,
     "use_file_system": false,
-    "multi_gpu": true,
-    "experiment": "Exp2025-V2-FashionMNIST-dir0.1/FedAsync-dir0.1",
+    "multi_gpu": false,
+    "experiment": "Exp2025-V2-FashionMNIST-dir0.5/FedBuff-dir0.5",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
       "params": {}
     },
     "iid": {
-      "beta": 0.1
+      "beta": 0.5
     },
     "client_num": 100
   },
@@ -36,7 +36,7 @@
       "schedule": {
         "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
-          "c_ratio": 0.2,
+          "c_ratio": 0.5,
           "init_select_clients_num": 2,
           "min_join_clients_num": 10,
           "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
@@ -51,16 +51,11 @@
     },
     "updater": {
       "path": "updater.AsyncUpdater.AsyncUpdater",
-      "num_generator": 1,
+      "num_generator": 10,
       "loss": "torch.nn.functional.cross_entropy",
       "update": {
-        "path": "update.FedAsync.FedAsync",
-        "params": {
-          "a": 10,
-          "b": 8,
-          "alpha": 0.9,
-          "r": 1
-        }
+        "path": "update.FedAvg.FedAvg",
+        "params": {}
       }
     }
   },
