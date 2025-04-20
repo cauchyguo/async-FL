@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FLEC-dir0.5-K0"
+    "name": "FLEC-dir0.5-K0-plus"
   },
   "global": {
     "mode": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-dir0.5/FLEC-dir0.5-K0",
+    "experiment": "Exp2025-V2-Cifar10-dir0.5/FLEC-dir0.5-K0-plus",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",

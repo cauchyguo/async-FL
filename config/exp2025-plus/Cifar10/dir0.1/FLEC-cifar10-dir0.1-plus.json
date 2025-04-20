@@ -88,7 +88,7 @@
     "group_method": {
       "path": "group.DualGroupPlus.DualGroupPlus",
       "params": {
-        "situation_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+        "situation_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
         "edge_server_num": 5,
         "nearest_K": 20
       }
@@ -107,7 +107,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 15
+    "process_num": 10
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
