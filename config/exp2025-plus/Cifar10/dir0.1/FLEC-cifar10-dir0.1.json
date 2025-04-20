@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FLEC-dir0.1"
+    "name": "FLEC-dir0.1-plus"
   },
   "global": {
     "mode": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1",
+    "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1-plus",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
@@ -29,7 +29,7 @@
     "model": {
       "path": "torchvision.models.resnet.resnet18",
       "params": {
-        "num_classes": 10
+        "num_classes": 15
       }
     },
     "scheduler": {
@@ -38,7 +38,7 @@
         "path": "schedule.DualGroupSchedule.DualGroupSchedule",
         "params": {
           "c_ratio": 0.4,
-          "min_join_clients_num": 12,
+          "min_join_clients_num": 10,
           "total_bandwidth": 50,
           "data_size": 42.7,
           "max_join_clients_num": 12,
@@ -107,7 +107,7 @@
   },
   "client_manager": {
     "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-    "process_num": 5
+    "process_num": 10
   },
   "client": {
     "path": "client.FLEClient.FLEClient",
