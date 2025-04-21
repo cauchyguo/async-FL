@@ -13739,3 +13739,5 @@
 2025-04-20 18:54:56,370 - INFO - Client 31 uploaded at time: 18:54:56; simulated_delay: 10.640000
 2025-04-20 18:54:57,863 - INFO - Client 52 uploaded at time: 18:54:57; simulated_delay: 12.370000
 2025-04-20 18:54:58,741 - INFO - Client 28 uploaded at time: 18:54:58; simulated_delay: 13.370000
+2025-04-20 18:54:59,330 - INFO - Client 66 uploaded at time: 18:54:59; simulated_delay: 13.920000
+2025-04-20 18:54:59,849 - INFO - Client 76 uploaded at time: 18:54:59; simulated_delay: 14.440000
