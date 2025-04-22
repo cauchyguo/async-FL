@@ -37,9 +37,17 @@ class DualGroupSchedule(AbstractSchedule):
         # if len(edge_server_unique_clients) < self.min_join_clients_num:
         #     print("debug")
 
+        if len(init_select_client) == self.min_join_clients_num:
+            init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
+            return init_select_client
+
         available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
+
+        
         # init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
         init_select_client = random.sample(available_clients_set, min(self.init_select_clients_num,len(available_clients_set)))
+
+
         for client_id in init_select_client:
             available_clients_set.remove(client_id)
             self.selected_client_threads.append(client_id)
