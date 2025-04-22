@@ -1,7 +1,7 @@
 {
   "wandb": {
     "enabled": true,
-    "project": "Exp2025-V2-FashionMNIST-HyperTuner-N_init",
+    "project": "Exp2025-V2-FashionMNIST",
     "name": "FLEC-dir0.1-N0"
   },
   "global": {
