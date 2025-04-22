@@ -1,0 +1,224 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-V2-Cifar10",
+        "name": "HiFlash-dir0.1"
+    },
+    "global": {
+        "mode": {
+            "path": "core.MPMT.MPMT"
+        },
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": false,
+        "experiment": "Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1",
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": {
+            "beta": 0.1
+        },
+        "client_num": 100,
+        "uid": "daa0db80d4f14924a663dd4df0c73f58"
+    },
+    "server": {
+        "path": "server.SemiAsyncServer.SemiAsyncServer",
+        "epochs": 2010,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.HiFlashScheduler.HiFlashScheduler",
+            "schedule": {
+                "path": "schedule.HiFlashSchedule.HiFlashSchedule",
+                "params": {
+                    "init_select_clients_num": 2,
+                    "min_join_clients_num": 10,
+                    "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                    "total_bandwidth": 50,
+                    "data_size": 42.7,
+                    "max_join_clients_num": 15,
+                    "target_kl_divergence": 0.05,
+                    "theta": 0.1
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SemiAsyncUpdater.SemiAsyncUpdater",
+            "update": {
+                "path": "update.FedAvg.FedAvg",
+                "params": {}
+            },
+            "loss": "torch.nn.functional.cross_entropy",
+            "params": {},
+            "group": {
+                "path": "update.FLEC.FLEC",
+                "params": {
+                    "alpha": 0.9,
+                    "v": 0.95,
+                    "staleness_threshold": 10
+                }
+            }
+        }
+    },
+    "group_manager": {
+        "path": "groupmanager.FLECNormalGroupManager.FLECNormalGroupManager",
+        "group_method": {
+            "path": "group.DelayAssociationGroup.DelayAssociationGroup",
+            "params": {
+                "situation_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                "edge_server_num": 5,
+                "nearest_K": 20,
+                "total_bandwidth": 50,
+                "data_size": 42.7,
+                "min_join_clients_num": 10
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.QueueListManager.QueueListManager",
+        "receiver": {
+            "path": "receiver.MultiQueueReceiver.MultiQueueReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.AllChecker.AllChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+        "process_num": 15
+    },
+    "client": {
+        "path": "client.FLEClient.FLEClient",
+        "epochs": 5,
+        "batch_size": 50,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.05,
+                "weight_decay": 0
+            }
+        }
+    }
+}

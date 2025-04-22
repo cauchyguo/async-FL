@@ -2,7 +2,7 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-V2-Cifar10",
-        "name": "FLEC-dir0.1"
+        "name": "FLEC-dir0.1-plus"
     },
     "global": {
         "mode": {
@@ -12,7 +12,7 @@
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1",
+        "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1-plus",
         "stale": [
             0,
             0,
@@ -123,7 +123,7 @@
             "beta": 0.1
         },
         "client_num": 100,
-        "uid": "fb1906685bd64fdd88587b596e271bc3"
+        "uid": "bcebde261388489fb9fe137531d261c9"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
@@ -142,26 +142,26 @@
                     "c_ratio": 0.4,
                     "min_join_clients_num": 12,
                     "total_bandwidth": 50,
-                    "data_size": 42.7,
+                    "data_size": 40,
                     "max_join_clients_num": 12,
                     "target_kl_divergence": 0.05,
-                    "theta": 0.01,
-                    "init_select_clients_num": 5,
+                    "theta": 0.001,
+                    "init_select_clients_num": 6,
                     "init_select_unique_clients_num": 3,
                     "init_select_shared_clients_num": 3,
-                    "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                    "clients_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                     "delay_adaptive_optimizer": {
                         "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
                         "params": {
                             "total_bandwidth": 50,
-                            "data_size": 42.7,
+                            "data_size": 40,
                             "noise_power": -104,
                             "g_dB_coef": [
                                 -128.1,
                                 37.6
                             ],
                             "algorithm": "binary",
-                            "client_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+                            "client_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv"
                         }
                     }
                 }
@@ -190,7 +190,7 @@
         "group_method": {
             "path": "group.DualGroupPlus.DualGroupPlus",
             "params": {
-                "situation_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                "situation_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                 "edge_server_num": 5,
                 "nearest_K": 20
             }
@@ -209,7 +209,7 @@
     },
     "client_manager": {
         "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-        "process_num": 15
+        "process_num": 10
     },
     "client": {
         "path": "client.FLEClient.FLEClient",
