@@ -25,6 +25,8 @@ class DualGroupSchedule(AbstractSchedule):
 
         self.delay_adaptive_optimizer = DelayAdaptiveOptimizer(config["delay_adaptive_optimizer"]["params"])
 
+        
+
 
     def schedule(self,edge_server_idx, edge_server_unique_clients,edge_server_shared_clients,client_label_df):
         # 贪心决策
@@ -64,6 +66,7 @@ class DualGroupSchedule(AbstractSchedule):
         print(f"Server {edge_server_idx} init_select_client: {init_select_client}")
         # 计算初始组群的KL散度
         self.group_kl_divergence = self.cal_selected_clients_kldivergence(self.selected_client_threads)
+
         # 然后从共享组中选择综合延迟和使得KL散度最小的客户端
         # available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
         print(f"candidate {len(available_clients_set)} clients: {available_clients_set}")
@@ -72,6 +75,8 @@ class DualGroupSchedule(AbstractSchedule):
         client_distributions = {}
         for client_id in available_clients_set:
             client_data_num = self.client_label_df['data_num'].iloc[client_id]
+
+            self.label_columns = [col for col in self.client_label_df.columns if col.startswith('label')]
             client_dist = self.client_label_df[self.label_columns].iloc[client_id].to_numpy()
             client_dist = client_dist / sum(client_dist)
             client_distributions[client_id] = (client_data_num, client_dist)
@@ -144,6 +149,13 @@ class DualGroupSchedule(AbstractSchedule):
         return self.judge_join_client(client_id)[0] + self.theta * delay_for_selected_clients
 
     def cal_selected_clients_kldivergence(self,selected_clients):
+
+        if len(selected_clients) == 0:
+            self.group_kl_divergence = -1
+            self.group_data_num = 0
+            self.group_class_distribution = np.full(10, 1 / 10)
+            return -1
+
         group_data_num = 0
         group_client_data_distribution = []
         for client_id in selected_clients:
@@ -157,6 +169,8 @@ class DualGroupSchedule(AbstractSchedule):
         group_class_distribution = np.sum(group_client_data_distribution,axis=0) / group_data_num
         self.group_data_num = group_data_num
         self.group_class_distribution = group_class_distribution
+
+
         return self.calculate_group_kl_divergence(group_class_distribution)
     
     def judge_join_client(self,client_id):
