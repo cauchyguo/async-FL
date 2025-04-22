@@ -1,8 +1,0 @@
-2025-04-07 23:52:12,349 - INFO - Starting experiment with UID: 561d1815dd3947348b56965814eb0e76
-2025-04-08 00:09:33,154 - INFO - Starting experiment with UID: 25d02ae720ec46ec99abbc07ae4d2a1a
-2025-04-08 00:10:10,445 - INFO - Starting experiment with UID: 76fcd6ae26f94fd4a0f247fe702cc12c
-2025-04-08 00:10:26,745 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/FLEC-fsmn-dir0.1-shared/o.txt
-2025-04-08 00:10:40,973 - INFO - Starting experiment with UID: a1e383cd0c454b1f817dd307a055912a
-2025-04-08 00:10:55,309 - INFO - Starting experiment with UID: cd6610ff012f4fe2ace730f826e843bc
-2025-04-08 00:13:01,437 - INFO - Starting experiment with UID: 9761d6bfbca641c0ab5b62594d12b6e0
-2025-04-08 00:39:34,913 - INFO - Starting experiment with UID: 2042c3a50eae4d1fadadf3701e1227dd

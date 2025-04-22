@@ -1,0 +1,207 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-V2-Cifar10",
+        "name": "FedBuff-dir0.5"
+    },
+    "global": {
+        "mode": {
+            "path": "core.MPMT.MPMT"
+        },
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": true,
+        "experiment": "Exp2025-V2-Cifar10-dir0.5/FedBuff-dir0.5",
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": {
+            "beta": 0.5
+        },
+        "client_num": 100,
+        "uid": "015ac4e228fd412a9856bbd9b738faf4",
+        "seed": 1388204274
+    },
+    "server": {
+        "path": "server.NormalServer.NormalServer",
+        "epochs": 2010,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.AsyncSchedulerPlus.AsyncSchedulerPlus",
+            "schedule_interval": 1,
+            "schedule_delay": 50,
+            "schedule": {
+                "path": "schedule.FedBuffSchedule.FedBuffSchedule",
+                "params": {
+                    "select_num": 10,
+                    "c_ratio": 0.8,
+                    "init_select_clients_num": 2,
+                    "min_join_clients_num": 10,
+                    "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                    "sys_cost": 0.01,
+                    "total_bandwidth": 50,
+                    "data_size": 42.7,
+                    "max_join_clients_num": 15,
+                    "target_kl_divergence": 0.05,
+                    "theta": 0.1
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.AsyncUpdater.AsyncUpdater",
+            "num_generator": 10,
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.FedAvg.FedAvg",
+                "params": {}
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.AllChecker.AllChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.MPMTClientManager.MPMTClientManager",
+        "process_num": 5
+    },
+    "client": {
+        "path": "client.FLEClient.FLEClient",
+        "epochs": 5,
+        "batch_size": 50,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.05,
+                "weight_decay": 0
+            }
+        }
+    }
+}

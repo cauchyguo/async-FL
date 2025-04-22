@@ -1,6 +1,6 @@
 {
   "wandb": {
-    "enabled": false,
+    "enabled": true,
     "project": "Exp2025-V2-FashionMNIST",
     "name": "FedAsync-dir0.1"
   },
@@ -31,12 +31,12 @@
     },
     "scheduler": {
       "path": "scheduler.AsyncSchedulerPlus.AsyncSchedulerPlus",
-      "schedule_interval": 20,
-      "schedule_delay": 50,
+      "schedule_interval": 10,
+      "schedule_delay": 20,
       "schedule": {
         "path": "schedule.RandomSchedule.RandomSchedule",
         "params": {
-          "c_ratio": 0.1,
+          "c_ratio": 0.2,
           "init_select_clients_num": 2,
           "min_join_clients_num": 10,
           "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",

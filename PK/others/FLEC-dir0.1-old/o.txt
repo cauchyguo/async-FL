@@ -1,0 +1,43 @@
+2025-04-08 08:41:37,836 - INFO - Starting experiment with UID: d3fc48d8fcc64cb589761a0161d947d2
+2025-04-08 08:45:09,797 - INFO - Starting experiment with UID: b1ebf2d64fe1483a9203d05f65873c0f
+2025-04-08 08:46:43,725 - INFO - Starting experiment with UID: abbbdd166fc24f03b79711c7b373fa45
+2025-04-08 08:51:42,635 - INFO - Starting experiment with UID: 650d6c3576a040efb068fdd2ded02b06
+2025-04-08 08:57:45,870 - INFO - Starting experiment with UID: 6175efe3044d46ddb9907712536f4efb
+2025-04-08 09:01:27,062 - INFO - Starting experiment with UID: 6ef3e80d52ac47bf87c513aaf5e17ad0
+2025-04-08 09:05:31,396 - INFO - Starting experiment with UID: 6a4cc7e92c17403499d32a3355852b7f
+<<<<<<< HEAD
+2025-04-08 09:44:35,238 - INFO - Starting experiment with UID: 1507cb9a33af4fb89d970eef493532d6
+2025-04-08 10:08:29,231 - INFO - Starting experiment with UID: ab10fa0803084ab3bc0e7f7a272c1ea6
+2025-04-08 10:08:53,850 - INFO - Starting experiment with UID: 81858ea0f95d44b6923c6e4af467f050
+2025-04-08 10:10:07,176 - INFO - Starting experiment with UID: d228a5b518f64dd488e7b6d54af75ed8
+2025-04-09 09:43:03,974 - INFO - Starting experiment with UID: 0cd08fff39ba47d7ad1c277eb7fe6e3d
+2025-04-09 10:06:42,667 - INFO - Starting experiment with UID: 86d42a935ac7498585b96540521d09b3
+2025-04-09 10:10:41,079 - INFO - Starting experiment with UID: ada349562abd485a960e1698ae5ab180
+2025-04-09 10:18:31,516 - INFO - Starting experiment with UID: 7cc468bcfd5e473a9b87291c8fb3f427
+2025-04-09 10:22:26,245 - INFO - Starting experiment with UID: f014bb06d263460189fe5af0ac74c3de
+2025-04-09 10:24:17,237 - INFO - Starting experiment with UID: 95f4fa442d944bec860238a8f4d75df1
+2025-04-09 10:25:04,560 - INFO - Starting experiment with UID: c8e7987468dc44ce89b2ecbf6049bd97
+2025-04-09 10:30:41,231 - INFO - Starting experiment with UID: 295d910db879463298cde4513b67577e
+2025-04-09 10:31:41,426 - INFO - Starting experiment with UID: 016b6d57b8df41acbdef8fd56bc6c952
+2025-04-09 10:33:40,413 - INFO - Starting experiment with UID: 09df758f1f6744e3933879f9a2680c89
+2025-04-09 10:36:49,335 - INFO - Starting experiment with UID: 9ecd629bf87b4e4cb5a536aea26de74c
+2025-04-09 10:40:35,647 - INFO - Starting experiment with UID: a22f3f99a6df43978b28b70e41dbb011
+2025-04-09 10:43:04,174 - INFO - Starting experiment with UID: 9f9d0bd1cf7a43d18891fee70de8e927
+2025-04-09 10:45:56,027 - INFO - Starting experiment with UID: b68e881d66f445638e3e2f76928d23e9
+2025-04-09 11:04:14,071 - INFO - Starting experiment with UID: 1c16a6a30307495794f1d2812f58caed
+2025-04-09 11:06:51,797 - INFO - Starting experiment with UID: 3cc8a4a4cddd409bad5a3ed58ee6d2e3
+2025-04-09 22:42:46,720 - INFO - Starting experiment with UID: fb1906685bd64fdd88587b596e271bc3
+2025-04-10 03:31:52,084 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1/o.txt
+=======
+2025-04-08 09:10:47,118 - INFO - Starting experiment with UID: ff90110362f542348d471b79c62754fc
+2025-04-08 09:35:57,503 - INFO - Starting experiment with UID: 52bf2eaa54c04423b70ba3da754c4386
+2025-04-08 09:38:33,143 - INFO - Starting experiment with UID: 96e411678ef941d6a758daab2bf178cc
+2025-04-08 09:39:35,842 - INFO - Starting experiment with UID: 81087622612e4610946f207d7713a6c4
+2025-04-08 09:40:48,138 - INFO - Starting experiment with UID: 402b856339b8468c980ea6a4535ce274
+2025-04-08 09:42:38,375 - INFO - Starting experiment with UID: 11346e357d8047ca9ae18376bf8ef62b
+2025-04-08 09:46:46,669 - INFO - Starting experiment with UID: 49bf7b67e46d44a2ad5b040b5e12e709
+2025-04-08 09:48:06,236 - INFO - Starting experiment with UID: 97931acff8fa422699dbafe71e7fe4a5
+2025-04-08 09:59:45,237 - INFO - Starting experiment with UID: be25cdf641974f6aa623edd321226523
+2025-04-08 10:01:26,075 - INFO - Starting experiment with UID: 8d257898a4974ca98a8bda6b80c0bbec
+2025-04-08 10:06:26,238 - INFO - Starting experiment with UID: f73e493d9205409390d9f6aa7f88a118
+>>>>>>> f00cc01 (3090备份)

@@ -1,3 +1,0 @@
-2025-04-05 21:45:33,764 - INFO - Starting experiment with UID: 2b6606d7a6b444329654d35363be5952
-2025-04-05 21:46:47,680 - INFO - Starting experiment with UID: 157f1e2c1b3343b7be6f2cbca5782345
-2025-04-05 22:39:49,482 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1-cluster/o.txt

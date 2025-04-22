@@ -2,7 +2,7 @@
     "wandb": {
         "enabled": true,
         "project": "Exp2025-V2-Cifar10",
-        "name": "HiFlash-dir0.1"
+        "name": "HiFlash-dir0.1-plus"
     },
     "global": {
         "mode": {
@@ -12,7 +12,7 @@
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1",
+        "experiment": "Exp2025-V2-Cifar10-dir0.1/HiFlash-dir0.1-plus",
         "stale": [
             0,
             0,
@@ -123,7 +123,7 @@
             "beta": 0.1
         },
         "client_num": 100,
-        "uid": "daa0db80d4f14924a663dd4df0c73f58"
+        "uid": "364786ff56bd4151bc3fbbd74e71278a"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
@@ -139,9 +139,9 @@
             "schedule": {
                 "path": "schedule.HiFlashSchedule.HiFlashSchedule",
                 "params": {
-                    "init_select_clients_num": 2,
+                    "init_select_clients_num": 6,
                     "min_join_clients_num": 10,
-                    "clients_edge_info_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                    "clients_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                     "total_bandwidth": 50,
                     "data_size": 42.7,
                     "max_join_clients_num": 15,
@@ -173,7 +173,7 @@
         "group_method": {
             "path": "group.DelayAssociationGroup.DelayAssociationGroup",
             "params": {
-                "situation_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+                "situation_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                 "edge_server_num": 5,
                 "nearest_K": 20,
                 "total_bandwidth": 50,
@@ -195,7 +195,7 @@
     },
     "client_manager": {
         "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-        "process_num": 15
+        "process_num": 10
     },
     "client": {
         "path": "client.FLEClient.FLEClient",

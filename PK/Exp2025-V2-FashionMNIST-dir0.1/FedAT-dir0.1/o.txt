@@ -1,7 +1,3 @@
-2025-04-04 17:39:48,233 - INFO - Starting experiment with UID: 7b1d5f1475e04b03be485fdc8dfa48f5
-2025-04-04 17:42:22,825 - INFO - Starting experiment with UID: a228300212c54fecaf5a1b0bdcb01916
-2025-04-04 17:43:57,448 - INFO - Starting experiment with UID: b180de480bad41c5a0ce9df9739fc307
-2025-04-04 17:47:11,349 - INFO - Starting experiment with UID: f98ddb6ae7554a2f96c6b7eb9fdda18d
-2025-04-04 17:48:15,349 - INFO - Starting experiment with UID: 0584997f864a401182a40b736e822db3
-2025-04-04 19:08:54,608 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1/o.txt
-2025-04-05 21:35:17,631 - INFO - Starting experiment with UID: ef4b898bc37a4920a9a116de530b98ae
+2025-04-05 21:45:33,764 - INFO - Starting experiment with UID: 2b6606d7a6b444329654d35363be5952
+2025-04-05 21:46:47,680 - INFO - Starting experiment with UID: 157f1e2c1b3343b7be6f2cbca5782345
+2025-04-05 22:39:49,482 - INFO - Log file saved and uploaded to wandb: /disk6T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-FashionMNIST-dir0.1/FedAT-dir0.1-cluster/o.txt
