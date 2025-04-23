@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-V2-Cifar10",
-    "name": "FLEC-dir0.1-plus"
+    "name": "FLEC-dir0.1-N10"
   },
   "global": {
     "mode": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1-plus",
+    "experiment": "Exp2025-V2-Cifar10-HyperTuner-N_init/FLEC-dir0.1-N10",
     "stale": false,
     "dataset": {
       "path": "dataset.CIFAR10.CIFAR10",
@@ -29,7 +29,7 @@
     "model": {
       "path": "torchvision.models.resnet.resnet18",
       "params": {
-        "num_classes": 15
+        "num_classes": 10
       }
     },
     "scheduler": {
@@ -44,10 +44,10 @@
           "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
           "theta": 0.01,
-          "init_select_clients_num": 5,
+          "init_select_clients_num": 10,
           "init_select_unique_clients_num": 3,
           "init_select_shared_clients_num": 3,
-          "clients_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+          "clients_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
           "delay_adaptive_optimizer": {
             "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
             "params": {
@@ -59,7 +59,7 @@
                 37.6
               ],
               "algorithm": "binary",
-              "client_edge_info_path": "/disk6T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv"
+              "client_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv"
             }
           }
         }
@@ -88,7 +88,7 @@
     "group_method": {
       "path": "group.DualGroupPlus.DualGroupPlus",
       "params": {
-        "situation_path": "/disk14T/ypguo/async-FL/src/FLEC_situation/clients_edge_info.csv",
+        "situation_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
         "edge_server_num": 5,
         "nearest_K": 20
       }

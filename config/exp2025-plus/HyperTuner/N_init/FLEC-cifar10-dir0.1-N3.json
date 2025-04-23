@@ -1,6 +1,6 @@
 {
   "wandb": {
-    "enabled": false,
+    "enabled": true,
     "project": "Exp2025-V2-Cifar10",
     "name": "FLEC-dir0.1-N3"
   },
