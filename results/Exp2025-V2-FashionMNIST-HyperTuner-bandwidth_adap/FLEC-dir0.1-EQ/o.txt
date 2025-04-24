@@ -1,0 +1,10 @@
+2025-04-24 15:02:03,260 - INFO - Process 0 started logging
+2025-04-24 15:02:04,618 - INFO - Process 1 started logging
+2025-04-24 15:02:05,974 - INFO - Process 2 started logging
+2025-04-24 15:02:07,328 - INFO - Process 3 started logging
+2025-04-24 15:02:08,677 - INFO - Process 4 started logging
+2025-04-24 15:11:23,676 - INFO - Process 0 started logging
+2025-04-24 15:11:25,027 - INFO - Process 1 started logging
+2025-04-24 15:11:26,371 - INFO - Process 2 started logging
+2025-04-24 15:11:27,725 - INFO - Process 3 started logging
+2025-04-24 15:11:29,071 - INFO - Process 4 started logging

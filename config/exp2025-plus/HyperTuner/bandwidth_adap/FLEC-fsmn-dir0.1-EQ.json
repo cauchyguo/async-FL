@@ -2,7 +2,7 @@
   "wandb": {
     "enabled": false,
     "project": "Exp2025-V2-FashionMNIST",
-    "name": "FLEC-dir0.1-N5"
+    "name": "FLEC-dir0.1-EQ"
   },
   "global": {
     "mode": {
@@ -12,7 +12,7 @@
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-V2-FashionMNIST-HyperTuner-N_init/FLEC-dir0.1-N5",
+    "experiment": "Exp2025-V2-FashionMNIST-HyperTuner-bandwidth_adap/FLEC-dir0.1-EQ",
     "stale": false,
     "dataset": {
       "path": "dataset.FashionMNIST.FashionMNIST",
@@ -31,14 +31,14 @@
       "params": {}
     },
     "scheduler": {
-      "path": "scheduler.FLECSemiAsyncScheduler.FLECSemiAsyncScheduler",
+      "path": "scheduler.FLECSemiAsyncSchedulerEQ.FLECSemiAsyncSchedulerEQ",
       "schedule": {
-        "path": "schedule.DualGroupSchedule.DualGroupSchedule",
+        "path": "schedule.DualGroupScheduleEQ.DualGroupScheduleEQ",
         "params": {
           "c_ratio": 0.4,
           "min_join_clients_num": 10,
           "total_bandwidth": 50,
-          "data_size": 6,
+          "data_size": 6.34,
           "max_join_clients_num": 12,
           "target_kl_divergence": 0.05,
           "theta": 0.1,
@@ -50,7 +50,7 @@
             "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
             "params": {
               "total_bandwidth": 50,
-              "data_size": 6,
+              "data_size": 6.34,
               "noise_power": -104,
               "g_dB_coef": [
                 -128.1,
