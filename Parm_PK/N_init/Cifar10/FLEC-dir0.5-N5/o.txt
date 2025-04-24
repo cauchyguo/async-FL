@@ -1,0 +1,5 @@
+2025-04-09 15:29:08,993 - INFO - Starting experiment with UID: 14acbc3c738a45eeaaec5e38568aef9b
+2025-04-09 15:51:59,230 - INFO - Starting experiment with UID: 36d8e429e3434a1e821e3b7f43f607bf
+2025-04-09 15:54:47,814 - INFO - Starting experiment with UID: 34f1c8892eaa4a77976556b2d3193296
+2025-04-09 17:37:50,138 - INFO - Starting experiment with UID: f7db786a62394b5baa917315a001f73e
+2025-04-09 22:31:58,258 - INFO - Log file saved and uploaded to wandb: /disk14T/ypguo/async-FL/src/fl/../../results/Exp2025-V2-Cifar10-dir0.5/FLEC-dir0.5/o.txt
