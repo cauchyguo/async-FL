@@ -4,10 +4,10 @@ from schedule.AbstractSchedule import AbstractSchedule
 import numpy as np
 from utils import ModuleFindTool
 import time
-
+import math
 from algorithm import DelayAdaptiveOptimizer
 
-class DualGroupSchedule(AbstractSchedule):
+class DualGroupScheduleEQ(AbstractSchedule):
     def __init__(self, config):
         super().__init__(config)
         
@@ -19,6 +19,12 @@ class DualGroupSchedule(AbstractSchedule):
         self.group_kl_divergence = None
         self.theta = config["theta"]
         self.init_select_clients_num = config.get("init_select_clients_num", 5)
+
+        self.total_bandwidth = config.get("total_bandwidth",50)
+        self.data_size = config.get("data_size",42.64)
+        self.noise_power = config.get("noise_power",-104)
+        self.g_dB_coef = config.get("g_dB_coef",[-128.1,-37.6])
+        self.data_size = config.get("data_size",42.64)
 
         self.init_select_unique_clients_num = config.get("init_select_unique_clients_num", 3)
         self.init_select_shared_clients_num = config.get("init_select_shared_clients_num", 5)
@@ -35,7 +41,22 @@ class DualGroupSchedule(AbstractSchedule):
 
 
 
-
+    def calculate_data_rate(self, distance, power, bandwidth, noise_poewr=-104,g_dB_coef=[-128.1,37.6]):
+        """计算数据传输率 (Mbps)"""
+        p_W = 10 ** (power / 10 - 3)  # dBm → 瓦特
+        N0_W = 10 ** (noise_poewr / 10 - 3)  # 噪声功率
+        
+        # 信道增益
+        g_dB = g_dB_coef[0] - g_dB_coef[1] * math.log10(distance / 1000)
+        g_linear = 10 ** (g_dB / 10)
+        
+        # 信噪比和频谱效率
+        SNR = (g_linear * p_W) / N0_W
+        spectral_efficiency = math.log2(1 + SNR)
+        
+        # 数据传输率 (Mbps)
+        rate = bandwidth * 1e6 * spectral_efficiency / 1e6
+        return rate
         
 
 
@@ -54,11 +75,13 @@ class DualGroupSchedule(AbstractSchedule):
             init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
             return init_select_client
         
-        if self.bandwidth_type == "equal":
-            pass
             
 
         available_clients_set = list(set(edge_server_shared_clients + edge_server_unique_clients))
+
+        client_delay = {}
+        for client_id in available_clients_set:
+            client_delay[client_id] = self.calculate_data_rate(self.client_distance.iloc[client_id],self.clients_edge_info_df.iloc[client_id]["power"],self.bandwidth_each)
 
         
         # init_select_client = random.sample(edge_server_unique_clients, min(self.init_select_unique_clients_num,len(edge_server_unique_clients)))
@@ -69,10 +92,6 @@ class DualGroupSchedule(AbstractSchedule):
             available_clients_set.remove(client_id)
             self.selected_client_threads.append(client_id)
 
-        # init_select_shared_client = random.sample(edge_server_shared_clients, min(self.init_select_shared_clients_num,len(edge_server_shared_clients)))
-        # for client_id in init_select_shared_client:
-        #     edge_server_shared_clients.remove(client_id)
-        #     self.selected_client_threads.append(client_id)
 
         init_select_client = init_select_client 
         # + init_select_shared_client
@@ -88,6 +107,7 @@ class DualGroupSchedule(AbstractSchedule):
 
         # 预计算所有客户端的数据分布，避免重复计算
         client_distributions = {}
+         
         for client_id in available_clients_set:
             client_data_num = self.client_label_df['data_num'].iloc[client_id]
 
@@ -102,27 +122,20 @@ class DualGroupSchedule(AbstractSchedule):
         while len(self.selected_client_threads) < self.min_join_clients_num:
             if len(self.selected_client_threads) >= self.max_join_clients_num or len(available_clients_set) == 0:
                 break
-            
-            # 批量计算所有可用客户端的延迟
-            all_delays = self.delay_adaptive_optimizer.optimize_batch(
-                self.group_id, 
-                self.selected_client_threads,
-                available_clients_set
-            )
-            
+
             # 批量计算KL散度
             best_client_id = available_clients_set[0]
             best_fitness = float('100000')
             delay_trans_list.append(-1)
             kl_trans_list.append(-1)
             for client_id in available_clients_set:
-                delay = all_delays[client_id]
+                delay = client_delay[client_id]
                 kl_div = self.calculate_kl_divergence_fast(
                     self.group_class_distribution,
                     self.group_data_num,
                     client_distributions[client_id]
                 )
-                fitness = kl_div + self.theta * delay
+                fitness = kl_div + self.theta * max(delay,max([client_delay[client_id] for client_id in self.selected_client_threads]))
                 
                 if fitness < best_fitness:
                     best_fitness = fitness
