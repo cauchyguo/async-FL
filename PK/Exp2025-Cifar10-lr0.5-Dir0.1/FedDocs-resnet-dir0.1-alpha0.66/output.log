@@ -10457,7 +10457,7 @@ Client 42 trained
 Client 42 uploaded
 Client 86 trained
 Client 86 uploaded
-Epoch(t): 294 accuracy: 69.13 loss 0.943699454665184 run_time: 10721.997614860535
+Epoch(t): 294 accuracy: 67.88 loss 0.943699454665184 run_time: 10721.997614860535
 FedDocs Algo: Group 6 is selected
 | current_epoch 295 |. Begin client select
 SchedulerThread schedule Group [ 6 ], select( 14 clients):

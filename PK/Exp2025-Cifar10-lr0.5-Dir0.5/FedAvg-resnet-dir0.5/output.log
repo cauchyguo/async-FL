@@ -7726,7 +7726,7 @@ Client 55 trained
 Client 55 uploaded
 Client 87 trained
 Client 87 uploaded
-Epoch(t): 293 accuracy: 74.16 loss 0.8721442019939423 run_time: 5553.396699428558
+Epoch(t): 293 accuracy: 74.02 loss 0.8721442019939423 run_time: 5553.396699428558
 Current clients: 100 , select: 10
 | current_epoch 294 |. Begin client select
 SchedulerThread select( 10 clients):

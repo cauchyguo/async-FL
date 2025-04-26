@@ -32,7 +32,7 @@
         "scheduler": {
             "path": "scheduler.TiFLScheduler.TiFLScheduler",
             "TiFL_params": {
-                "TiFL_group_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.1_resnet/group_info.csv",
+                "TiFL_group_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.5_resnet/group_info.csv",
                 "update_interval": 20,
                 "initial_credits": 10
             },
@@ -57,7 +57,7 @@
         "group_method": {
             "path": "group.TiFLGroup.TiFLGroup",
             "params": {
-                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.1_resnet/clients_info_dir0.1_resnet_delaymodel_sorted.csv"
+                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.5_resnet/clients_info_dir0.5_resnet_delaymodel_sorted.csv"
             }
         }
     },
@@ -94,7 +94,7 @@
         "optimizer": {
             "path": "torch.optim.SGD",
             "params": {
-                "lr": 0.01,
+                "lr": 0.06,
                 "weight_decay": 0
             }
         }

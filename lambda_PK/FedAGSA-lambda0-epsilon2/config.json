@@ -1,0 +1,205 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "HyperTuner-FashionMNIST-dir0.5",
+        "name": "FedAGSA-lambda0-epsilon2"
+    },
+    "global": {
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": false,
+        "experiment": "HyperTuner-FashionMNIST-dir0.5/FedAGSA-lambda0-epsilon2",
+        "custom": {
+            "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
+            "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.5_cnn/group_results.csv"
+        },
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.FashionMNIST.FashionMNIST",
+            "params": {}
+        },
+        "iid": false,
+        "client_num": 100,
+        "uid": "a6c680daff354b86a41633a7314c3faf"
+    },
+    "server": {
+        "path": "server.SemiAsyncServer.SemiAsyncServer",
+        "epochs": 310,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "scheduler": {
+            "path": "scheduler.GroupSyncScheduler.GroupSyncScheduler",
+            "method": "FedAGSA",
+            "FedAGSA_params": {
+                "FedAGSA_group_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.5_cnn/group_info.csv",
+                "lambda": 0,
+                "epsilon": 2,
+                "target_accuacy": 80
+            },
+            "schedule": {
+                "path": "schedule.FullSchedule.FullSchedule",
+                "params": {}
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.CustomFedAvg.CustomFedAvg",
+                "params": {}
+            }
+        },
+        "optimizer": {
+            "path": "torch.optim.Adam",
+            "params": {
+                "lr": 0.001,
+                "weight_decay": 0
+            }
+        }
+    },
+    "group_manager": {
+        "path": "groupmanager.CustomGroupManager.CustomGroupManager",
+        "group_method": {
+            "path": "group.CustomGroup.CustomGroup",
+            "params": {
+                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.5_cnn/group_results.csv"
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.CustomClient.CustomClient",
+        "epochs": 2,
+        "batch_size": 64,
+        "model": {
+            "path": "model.CNN.CNN",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.012,
+                "weight_decay": 0
+            }
+        }
+    }
+}

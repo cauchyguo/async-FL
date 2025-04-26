@@ -1,0 +1,204 @@
+{
+    "wandb": {
+        "enabled": true,
+        "project": "Exp2025-Cifar10-lr0.5-Dir0.1",
+        "name": "TiFL-resnet-dir0.1"
+    },
+    "global": {
+        "seed": 42,
+        "dataset_pre_load": true,
+        "use_file_system": false,
+        "multi_gpu": false,
+        "experiment": "Exp2025-Cifar10-lr0.5-Dir0.1/TiFL-resnet-dir0.1",
+        "stale": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "dataset": {
+            "path": "dataset.CIFAR10.CIFAR10",
+            "params": {}
+        },
+        "iid": {
+            "beta": 0.1
+        },
+        "client_num": 100,
+        "uid": "12ae554ea5fb4eb4b161cceb6ce5d3ed"
+    },
+    "server": {
+        "path": "server.SemiAsyncServer.SemiAsyncServer",
+        "epochs": 510,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "scheduler": {
+            "path": "scheduler.TiFLScheduler.TiFLScheduler",
+            "TiFL_params": {
+                "TiFL_group_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.1_resnet/group_info.csv",
+                "update_interval": 20,
+                "initial_credits": 10
+            },
+            "schedule": {
+                "path": "schedule.RandomSchedule.RandomSchedule",
+                "params": {
+                    "c_ratio": 0.5
+                }
+            }
+        },
+        "updater": {
+            "path": "updater.SyncUpdater.SyncUpdater",
+            "loss": "torch.nn.functional.cross_entropy",
+            "update": {
+                "path": "update.CustomFedAvg.CustomFedAvg",
+                "params": {}
+            }
+        }
+    },
+    "group_manager": {
+        "path": "groupmanager.CustomGroupManager.CustomGroupManager",
+        "group_method": {
+            "path": "group.TiFLGroup.TiFLGroup",
+            "params": {
+                "clients_info_path": "/home/ypguo/async-FL/src/clients_info/TiFL/dir0.1_resnet/clients_info_dir0.1_resnet_delaymodel_sorted.csv"
+            }
+        }
+    },
+    "queue_manager": {
+        "path": "queuemanager.SingleQueueManager.SingleQueueManager",
+        "receiver": {
+            "path": "receiver.NormalReceiver.NormalReceiver",
+            "params": {}
+        },
+        "checker": {
+            "path": "checker.SyncChecker.SyncChecker",
+            "params": {}
+        }
+    },
+    "client_manager": {
+        "path": "clientmanager.NormalClientManager.NormalClientManager"
+    },
+    "client": {
+        "path": "client.CustomClient.CustomClient",
+        "epochs": 5,
+        "batch_size": 50,
+        "model": {
+            "path": "torchvision.models.resnet.resnet18",
+            "params": {
+                "num_classes": 10
+            }
+        },
+        "transform": {
+            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "params": {}
+        },
+        "loss": "torch.nn.functional.cross_entropy",
+        "mu": 0,
+        "optimizer": {
+            "path": "torch.optim.SGD",
+            "params": {
+                "lr": 0.06,
+                "weight_decay": 0
+            }
+        }
+    }
+}

@@ -14,7 +14,7 @@ import numpy as np
 from matplotlib import rcParams
 from pathlib import Path
 # 定义自定义顺序
-custom_order = ["FedAGSA", "PyramidFL","FedDocs",  "FedLC", "FedAvg",]
+custom_order = ["FedAGSA", "PyramidFL","FedDocs","TiFL","FedAvg",]
 
 # 创建排序键函数
 def custom_sort(item):
@@ -31,6 +31,7 @@ def plot_federated_learning_performance(
     total_rounds=500,  # 默认500轮
     save_epoch_plot=True,
     save_time_plot=True,
+    save_loss_plot=True,
     fig_size=(12, 8),
     
     dpi=300,
@@ -92,7 +93,8 @@ def plot_federated_learning_performance(
                         accuracy_data[algo_dir] = {
                             'epoch': df['epoch'].iloc[:total_rounds].values,
                             'accuracy': df['accuracy'].iloc[:total_rounds].values,
-                            'cum_time': df['epoch_cum_time'].iloc[:total_rounds].values / 60
+                            'cum_time': df['epoch_cum_time'].iloc[:total_rounds].values / 60,
+                            'loss': df['loss'].iloc[:total_rounds].values
                         }
                         results["loaded_algorithms"].append(algo_dir)
                         print(f"成功加载 {algo_dir} 的数据")
@@ -170,9 +172,385 @@ def plot_federated_learning_performance(
         plt.savefig(time_plot_path, dpi=dpi)
         results["figures"]["time_plot"] = time_plot_path
         print(f"保存图表: {time_plot_path}")
+
+    # 绘制第三张图: 损失 vs 轮数
+    if save_loss_plot:
+        plt.figure(figsize=fig_size)
+        
+        for algo_name, data in accuracy_data.items():
+            algo_name = algo_name.split('-')[0]
+            # 使用NumPy布尔索引
+            # mask = data['cum_time'] <= max_time
+            plt.plot(data['epoch'][:total_rounds], data['loss'][:total_rounds], 
+                    linewidth=2, marker='o', markersize=2, label=algo_name)
+        
+        # plt.title(f'{dataset_name} (Dir={dir_alpha}): 准确率 vs 累计时间', fontsize=14)
+        plt.xlabel('全局轮数', fontsize=20)
+        plt.ylabel('损失值', fontsize=20)
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.legend(fontsize=20)
+        
+        # 设置刻度字体为Times New Roman
+        plt.xticks(fontproperties='Times New Roman',fontsize=18)
+        plt.yticks(fontproperties='Times New Roman',fontsize=18)
+        
+        plt.tight_layout()
+
+        file_name_head = main_dir.split("/")[-1]
+        file_name_tail = str(total_rounds)
+        loss_plot_path = os.path.join(main_dir, f'{file_name_head}_loss_vs_epoch_{file_name_tail}.png')
+        plt.savefig(loss_plot_path, dpi=dpi)
+        results["figures"]["loss_plot"] = loss_plot_path
+        print(f"保存图表: {loss_plot_path}")
     
     print("绘图完成！")
     return results
+
+
+def plot_federated_learning_performance_lambda(
+    main_dir, 
+    max_time=50,  # 默认50分钟 
+    total_rounds=500,  # 默认500轮
+    save_epoch_plot=True,
+    save_time_plot=True,
+    fig_size=(12, 8),
+    
+    dpi=300,
+    dataset_name="Fashion-MNIST",
+    dir_alpha="0.5"
+):
+    """
+    从各个联邦学习算法目录中读取性能数据并绘制对比图
+    
+    参数:
+        main_dir (str): 主实验目录路径
+        max_time (int): 时间图的最大时间限制（秒）
+        total_rounds (int): 轮数图的最大轮数限制
+        save_epoch_plot (bool): 是否保存轮数图
+        save_time_plot (bool): 是否保存时间图
+        fig_size (tuple): 图表大小
+        dpi (int): 图表DPI
+        dataset_name (str): 数据集名称
+        dir_alpha (str): Dir参数值
+        
+    返回:
+        dict: 包含成功加载的算法数据和图表路径
+    """
+    # 设置字体
+    config = {
+        "font.family": 'serif',
+        "font.size": 20,
+        "mathtext.fontset": 'stix',
+        "font.serif": ['SimSun'],
+    }
+    rcParams.update(config)
+    plt.rcParams['axes.unicode_minus'] = False
+    
+    # 用于存储各算法数据的字典
+    accuracy_data = {}
+    results = {
+        "loaded_algorithms": [],
+        "skipped_algorithms": [],
+        "figures": {}
+    }
+    custom_order = ["lambda0", "lambda0.01","lambda0.02","lambda0.035"]
+
+    # 创建排序键函数
+    def custom_sort(item):
+        # 对于列表中的项目，返回其索引
+        for i, prefix in enumerate(custom_order):
+
+            if item.split('-')[-2].endswith(prefix):
+                return i
+        # 对于不在列表中的项目，返回一个较大的数，使它们排在最后
+        return len(custom_order)
+    # 遍历所有算法目录
+    for algo_dir in sorted(os.listdir(main_dir),key=custom_sort):
+        full_path = os.path.join(main_dir, algo_dir)
+        
+        # 确保是目录
+        if os.path.isdir(full_path):
+            csv_path = os.path.join(full_path, 'epoch_results_with_cumtime.csv')
+            
+            # 检查CSV文件是否存在
+            if os.path.exists(csv_path):
+                try:
+                    # 读取CSV文件
+                    df = pd.read_csv(csv_path)
+                    
+                    # 确保CSV包含所需列
+                    if 'epoch' in df.columns and 'accuracy' in df.columns and 'epoch_cum_time' in df.columns:
+                        # 存储数据 - 算法名作为键
+                        accuracy_data[algo_dir] = {
+                            'epoch': df['epoch'].iloc[:total_rounds].values,
+                            'accuracy': df['accuracy'].iloc[:total_rounds].values,
+                            'cum_time': df['epoch_cum_time'].iloc[:total_rounds].values / 60
+                        }
+                        results["loaded_algorithms"].append(algo_dir)
+                        print(f"成功加载 {algo_dir} 的数据")
+                    else:
+                        results["skipped_algorithms"].append(f"{algo_dir} (缺少必要的列)")
+                        print(f"警告: {csv_path} 缺少必要的列")
+                except Exception as e:
+                    results["skipped_algorithms"].append(f"{algo_dir} (读取错误: {str(e)})")
+                    print(f"读取 {csv_path} 时出错: {e}")
+            else:
+                results["skipped_algorithms"].append(f"{algo_dir} (未找到CSV文件)")
+                print(f"跳过 {algo_dir}: 未找到 epoch_results_with_cumtime.csv 文件")
+
+    # 检查是否成功加载了数据
+    if not accuracy_data:
+        print("未找到任何有效数据，请检查目录结构和CSV文件")
+        return results
+    
+    # 使用默认样式，启用网格以增强可读性
+    plt.rcParams['axes.grid'] = True
+    
+    # 绘制第一张图: 准确率 vs 轮数
+    if save_epoch_plot:
+        plt.figure(figsize=fig_size)
+        
+        for algo_name, data in accuracy_data.items():
+            param = algo_name.split('-')[-2]
+            # param_name = param[:-1]
+            param_name = r'$\lambda$'
+            import re
+            pattern = re.compile(r'lambda(\d+(?:\.\d+)?)')
+            param_value = pattern.findall(param)[0]
+            plt.plot(data['epoch'][:total_rounds], data['accuracy'][:total_rounds], 
+                    linewidth=2, marker='o', markersize=2, label=f"{param_name}={param_value}")
+        
+        # plt.title(f'{dataset_name} (Dir={dir_alpha}): 准确率 vs 轮数', fontsize=14)
+        plt.xlabel('全局轮数', fontsize=20)
+        plt.ylabel('准确率（%）', fontsize=20)
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.legend(fontsize=20)
+        
+        # 设置刻度字体为Times New Roman
+        plt.xticks(fontproperties='Times New Roman',fontsize=18)
+        plt.yticks(fontproperties='Times New Roman',fontsize=18)
+        
+        plt.tight_layout()
+        file_name_head = main_dir.split("/")[-1]
+        file_name_tail = str(total_rounds)
+        epoch_plot_path = os.path.join(main_dir, f'{file_name_head}_accuracy_vs_epoch_{file_name_tail}.png')
+        plt.savefig(epoch_plot_path, dpi=dpi)
+        results["figures"]["epoch_plot"] = epoch_plot_path
+        print(f"保存图表: {epoch_plot_path}")
+    
+    # # 绘制第二张图: 准确率 vs 累计时间
+    # if save_time_plot:
+    #     plt.figure(figsize=fig_size)
+        
+    #     for algo_name, data in accuracy_data.items():
+    #         #algo_name = algo_name.split('-')[0]
+
+    #         param = algo_name.split('-')[-1]
+    #         param_name = param[:-1]
+    #         # if param_name == 'epsilon':
+    #         param_name = r'$\epsilon$'
+    #         # elif param_name == 'lambda':
+    #         #     param_name = r'$\lambda$'
+    #         param_value = param[-1]
+    #         # 使用NumPy布尔索引
+    #         mask = data['cum_time'] <= max_time
+    #         plt.plot(data['cum_time'][mask], data['accuracy'][mask], 
+    #                 linewidth=2, marker='o', markersize=2, label=f"{param_name}={param_value}")
+        
+    #     # plt.title(f'{dataset_name} (Dir={dir_alpha}): 准确率 vs 累计时间', fontsize=14)
+    #     plt.xlabel('挂钟时间（分钟）', fontsize=20)
+    #     plt.ylabel('准确率（%）', fontsize=20)
+    #     plt.grid(True, linestyle='--', alpha=0.7)
+    #     plt.legend(fontsize=20)
+        
+    #     # 设置刻度字体为Times New Roman
+    #     plt.xticks(fontproperties='Times New Roman',fontsize=18)
+    #     plt.yticks(fontproperties='Times New Roman',fontsize=18)
+        
+    #     plt.tight_layout()
+
+    #     file_name_head = main_dir.split("/")[-1]
+    #     file_name_tail = str(total_rounds)
+    #     time_plot_path = os.path.join(main_dir, f'{file_name_head}_accuracy_vs_time_{file_name_tail}.png')
+    #     plt.savefig(time_plot_path, dpi=dpi)
+    #     results["figures"]["time_plot"] = time_plot_path
+    #     print(f"保存图表: {time_plot_path}")
+    
+    # print("绘图完成！")
+    # return results
+
+def plot_federated_learning_performance_epsilon(
+    main_dir, 
+    max_time=50,  # 默认50分钟 
+    total_rounds=500,  # 默认500轮
+    save_epoch_plot=True,
+    save_time_plot=True,
+    fig_size=(12, 8),
+    
+    dpi=300,
+    dataset_name="Fashion-MNIST",
+    dir_alpha="0.5"
+):
+    """
+    从各个联邦学习算法目录中读取性能数据并绘制对比图
+    
+    参数:
+        main_dir (str): 主实验目录路径
+        max_time (int): 时间图的最大时间限制（秒）
+        total_rounds (int): 轮数图的最大轮数限制
+        save_epoch_plot (bool): 是否保存轮数图
+        save_time_plot (bool): 是否保存时间图
+        fig_size (tuple): 图表大小
+        dpi (int): 图表DPI
+        dataset_name (str): 数据集名称
+        dir_alpha (str): Dir参数值
+        
+    返回:
+        dict: 包含成功加载的算法数据和图表路径
+    """
+    # 设置字体
+    config = {
+        "font.family": 'serif',
+        "font.size": 20,
+        "mathtext.fontset": 'stix',
+        "font.serif": ['SimSun'],
+    }
+    rcParams.update(config)
+    plt.rcParams['axes.unicode_minus'] = False
+    
+    # 用于存储各算法数据的字典
+    accuracy_data = {}
+    results = {
+        "loaded_algorithms": [],
+        "skipped_algorithms": [],
+        "figures": {}
+    }
+    custom_order = ["epsilon0", "epsilon1","epsilon2"]
+
+    # 创建排序键函数
+    def custom_sort(item):
+        # 对于列表中的项目，返回其索引
+        for i, prefix in enumerate(custom_order):
+            if item.endswith(prefix):
+                return i
+        # 对于不在列表中的项目，返回一个较大的数，使它们排在最后
+        return len(custom_order)
+    # 遍历所有算法目录
+    for algo_dir in sorted(os.listdir(main_dir),key=custom_sort):
+        full_path = os.path.join(main_dir, algo_dir)
+        
+        # 确保是目录
+        if os.path.isdir(full_path):
+            csv_path = os.path.join(full_path, 'epoch_results_with_cumtime.csv')
+            
+            # 检查CSV文件是否存在
+            if os.path.exists(csv_path):
+                try:
+                    # 读取CSV文件
+                    df = pd.read_csv(csv_path)
+                    
+                    # 确保CSV包含所需列
+                    if 'epoch' in df.columns and 'accuracy' in df.columns and 'epoch_cum_time' in df.columns:
+                        # 存储数据 - 算法名作为键
+                        accuracy_data[algo_dir] = {
+                            'epoch': df['epoch'].iloc[:total_rounds].values,
+                            'accuracy': df['accuracy'].iloc[:total_rounds].values,
+                            'cum_time': df['epoch_cum_time'].iloc[:total_rounds].values / 60
+                        }
+                        results["loaded_algorithms"].append(algo_dir)
+                        print(f"成功加载 {algo_dir} 的数据")
+                    else:
+                        results["skipped_algorithms"].append(f"{algo_dir} (缺少必要的列)")
+                        print(f"警告: {csv_path} 缺少必要的列")
+                except Exception as e:
+                    results["skipped_algorithms"].append(f"{algo_dir} (读取错误: {str(e)})")
+                    print(f"读取 {csv_path} 时出错: {e}")
+            else:
+                results["skipped_algorithms"].append(f"{algo_dir} (未找到CSV文件)")
+                print(f"跳过 {algo_dir}: 未找到 epoch_results_with_cumtime.csv 文件")
+
+    # 检查是否成功加载了数据
+    if not accuracy_data:
+        print("未找到任何有效数据，请检查目录结构和CSV文件")
+        return results
+    
+    # 使用默认样式，启用网格以增强可读性
+    plt.rcParams['axes.grid'] = True
+    
+    # # 绘制第一张图: 准确率 vs 轮数
+    # if save_epoch_plot:
+    #     plt.figure(figsize=fig_size)
+        
+    #     for algo_name, data in accuracy_data.items():
+    #         param = algo_name.split('-')[-1]
+    #         param_name = param[:-1]
+    #         # if param_name == 'epsilon':
+    #         param_name = r'$\epsilon$'
+    #         # elif param_name == 'lambda':
+    #         #     param_name = r'$\lambda$'
+    #         param_value = param[-1]
+    #         plt.plot(data['epoch'][:total_rounds], data['accuracy'][:total_rounds], 
+    #                 linewidth=2, marker='o', markersize=2, label=f"{param_name}={param_value}")
+        
+    #     # plt.title(f'{dataset_name} (Dir={dir_alpha}): 准确率 vs 轮数', fontsize=14)
+    #     plt.xlabel('全局轮数', fontsize=20)
+    #     plt.ylabel('准确率（%）', fontsize=20)
+    #     plt.grid(True, linestyle='--', alpha=0.7)
+    #     plt.legend(fontsize=20)
+        
+    #     # 设置刻度字体为Times New Roman
+    #     plt.xticks(fontproperties='Times New Roman',fontsize=18)
+    #     plt.yticks(fontproperties='Times New Roman',fontsize=18)
+        
+    #     plt.tight_layout()
+    #     file_name_head = main_dir.split("/")[-1]
+    #     file_name_tail = str(total_rounds)
+    #     epoch_plot_path = os.path.join(main_dir, f'{file_name_head}_accuracy_vs_epoch_{file_name_tail}.png')
+    #     plt.savefig(epoch_plot_path, dpi=dpi)
+    #     results["figures"]["epoch_plot"] = epoch_plot_path
+    #     print(f"保存图表: {epoch_plot_path}")
+    
+    # 绘制第二张图: 准确率 vs 累计时间
+    if save_time_plot:
+        plt.figure(figsize=fig_size)
+        
+        for algo_name, data in accuracy_data.items():
+            #algo_name = algo_name.split('-')[0]
+
+            param = algo_name.split('-')[-1]
+            param_name = param[:-1]
+            # if param_name == 'epsilon':
+            param_name = r'$\epsilon$'
+            # elif param_name == 'lambda':
+            #     param_name = r'$\lambda$'
+            param_value = param[-1]
+            # 使用NumPy布尔索引
+            mask = data['cum_time'] <= max_time
+            plt.plot(data['cum_time'][mask], data['accuracy'][mask], 
+                    linewidth=2, marker='o', markersize=2, label=f"{param_name}={param_value}")
+        
+        # plt.title(f'{dataset_name} (Dir={dir_alpha}): 准确率 vs 累计时间', fontsize=14)
+        plt.xlabel('挂钟时间（分钟）', fontsize=20)
+        plt.ylabel('准确率（%）', fontsize=20)
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.legend(fontsize=20)
+        
+        # 设置刻度字体为Times New Roman
+        plt.xticks(fontproperties='Times New Roman',fontsize=18)
+        plt.yticks(fontproperties='Times New Roman',fontsize=18)
+        
+        plt.tight_layout()
+
+        file_name_head = main_dir.split("/")[-1]
+        file_name_tail = str(total_rounds)
+        time_plot_path = os.path.join(main_dir, f'{file_name_head}_accuracy_vs_time_{file_name_tail}.png')
+        plt.savefig(time_plot_path, dpi=dpi)
+        results["figures"]["time_plot"] = time_plot_path
+        print(f"保存图表: {time_plot_path}")
+    
+    print("绘图完成！")
+    return results
+
 
 # def plot_federated_learning_performance(
 #     main_dir, 
@@ -328,7 +706,7 @@ def parse_log_file(path):
     output_csv_path = f'{path}/epoch_results.csv'  # Path to save the CSV file
     # Regular expressions to match the relevant lines
     epoch_pattern = re.compile(r'\| current_epoch (\d+) \|')
-    client_select_pattern = re.compile(r'SchedulerThread (?:schedule Group \[ \d+ \], )?select\( \d+ clients\):')
+    client_select_pattern = re.compile(r'SchedulerThread (?:schedule (?:Group \$\$ \d+ \$\$|Group \[\s*\d+\s*\]|Tier \[\s*\d+\s*\]), )?select[\$\(]\s*\d+\s*clients[\$\)]:')
     client_id_pattern = re.compile(r'(\d+) \|')
     epoch_result_pattern = re.compile(r'Epoch\(t\): (\d+) accuracy: ([\d.]+) loss ([\d.]+) run_time: ([\d.]+)')
 
@@ -420,13 +798,19 @@ def cal_sim_round_time(delay_model_path, epoch_result_path):
     delay_model = pd.read_csv(delay_model_path)
     epoch_result = pd.read_csv(epoch_result_path)
 
+
     # 将 selected_clients 列从字符串转换为列表
     epoch_result['selected_clients'] = epoch_result['selected_clients'].apply(ast.literal_eval)
 
     # 将 delay_model 的 client_id 设置为索引，以提高查询效率
     delay_model = delay_model.set_index('client_id')
 
-    # 计算每个轮次的模拟时间
+
+
+    # if algo_name == "FedAGSA":
+    #     epoch_result['sim_round_time'] = 
+    # else:
+        # 计算每个轮次的模拟时间
     epoch_result['sim_round_time'] = epoch_result.apply(lambda x: cal_round_time(x, delay_model), axis=1)
 
     # 计算累计时间

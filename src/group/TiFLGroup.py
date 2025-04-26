@@ -22,6 +22,7 @@ class TiFLGroup(AbstractGroup):
         clients_df = pd.read_csv(self.clients_info_path)
         
         # 按延迟时间排序客户端
+        latency_list = clients_df['time'].values
         sorted_indices = np.argsort(latency_list)
         sorted_clients = [client_list[i] for i in sorted_indices]
         sorted_latencies = [latency_list[i] for i in sorted_indices]
@@ -60,8 +61,8 @@ class TiFLGroup(AbstractGroup):
                     'data_num': client_data_num
                 })
         
-        group_df = pd.DataFrame(group_data)
-        group_df.to_csv(self.clients_info_path, index=False)
+        # group_df = pd.DataFrame(group_data)
+        # group_df.to_csv(self.clients_info_path, index=False)
         
         # 保存层级信息以供调度器使用
         group_info = []

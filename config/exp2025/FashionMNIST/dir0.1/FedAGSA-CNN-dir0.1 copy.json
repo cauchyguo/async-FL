@@ -2,14 +2,14 @@
   "wandb": {
     "enabled": true,
     "project": "Exp2025-FashionMNIST-Dir0.1",
-    "name": "FedAGSA-CNN-dir0.1-lm0.01-tg75"
+    "name": "FedAGSA-CNN-dir0.1-lm0.01-tg65"
   },
   "global": {
     "seed": 42,
     "dataset_pre_load": true,
     "use_file_system": false,
     "multi_gpu": false,
-    "experiment": "Exp2025-FashionMNIST-Dir0.1/FedAGSA-CNN-dir0.1-lm0.01-tg75",
+    "experiment": "Exp2025-FashionMNIST-Dir0.1/FedAGSA-CNN-dir0.1-lm0.01-tg65",
     "custom": {
       "stale_generator": "stale.CustomStaleGenerator.CustomStaleGenerator",
       "clients_info_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.1_cnn/group_results.csv"
@@ -36,7 +36,7 @@
         "FedAGSA_group_path": "/home/ypguo/async-FL/src/clients_info/FedAGSA/dir0.1_cnn/group_info.csv",
         "lambda": 0.02,
         "epsilon": 2,
-        "target_accuacy": 75
+        "target_accuacy": 65
       },
       "schedule": {
         "path": "schedule.FullSchedule.FullSchedule",
@@ -84,7 +84,7 @@
   },
   "client": {
     "path": "client.CustomClient.CustomClient",
-    "epochs": 2,
+    "epochs": 3,
     "batch_size": 64,
     "model": {
       "path": "model.CNN.CNN",
