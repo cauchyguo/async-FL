@@ -152,8 +152,12 @@ class DualGroupScheduleDRCS(AbstractSchedule):
             
             # 选择最小索引和的client_id，如果索引和相同，则选择kl_div最小的client_id
             final_rank = sorted(rank_clients,key=lambda x:rank_clients[x]["rank"])
+            min_kld = 1
             best_client_id = final_rank[0]
-
+            for client_id in final_rank[:3]:
+                if rank_clients[client_id]['kld'] < min_kld:
+                    best_client_id = client_id
+                    min_kld = rank_clients[client_id]['kld']
 
             # 更新状态
             client_data, client_dist = client_distributions[best_client_id]
@@ -163,12 +167,12 @@ class DualGroupScheduleDRCS(AbstractSchedule):
             self.selected_client_threads.append(best_client_id)
             available_clients_set.remove(best_client_id)
 
-            # delay_trans_list.append(all_delays[best_client_id])
-            # kl_trans_list.append(self.calculate_kl_divergence_fast(
-            #     self.group_class_distribution,
-            #     self.group_data_num,
-            #     client_distributions[best_client_id]
-            # ))
+            delay_trans_list.append(all_delays[best_client_id])
+            kl_trans_list.append(self.calculate_kl_divergence_fast(
+                self.group_class_distribution,
+                self.group_data_num,
+                client_distributions[best_client_id]
+            ))
             # available_clients_set.remove(best_client_id)
             
 

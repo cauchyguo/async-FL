@@ -1,6 +1,6 @@
 {
   "wandb": {
-    "enabled": true,
+    "enabled": false,
     "project": "Exp2025-V2-FashionMNIST",
     "name": "FLEC-dir0.1-DRCS"
   },
