@@ -1,8 +1,8 @@
 {
     "wandb": {
         "enabled": true,
-        "project": "Exp2025-V2-Cifar10",
-        "name": "FLEC-dir0.1-plus"
+        "project": "Exp2025-V2-FashionMNIST",
+        "name": "FLEC-dir0.1-N10"
     },
     "global": {
         "mode": {
@@ -12,7 +12,7 @@
         "dataset_pre_load": true,
         "use_file_system": false,
         "multi_gpu": false,
-        "experiment": "Exp2025-V2-Cifar10-dir0.1/FLEC-dir0.1-plus",
+        "experiment": "Exp2025-V2-FashionMNIST-HyperTuner-N_init/FLEC-dir0.1-N10",
         "stale": [
             0,
             0,
@@ -116,23 +116,21 @@
             0
         ],
         "dataset": {
-            "path": "dataset.CIFAR10.CIFAR10",
+            "path": "dataset.FashionMNIST.FashionMNIST",
             "params": {}
         },
         "iid": {
             "beta": 0.1
         },
         "client_num": 100,
-        "uid": "bcebde261388489fb9fe137531d261c9"
+        "uid": "8ed6cff81ecb48509b313cd51695ec31"
     },
     "server": {
         "path": "server.SemiAsyncServer.SemiAsyncServer",
         "epochs": 2010,
         "model": {
-            "path": "torchvision.models.resnet.resnet18",
-            "params": {
-                "num_classes": 10
-            }
+            "path": "model.CNN.CNN",
+            "params": {}
         },
         "scheduler": {
             "path": "scheduler.FLECSemiAsyncScheduler.FLECSemiAsyncScheduler",
@@ -140,21 +138,21 @@
                 "path": "schedule.DualGroupSchedule.DualGroupSchedule",
                 "params": {
                     "c_ratio": 0.4,
-                    "min_join_clients_num": 12,
+                    "min_join_clients_num": 10,
                     "total_bandwidth": 50,
-                    "data_size": 40,
+                    "data_size": 6.34,
                     "max_join_clients_num": 12,
                     "target_kl_divergence": 0.05,
-                    "theta": 0.001,
-                    "init_select_clients_num": 6,
-                    "init_select_unique_clients_num": 3,
+                    "theta": 0.1,
+                    "init_select_clients_num": 10,
+                    "init_select_unique_clients_num": 5,
                     "init_select_shared_clients_num": 3,
                     "clients_edge_info_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                     "delay_adaptive_optimizer": {
                         "path": "algorithm.DelayAdaptiveOptimizer.DelayAdaptiveOptimizer",
                         "params": {
                             "total_bandwidth": 50,
-                            "data_size": 40,
+                            "data_size": 6.34,
                             "noise_power": -104,
                             "g_dB_coef": [
                                 -128.1,
@@ -192,7 +190,7 @@
             "params": {
                 "situation_path": "/home/sysadmin/async-FL/src/FLEC_situation/clients_edge_info.csv",
                 "edge_server_num": 5,
-                "nearest_K": 20
+                "nearest_K": 0
             }
         }
     },
@@ -209,28 +207,22 @@
     },
     "client_manager": {
         "path": "clientmanager.MPMTClientManager.MPMTClientManager",
-        "process_num": 10
+        "process_num": 5
     },
     "client": {
         "path": "client.FLEClient.FLEClient",
-        "epochs": 5,
-        "batch_size": 50,
+        "epochs": 2,
+        "batch_size": 64,
         "model": {
-            "path": "torchvision.models.resnet.resnet18",
-            "params": {
-                "num_classes": 10
-            }
-        },
-        "transform": {
-            "path": "transforms.Transforms.TransformForCIFARFactory.createTransform",
+            "path": "model.CNN.CNN",
             "params": {}
         },
         "loss": "torch.nn.functional.cross_entropy",
-        "mu": 0,
+        "mu": 0.01,
         "optimizer": {
             "path": "torch.optim.SGD",
             "params": {
-                "lr": 0.05,
+                "lr": 0.01,
                 "weight_decay": 0
             }
         }

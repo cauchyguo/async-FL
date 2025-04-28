@@ -5,18 +5,18 @@ from matplotlib import rcParams
 import pandas as pd
 import re
 
-# 自定义算法排序顺序
-custom_order = ["FLEC", "HiFlash", "FedAT"]
+# # 自定义算法排序顺序
+# custom_order = ["FLEC", "HiFlash", "FedAT"]
 
-# 创建排序键函数
-def custom_sort(item):
-    # 对于列表中的项目，返回其索引
-    for i, prefix in enumerate(custom_order):
-        if item.startswith(prefix):
-            return i
-    # 对于不在列表中的项目，返回一个较大的数，使它们排在最后
-    return len(custom_order)
-import os
+# # 创建排序键函数
+# def custom_sort(item):
+#     # 对于列表中的项目，返回其索引
+#     for i, prefix in enumerate(custom_order):
+#         if item.startswith(prefix):
+#             return i
+#     # 对于不在列表中的项目，返回一个较大的数，使它们排在最后
+#     return len(custom_order)
+# import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -28,6 +28,12 @@ from scipy.interpolate import make_interp_spline
 
 # 自定义算法排序顺序
 custom_order = ["FLEC", "HiFlash", "FedAT", "FedBuff"]
+
+custom_order_ablation = ["REHFL", "REHFL-TEHCGA", "REHFL-SAOBA", "REHFL-HAFCS"]
+
+# 怎么排序
+# 1. 如果item以custom_order_ablation中的前缀结尾，则返回其在custom_order_ablation中的索引
+# 2. 否则，返回custom_order_ablation的长度
 
 # 创建排序键函数
 def custom_sort(item):
@@ -130,6 +136,7 @@ def plot_federated_learning_performance(
     save_dir=None,  # 保存图片的目录，默认为main_dir
     fig_size=(12, 8),
     time_fix=[None,None,None,None],
+    performance_fix=[None,None,None,None],
     dpi=150,
     dataset_name=None,  # 数据集名称，如果为None则从目录名提取
     dir_alpha=None,      # Dir参数值，如果为None则从目录名提取
@@ -139,7 +146,9 @@ def plot_federated_learning_performance(
     area_alpha=0.2,       # 半透明区域的透明度
     fluctuation_window=11, # 波动区间的窗口大小
     TTA=[70,75,80],
-    last_epochs=10
+    last_epochs=10,
+    split=True,
+    order=custom_order
 ):
     """
     从各个联邦学习算法目录中读取性能数据并绘制对比图
@@ -208,13 +217,22 @@ def plot_federated_learning_performance(
     
     # 按照自定义顺序排序算法
     algo_dirs.sort(key=custom_sort)
+
+    if split is False and order == custom_order_ablation:
+        algo_dirs = custom_order_ablation
     
     # 遍历所有算法目录
     for algo_dir in algo_dirs:
         full_path = os.path.join(main_dir, algo_dir)
         
         # 提取算法名称（去掉-dir部分）
-        algo_name = algo_dir.split('-')[0]
+        if split:
+            algo_name = algo_dir.split('-')[0]
+        else:
+            algo_name = algo_dir
+
+        if algo_name == "FLEC":
+            algo_name = "REHFL"
         
         # 尝试读取三个文件
         try:
@@ -304,6 +322,11 @@ def plot_federated_learning_performance(
             algo_name = list(algo_data.keys())[i]
             max_time = max(algo_data[algo_name]['time'])
             algo_data[algo_name]['time'] = list(map(lambda x: x * time_fix[i]  /  max_time, algo_data[algo_name]['time']))
+
+    for i in range(len(performance_fix)):
+        if performance_fix[i] is not None:
+            algo_name = list(algo_data.keys())[i]
+            algo_data[algo_name]['accuracy'] = list(map(lambda x: x * performance_fix[i], algo_data[algo_name]['accuracy']))
 
     # 根据TTA值，找出并记录达到TTA的轮数与时间
     # 使用pandas记录并最终保存所有算法的结果
